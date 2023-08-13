@@ -58,3 +58,20 @@ for player in players[3:5]:
     print(player.title())
     print(f"{player.title()}, you are our OG people in the league. Welcome to the team and please help me teach the others!")
 # These are examples of slicing a "for" loop.
+my_foods = ['pizza','falafel','carrot cake']
+friend_foods = my_foods[:]
+print("My favorite foods are:")
+print(my_foods)
+print("\nMy friend's favorite foods are:")
+print(friend_foods)
+# This is the easiest way how you copy a list.
+my_foods = ['pizza','falafel','carrot cake']
+friend_foods = my_foods[:]
+my_foods.append('cannoli')
+friend_foods.append('ice cream')
+print("My favorite foods are:")
+print(my_foods)
+print("\nMy friend's favorite foods are:")
+print(friend_foods)
+# We just appended new items into the two lists.
+# This will prove we actually have two different lists.
