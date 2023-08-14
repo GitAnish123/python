@@ -66,7 +66,7 @@ print("\nMy friend's favorite foods are:")
 print(friend_foods)
 # This is the easiest way how you copy a list.
 my_foods = ['pizza','falafel','carrot cake']
-friend_foods = my_foods[:]
+friend_foods = my_foods[:]  # There is colon and brackets, [:]
 my_foods.append('cannoli')
 friend_foods.append('ice cream')
 print("My favorite foods are:")
@@ -75,3 +75,51 @@ print("\nMy friend's favorite foods are:")
 print(friend_foods)
 # We just appended new items into the two lists.
 # This will prove we actually have two different lists.
+my_foods = ['pizza','falafel','carrot cake']
+friend_foods = my_foods  #There is no colon and brackets. [:] 
+my_foods.append('canoli')
+friend_foods.append('ice cream')
+print("My favorite foods are:")
+print(my_foods)
+print("My friend's favorite foods are:")
+print(friend_foods)
+# This is another example of a simple unpredictable error.
+# Make sure you keep the colon + the brackets at the end to make a spare copy.
+# In this example you made 'my_foods = friend_foods' so now they will associate with each other.
+# This is not what we wanted.
+# Make sure you be careful and don't do any simple errors.
+dancers_and_singers = ['justin','olivia','ellie','addie','bristol','zoe','natalie','austin','charlotte']
+print("\nThe first three dancers in my list are:")
+print(dancers_and_singers[0:3])
+print("\nThe next three dancers in my list are:")
+print(dancers_and_singers[3:6])
+print("\nThe last three dancers in my list are:")
+print(dancers_and_singers[6:9])
+# I am slicing lists by doing a real world situation.
+my_pizza = ['cheese pizza','vegetable pizza','chicken pizza']
+friend_pizza = my_pizza[:]
+my_pizza.append('pepperoni pizza')
+friend_pizza.append('sausage pizza')
+print("\nMy favorite pizzas are:")
+for my_pizzas in my_pizza[0:]:
+    print(my_pizzas)
+print("\nMy friend's favorite pizzas are:")
+for friend_pizzas in friend_pizza[0:]:
+    print(friend_pizzas)
+# This is copying lists by using for loops and slices.
+# This is also a good way to copy and print big lists.
+dancers_and_singers = ['justin','olivia','ellie','addie','bristol','zoe','natalie','austin','charlotte']
+print("\nThe first three dancers in my list are:")
+for dancer_and_singer in dancers_and_singers[0:3]:
+    print(dancer_and_singer)
+print("\nThe next three dancers in my list are:")
+for dancer_and_singer in dancers_and_singers[3:6]:
+    print(dancer_and_singer)
+print("\nThe last three dancers in my list are:")
+for dancer_and_singer in dancers_and_singers[6:9]:
+    print(dancer_and_singer)
+print("\nThe best dancer in the list is:")
+print(dancers_and_singers[1].title())
+# I just did this again but I added the "for" loop
+# This is also a very interesting and a useful way for longer lists.
+# Make sure you keep this one in mind.
