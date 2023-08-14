@@ -88,6 +88,7 @@ print(friend_foods)
 # In this example you made 'my_foods = friend_foods' so now they will associate with each other.
 # This is not what we wanted.
 # Make sure you be careful and don't do any simple errors.
+# This is practice from now on!!!!!
 dancers_and_singers = ['justin','olivia','ellie','addie','bristol','zoe','natalie','austin','charlotte']
 print("\nThe first three dancers in my list are:")
 print(dancers_and_singers[0:3])
