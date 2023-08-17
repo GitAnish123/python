@@ -1,9 +1,3 @@
-import statistics
-print(statistics.mean([1,4,2,4,8,2,1,3,3,10]))
-print(statistics.median([1,4,2,4,8,2,1,3,3,10]))
-print(statistics.mode([1,4,2,4,8,2,1,3,3,10]))
-print(statistics.multimode([1,4,2,4,8,2,1,3,3,10]))
-# Use "multimode()" when there is more than one mode
 python = "pythons"
 print(python.title())
 print("\tpython")
