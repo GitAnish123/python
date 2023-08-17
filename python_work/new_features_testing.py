@@ -15,3 +15,4 @@ print(nostarch_url.removeprefix('https://'))
 print(nostarch_url)
 nostarch_url = f"{nostarch_url.removeprefix('https://')}"
 print(nostarch_url)
+input("Hello, Type anything and I will reply the exact thing you say!")
