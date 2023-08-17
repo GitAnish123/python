@@ -102,3 +102,100 @@ print(my_houses_size)
 my_houses_size = (3103, 2951, 7040) # Typing errors
 print("\nModified Dimensions:")
 print(my_houses_size) # I just changed the value, and this can never be illigal in Python.
+
+first_name = 'anish'
+last_name = 'pasumarthi'
+full_name = f"{first_name} {last_name}"
+print(full_name)
+print(f"Hello, {full_name.title()}")
+greeting = f"Hello, {full_name.title()}"
+print(greeting)
+# printing a greeting using first + last names.
+print(f"Hello,\nI want to guess your name because I think...\tI forgot it!\n\tIs your name {full_name.title()}???")
+
+favorite_food = '   pizza'
+print(favorite_food)
+print(favorite_food.lstrip())  # You can also do "rstrip()" to strip right side and "strip()" to strip both sides.
+amazon_url = 'https://www.amazon.com'
+print(amazon_url.removeprefix('https://www.'))
+simple_url = f"{amazon_url.removeprefix('https://www.')}"
+print(simple_url)
+favorite_food_noError = f"{favorite_food.lstrip()}"   # Making values permenanyt instead of temperary use.
+print(favorite_food_noError)
+# Use double quotation marks if you are using appostrophies.
+
+print(2+5)
+print(2-91/4*91)
+print(2.0*8.1)
+print(2**5)
+
+MAX_CONNECTIONS = '40_000 a time'
+print(MAX_CONNECTIONS)
+x,y,z = 3,10,3
+print(x)
+print(z)
+print(y)
+# This line is a comment
+
+
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']  # (lists)
+print(board_games)
+print(board_games[0])
+print(board_games[-2])
+print(board_games[3].title())
+print(f"My favorite board game when I was a little boy was {board_games[-2].title()}.")
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']
+
+
+board_games[1] = 'uno'
+# This is modifing a list
+print(board_games)
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']
+board_games.append('risk')  # We are now adding elements in a list
+print(board_games)
+board_games.insert(4, 'chess')
+print(board_games)
+
+
+# Lets now remove elements in a list!
+del board_games[-3]
+print(board_games)
+popped_game = board_games.pop()
+print(board_games)
+print(popped_game)
+
+my_own_popped_game = board_games.pop(1)
+print(board_games)
+print(my_own_popped_game)  # We are popping elements, now lets use them in a sentence.
+print(f"\nI really hate {my_own_popped_game.title()} and {popped_game.title()},\n\t so now I don't play them any more.")
+
+board_games.remove('chess')
+print(board_games)
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']  # (lists)
+board_games.sort()
+print(board_games)
+board_games.sort(reverse=True)
+print(board_games)
+# sorting out the board games in alphebetical order
+
+# now I use the "sorted()" function to sort!
+
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']  # (lists)
+print("\nHere is the original list:")
+print(board_games)
+print("\nHere is the sorted list:")
+print(sorted(board_games))
+print("\nHere is the reverse of the sorted list:")
+print(sorted(board_games, reverse=True))
+board_games = ['monopoly','sequence','the game of life','chutes and ladders']  # (lists)
+
+board_games.reverse()
+print(board_games)
+# We reversed the list completely
+print(len(board_games))
+
+# Make sure you know the "len()" function
+# Make sure to know the Zen of Python
+# If you type in the terminal "import this" you will see the poem
+# Make your code easy as possible
+# Make sure to style your code always.
