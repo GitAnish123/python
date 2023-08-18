@@ -44,3 +44,9 @@ print(car.lower() == 'audi')
 # Now lets check if our original variable got affected when we used the "lower()" method,
 print(car)
 # The result is "Audi" so the value as not been affected by the method.
+# One more example...
+
+car = 'Audi'
+print(car != 'Audi')
+print(car != 'bmw')
+# This sign indicates "not equal to operator"
