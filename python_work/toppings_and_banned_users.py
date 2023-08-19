@@ -129,5 +129,5 @@ if 'HTML' not in top5_coding_languages:
     print("This is not my top five coding languages.")
 top5_coding_languages = ['Javascript','C','C++','Python','Lua']
 if 'Javascript' in top5_coding_languages:
-    print("This is one of my top five favorite languages.")
+    print(f"{top5_coding_languages[0].title()} is one of my top five favorite languages.")
 # This is examples of conditional testing.
