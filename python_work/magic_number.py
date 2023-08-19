@@ -78,3 +78,59 @@ top5_coding_languages = ['Javascript','C','C++','Python','Lua']
 if 'Javascript' in top5_coding_languages:
     print("This is one of my top five favorite languages.")
 # This is examples of conditional testing.
+
+NBA_sport = 'basketball'
+
+# NBA sport stands for: ()
+print(NBA_sport == 'soccer')  # I predict, false
+# Hmm for the next one it is about 'cakes'
+print(NBA_sport == 'cakes')  
+# I predict, false
+
+# NBA sport equals ???
+# For the next one, it is about sports!
+print(NBA_sport.title() == 'Basketball') # I predict "True"
+
+for sports in NBA_sport:
+    print(NBA_sport)
+    if NBA_sport == 'basketball':
+        print(f"{NBA_sport.title()}, True")
+    else:
+        print("That is the wrong answer, please try again!")
+
+# Based on the results, the answer is "true"
+
+NBA_sport = 'soccer'
+print(NBA_sport == 'Soccer') # I predict false
+NBA_sport = 'NBA'
+print(NBA_sport.lower() == 'nba')  # I predict "True"
+
+NBA_sport = 'football'
+print(NBA_sport == NBA_sport)  
+
+# I predict true because it is the same variable and has the same values.
+
+
+NBA_sport = 'hockey'
+print(NBA_sport == 'hockeys')  # I predict False
+
+print(NBA_sport == 'hockey')  # I predict "True"
+# We are doing conditional testing.
+NBA_sport = 'baseball'
+
+print(NBA_sport.upper() == 'BASEbALL')
+# I did 5 examples of True and False.
+path = 'stone path'
+
+print(path != 'upper path')
+# True
+elevator_1stFloor_button = 'Two'
+if elevator_1stFloor_button == 'Two':
+    print("No!!!, we are in the wrong floor by mistake.")
+# In this example, the result was printed, so it is, True
+
+NBA_sport = 'NBA'
+print(NBA_sport.lower() == 'nba')
+# True
+print(NBA_sport.lower() == 'NBA')
+# False
