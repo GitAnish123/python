@@ -21,6 +21,34 @@ print('pepperoni' in requested_toppings)
 # We also checked if pepperoni is not in the list. Python said false, so pepperoni is not in the list
 # You can check if values is in lists using the "if" statement, and this is checking if a value is not in a list. (1)
 
+
+requested_toppings = ['mushrooms','extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+print("\nFinished making your pizza!")
+# This is how you check multiple conditions.
+
+# Sometimes you can't always check single conditions, so you have to use the seires of...
+# independent "if" statements.
+# For example, here is what happens if you use the "if-elif-else" chain in this situation.
+
+requested_toppings = ['mushrooms','extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+elif 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+elif 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+print("\nFinished making your pizza")
+# Python will execute only the first test that passes.
+
+
 banned_users = ['andrew','carolina','david']
 user = 'marie'
 if user not in banned_users:
