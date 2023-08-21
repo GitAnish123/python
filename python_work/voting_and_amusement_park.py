@@ -59,4 +59,3 @@ elif age < 50:
 elif age >= 51:
     price = 255
 print(f"Your admission is ${price}")
-
