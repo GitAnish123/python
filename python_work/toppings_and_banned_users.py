@@ -159,3 +159,63 @@ top5_coding_languages = ['Javascript','C','C++','Python','Lua']
 if 'Javascript' in top5_coding_languages:
     print(f"{top5_coding_languages[0].title()} is one of my top five favorite languages.")
 # This is examples of conditional testing.
+
+"""EXTRA       PRACTICE      !!!!!"""
+
+
+# Imagine an alien got shot down
+alien_color = 'green'
+if alien_color == 'green':
+    print("You earn 5 points!")
+
+if alien_color != 'green':
+    print("You lost 10 points!")
+if alien_color == 'red':
+    print("You lost 5 points!")
+
+alien_color = 'green'
+if alien_color == 'orange':
+    print("You earned 5 points for shooting the alien!")
+else:
+    print("You earned 10 points for shooting a special alien!")
+
+alien_color = ('yellow')
+# The points are for shooting aliens
+
+if alien_color == 'green':
+    print("You earned 5 points!")
+elif alien_color == 'yellow':
+    print("You earn 10 points!")
+else: # If the alien is red???:
+    print("You earn 15 points!")
+
+persons_age = 50
+# Stages of life examples
+
+if persons_age < 2:
+    print("You are a baby.")
+elif persons_age < 4:
+    print("You are a toddler.")
+elif persons_age < 13:
+    print("You are a kid.")
+elif persons_age < 20:
+    print("You are a teenager.")
+elif persons_age < 65:
+    print("You are an adult.")
+else:
+    print("You are an elder.")
+
+favorite_fruits = ['strawberries','blackberries','bananas']
+
+if 'bananas' in favorite_fruits:
+    print("Bananas are one of my favorite fruits.")
+if 'blueberries' in favorite_fruits:
+    print("\nBlueberries are one of my favorite fruits.")
+if 'strawberries' in favorite_fruits:
+    print("\nStrawberries are one of my favorite fruits.")
+if 'blackberries' in favorite_fruits:
+    print("\nBlackberries are one of my favorite fruits.")
+if 'watermelon' not in favorite_fruits:
+    print("\nWatermelon is not one of my favorite fruits.")
+
+# These are the practice examples of the topic we learned, 'if' statements
