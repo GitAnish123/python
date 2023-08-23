@@ -219,3 +219,68 @@ if 'watermelon' not in favorite_fruits:
     print("\nWatermelon is not one of my favorite fruits.")
 
 # These are the practice examples of the topic we learned, 'if' statements
+
+# You can combine "lists" with "if" statements!!!
+# For example, add a 'for' loop.
+
+
+
+# This is a basic "for" loop you should already know from last unit!
+requested_toppings = ['mushrooms','green peppers','extra cheese']
+
+for requested_topping in requested_toppings:
+    # Print the requested toppings along with the pizza.
+    # using an "f" string!!!
+    print(f"Adding {requested_topping}")
+
+print("\nFinished making your pizza!")
+
+
+
+# Lets say, for example the pizza place runs out of green peppers.
+# We can use a "if" statement to handle this situation appropriatly.
+# For example,
+
+# (Lets do it step by step)
+requested_toppings = ['mushrooms','green peppers','extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping == 'green peppers':
+        # We are using the "green peppers" as the "what if" question!:
+        print("Sorry, we are currently out of green peppers. Come back later for some.")
+    else:
+        print(f"Adding {requested_topping}")
+print("\nFinished making your pizza!")
+
+
+# This is an example of how, "for" loops and lists interact with "if" statements.
+# So this is an example of how we handle this situation appropriatly.
+
+
+print("Examples")
+"""             MORE CODING           """
+print("More coding coming soon!")
+
+
+
+# So far: we've assumed that each list has at least one item in it.
+# BUT, what if there is none and you want to test if they are.
+# In this situation, it’s useful to check whether a list is empty before running a for loop.
+
+# for example,
+
+
+
+requested_toppings = [] # There is no toppings in this example.
+
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        print(f"Adding {requested_toppings}")
+# This is when the condition is "True"
+else:
+    print("Are you sure you want a plain pizza.")
+# This is when the condition is "False"
+# The quick check of what we did is the "if" statement
+
+
+
