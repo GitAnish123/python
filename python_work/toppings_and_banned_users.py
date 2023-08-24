@@ -283,3 +283,80 @@ else:
 # The quick check of what we did is the "if" statement
 
 
+
+# This is a real world situation of what happens if a customer asks toppings when a pizzeria doesn't have.
+available_toppings = ['mushrooms', 'olives', 'green peppers',
+                       'pepperoni', 'pineapple', 'extra cheese']
+# This is all the available toppings
+# This is the toppings they only have.
+requested_toppings = ['mushrooms','french fries','extra cheese']
+# This is the requested toppings one customer asked.
+
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}.")
+    else:
+        print(f"Sorry, we don't have {requested_topping}.")
+
+# This is a really good real-world situation example.
+# This also has a decent amount of lines.
+
+"""   PRACTICE     """
+
+
+usernames = ['jane910','pasuar589','ad@msheey55','admin','coNtracTor1092']
+# Remember, from now on, this is only practice.
+
+for username in usernames:
+    if username == 'admin':
+        print("Hello admin, would you like to hear our weekly report?")
+    else:
+        print(f"Thank you for logging in {username.title()}.")
+print("\nThank you everyone for logging in and have a really nice day!")
+# This repeats forever in the building for the next century!
+
+
+# Now lets see if we have any users this month.
+# We can do an "if" test to see!
+# For example,
+
+
+usernames = []
+""" We begin with an empty list. """
+
+if usernames:
+    for username in usernames:
+        print(f"Hello, {username.title()}, i'm glad to see you today!")
+else:
+    print("We need to find some new users!")
+
+# This is how we test.
+# In this case, the list is empty, so this company needs more users.
+
+# Lets do another real-world situation.
+# In this case, lets say that the company found some users, and they need to create a username.
+""" But the users can not take the same existing usernames. """
+# For example,
+
+current_users = ['jane910','pasuar589','ad@msheey55','admin','coNtracTor1092']
+new_users = ['leonlove561','olivi@Simmons1012','bRadYcoW911#','ad@msheey55','charlotte0300!']
+# These are the list of the existing users and the new users.
+# The new users are requesting to submit their new usernames...
+for new_user in new_users:
+    if new_user in current_users:
+        print("Sorry, this username has already been taken. Please put another.")
+    else:
+        print("Your username is all set! You may now start the current project happening now.")
+
+# This is how we test to see if a username is available
+""" This is a useful...
+test to do conditional testing!"""
+
+# ONE MORE EXAMPLE!!!
+""" Make sure to style your statements """
+# The only recommendation is styling conditional tests is to use a single space around comparison operators.
+# such as ==, >=, and <=
+# spacing does not affect the code, it just makes it easier to read.
+
+""" MAKE SURE YOU DO THIS PROPERLY. """
