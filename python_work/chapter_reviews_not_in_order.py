@@ -199,3 +199,72 @@ print(len(board_games))
 # If you type in the terminal "import this" you will see the poem
 # Make your code easy as possible
 # Make sure to style your code always.
+
+
+""" An if statement is a programming conditional statement that allows a program to make decisions """
+# Lets do a simple example.
+
+cars = ['audi','bmw','subaru','toyota']
+# We have to 'case' these cars, because we need proper grammer.
+""" For example """
+car = ['audi','bmw','subaru','toyota']
+for car in cars:
+    if car == 'bmw':
+        print(car.upper())
+    else:
+        print(car.title())
+
+# We added the 'for' loop first, to seperate the list. Next we did an 'if' statement, if it's True, it will do an action.
+# If it is false, it will do a seperate action too!
+
+""" At the heart of every if statement is an expression - 
+          that can be evaluated as True or False and is called a conditional test. """
+
+# If it's true, Python executes the code. If false, Python ignores the code.
+# For example, 
+
+car1 = 'audi'
+car2 = 'bmw'
+car3 = 'subaru'
+car4 = 'toyota'
+
+
+car2 = 'bmw'
+print(car2 == 'bmw')
+
+
+car2 = 'bmw'
+print(car1 == car2)
+print(car2 == 'audi')
+
+
+# Python is also case sensitive too
+car3 = 'subaru'
+print(car3 == 'Subaru')
+
+""" instead... """
+
+car3 = 'subaru'
+print(car3.title() == 'Subaru')
+# also you can use the inquality sign (!=)
+
+car4 = 'toyota'
+print(car4 != 'audi')
+
+# This is a true test!
+# You also can set a real life situation, like if a person did not order a topping...
+
+
+requested_topping38193173 = 'anchovies'
+print(requested_topping38193173)
+if requested_topping38193173 == 'anchovies':
+    print("This is the right customer, you may give him the topping!")
+# Lets do another example...
+
+
+requested_topping38193173 = 'anchovies'
+print(requested_topping38193173)
+if requested_topping38193173 != 'yellow peppers':
+    print("Hold the yellow peppers, this is the wrong customer!")
+
+# Numerical expressions are very important too!
