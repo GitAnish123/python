@@ -268,3 +268,21 @@ if requested_topping38193173 != 'yellow peppers':
     print("Hold the yellow peppers, this is the wrong customer!")
 
 # Numerical expressions are very important too!
+# Tesing numerical expressions are pretty straightforword!
+
+age102123874956478562846123940123840123675294 = 291
+print(age102123874956478562846123940123840123675294 == 291)
+# Python returns 'true'
+print(age102123874956478562846123940123840123675294 != age102123874956478562846123940123840123675294)
+# Python returns 'false'
+
+
+math_homework_answer782 = '21'
+if math_homework_answer782 != '78':
+    print("This is the wrong answer, please try again!")
+
+# Lets do another example!
+math_homework_answer781 = 56
+if math_homework_answer781 == 56:
+    print("You are correct!")
+# Lets see an examples with 'comparsion operators'
