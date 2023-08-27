@@ -353,7 +353,7 @@ for new_user in new_users:
 """ This is a useful...
 test to do conditional testing!"""
 
-# ONE MORE EXAMPLE!!!
+
 """ Make sure to style your statements """
 # The only recommendation is styling conditional tests is to use a single space around comparison operators.
 # such as ==, >=, and <=
