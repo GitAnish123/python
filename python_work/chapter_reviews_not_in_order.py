@@ -313,3 +313,208 @@ print(age102123287956478562916123940123840123670000 < 109 or age1021232879564785
 # For example,
 print(age102123287956478562916123940123840123670000 < 100) and (age102123287956478562916123940123840123670000 <= 100)
 """ this gives the same result too! """
+
+
+# Sometimes you need to know if an item is in a list!
+# We could use 'in' to check.
+# For example...
+
+requested_toppings = ['mushrooms','olives','pepperoni']
+
+
+""" Using the elements in the lists... """
+print('mushrooms' in requested_toppings)
+print('tomatoes' in requested_toppings)
+print('pepperoni' in requested_toppings)
+# Lets use an 'if' statement to check too!.
+
+
+banned_users = ['andrew','carolina','david']
+user = 'marie'
+# use the keyword, "not in"
+if user not in banned_users:
+    print(f"{user.title()}, you can post a response if you wish!")
+
+""" OR  """
+
+banned_users = ['andrew','carolina','david']
+print(banned_users)
+if 'andrew' in banned_users:
+    print(f"{banned_users[0].title()}, you can not enter because you are banned!")
+# Boolean expressions are another name of conditional testing. The values are either "true" or 'false'
+# For example,
+
+game_active = True
+can_edit = False
+
+# Since we know about conditional testing, we can move on to 'if' statements.
+# There are several kinds of "if" statements.
+# Here is an example of an easiest one!
+
+age192901223331291032913382139218732431473621452 = 19
+if age192901223331291032913382139218732431473621452 >= 18:
+    print("You are old enough to vote!")
+""" This is an example of voting. As a fact, you cannot vote unless if you are 18 years or above."""
+# This is similar to conditional testing
+# If test passes, it executes. if not, it will be ignored.
+# Add as many lines as you want
+# Another example using "if" and "else"
+
+age832183794762859 = 17
+if age832183794762859 >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+else:
+    # This is an 'else' statement. It will be used if the 'if' statement did not pass!
+    print("Sorry you are young to vote!")
+    print("Please register to vote as soon you turn 18.")
+# This is used to test "two" situations
+
+""" Sometimes you might need to test more than two situations. """
+""" You can use an (if, elif, else) chain."""
+# elif stands for --- else if
+# for example...
+
+age9999912939281 = 12
+if age9999912939281 < 4:
+    print("Your admission is $5")
+elif age9999912939281 < 18:
+    print("Your admission is $20")
+elif age9999912939281 < 36:
+    print("Your admission is $40")
+else:
+    print("Your admission is $100")
+print("Parking tickets are $15 extra")
+
+# This is an amusement park entry pricing.
+# You can keep how many "elif" blocks or just one elif block.
+# Another easier example,
+
+age9999912939281 = 12
+if age9999912939281 < 4:
+    price = 10
+elif age9999912939281 < 16:
+    price = 40
+elif age9999912939281 < 40:
+    price = 100
+else:
+    price = 150
+print(f"Your admission is ${price}.")
+
+# You don't always have to include the "else" block.
+""" you can remove the else block if you want and if it's appropriate! """
+""" for example, """
+
+age9999912939281 = 12
+if age9999912939281 < 4:
+    price = 20
+elif age9999912939281 < 16:
+    price = 80
+elif age9999912939281 < 40:
+    price = 200
+elif age9999912939281 >= 40:
+    price = 250
+
+print(f"Your admission is ${price}.")
+
+""" This is how you do it! """
+""" Sometimes it is not appropriate to use the (if, elif, else) chain when you are testing multiple conditions. """
+# For example, lets see if we have items in a list using the 'if' statement.
+
+requested_toppings2 = ['mushrooms','extra cheese']
+if 'mushrooms' in requested_toppings2:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings2:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings2:
+    print("Adding extra cheese.")
+print("\nFinished making your pizza!")
+
+# This is a great way to check if an item is in a list or not. 
+# But this code will not work properly if we use an (if, elif, else) chain.
+""" For example,"""
+
+
+requested_toppings2 = ['mushrooms','extra cheese']
+if 'mushrooms' in requested_toppings2:
+    print("Adding mushrooms.")
+elif 'pepperoni' in requested_toppings2:
+    print("Adding pepperoni.")
+elif 'extra cheese' in requested_toppings2:
+    print("Adding extra cheese.")
+print("\nFinished making your pizza!")
+
+""" The reason it is not working because the "if mushrooms" one is already executed and Python doesn't check any more
+code after when a code is executed. """
+
+# Now lets learn to use "if" statements in lists!!!
+# Below, is a code that is pretty straightforward.
+requested_toppings3 = ['mushrooms','green peppers','extra cheese']
+for requested_topping in requested_toppings3:
+    print(f"Adding {requested_topping}")
+
+print("\nFinished making your pizza!")
+
+""" What if the pizzeria runs out of green peppers???
+An 'if' statement will handle this situation appropriatly. """
+
+
+requested_toppings3 = ['mushrooms','green peppers','extra cheese']
+print(requested_toppings3)
+
+for requested_topping in requested_toppings3:
+    if requested_topping == 'green peppers':
+        print("Sorry, we are out of green peppers right now.")
+    else:
+        print(f"Adding {requested_topping}")
+print("\nFinished making your pizza!")
+# This is a great way to handle these cases effientily.
+# Lets say if somebody doesn't want toppings
+""" We can ask if they wan't a plain pizza. """
+requested_toppings4 = []
+if requested_toppings4:
+    for requested_topping in requested_toppings4:
+        print(f"Adding {requested_toppings4}")
+        print("\nFinished making your pizza!")
+else:
+    print("Are you sure you want a plain pizza?")
+
+# What we did is we put an empty list
+# Next, instead of jumping into a "for" loop, we did a quick test first. (If there is any toppings...)
+""" When the name of the list is used by an 'if' statement, Python returns 'True'.
+An empty list evaluates to 'False'. """
+
+# If "requested_topping4" passes the test, we run the same loop as the previous examples.
+# Otherwise, we ask the customer if he wants a plain pizza.
+
+""" People can ask for anything!!!, especially when it comes to pizza. """
+""" What if a customer asks for french fries????? """
+# We have to add a list of the toppings avaliable so the code will check against the list of toppings available.
+# After when it is checked, it will tell if a pizzeria doesn't have the requested_toppings.
+""" For example... """
+
+available_toppings = ['mushrooms','olives','green peppers','pepperoni','extra cheese']
+requested_toppings5 = ['mushrooms','french fries','extra cheese']
+print(available_toppings)
+print(requested_toppings5)
+
+for requested_topping in requested_toppings5:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}.")
+    else:
+        print(f"Sorry, we don't have {requested_topping}")
+print("\nFinished making your pizza!")
+
+# We first added a list of the requested_toppings and the available_toppings.
+""" Next, we did a loop to seperate the toppings and did an 'if' statement to check if any requested_toppings is
+inside the list of available_toppings. """
+# if the elements are matching in both lists, it will add that topping.
+# if the test did not pass, it will print a statement that the topping is not available.
+
+
+""" Make sure to style your statements """
+# The only recommendation is styling conditional tests is to use a single space around comparison operators.
+# such as ==, >=, and <=
+# spacing does not affect the code, it just makes it easier to read.
+
+""" MAKE SURE YOU DO THIS PROPERLY. """
