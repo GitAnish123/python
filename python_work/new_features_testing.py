@@ -17,3 +17,4 @@ nostarch_url = f"{nostarch_url.removeprefix('https://')}"
 print(nostarch_url)
 message = input("Hello, Type anything and I will reply the exact thing you say!")
 print(message)
+# That is how you do "input" and "output"
