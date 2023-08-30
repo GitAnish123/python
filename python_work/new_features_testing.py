@@ -18,3 +18,23 @@ print(nostarch_url)
 message = input("Hello, Type anything and I will reply the exact thing you say!")
 print(message)
 # That is how you do "input" and "output"
+# You can also use a dictinary to store one kind of info for many objects!
+# For example,
+favorite_language = {
+    'jen':'python',
+    'sarah':'C',
+    'edward':'rust',
+    'phil':'python',
+}
+# To use this dictionary, given the name of a person who took the poll, you can easily look up their favorite language:
+
+favorite_language = {
+    'jen':'python',
+    'sarah':'C',
+    'edward':'rust',
+    'phil':'python',
+}
+language = favorite_language['sarah'].title()
+print(language)
+""" That is how you can use a dictinary. """
+# You can apply these situations for other key-values in dictinary's!
