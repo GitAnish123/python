@@ -103,3 +103,19 @@ alien_0.pop('points')
 print(alien_0)
 
 """ That is how you pop values. """
+
+
+
+# You can use the "get()" method to retrieve values that don't exist in the key!
+# This can be a common error,
+""" alien_0 = {'color': 'green', 'speed': 'slow'}
+print(alien_0['points']) """
+# That is an error, because "points" does not belong in that dictinary.
+# You can use the "get()" method to make a second result!
+# Assign a variable too it too!
+
+# For example,
+alien_0 = {'color': 'green', 'speed': 'slow'}
+point_value = alien_0.get('points', 'No point value assigned')
+print(point_value)
+# You will get a message, that there is no value assigned!
