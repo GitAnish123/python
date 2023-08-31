@@ -119,3 +119,47 @@ alien_0 = {'color': 'green', 'speed': 'slow'}
 point_value = alien_0.get('points', 'No point value assigned')
 print(point_value)
 # You will get a message, that there is no value assigned!
+
+# ------------ PRACTICE ------------------- #
+
+
+my_friend = {'first_name':'rithin', 'last_name':'nallathambi', 'age':12, 'city':'fort mill'}
+print(my_friend)
+
+print(my_friend['first_name'].title())
+print(my_friend['last_name'].title())
+print(my_friend['age'])
+print(my_friend['city'].title())
+
+favorite_numbers = {
+    'aja':3, 
+    'miraj':'123', 
+    'peter':43, 
+    'susan':98, 
+    'abraham':12,
+}
+
+
+aja_poll = favorite_numbers['aja']
+print(f"Aja's favorite number is {aja_poll}")
+miraj_poll = favorite_numbers['miraj']
+print(f"Miraj's favorite number is {miraj_poll}")
+peter_poll = favorite_numbers['peter']
+
+print(f"Peter's favorite number is {peter_poll}")
+susan_poll = favorite_numbers['susan']
+print(f"Susan's favorite number is {susan_poll}")
+abraham_poll = favorite_numbers['abraham']
+print(f"Abraham's favorite number is {abraham_poll}")
+
+
+glossary_top_3_words = {
+    'key':'The name of the value.', 
+    'value':'The value of the key', 
+    'key-value':'The key and the value combined.',
+}
+print(f"\nThe term 'key' means, {glossary_top_3_words['key']}")
+print(f"\nThe term 'value' means, {glossary_top_3_words['value']}")
+print(f"\nThe term 'key-value' means, {glossary_top_3_words['key-value']}")
+
+# Make sure to practice how to modify, add, and remove elements in dictinary. Practice everything you learned so far.
