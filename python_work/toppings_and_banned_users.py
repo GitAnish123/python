@@ -360,3 +360,22 @@ test to do conditional testing!"""
 # spacing does not affect the code, it just makes it easier to read.
 
 """ MAKE SURE YOU DO THIS PROPERLY. """
+# You can also loop all key-value pairs in a dictinary.
+# For example,
+# This is the original dictinary.
+user_0 = {
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi',
+    }
+
+# Now lets loop all the key-values!
+user_0 = {
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi',
+    }
+
+for key, value in user_0.items():
+    print(f"\nKey: {key}")
+    print(f"Value: {value}")
