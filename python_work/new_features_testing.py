@@ -90,3 +90,51 @@ favorite_languages = {
 
 if 'erin' not in favorite_languages.keys():
     print("Erin, please take our poll!")
+
+""" You might want to return a result of looping in a particular order.
+Just simply use the "sorted() function.""" 
+"""For example"""
+
+
+favorite_languages = {
+    'jen' : 'python',
+    'sarah' : 'c',
+    'edward' : 'rust',
+    'phil' : 'python',
+}
+for name in sorted(favorite_languages.keys()):
+    print(f"{name.title()}, thank you for filling out the poll.")
+for name in sorted(favorite_languages.keys(), reverse=True):
+        print(f"{name.title()}, thank you for filling out the poll.")
+# I printed it in alphabetical order and reverse alphabetical order.
+
+""" This is how you loop all the values in a dictinary using the...
+values() function."""
+# For example,
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'rust',
+    'phil': 'python',
+    }
+
+print("The following languages have been mentioned:")
+for language in favorite_languages.values():
+    print(language.title())
+# But if you want a unique code that has no repetition in it, you can use a set.
+""" A set is a collection in which each item must be unique """
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'rust',
+    'phil': 'python',
+}
+
+print("The following languages have been mentioned:")
+for language in set(favorite_languages.values()):
+    print(language.title())
+
+# This is an example of how to build a set...
+languages_in_a_set = {'python', 'rust', 'python', 'c'}
+print(languages_in_a_set)
