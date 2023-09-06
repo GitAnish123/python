@@ -87,6 +87,7 @@ print(f"New position: {alien_0['x_position']}")
 
 """ That is an excellent example!!! """
 
+
 # You can remove key-values too!
 # You can use the "del" statement to delete it permenently!
 # If you want to use that key-value later on, use the "pop()" method.
@@ -108,8 +109,11 @@ print(alien_0)
 
 # You can use the "get()" method to retrieve values that don't exist in the key!
 # This can be a common error,
+
 """ alien_0 = {'color': 'green', 'speed': 'slow'}
 print(alien_0['points']) """
+
+
 # That is an error, because "points" does not belong in that dictinary.
 # You can use the "get()" method to make a second result!
 # Assign a variable too it too!
@@ -163,3 +167,69 @@ print(f"\nThe term 'value' means, {glossary_top_3_words['value']}")
 print(f"\nThe term 'key-value' means, {glossary_top_3_words['key-value']}")
 
 # Make sure to practice how to modify, add, and remove elements in dictinary. Practice everything you learned so far.
+# glossary, (edited)
+
+
+glossary_top_3_words = {
+    'key':'The name of the value.', 
+    'value':'The value of the key', 
+    'key-value':'The key and the value combined.',
+}
+
+
+for word in glossary_top_3_words.keys():
+    print(word)
+for word in glossary_top_3_words.values():
+    print(word)
+for word in glossary_top_3_words.items():
+    print(word)
+# I'm expirenmenting of all the printed keys, values, and key-values.
+
+
+
+glossary_top_5_words = {
+    'key':'The name of the value.', 
+    'value':'The value of the key', 
+    'key-value':'The key and the value combined.',
+    'set' : 'a collection in which each item must be unique',
+    'looping':'repeating something over and over until a particular condition is satisfied',
+}
+
+for word in glossary_top_5_words.keys():
+    print(word)
+for word in glossary_top_5_words.values():
+    print(word)
+for word in glossary_top_5_words.items():
+    print(word)
+    
+
+favorite_major_rivers = {
+    'nile':'egypt',
+    'amazon':'peru',
+    'missisipi':'united states'
+}
+
+for river_1, river_2 in favorite_major_rivers.items():
+    print(f"\n{river_1.title()} runs through {river_2.title()}.")
+print("\nThese rivers belong into different continents.")
+
+for river_1 in favorite_major_rivers.keys():
+    print(river_1.title())
+for river_2 in favorite_major_rivers.values():
+    print(river_2.title())
+
+favorite_languages_practice = {
+    'athena' : 'python',
+    'olivia' : 'c',
+    'bryson' : 'javascript',
+    'ellie'  : 'python',
+    'jackson' : 'javascript',
+}
+
+
+random_people_i_know = ['athena','kendall','olivia','charlotte','austin','ellie','sam','ahaan']
+for people in random_people_i_know:
+    if people in favorite_languages_practice:
+        print(f"\n{people.title()}, thank you for taking the poll!")
+    elif people not in favorite_languages_practice:
+        print(f"{people.title()}, please take the poll")
