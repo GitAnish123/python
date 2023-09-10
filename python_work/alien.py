@@ -233,3 +233,112 @@ for people in random_people_i_know:
         print(f"\n{people.title()}, thank you for taking the poll!")
     elif people not in favorite_languages_practice:
         print(f"{people.title()}, please take the poll")
+
+
+# --------- PRACTICE IS OVER, NOW WE ARE MOVING ON TO NEXT LESSON!!! -------------- #
+
+""" Practice is over """
+
+
+""" Sometimes you'll want to store multiple dictionaries in a list, or a list of items as a value in a dictionary.
+This is called nesting. 
+Lets nest some dictinaries inside a list."""
+# For example,
+
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'yellow', 'points': 10}
+alien_2 = {'color': 'red', 'points': 15}
+
+aliens = [alien_0, alien_1, alien_2]
+
+for alien in aliens:
+    print(alien)
+
+# Here is a more interesting example. Try to figure it out!
+
+
+# Make an empty list for storing aliens.
+aliens = []
+
+# Make 30 green aliens.
+for alien_number in range(30):
+    new_alien = {'color': 'green', 'points': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+
+# Show the first 5 aliens.
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+
+# Show how many aliens have been created.
+print(f"\nTotal number of aliens: {len(aliens)}")
+
+# Lets say you want the aliens to change.
+
+# Make an empty list for storing aliens.
+aliens = []
+
+# Make 30 green aliens.
+for alien_number in range (30):
+    new_alien = {'color': 'green', 'points': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+
+for alien in aliens[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 10
+
+# Show the first 5 aliens.
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+print(f"\nTotal number of aliens: {len(aliens)}")
+
+# Another example,
+
+# Make an empty list for storing aliens.
+aliens = []
+
+# Make 30 green aliens.
+for alien_number in range (30):
+    new_alien = {'color': 'yellow', 'points': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+for alien in aliens[0:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 10
+    elif alien['color'] == 'yellow':
+        alien['color'] = 'red'
+        alien['speed'] = 'fast'
+        alien['points'] = 15
+# Show the first 5 aliens.
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+print(f"\nTotal number of aliens: {len(aliens)}")
+
+""" Lets add two 'for' loops"""
+
+# Make an empty list for storing aliens.
+aliens = []
+
+# Make 30 green aliens.
+for alien_number in range (30):
+    new_alien = {'color': 'yellow', 'points': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+for alien in aliens[0:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 10
+for alien in aliens[3:5]:
+        alien['color'] = 'red'
+        alien['speed'] = 'fast'
+        alien['points'] = 15
+# Show the first 5 aliens.
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+print(f"\nTotal number of aliens: {len(aliens)}")
