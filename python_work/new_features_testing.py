@@ -74,10 +74,9 @@ friends = ['sarah', 'phil']
 
 for name in favorite_languages.keys():
    print(f"Hi {name.title()}.")
-
-if name in friends:
-    language = favorite_languages[name].title()
-    print(f"\t{name.title()}, I see you love {language}!")
+   if name in friends:
+        language = favorite_languages[name].title()
+        print(f"\t{name.title()}, I see you love {language}!")
 
 # Another example
 
@@ -138,3 +137,19 @@ for language in set(favorite_languages.values()):
 # This is an example of how to build a set...
 languages_in_a_set = {'python', 'rust', 'python', 'c'}
 print(languages_in_a_set)
+# What if you have more lists inside a dictinary:
+
+# What if you have more lists?
+""" Example??? """
+
+favorite_languages = {
+    'jen': ['python', 'rust'],
+    'sarah': ['c'],
+    'edward': ['rust', 'go'],
+    'phil': ['python', 'haskell'],
+}
+
+for name, languages in favorite_languages.items():
+    print(f"\n{name.title()}'s favorite languages are:")
+    for language in languages:
+        print(f"\t{language.title()}")
