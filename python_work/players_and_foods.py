@@ -124,3 +124,22 @@ print(dancers_and_singers[1].title())
 # I just did this again but I added the "for" loop
 # This is also a very interesting and a useful way for longer lists.
 # Make sure you keep this one in mind.
+
+# ------------- PRACTICE IS OVER ---------------- #
+""" Practice is now currently over! """
+""" Real lessons now continues... """
+
+# Instead of keeping a dictinary in a list, you could keep a list in a dictinary.
+# For example...
+
+# Store information about a pizza being ordered.
+pizza = {
+    'crust': 'thick',
+    'toppings': ['mushrooms', 'extra cheese'],
+    }
+
+# Summarize the order.
+print(f"You ordered a {pizza['crust']}-crust pizza with the following toppings:")
+
+for topping in pizza['toppings']:
+    print(f"\t{topping}")
