@@ -379,3 +379,43 @@ user_0 = {
 for key, value in user_0.items():
     print(f"\nKey: {key}")
     print(f"Value: {value}")
+
+
+
+
+
+""" ---------- PRACTICE # """ # IS OVER
+
+
+
+
+
+# Lets say if you want to nest a dictinary inside a dictinary???
+# For a real-world situation, lets say if you have 2 users with different amounts of information
+""" This way will...
+handle this situation appropriatly."""
+# For example,
+
+
+users = {
+    'aeinstein': {
+        'first': 'albert',
+        'last': 'einstein',
+        'location': 'princeton',
+        },
+
+    'mcurie': {
+        'first': 'marie',
+        'last': 'curie',
+        'location': 'paris',
+        },
+
+    }
+
+for username, user_info in users.items():
+    print(f"\nUsername: {username}")
+    full_name = f"{user_info['first']}  {user_info['last']}"
+    location = user_info['location']
+    print(f"\tFirst name: {full_name.title()}")
+    print(f"\tLocation: {location.title()}")
+# That is an example.
