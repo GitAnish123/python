@@ -342,3 +342,40 @@ for alien in aliens[:5]:
     print(alien)
 print("...")
 print(f"\nTotal number of aliens: {len(aliens)}")
+
+
+#---- PRACTICE ----------#
+
+
+
+friend_1 = {'first_name': 'rithin', 'last_name': 'nallathambi', 'hobby': 'basketball'}
+friend_2 = {'first_name': 'leon', 'last_name:': 'sarey', 'hobby': 'football'}
+friend_3 = {'first_name': 'nakulan', 'last_name': 'punniyamorthy', 'hobby': 'video games'}
+peoples = [friend_1, friend_2, friend_3]
+
+for friend in peoples:
+    print(friend)
+
+friend_1 = {
+            'first_name': 'rithin', 
+            'last_name': 'nallathambi', 
+            'hobby': 'basketball',
+        }
+friend_2 = {   
+            'first_name': 'leon', 
+            'last_name': 'sarey', 
+            'hobby': 'football',
+        }
+friend_3 = {
+            'first_name': 'nakulan', 
+            'last_name': 'punniyamorthy', 
+            'hobby': 'video games',
+        }
+peoples = [friend_1, friend_2, friend_3]
+
+for friend in peoples:
+    print(f"\nFirst name: {friend['first_name'].title()}")
+    print(f"Last name: {friend['last_name'].title()}")
+    full_name = f"{friend['first_name']} {friend['last_name']}"
+    print(f"Full name: {full_name.title()}")
+    print(f"Hobby: {friend['hobby'].title()}")
