@@ -143,3 +143,147 @@ print(f"You ordered a {pizza['crust']}-crust pizza with the following toppings:"
 
 for topping in pizza['toppings']:
     print(f"\t{topping}")
+
+#---- PRACTICE ----------#
+
+
+
+friend_1 = {'first_name': 'rithin', 'last_name': 'nallathambi', 'hobby': 'basketball'}
+friend_2 = {'first_name': 'leon', 'last_name:': 'sarey', 'hobby': 'football'}
+friend_3 = {'first_name': 'nakulan', 'last_name': 'punniyamorthy', 'hobby': 'video games'}
+peoples = [friend_1, friend_2, friend_3]
+
+for friend in peoples:
+    print(friend)
+
+friend_1 = {
+            'first_name': 'rithin', 
+            'last_name': 'nallathambi', 
+            'hobby': 'basketball',
+        }
+friend_2 = {   
+            'first_name': 'leon', 
+            'last_name': 'sarey', 
+            'hobby': 'football',
+        }
+friend_3 = {
+            'first_name': 'nakulan', 
+            'last_name': 'punniyamorthy', 
+            'hobby': 'video games',
+        }
+peoples = [friend_1, friend_2, friend_3]
+
+for friend in peoples:
+    print(f"\nFirst name: {friend['first_name'].title()}")
+    print(f"Last name: {friend['last_name'].title()}")
+    full_name = f"{friend['first_name']} {friend['last_name']}"
+    print(f"Full name: {full_name.title()}")
+    print(f"Hobby: {friend['hobby'].title()}")
+
+pet_1 = {'animal': 'dog',
+         'gender': 'female',
+         'name': 'daisy'
+}
+pet_2 = {'animal': 'cat',
+         'gender': 'female',
+         'name': 'bella'
+}
+pet_3 = {'animal': 'dog',
+         'gender': 'male',
+         'name': 'nabo'
+}
+pet_4 = {'animal': 'snake',
+         'gender': 'male',
+         'name': 'richard'
+}
+pet_5 = {'animal': 'fish',
+         'gender': 'female',
+         'name': 'goldie'
+}
+
+
+my_pets = [pet_1, pet_2, pet_3, pet_4, pet_5]
+print(my_pets)
+for pet in my_pets:
+    print(f"\nAnimal: {pet['animal'].title()}")
+    print(f"Gender: {pet['gender'].title()}")
+    print(f"Name: {pet['name'].title()}")
+
+
+
+
+favorite_places = {
+    'sarthak': ['disney world','eiffel tower','adventure air sports'],
+    'lyonkesh': ['carowinds'],
+    'renier': ['golden gate bridge','legoland'],
+}
+for name, place in favorite_places.items():
+    print(f"\n{name.title()}'s favorite place(s) are:")
+    for location in place:
+        print(f"\t{location.title()}")
+
+
+
+favorite_numbers = {
+    'aja':[3,199,12], 
+    'miraj':[69,1,78,25,88,94,31,101,609],
+    'peter':[43,9923213],
+    'susan':[98,1000,81,86,89,102,9013,37248,3421401],
+    'abraham':[12,911,2,46,13,29],
+}
+for person, number in favorite_numbers.items():
+    print(f"\n{person.title()}'s favorite numbers are:")
+    for numerical in number:
+        print(f"\t{numerical}")
+
+
+cities = {
+    'fort_mill': {
+        'country': 'United States Of America',
+        'population': 'about 34_000 in 2023',
+        'fun_fact': 'Fort Mill has a rising, complex district of schools.',
+    },
+    
+    'hong_kong': {
+        'country': 'china',
+        'population': 'about 7_500_000 in 2023',
+        'fun_fact': 'It is one of the most densely poplulated cities in the world in 2023!'
+    },
+
+    'istanbul': {
+        'country': 'turkey',
+        'population': 'about 16_000_000 in 2023',
+        'fun_fact': 'It is the only transcontinental city in the world in 2022'
+    },
+
+
+}
+
+for city, city_info in cities.items():
+    print(f"\nCity: {city.title()}")
+    print(f"Country: {city_info['country'].title()}")
+    print(f"Population: {city_info['population'].title()}")
+    
+    fun_fact_city = city_info['fun_fact']
+    print(f"Fun fact: {fun_fact_city.title()}")
+
+# Let me extend a little bit to an aliens example...
+# I am doing it because to learn how to extend.
+# This is the first example...
+
+alien_0 = {'color':'green', 'points':5, 'condition':'weak'}
+print(alien_0['color'].title())
+print(alien_0['points'].title())
+print(alien_0['condition'].title())
+
+if alien_0['condition'] == 'weak':
+    print("Alien 0 will officially be dead in 12 hours!")
+else:
+    print("Watch out, the alien is going to attack!")
+
+""" As you can see, I extended it a little bit."""
+
+
+
+###### END OF PRACTICE #######
+""" This is the end of practice"""
