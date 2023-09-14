@@ -120,7 +120,7 @@ print("\nThe last three dancers in my list are:")
 for dancer_and_singer in dancers_and_singers[6:9]:
     print(dancer_and_singer)
 print("\nThe best dancer in the list is:")
-print(dancers_and_singers[1].title())
+print(dancers_and_singers[2].title())
 # I just did this again but I added the "for" loop
 # This is also a very interesting and a useful way for longer lists.
 # Make sure you keep this one in mind.
@@ -273,7 +273,7 @@ for city, city_info in cities.items():
 
 alien_0 = {'color':'green', 'points':5, 'condition':'weak'}
 print(alien_0['color'].title())
-print(alien_0['points'].title())
+print(alien_0['points'])
 print(alien_0['condition'].title())
 
 if alien_0['condition'] == 'weak':
