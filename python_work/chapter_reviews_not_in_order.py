@@ -518,3 +518,360 @@ inside the list of available_toppings. """
 # spacing does not affect the code, it just makes it easier to read.
 
 """ MAKE SURE YOU DO THIS PROPERLY. """
+
+""" Now moving on to chapter 6 in python. """
+
+# Dictinoary's allow python to connect infortmation
+# Here is a simple example
+
+alien_0 = {"color":"green", "points":5}
+# That is the dictionary's key-values
+print(alien_0)
+print(alien_0['color'])
+print(alien_0['points'])
+# we printed the key!
+# another example,
+
+
+alien_0 = {'color':'green', 'points':5}
+new_points = alien_0['points']
+print(f"You just earned {new_points} points!")
+
+# To add key-values...
+alien_0 = {'color':'green', 'points':5}
+print(alien_0)
+print("...")
+
+alien_0['x_position'] = 0
+alien_0['y_postition'] = 2
+print(alien_0)
+# Add from an empty list!
+
+alien_0 = {}
+alien_0['x_position'] = 15
+alien_0['y_postition'] = 1000
+print(alien_0)
+
+
+
+# modifying dictionaries...
+alien_0 = {'color': 'green'}
+print(f"The alien is {alien_0['color']}")
+alien_0['color'] = 'yellow'
+print(f"The alien is now {alien_0['color']}")
+
+# Interesting example
+
+alien_0 = {'x_position': 2, 'y_position': '27', 'speed': 'medium'}
+print(f"Original position: {alien_0['x_position']}")
+# Here is the part...
+if alien_0['speed'] == 'slow':
+    x_increase = 1.2
+elif alien_0['speed'] == 'medium':
+    x_increase = 2.4
+else:
+    x_increase = 3.6
+
+
+alien_0resultposition = alien_0['x_position'] + x_increase
+print(f"New position: {alien_0resultposition}")
+
+
+alien_0 = {'color': 'green', 'points': 5}
+print(alien_0)
+del alien_0['points']
+print(alien_0)
+
+# You can list a dictinary in a different format
+# for example,
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+# Lets do an example
+
+
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+
+language3 = favorite_languages['ellie']
+language1 = favorite_languages['jen']
+print(f"Ellie's favorite language is {language3.title()}!")
+print(f"Jen's favorite language is {language1.title()}!")
+
+# Normally, if you print the wrong key-value, you get an error
+# If you use the "get()" method, you can change that.
+# For example,
+
+
+alien_0 = {'color': 'green', 'speed': 'slow'}
+error_point_value = alien_0.get('points', 'No point value assigned.')
+print(error_point_value)
+# You should not get the corrsuponding value!
+
+""" Now lets learn how to loop a dictionary. """
+# One case is if you want to loop the key and the value.
+# For example,
+
+animals = {
+    'common_pet1': 'dog',
+    'wild cat':'tiger',
+    'common_pet2': 'cat',
+    'air_pet': 'bird',
+    'water_pet': 'fish',
+}
+
+for key, value in animals.items():
+    print(f"\nCategory: {key}")
+    print(f"Animal: {value}")
+
+# We printed the key and the value including looping.
+# Now lets loop only the keys.
+# We'll do a couple of examples this time...
+# For example,
+
+
+animals = {
+    'common_pet1': 'dog',
+    'wild cat':'tiger',
+    'common_pet2': 'cat',
+    'air_pet': 'bird',
+    'water_pet': 'fish',
+}
+for category in animals.keys(): 
+# you don't have to add the ".keys()" it is optional!
+    print(f"\n{category}")
+
+# Lets do another example...
+
+
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+friends = ['phil','ellie']
+for name in favorite_languages.keys():
+    print(f"\nHi {name.title()}")
+    if name in friends:
+        language = favorite_languages[name].title()
+        print(f"\t{name.title()}, I see you love {language}!")
+
+
+# Lets check if another friend, olivia, did the favorite_languages poll.
+# for example, (use the "keys()" method!)
+
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+if 'olivia' not in favorite_languages.keys():
+    print("Olivia, please take our poll!")
+
+# You can also sort your dictionaries using the "keys()" method!
+""" For example, """
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+for name in sorted(favorite_languages.keys()):
+    print(f"\n{name.title()}, thank you for taking the poll!")
+
+# Lastly, lets now learn how to loop only the values.
+# Use the "values()" method!
+# for example...
+
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+print(f"The following languages have been mentioned:")
+for language in favorite_languages.values():
+    print(language.title())
+
+# This will be ok for a small set of values, but if it is a bigger set, you may not want repeatition.
+# You can use a set.
+# A set is a collection in which each item should be unique.
+""" here is how you build a set
+languages = {'python','rust','c'}   """
+# That is an example shown above!
+
+# Here is an example of how to do this with a set!
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'ellie': 'javascript',
+    'edward': 'rust',
+    'phil': 'python'
+}
+print(f"The following languages have been mentioned:")
+for language in set(favorite_languages.values()):
+    print(language.title())
+
+# Now we have all unique values and you can use 'sets' anytime when it is approproiate.
+
+# Now we are now currently in the NESTING unit in chapter 6!
+# Lets learn how to keep dictionaries in a list
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'yellow', 'points': 10}
+alien_2 = {'color': 'red', 'points': 15}
+aliens = [alien_0, alien_1, alien_2]
+
+for alien in aliens:
+    print(alien)
+
+# Lets do a more realistic example
+# for example,
+
+# Empty list for storing aliens
+aliens = []
+for alien_number in range(30):
+    # Make 30 green aliens
+    new_alien = {'color': 'green', 'points': 5}
+    aliens.append(new_alien)
+# Show first 5 aliens
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+# Print how many aliens are there
+print(f"Total amount of aliens: {len(aliens)}")
+
+# Lets do another interesting example.
+# Lets extend this code
+
+aliens = []
+for alien_number in range(30):
+    # Make 30 green aliens
+    new_alien = {'color': 'green', 'points': 5}
+    aliens.append(new_alien)
+for alien in aliens[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['points'] = 10
+    elif alien['color'] == 'yellow':
+        alien['color'] = 'red'
+        alien['points'] = 15
+        # Show first 5 aliens
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+# Print how many aliens are there
+print(f"Total amount of aliens: {len(aliens)}")
+
+# Lets expand this code one more time. This time, things get interesting.
+# For example,
+
+aliens = []
+for alien_number in range(30):
+    # Make 30 green aliens
+    new_alien = {
+        'color': 'green', 
+        'points': 5,
+        'speed': 'medium',
+    }
+    aliens.append(new_alien)
+for alien in aliens[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['points'] = 10
+        alien['speed'] = 'medium'
+    elif alien['color'] == 'yellow':
+        alien['color'] = 'red'
+        alien['points'] = 15
+        alien['speed'] = 'fast'
+for alien in aliens[3:5]:
+    alien['color'] = 'red'
+    alien['speed'] = 'fast'
+    alien['points'] = 15
+    # This is the most hardest alien to defeat!
+# Show first 5 aliens
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+# Print how many aliens are there
+print(f"Total amount of aliens: {len(aliens)}")
+
+""" This is a pretty wild example! """
+
+# Now lets learn to nest lists in dictionaries.
+# Here is a simple example,
+
+
+pizza = {
+    'crust': 'thick',
+    'toppings': ['mushrooms', 'extra cheese'],
+}
+print(f"You ordered a {pizza['crust']}- crust pizza with the following toppings:")
+for topping in pizza['toppings']:
+    print(f"\t{topping}")
+
+# Again, this is a simple pizzeria example
+# Here is a little more complex example.
+
+favorite_languages = {
+    'jen': ['python', 'rust'],
+    'sarah': ['C'],
+    'ellie': ['javascript', 'lua'],
+    'edward': ['rust', 'go'],
+    'phil': ['python', 'haskell']
+}
+for name, languages in favorite_languages.items():
+    print(f"\n{name.title()}'s favorite language(s) are:")
+    for language in languages:
+        print(language.title())
+print("As for the information shown above, Python and Rust are the two favorable languages in the poll!")
+
+# That is a little complex example, but you should understand it by looking at it step by step.
+# Finally, the last topic is how to nest a dictionary inside another dictionary!!!
+# Here is one example of how you do it. Things get really complex and difficult.
+# For example, lets print two new-coming users and print some basic information about them
+
+
+users = {
+    'aeinstein': {
+        'first': 'albert',
+        'last': 'einstein',
+        'location': 'princeton',
+        },
+
+    'mcurie': {
+        'first': 'marie',
+        'last': 'curie',
+        'location': 'paris',
+        },
+
+}
+for username, user_info in users.items():
+    print(f"\nUsername: {username}")
+    print(f"First name: {user_info['first_name'].title()}")
+    print(f"Last name: {user_info['last_name'].title()}")
+    full_name = f"{user_info['first_name'].title()} {user_info['last_name'].title()}"
+    print(f"\tFull name: {full_name}")
+    print(f"Location: {user_info['location'].title()}")
+
+
+# That is one complex way to representing a tutorial of nesting a dictionary inside another one.
