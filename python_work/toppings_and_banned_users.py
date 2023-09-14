@@ -410,7 +410,7 @@ users = {
         'location': 'paris',
         },
 
-    }
+}
 
 for username, user_info in users.items():
     print(f"\nUsername: {username}")
