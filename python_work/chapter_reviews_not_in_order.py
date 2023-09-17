@@ -867,9 +867,9 @@ users = {
 }
 for username, user_info in users.items():
     print(f"\nUsername: {username}")
-    print(f"First name: {user_info['first_name'].title()}")
-    print(f"Last name: {user_info['last_name'].title()}")
-    full_name = f"{user_info['first_name'].title()} {user_info['last_name'].title()}"
+    print(f"First name: {user_info['first'].title()}")
+    print(f"Last name: {user_info['last'].title()}")
+    full_name = f"{user_info['first'].title()} {user_info['last'].title()}"
     print(f"\tFull name: {full_name}")
     print(f"Location: {user_info['location'].title()}")
 
