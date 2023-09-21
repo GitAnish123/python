@@ -119,3 +119,22 @@ if 'watermelon' not in favorite_fruits:
     print("\nWatermelon is not one of my favorite fruits.")
 
 # These are the practice examples of the topic we learned, 'if' statements
+
+
+
+# --------------- PRACTICE IS OVER ------------------ #
+"""   Real lesson now starts. Practice is over!!!    """
+
+
+
+# Lets use the "int()" function while doing user input!" 
+# For example, in an amusement park, we need to check if a person can ride a particular ride...
+
+
+height = input("How tall are you, in inches? ")
+height = int(height)
+
+if height >= 48:
+    print("\nYou're tall enough to ride!")
+else:
+    print("\nYou'll be able to ride when you're a little older.")
