@@ -44,6 +44,12 @@ ages_1 = 18
 print(ages_1 >= 21 or ages_3 >= 21)  # This example, none of the inequalities are correct, so it will be "False"
 # That is how you can compare multiple conditions.
 
+# Lets try the modulo operator:
+# It will always return the remainder of the numbers!
+print(4%3)
+print(4%2)
+print(7%3)
+
 # --------PRACTICE--------------
 
 friends1_age = 14
@@ -134,3 +140,15 @@ print(NBA_sport.lower() == 'nba')
 # True
 print(NBA_sport.lower() == 'NBA')
 # False
+
+
+
+# Lets use the modulo operator in a example.
+# For example, we can use it to determine if a number is even or odd. Lets add user input to make things interesting!
+
+even_or_odd_number = input("Enter a number and I will determine if that number is even or odd: ")
+even_or_odd_number = int(even_or_odd_number)
+if even_or_odd_number % 2 == 0:
+    print(f"The number {even_or_odd_number} is even.")
+else:
+    print(f"The number {even_or_odd_number} is odd.")
