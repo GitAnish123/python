@@ -30,3 +30,31 @@ print(age >= 18)  # That will result in a succesful conditional test!
 
 
 # These examples above show how to write small, but interactive prompts!
+
+
+
+
+# ----------- PRACTICE -------------- #
+""" Practice now begins """
+
+rental_car = input("What kind of rental car you need?")
+rental_car = f"Let me see if I could find you a {rental_car}"
+car = input(rental_car)
+
+
+dining = input("How many people you have in your dinner group?")
+dining = int(dining)
+
+if dining >= 8:
+   print("You would have to wait for some time to get a table.")
+else:
+    print("All right, your all set!")
+
+
+determine_number = input("Enter a number and I will determine if it is a multiple of 10.")
+number = int(determine_number)
+
+if number % 10 == 0:
+    print(f"The number, {number} is a multiple of 10!")
+else:
+    print(f"The number, {number} is NOT a multiple of 10!")
