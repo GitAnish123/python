@@ -284,7 +284,7 @@ for city, city_info in cities.items():
 
 alien_0 = {'color':'green', 'points':5, 'condition':'weak'}
 print(alien_0['color'].title())
-print(alien_0['points'].title())
+print(alien_0['points'])
 print(alien_0['condition'].title())
 
 if alien_0['condition'] == 'weak':
