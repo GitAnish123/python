@@ -58,3 +58,28 @@ if number % 10 == 0:
     print(f"The number, {number} is a multiple of 10!")
 else:
     print(f"The number, {number} is NOT a multiple of 10!")
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
+
+
+# While loops lessons!
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+message = ""
+while message != 'quit':
+    message = input(prompt)
+    print(message)
+
+# Here is much more of a cleaner version and updates all bug fixes!!!
+
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+message = ""
+while message != 'quit':
+    message = input(prompt)
+
+    if message != 'quit':
+        print(message)
