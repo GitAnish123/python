@@ -174,3 +174,15 @@ if number % 10 == 0:
     print(f"The number, {number} is a multiple of 10!")
 else:
     print(f"The number, {number} is NOT a multiple of 10!")
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
+
+
+# Lets do our first example of while loops.
+# print numbers from 1-5
+current_number = 1
+while current_number <= 5:
+    print(current_number)
+    current_number += 1
