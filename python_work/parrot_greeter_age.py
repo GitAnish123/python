@@ -83,3 +83,18 @@ while message != 'quit':
 
     if message != 'quit':
         print(message)
+
+# Lets keep a flag to support many events!
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+active = True
+while active:
+    message = input(prompt)
+
+    if message == 'quit':
+        active = False
+    else:
+        print(message)
+# That is useful for many complicated cases like games!
+# It is very useful!
