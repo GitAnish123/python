@@ -550,7 +550,7 @@ for city, city_info in cities.items():
 
 alien_0 = {'color':'green', 'points':5, 'condition':'weak'}
 print(alien_0['color'].title())
-print(alien_0['points'].title())
+print(alien_0['points'])
 print(alien_0['condition'].title())
 
 if alien_0['condition'] == 'weak':
@@ -564,3 +564,38 @@ else:
 
 ###### END OF PRACTICE #######
 """ This is the end of practice"""
+
+
+
+# You can move values from one list to another using a "while" loop!
+# For example,
+
+
+
+# Start with users that need to be verified,
+#  and an empty list to hold confirmed users.
+
+unconfirmed_users = ['alice','brian','candace']
+confirmed_users = []
+
+# Verify each user until there are no more unconfirmed users.
+#  Move each verified user into the list of confirmed users.
+while unconfirmed_users:
+    current_user = unconfirmed_users.pop()
+    
+
+    print(f"Verifying user: {current_user.title()}")
+    confirmed_users.append(current_user)
+# Display all confirmed users.
+print("The following users have been confirmed: ")
+for cUrReNt_UsEr in confirmed_users:
+    print(cUrReNt_UsEr.title())
+
+# With that, you can do that to any kind of situation
+# You can use the input function with "while" loops
+
+# Since the user "candance", was last, it is first in the new lists!
+
+# You can apply this situation to harder concepts like dictionaries
+# Dictionaries allow you to connect information
+# This is much more complicated.
