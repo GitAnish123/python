@@ -150,6 +150,128 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
                                                                                         print("She kissed you out of approval and excitment for the adventures they will face in the future.")
                                                                                         print(f"{name} and {tcasewife}, lived happily ever after!!!")
                                                                                         print("\n\n\nYou Won")
+                                                                                        part_3 = input("Do you want to play part 3??? (yes,no)  ")
+                                                                                        if part_3 == "no":
+                                                                                            print("That's ok, have a nice day!")
+                                                                                        else:
+                                                                                            print(f"The game is about to start, {name.title()}")
+                                                                                            print("Here are the rules: ")
+                                                                                            print("1. When you lose, you will not have a sign called 'game over', you will not have anything!")
+                                                                                            print("2. When you lose, you automatically die. (even though you didn't mention it)")
+                                                                                            print(f"\n\n\n\n\n\n\n\n\n\n\n\nThe monster from 'part 1' kidnapped you again when you are chilling with {tcasewife}")
+                                                                                            print("Now continuing to the present...")
+                                                                                            starter = input("Hello, do you want to continue?  ")
+                                                                                            starter2 = input(f"LAST CHANCE!!!, do you want to continue?, {name.title()}  ")
+                                                                                            if starter2 == "no":
+                                                                                                print("Welp, I guess YOUR DONE!!!")
+                                                                                            else:
+                                                                                                print("Hello, I promise I won't say any cuss words!!!")
+                                                                                                print("I heard you want to unlock the secret vault...")
+                                                                                                print("Ok, to unlock the secret vault, answer some locked questions")
+                                                                                                q1 = input("What is 342879398234 + 234903249039 * 473284923 ?   ")
+                                                                                                q1 = int(q1)
+                                                                                                if q1 != 111176166476752337231:
+                                                                                                    print(f"WOW, you think you can open the vault by not answering the simple question?, {name.title()}")
+                                                                                                    print("Your dumb. You can never open the vault.")
+                                                                                                else:
+                                                                                                    you_sure = input("You sure that is the answer? (yes, no) ")
+                                                                                                    if you_sure == "no":
+                                                                                                        print(f"Haha, this is the answer {name.title()}. You need confidence to access this vault.")
+                                                                                                    else:
+                                                                                                        print("Ok... your correct")
+                                                                                                        print("next question.....")
+                                                                                                        q2 = input("What kind of button will never unbutton? (all lowercase letters)  ")
+                                                                                                        if q2 == "belly button":
+                                                                                                            print(f"Yes... you are kinda smart!, {name.title()}")
+                                                                                                            print("Next question!")
+                                                                                                            q3 = input("What can a child make, but not see? (enter answer in lowercase form) ")
+                                                                                                            if q3 != "noise":
+                                                                                                                print("Your completely wrong. You need smarts and a good fashioned brain to enter this vault")
+                                                                                                            else:
+                                                                                                                print("Ok, your pretty good!")
+                                                                                                                print("Last question: ")
+                                                                                                                q4 = input(f"What is the most longest word in titlecase form?, {name.title()}  ")
+                                                                                                                if q4 == "Pneumonoultramicroscopicsilicovolcanoconiosis":
+                                                                                                                    print("Great Job! Your qualified into the vault... maybe?  ")
+                                                                                                                    q4_5 = input("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndu u want t enter no vault? ")
+                                                                                                                    if q4_5 == "yes":
+                                                                                                                        print("Ha, that is a trick question or...")
+                                                                                                                        print(f"Maybe you don't want to go. I guess goodbye, {name.title()}!")
+                                                                                                                    else:
+                                                                                                                        print("Ok fine. you. want. to. go. to vault. hmm")
+                                                                                                                        print("If you want I will give you 100 million dollars and leave. Is that ok? ")
+                                                                                                                        q4_7 = input("IS THAT FINE WITH YOU???!?!?!? ")
+                                                                                                                        if q4_7 != "no":
+                                                                                                                            print("Good. take it and leave. Don't ever come to me again. (you got scammed)")
+                                                                                                                        else:
+                                                                                                                            print(f"Ugh your stubborn as a donkey, {name.title()}!!! If you want to go inside, answer some bonus questions!")
+                                                                                                                            q5 = input("What is the question you cannot say yes to? (lowercase form with question mark) ")
+                                                                                                                            if q5 == "are you asleep?":
+                                                                                                                                print("Ugh, your kinda smart. gettin on my nerves.")
+                                                                                                                                print("Fine then. Next question")
+                                                                                                                                q6 = input("What does DNA stand for??? (title case form) ")
+                                                                                                                                if q6 == "Deoxyribonucleic Acid":
+                                                                                                                                    print("OH MY GOD, YOU ARE INCREDABLY SMART!!!")
+                                                                                                                                    print(f"{name.title()}, you may actually win!!! ")
+                                                                                                                                    q7 = input("Do we all have the same DNA??? (lowercase form) ")
+                                                                                                                                    if q7 == "no":
+                                                                                                                                        print("Obviously you will get it correct, NERD!!!")
+                                                                                                                                        print("Ok next question...")
+                                                                                                                                        q8 = input("What is the name of the person who Taylor Swift is dating. 2023??? (title case)  ")
+                                                                                                                                        if q8 != "Travis Kelce":
+                                                                                                                                            print(f"You need to learn social events and keep track to enter this vault, {name.title()}.")
+                                                                                                                                        else:
+                                                                                                                                            print("Hmmmm, you actually aren't that much of a nerd. Nice... i guess")
+                                                                                                                                            q9 = input("Along with that question, who is Taylor Swift's ex-boyfriend first name in title case form???  ")
+                                                                                                                                            if q9 == "Joe":
+                                                                                                                                                print("Correct")
+                                                                                                                                                print("I guess you have your last question!!!")
+                                                                                                                                                print("If you fail, you are DONE. ")
+                                                                                                                                                q10 = input(f"Who is the most popular NBA player in 2024???, {name.title()} (uppercase form) ")
+                                                                                                                                                if q10 == "LEBRON JAMES":
+                                                                                                                                                    print("Wow, you sure know a lot. I'm really sorry for doubting you")
+                                                                                                                                                    print("You may enter the vault.")
+                                                                                                                                                    print(" **You entered the vault** ")
+                                                                                                                                                    print("Choose a chest to open and leave")
+                                                                                                                                                    last_question = input(f"What chest will you open, {name.title()}? (1, 2, 3)  ")
+                                                                                                                                                    last_question = int(last_question)
+                                                                                                                                                    if last_question == 1:
+                                                                                                                                                        print("Nice, you got $10000 and 50 diamonds!!!")
+                                                                                                                                                        print("You got the 2nd best reward")
+                                                                                                                                                        print("You lost 75%")
+                                                                                                                                                    elif last_question == 2:
+                                                                                                                                                        print("Great, you got $1000")
+                                                                                                                                                        print("You got the last best reward")
+                                                                                                                                                        print("You lost 50%")
+                                                                                                                                                    elif last_question == 3:
+                                                                                                                                                        print("Awesome, you got $1000000 and 100 diamonds.")
+                                                                                                                                                        print("You got the best reward and WON THE GAME!!!")
+                                                                                                                                                    else:
+                                                                                                                                                        print("Sorry, your answer is out of range or invalid syntax>>>")
+                                                                                                                                                    print(f"Congrats for entering the vault, {name.title()}. Unless you entered the wrong output, I hope you enjoyed the reward.")
+                                                                                                                                                    print("NOW GET OUT OF HERE BEFORE I GET MAD!!!")
+                                                                                                                                                    print(f"You ran away and felt happy you entered the vault with a happy face. You finally had fun with {wife.title()}")
+                                                                                                                                                else:
+                                                                                                                                                    print(f"You need to know about entertainment like sports to enter this secret vault, {name.title()}. I could only give you $100 for your participation and effort")
+                                                                                                                                                    
+                                                                                                                                            else:
+                                                                                                                                                print("Come on, learn a bit more. GET OUT OF HERE.")
+                                                                                                                                                
+                                                                                                                                    else:
+                                                                                                                                        print(f"HOW THE HELL YOU GOT THAT WRONG, {name.title()}.")
+                                                                                                                                else:
+                                                                                                                                    print("Finally, you got something wrong. Learn science to access this vault. I will not give you anything and get out of my sight!")
+
+                                                                                                                            else:
+                                                                                                                                print("Haha you failed. Goodbye.")
+                                                                                                                else:
+                                                                                                                    print("Your wrong, pay attention to directions")
+                                                                                                                    print("You need ELA and academic knowledge to qualify into this vault.")
+                                                                                                        else:
+                                                                                                            print("NOPE!!! Wrong answer. You need a sense of humor to enter this vault")
+                                                                                                            print("Make sure you write your answer in all lowercase form!!!")
+
+                                                                                    
                                                                                     else:
                                                                                         print("Your wife says she will leave you now for working too much")
                                                                                         print(f"You miss {tcasewife} so much, you died!")
