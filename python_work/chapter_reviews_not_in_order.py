@@ -875,3 +875,298 @@ for username, user_info in users.items():
 
 
 # That is one complex way to representing a tutorial of nesting a dictionary inside another one.
+
+
+
+
+
+
+# Lets learn about user input!
+# This will make your code exciting and good!
+# Lets do a copycat program...
+# For example...
+prompt1 = input("Tell me something and I will repeat it back to you!: ")
+print(prompt1)
+
+
+
+
+# We can also use the variable you assigned to the prompt
+# The value use used for the user input at the previous program is the value of the "prompt1"!
+# Here is an example of how to use it.
+
+
+prompt2 = input("Please enter your name: ")
+print(f"\tHello {prompt2}")
+
+
+
+
+
+# You can add multiple lines to your user input, but the last line will do the actual input:
+# For example...
+
+
+
+prompt3_0 = "If you share your name, we can personalize the messages you see!"
+prompt3_0 += "\nWhat is your first name? "
+full_prompt_3 = input(prompt3_0)
+print(f"Hello, {full_prompt_3}")
+
+
+
+
+
+# If you want to add multiple lines with MULTIPLE INPUTS...
+# Here is an example... (use the amount of input functions for number of inputs)
+
+
+prompt3_5 = input("If you share your name, we can personalize the messages you see. Type anything to continue!")
+prompt3_8 = input("What is your first name? ")
+print(f"Hello, {prompt3_8}")
+
+
+
+
+
+""" The input function takes every user input as a string. If you enter a number, suppose 5. 
+The function will be taking that number as this: '5'  """
+# So if you are working with numbers, you can use the "int()" function to convert the string into an integer!!!
+# Here is an example of how the input function handles numbers!!! For example,
+
+
+
+
+age = input("How old are you? ")
+print(age)
+# This will work ok but if you compare it to a number using a comparsion operator, you will get an error
+# If you want to physically change an "str" number into a normal number that python understands, use the int function.
+# Here is a following example,
+
+age = input("How old are you")
+age = int(age)
+print(age >= 18)
+# This will be marked as True or False depending on the age you entered.
+""" This will work, but if you omit the second line, this code will not work at all as it will say it can't compare
+str and int  """
+
+
+
+
+
+# Here is a other example involving numbers and the "input()" function.
+# We need to determine if a person can go on a specific ride...
+height = input("How tall are you, in inches")
+height = int(height)
+if height >= 48:
+    print("You are tall enough to go on the ride!")
+else:
+    print("Sorry, you can ride when you get taller.")
+
+
+
+
+
+# Lastly, you can use the modulo operator to find the remainders of a pair of numbers.
+# Remember, it won't give you the quotient, it will give you the remainder.
+# Here are some examples of how to use it!
+print(4%3)
+print(5%9)
+print(10%2)
+print(1%1)
+print(0%6)
+print(5%2)
+
+
+
+
+# Lets use it on an actual program of determining a number is even or odd...
+# For example...
+even_or_odd = input("Enter a number and I will determine if that number is even or odd:  ")
+number = int(even_or_odd)
+if number % 2 == 0:
+    print("The number you entered is even!")
+else:
+    print("The number you entered is odd!")
+
+
+
+
+
+# Lets learn about "while" loops
+# These loops run forever if the condition is True and until the condition is False
+# Learn more about it in my notes...
+# Here is a basic example of a "while" loops program...
+
+current_number = 1
+while current_number <= 5:
+    print(current_number)
+    current_number += 1
+# This program just basically prints numbers from 1-5
+# while conditioning makes the numbers generate until numbers reach 5 and it prints that last number
+# The current_number will also increase by 1
+
+
+
+
+# Here is some examples of a copycat program but you can let the user choose when to quit:
+# There are 3 examples
+# The first one is pretty straightforward
+# The second one has a flag and that flag will make the code run until when the flag is set to False. see notes for more...
+# The third one uses the "break" statement and it will use the loop, "while True". To stop it, we use the "break" statement
+# See notes for any of the information!!!
+# Below is the first example...
+
+
+
+
+
+# while loops conditioning
+prompt4 = "Tell me something and I will repeat it back to you."
+prompt4 += "\nEnter 'quit' to stop the program."
+setofquotes = ""
+while setofquotes != "quit":
+    setofquotes = input(prompt4)
+    if setofquotes != "quit":
+        print(setofquotes)
+
+
+
+
+# flag example
+prompt4_3 = "Tell me something and I will repeat it back to you."
+prompt4_3 += "\nEnter 'quit' to stop the program."
+code_active = True
+while code_active:
+    quotes = input(prompt4_3)
+    if quotes == "quit":
+        code_active = False
+    else:
+        print(quotes)
+
+
+
+
+# using the break statement
+prompt4_7 = "Tell me something and I will repeat it back to you."
+prompt4_7 += "\nEnter 'quit' to stop the program."
+while True:
+    quotes = input(prompt4_7)
+    if quotes == "quit":
+        break
+    else:
+        print(quotes)
+
+
+
+
+# You can do any kind of example you want.
+# Here is a different kind of example...
+prompt5 = "\nEnter a name of a city you visited"
+prompt5 += "\nEnter 'quit' when you are completely finished: "
+while True:
+    quotes = input(prompt5)
+    if quotes == "quit":
+        break
+    else:
+        print(f"I would like to visit {quotes.title()}")
+
+
+
+
+# Lets use the "continue" statement in this example
+# We can do an example printing the odd numbers from 1-10.
+# For example,
+secondnumber = 0
+while secondnumber <= 10:
+    secondnumber += 1
+    if secondnumber % 2 == 0:
+        continue
+    else:
+        print(secondnumber)
+
+
+
+
+
+# Make sure to avoid infinite loops
+# These loops will always run forever and never stop
+# Every programmer writes these loops by accident
+# Here is an example of an infinite loop...
+""" 
+x = 1
+while x <= 5:
+    print(x)
+"""
+# (I just put the loop on the comment so it won't affect the rest of the code)
+
+
+
+# Lets use "while" loops in lists & dictionaries
+# An example is when you want to move items from one list to another
+# Lets do one example when we move some uncomfired users to a list of comfirmed users...
+# For example,
+unconfirmed_users = ['alice', 'joey', 'elsa']
+confirmed_users = []
+while unconfirmed_users:
+    current_user = unconfirmed_users.pop()
+    print(f"Verifying user: {current_user.title()}")
+    confirmed_users.append(current_user)
+print(f"\nThe following users have been verifyed: ")
+for user in confirmed_users:
+    print(user.title())
+# We basically moved the people from the unconfirmed list to the confirmed list
+
+
+
+
+# If you want to remove specific elements from a list, you can use the "remove()" method!
+# For example, lets remove all of the elements, cat
+pets = ['dog', 'cat', 'parrot', 'dog', 'cat', 'rabbit', 'cat', 'dog', 'dog', 'cat', 'parrot', 'fish', 'rabbit', 'cat', 'dog']
+while 'cat' in pets:
+    pets.remove('cat')    # This should successfully remove all of the 'cat' from the list, "pets"
+
+
+
+
+# Finally, to finish "while" loops and user input, we can use this information in dictionaries!!!
+# Lets make a poll about which mountain you want to visit later in life and make other people respond and poll results
+responses = {}
+polling_active = True
+while polling_active:
+    promptNAME = input("What is your name?: ")
+    promptRESPONSE = input("What mountain would you like to climb someday?: ")
+    responses[promptNAME] = promptRESPONSE
+    respond_again = input("Do you want to respond again?: ")
+    if respond_again != "yes":
+        polling_active = False
+print("---Poll Results---")
+for name, response in responses.items():
+    print(f"{name.title()} would like to climb the mountain, {response.title()}")
+
+
+
+
+# That is an example of how to use "while" loops in a dictionary.
+# Lets add a little more user input:
+responses = {}
+polling_active = True
+while polling_active:
+    promptNAME = input("What is your name?: ")
+    promptAGE = input("What is your age?: ")
+    promptAGE = int(promptAGE)
+    promptLOCATION = input("Where do you currently live?: ")
+    promptRESPONSE = input("What mountain would you like to climb someday?: ")
+    responses[promptNAME] = {
+        "promptAGE": promptAGE,
+        "promptLOCATION": promptLOCATION,
+        "promptRESPONSE": promptRESPONSE,
+    }
+    respond_again = input("Do you want to respond again?: ")
+    if respond_again != "yes":
+        polling_active = False
+print("---Poll Results---")
+for name, info in responses.items():
+    print(f"{promptNAME.title()} would like to climb the mountain, {info['promptRESPONSE'].title()}")
+    print(f"Here is some background information about the person:  He is {info['promptAGE']} years old and lives in {info['promptLOCATION'].title()}")
+# These are some examples of how to apply your skills to harder topics.
