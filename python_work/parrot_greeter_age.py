@@ -211,7 +211,7 @@ while True:
     if message == "finished":
         break
     else:
-        message = int(themovie)
+        message = int(message)
         if message <= 3:
             print("It is free to enter.")
         elif message <= 12:
