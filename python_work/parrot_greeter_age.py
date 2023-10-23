@@ -228,3 +228,53 @@ while 1 == 1:
 
 # --------- PRACTICE IS OVER ------------ #
 """ PRACTICE IS CURRENTLY OVER!!! """
+
+
+
+
+# Lets learn a example of how to define a function
+# Here is a simple function...
+def greet_user():
+    """Display a simple greeting"""
+    print("Hello")
+greet_user()
+
+
+
+# You also can pass information to a function!
+# Lets provide a username so we can provide a greeting to a specific person's name!
+# For example,
+
+def greet_user(username):
+    """Display a simple greeting"""
+    print(f"Hello, {username}")
+greet_user()
+# That is some basic information of defining and passing information to a function.
+
+
+
+
+# ----------- PRACTICE -------------- #
+""" Practice now begins """
+
+
+
+
+def display_message():
+    """Display a message of what we learning"""
+    print("We are learning about a block of code called functions")
+display_message()                # We are calling/printing the function!
+
+
+
+
+def favorite_book(title_of_book):
+    """Display a message of your favorite books"""
+    print(f"One of my favorite books is {title_of_book}")
+favorite_book('Percy Jackson and the Olympians') # Calling the function with the argument and parameter of the favorite book!
+
+
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
