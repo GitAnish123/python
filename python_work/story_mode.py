@@ -199,7 +199,7 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
                                                                                                                         print(f"Maybe you don't want to go. I guess goodbye, {name.title()}!")
                                                                                                                     else:
                                                                                                                         print("Ok fine. you. want. to. go. to vault. hmm")
-                                                                                                                        print("If you want I will give you 100 million dollars and leave. Is that ok? ")
+                                                                                                                        print("If you want I will give you 10 thousand cents and leave. Is that ok? ")
                                                                                                                         q4_7 = input("IS THAT FINE WITH YOU???!?!?!? ")
                                                                                                                         if q4_7 != "no":
                                                                                                                             print("Good. take it and leave. Don't ever come to me again. (you got scammed)")
