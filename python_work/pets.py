@@ -138,3 +138,45 @@ for name, info in vacation.items():
 
 ###### END OF PRACTICE #######
 """ This is the end of practice"""
+
+
+
+# We can use multiple arguments and parameters to do more effietient jobs in functions!
+# For example,
+
+
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet('hamster', 'harry')
+# This will print the information you need!
+
+
+
+
+# You can also call multiple functions calls!
+# For example...
+
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet('hamster', 'harry')
+describe_pet('dog', 'willie')
+
+
+
+
+# Make sure to order your arguments correctly, or otherwise you could get unexpected results like this:
+# For example,
+
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet('harry', 'hamster')
+# In summary, make sure to order arguments in a function appropriatly!
