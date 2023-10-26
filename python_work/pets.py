@@ -180,3 +180,22 @@ def describe_pet(animal_type, pet_name):
 
 describe_pet('harry', 'hamster')
 # In summary, make sure to order arguments in a function appropriatly!
+
+
+
+
+# To not worry about the order of the arguments, use keyword arguments methods!
+# For example, watch the example and learn.  (See notes if you need help)
+
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet(animal_type='hamster', pet_name='harry')
+
+# It doesn't matter which order you do it. These following codes are equivalent and will give you same result.
+describe_pet(animal_type='hamster', pet_name='harry')
+describe_pet(pet_name='harry', animal_type='hamster')
+
+# That is two examples of keyword arguments!
