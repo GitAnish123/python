@@ -199,3 +199,47 @@ describe_pet(animal_type='hamster', pet_name='harry')
 describe_pet(pet_name='harry', animal_type='hamster')
 
 # That is two examples of keyword arguments!
+
+
+
+
+# You can have default values to simplify the amount of work you do!
+# For example,
+
+def describe_pet(pet_name, animal_type='dog'):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet(pet_name='willie')
+# You also can instead use postitional arguments and do this:
+describe_pet('willie')  # Same output
+
+# To describe another kind of animal, (If you don't want to use dog) use the parameter to do it.
+describe_pet(pet_name='harry', animal_type='hamster')
+# Make sure all default values defined should be defiend at the END to avoid postitional errors!
+# The function now requires ONE postional argument, "pet_name".
+
+
+
+
+
+# The function calls have multiple equalivalent ways to be called.
+# Consider the following definition for "describe_pet()"" with one default value provided:
+"""   def describe_pet(pet_name, animal_type='dog'):   """
+# All these calls would work and give the same output!
+
+
+# A dog named Willie.
+describe_pet('willie')                 # Remember, "animal_type" has a default value.
+describe_pet(pet_name='willie')
+describe_pet(animal_type='dog', pet_name='willie')
+
+# A hamster named Harry.
+describe_pet('harry', 'hamster')
+describe_pet(pet_name='harry', animal_type='hamster')
+describe_pet(animal_type='hamster', pet_name='harry')
+# These are some equivalent ways!
+
+
+# Finally, make sure you always meet the expected amount of arguments per function call to avoid argument errors!
