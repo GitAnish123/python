@@ -136,8 +136,12 @@ for name, info in vacation.items():
 
 
 
+
+
 ###### END OF PRACTICE #######
 """ This is the end of practice"""
+
+
 
 
 
@@ -243,3 +247,63 @@ describe_pet(animal_type='hamster', pet_name='harry')
 
 
 # Finally, make sure you always meet the expected amount of arguments per function call to avoid argument errors!
+
+
+
+
+
+##  PRACTICE STARTS NOW ##
+""" Practice is currently starting now"""
+
+
+
+
+# Lets create a function that it's job is to summarize and describe the size and the message printed on a shirt
+def make_shirt(size, message_on_the_shirt):
+    """Creating a prompt that describes and summarizing the size and the message printed on the shirt."""
+    print(f"The shirt size is {size} and the message printed on the shirt is:  {message_on_the_shirt}.")
+
+make_shirt('Small', 'Under Armour')
+make_shirt(message_on_the_shirt='Adidas', size='Medium')
+
+
+
+
+# Lets expand this function use and create a default value
+def make_shirt(size='Large', message_on_the_shirt='I love Python'):
+    """Creating a prompt that describes and summarizing the size and the message printed on the shirt."""
+    print(f"The shirt size is {size} and the message printed on the shirt is:  {message_on_the_shirt}.")
+
+make_shirt()
+make_shirt('Medium')
+make_shirt('Small', 'Python Rocks')
+
+
+
+
+# Lets create another function that is about cities
+def describe_city(city_name, name_of_country):
+    """Stating the city name and which country is the city located."""
+    print(f"{city_name} is inside the country of {name_of_country}!")
+
+describe_city(city_name='Atlanta', name_of_country='United States of America')
+
+
+
+
+# Lets expand this function to create default values and more function callings
+def describe_city(city_name, name_of_country='India'):
+    """Stating the city name and which country is the city located."""
+    print(f"{city_name} is inside the country of {name_of_country}!")
+
+describe_city('Mumbai')
+describe_city(city_name='Hyderabad')
+describe_city(name_of_country='Egypt', city_name='Cairo')
+describe_city('Giza', 'Egypt')
+
+
+
+
+
+###### END OF PRACTICE #######
+""" This is the end of practice"""
