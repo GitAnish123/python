@@ -278,3 +278,23 @@ favorite_book('Percy Jackson and the Olympians') # Calling the function with the
 
 # --------- PRACTICE IS OVER ------------ #
 """ PRACTICE IS CURRENTLY OVER!!! """
+
+
+
+
+
+
+# In a function, you can pass a list to a function!
+# It doesn't matter if it is a dictionary, names, values, numbers, complex objects, and more!
+# Here is an example,
+
+def greet_users(names):
+    """Print a simple greeting to each user in the list."""
+    for name in names:
+        msg = f"Hello, {name.title()}!"
+        print(msg)
+
+usernames = ['hannah', 'ty', 'margot']
+greet_users(usernames)
+# That is an example of how to pass a list using names
+# You can apply the same concepts for others!
