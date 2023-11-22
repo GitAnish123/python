@@ -291,7 +291,7 @@ else:
 
 
 
-# In functions, you can pass an arbitrary number of arguments.
+# In functions, you can pass an arbitrary number of arguments. (Learn more in notes)
 # Here is a simple example,
 
 def make_pizza(*toppings):
