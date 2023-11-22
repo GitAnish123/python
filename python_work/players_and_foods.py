@@ -315,3 +315,18 @@ def make_pizza(*toppings):
 make_pizza('pepperoni')
 make_pizza('mushrooms', 'green peppers', 'extra cheese')
 # That is an example of how you do it.
+
+
+
+# Additionally, you can also mix positional and arbitrary arguments. The normal arguments should come first, then arbitrary.
+# Here is an example:
+
+def make_pizza(size, *toppings):
+    """Summarize the pizza we are about to make."""
+    print(f"\nMaking a {size}-inch pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+make_pizza(16, 'pepperoni')
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+# That is a basic understanding and you can understand it more if you look at the program closely.
