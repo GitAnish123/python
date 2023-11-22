@@ -287,3 +287,31 @@ else:
 
 ###### END OF PRACTICE #######
 """ This is the end of practice"""
+
+
+
+
+# In functions, you can pass an arbitrary number of arguments.
+# Here is a simple example,
+
+def make_pizza(*toppings):
+    """Print the list of toppings that have been requested."""
+    print(toppings)
+
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+# We can use a asterisk to make a tuple with all the values stored inside.
+
+
+# Instead, we could replace the "print()" call with a loop that runs through all the values in the tuple
+# That will make our code much better. For example:
+
+def make_pizza(*toppings):
+    """Summarize the pizza we are about to make."""
+    print("\nMaking a pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+# That is an example of how you do it.
