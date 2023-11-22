@@ -1,7 +1,7 @@
-aliens = ('bob','jon','ben')
+aliens = ['bob','jon','ben']
 for alien in aliens:
     print(alien.title())
-aliens = ('bob','jon','ben')
+aliens = ['bob','jon','ben']
 
 alien_game_name = 'alien war'
 
