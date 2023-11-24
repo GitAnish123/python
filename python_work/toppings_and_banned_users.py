@@ -724,3 +724,23 @@ for name, info in vacation.items():
 
 ###### END OF PRACTICE #######
 """ This is the end of practice"""
+
+
+
+
+# In functions, you might want to accept an arbitrary amount of arguments but you don't know what infomation to pass.
+# You can do keyword with key-value arguments to make that happen by storing and collecting information.
+# For example...
+
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('albert', 'einstein',
+                             location='princeton',
+                             field='physics')
+print(user_profile)
+# Learn more in the notes.
+# That is a short example of key-value keyword arguments.
