@@ -745,3 +745,69 @@ print(user_profile)
 
 # Learn more in the notes.
 # That is a short example of key-value keyword arguments.
+
+
+
+
+
+
+##  PRACTICE STARTS NOW ##
+""" Practice is currently starting now"""
+
+
+
+
+
+
+# Arbitrary arguments only
+def sandwich_order(*items_on_a_sandwich):
+    """Describe a sandwich order including items in a sandwich like toppings."""
+    print("\nThe following items on a sandwich are requested:")
+    for item in items_on_a_sandwich:
+        print(f"-- {item}")
+
+sandwich_order('extra cheese', 'green peppers', 'broccoli', 'tomatoes')
+sandwich_order('chili', 'red peppers', 'garlic', 'spicy salsa', 'BBQ sauses')
+sandwich_order('olives', 'mushrooms')
+sandwich_order('lettuce')
+
+
+
+# Calling key-value pairs by doing keyword arguments
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+anish_profile = build_profile('Anish', 'Pasumarthi',
+                              location='Fort Mill',
+                              hobby='basketball',
+                              favorite_food='pizza',
+                              favorite_color='blue',
+)
+print(anish_profile)
+
+
+
+# Writing functions with extra info, with normal arguments, with key-value pairs that is positional and keyword arguments.
+def build_car(manufacturer, model_name, **extra_information):
+    """
+    Build your own car with at least 2 pieces of information below with any other added information.
+    Store results in a dictionary with all pieces of information.
+    """
+    extra_information['manufacturer'] = manufacturer
+    extra_information['model name'] = model_name
+    return extra_information
+
+car = build_car('Tesla', 'Tesla Model Y', color='light blue', age='5 months', drive_itself=True)
+print(car)
+
+
+
+
+
+
+
+###### END OF PRACTICE #######
+""" This is the end of practice"""
