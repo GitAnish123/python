@@ -14,7 +14,7 @@ pm(unprinted_designs, completed_models)
 printing_models.show_completed_models(completed_models)
 
 print_models(unprinted_designs, completed_models)
-printing_models.show_completed_models(completed_models)
+p.show_completed_models(completed_models)
 # I already styled at least 3 of the functions and modules of the code for the entire 8th chapter.
 
 
