@@ -38,3 +38,4 @@ make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
 
 
 # These are some ways and teqniques for importing functions and modules.
+# Make sure follow tips and guidelines in notes and websites for styling functions!
