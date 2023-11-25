@@ -1,7 +1,12 @@
-def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489crynfiouwndsuioqj8nrdhiouasyr47rwo():
+def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489crynfiouwndsuioqj8nrdhiouasyr47rwo(anything):
+    """
+    Play the secret story mode game right now when you call the function. 
+    Please be aware this may have inappropriate content. Hope you enjoy the story mode! This is interactive!
+    Enter anything inside the parenthesis to start the game just to avoid robots!
+    """
     
-    
-    message = input("HOW THE FUCK U FOUND THIS PIECE??!!: ")
+    print(f"You entered '{anything}'... Lets start the game NOW!!! ")
+    message = input("\n\n\n\n\n\nHOW THE FUCK U FOUND THIS PIECE??!!: ")
     if message != "IDK":
         print("That's it you nigger ass bitch, its over!!! (fucking asshole)")
         print("Game Over")
@@ -323,4 +328,4 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
         else:
             print("PREPARE TO DIE, fucking ass nigger dick bitch cock!!! YOU WILL LEAVE THIS WORLD!!!")
             print("Game Over")
-dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489crynfiouwndsuioqj8nrdhiouasyr47rwo()
+dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489crynfiouwndsuioqj8nrdhiouasyr47rwo('anything')
