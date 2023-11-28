@@ -1170,3 +1170,248 @@ for name, info in responses.items():
     print(f"{promptNAME.title()} would like to climb the mountain, {info['promptRESPONSE'].title()}")
     print(f"Here is some background information about the person:  He is {info['promptAGE']} years old and lives in {info['promptLOCATION'].title()}")
 # These are some examples of how to apply your skills to harder topics.
+
+
+
+
+
+
+
+# Lets learn about functions!
+# These blocks of code will make your coding easier and simple to understand. More explainations throughout will be in notes.
+
+
+
+# Lets define a simple function.
+# When you define, you are creating a function that is desired to do a specific job.
+# For example,
+
+def greet_user():     # Defining the function, no extra info provided inside parenthesis.
+    """Display a simple greeting"""    # Displaying a docstring to explain the function's purpose.
+    print("Hello")   # This is what the function does.
+greet_user()  # Now I am calling the function. It will now do the specifc job when it is runned.
+
+
+# Now lets keep some information so we can use it for be effiective. That is the parameter, The value that is expected.
+def greet_user(username):  # Kept information, that is the parameter.
+    """Display a simple greeting"""
+    print(f"Hello, {username.title()}")   # Greeting the user by its name
+greet_user('Anish')  # Calling the function but creating an argument. This is what me or the user enters to call.
+
+
+# If you want to keep more parameters and calling a function with two or more arguments with just that, that is called...
+# Postitional arguments!!!
+# For example,
+
+def describe_pet(animal_type, pet_name):  # Multiple parameters means more information!
+    """Display information about a pet."""
+    print(f"I have an {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet('hamster', 'harry')  # Keep it in the same order. That is called postitional arguments. Keeping it in the...
+# Order of the parameters.
+
+
+# You can also do multiple function calls at a time!
+# For example,
+
+def describe_pet(animal_type, pet_name): 
+    """Display information about a pet."""
+    print(f"I have an {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet('hamster', 'harry')  # One function call
+describe_pet('dog', 'willie') # Another function call
+
+
+# In postitional arguments, when you call the function, keep the same order as the parameters or otherwise the code won't...
+# function properly as you expect.
+# For example,
+
+def describe_pet(animal_type, pet_name): 
+    """Display information about a pet."""
+    print(f"I have an {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet('harry', 'hamster')  # Reversed order. Output will be different and silly!
+
+
+# To avoid this, use another type of arguments and that is keyword arguments. That comes in key-value pairs so no confusion.
+# For example,
+
+def describe_pet(animal_type, pet_name): 
+    """Display information about a pet."""
+    print(f"I have an {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet(animal_type='hamster', pet_name='harry') # So now there is no need of ordering. You can do the other way around.
+
+
+# If you use a argument more often for the parameter, use a default value so you don't have to provide it every time.
+# This can help you simplify and make your code faster and easier to understand.
+# Default values should always be placed at the last, after the original parameters.
+# For example,
+
+def describe_pet(animal_type, pet_name='harry'):    # Now you don't have to keep the pet name, harry! 
+    """Display information about a pet."""
+    print(f"I have an {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet('hamster') or describe_pet(animal_type='hamster')  # It doesn't matter which option you choose, same output.
+# If you want to keep a different value, just call the function as usual for the "pet_name" and the "animal_type".
+
+
+# For equivalent arguments, you can call a function however you like.
+# Consider the following function definition:   def describe_pet(pet_name, animal_type='dog'):
+# All the following function calls will work for this function:
+
+# A dog named Willie.
+describe_pet('willie')
+describe_pet(pet_name='willie')
+
+# A hamster named Harry.
+describe_pet('harry', 'hamster')
+describe_pet(pet_name='harry', animal_type='hamster')
+describe_pet(animal_type='hamster', pet_name='harry')
+
+
+# Avoid argument error's by keeping less or more arguments than the function expects you to keep.
+
+
+# You don't always have to display the output directly like always.
+# A "return" statement takes a value from inside a function and sends it back to the line that called the function.
+# You need to assign a variable when you want to call a function that contains the "return" statement. 
+# Here is a simple example of how return statments can be useful instead of a print statement. For example,
+
+def get_formatted_name(first_name, last_name):
+    """Display a full, neat formatted name.""" 
+    full_name = f"{first_name} {last_name}"  # Assigning "full_name" to the two parameters of first & last names.
+    return full_name   # Returning the specific value
+my_name = get_formatted_name('Anish', 'Pasumarthi')  # Assigning the function call to a variable to use it in later use.
+print(my_name)  # Print the variable to display the output.
+
+
+# Lets do another example...
+def get_formatted_name(first_name, middle_name, last_name):  # Created a new parameter
+    """Display a full, neat formatted name.""" 
+    full_name = f"{first_name} {middle_name} {last_name}"  # Added "middle_name" to include more information
+    return full_name   
+my_name = get_formatted_name('Anish', 'Ram', 'Pasumarthi') # Assigning function call to a variable to use it in later use.
+print(my_name)
+
+
+# The problem is not everybody doesn't have middle names. We can create an optional value to make 'middle_name' optional.
+# For example, apply your skills you know:
+
+def get_formatted_name(first_name, last_name, middle_name=None): # Applyed a placeholder so it has no value if left alone.
+    """Display a full, neat formatted name.""" 
+    if middle_name:   # If there is a middle name...  # If "middle_name" does not equal 'None'.
+        full_name = f"{first_name} {middle_name} {last_name}"  # If there is a middle name, this is the value!
+    else:  # If there is no middle name applied as an argument.
+        full_name = f"{first_name} {last_name}"  # This is the value without the middle name included.
+    return full_name     # Returning the value
+my_name = get_formatted_name('Anish', 'Pasumarthi', 'Ram')  # Middle name should be placed in the last in this case 
+print(my_name)
+my_name = get_formatted_name('Anish', 'Pasumarthi')  # Only first & last name are only there in the arguments.
+print(my_name)
+
+
+# You can also use the "return" statement to return a dictionary! Here is an example that involves full names.
+def build_person(first_name, last_name):
+    """Display a dictionary containing a full name."""    
+    full_name = {'first': first_name, 'last': last_name}   # Building a dictionary containing the parameters.
+    return full_name   # Returning the dictionary
+me = build_person('Anish', 'Pasumarthi')         # Providing the arguments
+print(me)    # Printing variable containing the values and dictionary
+
+
+# Lets say if you want to create optional values to add in your dictionary...
+# Here is a simple transaction and movement of how. For example,
+
+def build_person(first_name, last_name, middle_name=None):
+    """Display a dictionary containing a full name."""    
+    full_name = {'first': first_name, 'last': last_name}  
+    if middle_name:   # Creating an "if" conditioning statement
+        full_name['middle'] = middle_name   # Adding the "middle name" value if desired
+    return full_name  # Returning whatever value you called for the function.
+me = build_person('Anish', 'Pasumarthi', 'Ram')         
+print(me)
+
+
+# You also can inplument "while" loops with functions!
+# This can help make the experience it user friendly and intresting.
+# Here is an example to make a loop that allows users to quit whenever the user wants to!
+
+def get_formatted_name(first_name, last_name):     # Defining the function and the job performing.
+    """Display a full, neat formatted name.""" 
+    full_name = f"{first_name} {last_name}"
+    return full_name    # Returning the value from the "while" loop after defining.
+while True:    #     "while" loop
+    print(f"Please enter your first and last names to get a neatly formatted full name. Enter 'quit' to quit anytime.")
+    first = input("What is your first name? ")   # First user input question
+    if first.lower() == 'quit':    # Defining quit value
+        break
+    last = input("What is your last name? ")    # Other user input question
+    if last.lower() == 'quit':    # Defining quit value
+        break
+    formatted_name = get_formatted_name(first, last)   # Creating a variable and calling the function in the loop
+    print(formatted_name)   # Printing the value
+
+
+# You can pass a list instead of only passing normal values.
+# These can make your code effitient and quick to understand.
+# You will apply lists to the code. Here is a simple example to demonstrate:
+
+def greet_users(names):   # Defining the function
+    """Greet users by its name individually in a list."""
+    for name in names:    # Creating a "for" loop to access all the values in the list
+        print(f"Hello, {name.title()}")   # Greeting each user in the list by saying "hello"
+usernames = ['anish', 'kishan', 'sudha', 'chandra']   # List of names. Creating a list.
+greet_users(usernames)    # Applying the list for the argument in the function call.
+
+
+# You also can modify a list in a function. Here is an example that involves two functions that each does specific job(s).
+# This contains two lists and one list of elements will be transferred into the other list with no elements inside.
+# For example...
+
+def print_and_transfer_models(unprinted_models, completed_models): # Prints the models and transferrs to completed list (1st)
+    """
+    Stimulate printing each design in the unprinted models list and move them into the completed models list. 
+    Prints every element in the list and moves every element in the completed models list.
+    """
+    while unprinted_models: # There is a "while" loop in display. While there is elements in the list, "unprinted_models"...
+        current_design = unprinted_models.pop()    # Pop every item in the list
+        print(f"Printing design: {current_design}")   # Use the popped variable, use it to print a statement
+        completed_models.append(current_design)  # Move the variable to the completed list. Repeat the same for all elements.
+def show_completed_models(completed_models):  # Shows all the printed models in the completed list  (2nd function)
+    """Display the completed models and print them for display! Print every element in the final, completed list."""
+    print("The following models have been printed:")    # Print a statement
+    for model in completed_models:    # Use a "for" loop
+        print(model)   # Prints every model in the completed list
+unprinted_designs = ['phone case', 'robot pendant', 'dodecahedron']  # First list    (Full)  (Starting list)
+completed_models = []   # Second list     (Empty)  (Complete list)
+print_and_transfer_models(unprinted_designs, completed_models)    # Plugging it for the lists
+show_completed_models(completed_models)    # Plugging it for the list
+
+
+# If you don't want a list to be modified, (Like elements in a list being transferred to another list) create a copy!
+# Lets do the same example but when we call the first function, we can add a copy for the "unprinted_designs".
+# This copy will prevent the values in the list from being modified. It will create a copy and move the elements to the...
+# completed list
+# As a result, both lists will have the same elements inside because we are creating a copy to prevent it from modifying.
+# For example, lets provide the correct demonstration:
+
+def print_and_transfer_models(unprinted_models, completed_models): 
+    """
+    Stimulate printing each design in the unprinted models list and move them into the completed models list. 
+    Prints every element in the list and moves every element in the completed models list.
+    """
+    while unprinted_models: 
+        current_design = unprinted_models.pop()    
+        print(f"Printing design: {current_design}")   
+        completed_models.append(current_design)  
+def show_completed_models(completed_models):  
+    """Display the completed models and print them for display! Print every element in the final, completed list."""
+    print("The following models have been printed:")    
+    for model in completed_models:   
+        print(model)  
+unprinted_designs = ['phone case', 'robot pendant', 'dodecahedron']  
+completed_models = []   
+print_and_transfer_models(unprinted_designs[:], completed_models)    # Creating a copy by doing this, "[:]".
+show_completed_models(completed_models)
+# Both lists will have the same elements inside and will be filled with the three elements for each one. Look at the output.
