@@ -1261,8 +1261,8 @@ describe_pet('hamster') or describe_pet(animal_type='hamster')  # It doesn't mat
 # All the following function calls will work for this function:
 
 # A dog named Willie.
-describe_pet('willie')
-describe_pet(pet_name='willie')
+""" describe_pet('willie')
+describe_pet(pet_name='willie') """
 
 # A hamster named Harry.
 describe_pet('harry', 'hamster')
