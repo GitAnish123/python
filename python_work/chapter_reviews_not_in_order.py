@@ -1415,3 +1415,55 @@ completed_models = []
 print_and_transfer_models(unprinted_designs[:], completed_models)    # Creating a copy by doing this, "[:]".
 show_completed_models(completed_models)
 # Both lists will have the same elements inside and will be filled with the three elements for each one. Look at the output.
+
+
+# Sometimes you won’t know ahead of time how many arguments a function needs to accept.
+# Fortunately, Python allows a function to collect an arbitrary number of arguments from the calling statement.
+# Here is an example that involves pizza:
+
+def make_pizza(*toppings):   # One arbitrary argument called "toppings" that contains a tuple of all the toppings inside.
+    """Print the list of toppings that have been requested.""" 
+    print(toppings)   # Prints the tuple that contains the values. (toppings)
+make_pizza('pepperoni')  # Contains a tuple that holds the topping, 'pepperoni', and prints the entire tuple.
+make_pizza('mushrooms', 'green peppers', 'extra cheese')  # Contains a tuple that holds the toppings and prints the tuple.
+
+
+# Instead we can replace the print value with the "for" loop that runs through all the values in the tuple.
+# For example:
+
+def make_pizza(*toppings):
+    """Summerize a pizza that is being ordered."""
+    print("Here are the toppings being requested on the pizza:")  # Message
+    for topping in toppings:   #   "for" loop
+        print(f"--{topping}")   # Prints every value in the tuple, "toppings"
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+
+# Learn to mix positional and arbitrary arguments. If you want a function to accept several different kinds of arguments, 
+# the parameter that accepts an arbitrary number of arguments must be placed last in the function definition.
+# Python matches positional and keyword arguments first and then collects any remaining arguments in the final parameter.
+# Here is an example:
+
+def make_pizza(size, *toppings): # Two parameters. The first one will be the size of the pizza and the rest are in the tuple.
+    """Summerize a pizza that is being ordered."""
+    print(f"Making a {size}-inch pizza with the following toppings:") # Inplumenting the "size" parameter to the sentence.
+    for topping in toppings:   # A "for" loop being activated
+        print(f"--{topping}")  # Prints the remaining arguments that are in the tuple and prints each value inside.
+make_pizza('pepperoni') 
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+
+# Now lets learn how to mix keyword arguments and arbitrary arguments. Sometimes you’ll want to accept an arbitrary number...
+# of arguments, but you won’t know ahead of time what kind of information will be passed to the function.
+# In this case, you can write functions that accept as many key-value pairs as the calling statement provides.
+# Here is an example:
+
+def build_person(first_name, last_name, **user_info): # The double astericks store the remaining arguments in a dictionary...
+# that is named, "user_info". The first two parameters will not be in the dictionary, so we have to add them seperatly.
+    """Describe and model a specific person by formatting a dictionary."""
+    user_info['first_name'] = first_name  # Adding the first name to the dictionary
+    user_info['last_name'] = last_name    # Adding the last name to the dictionary
+    return user_info  # Returning the complete dictionary of all the information of one person that is provided.
+my_person = build_person('Anish', 'Pasumarthi', location='Fort Mill', age=13, occupation='Doctor', hobby='basketball')
+print(my_person) # Created a varibale to hold the function and it's arguments above, this line is for printing the variable.
