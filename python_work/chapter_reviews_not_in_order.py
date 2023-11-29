@@ -1450,8 +1450,8 @@ def make_pizza(size, *toppings): # Two parameters. The first one will be the siz
     print(f"Making a {size}-inch pizza with the following toppings:") # Inplumenting the "size" parameter to the sentence.
     for topping in toppings:   # A "for" loop being activated
         print(f"--{topping}")  # Prints the remaining arguments that are in the tuple and prints each value inside.
-make_pizza('pepperoni') 
-make_pizza('mushrooms', 'green peppers', 'extra cheese')
+make_pizza(16, 'pepperoni') 
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
 
 
 # Now lets learn how to mix keyword arguments and arbitrary arguments. Sometimes you’ll want to accept an arbitrary number...
@@ -1467,3 +1467,81 @@ def build_person(first_name, last_name, **user_info): # The double astericks sto
     return user_info  # Returning the complete dictionary of all the information of one person that is provided.
 my_person = build_person('Anish', 'Pasumarthi', location='Fort Mill', age=13, occupation='Doctor', hobby='basketball')
 print(my_person) # Created a varibale to hold the function and it's arguments above, this line is for printing the variable.
+
+
+# Now lets learn how to store your functions in modules! 
+# A module is a file ending in .py that contains the code you want to import into your program. 
+# An import statement tells Python to make the code in a module available in the currently running program file.
+# Here is an example of how to import an entire module...
+
+import printing_models    # Importing an example file that ends with ".py" in this directory.
+printing_models.print_models(unprinted_designs, completed_models)  # Using that import to use a function
+printing_models.show_completed_models(completed_models)  # Using another function.
+# With that, we can use functions from another file in the same directory!
+
+
+# Here is an example of how to import specific functions in a module.
+
+from printing_models import print_models   # Importing a function using the "from" keyword
+print_models(unprinted_designs, completed_models)   # Using the function directly
+# We also can import many functions in a module at one time! For example,
+
+from printing_models import print_models, show_completed_models   # Importing two/many functions!
+print_models(unprinted_designs, completed_models)
+show_completed_models(completed_models)
+
+
+# We also can give a function a nickname, (alias). That will make your function calling much easier. For example:
+from printing_models import print_models as pm   # Giving a nickname
+pm(unprinted_designs, completed_models)  # Using the alias
+show_completed_models(completed_models)  # We also can give this function an alias if we want or desired to.
+
+
+# In the same way, we can give a module an alias. Here is an example...
+
+import printing_models as p    # Giving the function an alias
+p.print_models(unprinted_designs, completed_models)
+p.show_completed_models(completed_models)
+
+
+# You also can import all the functions in one module by using an asterick. For example,
+
+from printing_models import *  
+# Importing all the functions in the module in the line above. This is not recommended for larger modules you haven't wrote.
+print_models(unprinted_designs, completed_models)  # Using one of the functions
+show_completed_models(completed_models)  # Using another function.
+# These are some ways to store your functions in modules, use them, and give them nicknames to call/use them easier.
+
+
+# Here are some tips to style your functions:
+"""
+You need to keep a few details in mind when you're styling functions. Functions should have descriptive names, 
+and these names should use lowercase letters and underscores. Descriptive names help you and others understand what your 
+code is trying to do. Module names should use these conventions as well. Every function should have a comment that explains 
+concisely what the function does. This comment should appear immediately after the function definition and use the docstring 
+format. In a well-documented function, other programmers can use the function by reading only the description in the 
+docstring. They should be able to trust that the code works as described, and as long as they know the name of the function, 
+the arguments it needs, and the kind of value it returns, they should be able to use it in their programs.
+If you specify a default value for a parameter, no spaces should be used on either side of the equal sign: The same 
+convention should be used for keyword arguments in function calls:
+
+def function_name(parameter_0, parameter_1='default value')
+function_name(value_0, parameter_1='value')
+
+PEP 8 (https://www.python.org/dev/peps/pep-0008) 
+recommends that you limit lines of code to 79 characters so every line is visible in a reasonably sized editor window. 
+If a set of parameters causes a function's definition to be longer than 79 characters, press ENTER after the opening 
+parenthesis on the definition line. On the next line, press the TAB key twice to separate the list of arguments from the 
+body of the function, which will only be indented one level. Most editors automatically line up any additional lines of 
+arguments to match the indentation you have established on the first line:
+
+def function_name(
+        parameter_0, parameter_1, parameter_2,
+        parameter_3, parameter_4, parameter_5):
+    function body...
+
+If your program or module has more than one function, you can separate each by two blank lines to make it easier to see 
+where one function ends and the next one begins. All import statements should be written at the beginning of a file. 
+The only exception is if you use comments at the beginning of your file to describe the overall program.
+"""
+# These are some tips & guidelines followed with examples to style your functions efficiently and as advanced as it will be.
