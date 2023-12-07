@@ -180,13 +180,13 @@ class Restaurant:
         """Stimulate making a restaurant be opened."""
         print(f"{self.restaurant_name} is now currently open!")
 
-restaurant = Restaurant('Dominoes', 'America')
+restaurant1 = Restaurant('Dominoes', 'America')
 print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
-restaurant.describe_restaurant()
-restaurant.open_restaurant()
+restaurant1.describe_restaurant()
+restaurant1.open_restaurant()
 
-restaurant = Restaurant('Dominoes', 'pizza')
-restaurant.describe_restaurant()
+restaurant1 = Restaurant('Dominoes', 'pizza')
+restaurant1.describe_restaurant()
 
 restaurant2 = Restaurant('Taco Bell', 'tacos')
 restaurant2.describe_restaurant()
@@ -195,3 +195,48 @@ restaurant3 = Restaurant('Chick-Fil-A', 'sandwiches')
 restaurant3.describe_restaurant()
 
 
+
+# Creating more instances and examples using more attributes and methods to use and apply.
+class User:
+    """A simple representation to model a user"""
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initilize the attributes of the class user."""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.height_in_inches = height_in_inches
+        self.weight_in_pounds = weight_in_pounds
+    def describe_user(self):
+        """Stimulate describing a user with some of the simple characteristics listed."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"The user name is {self.full_name}. (first: {self.first_name}) (last: {self.last_name})")
+        print(f"{self.full_name}'s age is {self.age}, height in inches is {self.height_in_inches}, and weight in pounds is {self.weight_in_pounds}.")
+        print(f"The gender of {self.first_name} is {self.gender}.")
+    def greet_user(self):
+        """Stimulate greeting a user by its full name."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"Hello, {self.full_name}!")
+    
+user1 = User('Anish', 'Pasumarthi', 13, 'Male', 65, 98)
+user1.describe_user()
+user1.greet_user()
+
+user2 = User('Kishan', 'Pasumarthi', 9, 'Male', 54, 81)
+user2.describe_user()
+user2.greet_user()
+
+user3 = User('Rithin', 'Nallathambi', 12, 'Male', 62, 95)
+user3.describe_user()
+user3.greet_user()
+
+user4 = User('Ellie', 'Hanson', 12, 'Female', 61, 90)
+user4.describe_user()
+user4.greet_user()
+
+
+
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
