@@ -74,3 +74,124 @@ print(f"My dog is {my_dog.age} years old.")  # Using the attribute, "age"
 # What we are doing above is accessing attributes. Here is the line of the code we are talking about:
 print(my_dog.name)
 # Dot notation is crucial as it helps find attribute values. Python will just look for the attrubite name in this example.
+
+
+
+# As well as accessing attributes, you can call methods in a class that we defined. Here is an example:
+class Dog:
+    """A simple attempt to model a dog."""
+
+    def __init__(self, name, age):
+        """Initialize name and age attributes."""
+        self.name = name
+        self.age = age
+
+    def sit(self):
+        """Simulate a dog sitting in response to a command."""
+        print(f"{self.name} is now sitting.")
+
+    def roll_over(self):
+        """Simulate rolling over in response to a command."""
+        print(f"{self.name} rolled over!")
+
+my_dog = Dog('Willie', 6)
+my_dog.sit()
+my_dog.roll_over()
+# This syntax is useful when names are descriptive as it aids better understanding to the code. That is a simple example.
+
+
+
+# Additionally, you can create as many instances as you want. Here is an example...
+class Dog:
+    """A simple attempt to model a dog."""
+
+    def __init__(self, name, age):
+        """Initialize name and age attributes."""
+        self.name = name
+        self.age = age
+     
+    def sit(self):
+        """Simulate a dog sitting in response to a command."""
+        print(f"{self.name} is now sitting.")
+
+    def roll_over(self):
+        """Simulate rolling over in response to a command."""
+        print(f"{self.name} rolled over!")
+
+my_dog = Dog('Willie', 6)
+your_dog = Dog('Lucy', 3)
+
+print(f"My dog's name is {my_dog.name}.")
+print(f"My dog is {my_dog.age} years old.")
+my_dog.sit()
+my_dog.roll_over()
+
+print(f"\nYour dog's name is {your_dog.name}.")
+print(f"Your dog is {your_dog.age} years old.")
+your_dog.sit()
+your_dog.roll_over()
+# In Python, even if names and ages are the same, each new dog instance is separate. 
+# You can create many instances from one class, but each needs a unique name or position in a list or dictionary.
+
+
+
+
+
+
+# ----------- PRACTICE -------------- #
+""" Practice now begins """
+
+
+
+
+
+# Create a class restaurant with two methods and attributes.
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+
+
+# Creating more instances
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+restaurant = Restaurant('Dominoes', 'America')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'pizza')
+restaurant.describe_restaurant()
+
+restaurant2 = Restaurant('Taco Bell', 'tacos')
+restaurant2.describe_restaurant()
+
+restaurant3 = Restaurant('Chick-Fil-A', 'sandwiches')
+restaurant3.describe_restaurant()
+
+
