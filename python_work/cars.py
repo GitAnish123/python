@@ -198,3 +198,95 @@ my_new_car = Car('audi', 'a4', 2024)
 my_new_car.update_odometer(12)   # It will say "You can't roll back an odometer because you can't go less!"
 my_new_car.read_odometer()   # It will not change the value because of the warning message.
 # That is an example of updating and adding logic by adding more methods!
+
+
+
+# Additionally, you can increment a value using a method.
+# This will increase the amount of the value. Select the value you want to increase it by and then it will add up.
+# Here is a simple example:
+
+class Car:
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0    
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+    
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+my_used_car = Car('subaru', 'outback', 2019)
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(23_500)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(100)
+my_used_car.read_odometer()
+
+# The increment_odometer() method adds a specified mileage. After setting the initial odometer to 23,500, 
+# 'increment_odometer(100)' includes the extra 100 miles driven before registration.
+# That is an example of how incrementing works with a value being increased.
+# We can modify the method to disallow negative increments, preventing the function from rolling back the odometer.
+
+class Car:
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 15     # This car has 15 miles on it
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        if miles >= self.odometer_reading:
+            self.odometer_reading += miles
+        else:
+            print("You can't roll back an odometer!")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+my_used_car = Car('subaru', 'outback', 2019)
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(23_500)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(-100)  # It will result in an error
+my_used_car.read_odometer()  # It will still be the same starting amount, 23500!
+# That is an example of how to apply your skills and knowledge for commonn sense and logic for coding.
+# That is an example to prevent rolling back odometers and incrementing a value using a method.
