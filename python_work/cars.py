@@ -290,3 +290,267 @@ my_used_car.increment_odometer(-100)  # It will result in an error
 my_used_car.read_odometer()  # It will still be the same starting amount, 23500!
 # That is an example of how to apply your skills and knowledge for commonn sense and logic for coding.
 # That is an example to prevent rolling back odometers and incrementing a value using a method.
+
+
+
+
+
+
+
+# ----------- PRACTICE -------------- #
+""" Practice now begins """
+
+
+
+
+
+
+
+
+# RESTAURANT (class 'Restaurant')
+
+
+# Basic class of a restaurant with a default value and printing the value.
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")   # Result:  0
+
+
+
+# Lets change the value of the amount of served customers and printing value. (This is not the best way to modify values.)
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 2    # Changed value, not the best way/method to change the value.
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")  # Result:  2
+
+
+
+# Lets change the value DIRECTLY by modifying the amount of "served_customers" and printing value.
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")  # Result:  0
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+restaurant.number_served = 2
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")  # Result:  2
+
+
+
+# Using a method to change the amount of served customers in a restaurant.
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+    def set_number_served(self, customers_total):
+        """Set the amount of customers that have been served, typically in a restaurant."""
+        if customers_total >= self.number_served:
+            self.number_served = customers_total
+        else:
+            print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+restaurant.set_number_served(25)
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")  # Result:  25
+
+
+
+# Using a method to increment the amount of served customers in a restaurant. (Adding/increasing more customers)
+class Restaurant:
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 25
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+    def set_number_served(self, customers_total):
+        """Set the amount of customers that have been served, typically in a restaurant."""
+        if customers_total >= self.number_served:
+            self.number_served = customers_total
+        else:
+            print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
+    
+    def increment_number_served(self, amount_increasing):
+        """
+        Increase the amount of customers that have been served, typically in a restaurant. 
+        Increases the value then adds that value with the existing value to make the total value.
+        """
+        if amount_increasing >= self.number_served:
+            self.number_served += amount_increasing
+        else:
+            print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+print(f"This restaurant name is {restaurant.restaurant_name}. The cuisine type is: {restaurant.cuisine_type}.")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant = Restaurant('Dominoes', 'build-your-own and Specialty Pizzas')
+restaurant.increment_number_served(1024)
+print(f"{restaurant.number_served} customers were served in {restaurant.restaurant_name}")  # Result:  1049. (25 + 1024)
+
+
+
+
+# LOGIN ATTEMPTS (class 'User')
+
+
+# Applying the same skills we did in the last example with the restaurant.
+class User:
+    """A simple representation to model a user"""
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initilize the attributes of the class user."""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.height_in_inches = height_in_inches
+        self.weight_in_pounds = weight_in_pounds
+        self.login_attempts = 0
+    
+    def describe_user(self):
+        """Stimulate describing a user with some of the simple characteristics listed."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"The user name is {self.full_name}. (first: {self.first_name}) (last: {self.last_name})")
+        print(f"{self.full_name}'s age is {self.age}, height in inches is {self.height_in_inches}, and weight in pounds is {self.weight_in_pounds}.")
+        print(f"The gender of {self.first_name} is {self.gender}.")
+    
+    def greet_user(self):
+        """Stimulate greeting a user by its full name."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"Hello, {self.full_name}!")
+    
+    def increment_login_attempts(self):
+        """
+        Increase the amount of login attempts that have been there. 
+        Increases the value then adds that value with the existing value to make the total value.
+        """
+        self.login_attempts += 1
+    
+    def reset_login_attempts(self):
+        """Reset the amount of login attempts to zero! Regarding all values, value is set to zero."""
+        self.login_attempts = 0
+    
+    def show_amount_of_login_attempts(self):
+        """Show the amount of login attempts to log in to a website or another source."""
+        print(self.login_attempts)
+
+user = User('Anish', 'Pasumarthi', 13, 'Male', 65, 98)
+
+# Increasing the amount of login attempts from a user
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+
+# Showing the amount of login attempts
+print("\nLogin attempts:")
+user.show_amount_of_login_attempts()  # Result:  10
+
+# Reset the amount of login attempts from a user
+print("\nResetting login attempts")
+user.reset_login_attempts()
+
+# Showing the amount of login attempts
+print("\nLogin attempts:")
+user.show_amount_of_login_attempts()  # Result:  0
+
+
+
+
+
+
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
