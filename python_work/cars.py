@@ -193,6 +193,8 @@ class Car:
             self.odometer_reading = mileage
         else:
             print("You can't roll back an odometer!")
+
 my_new_car = Car('audi', 'a4', 2024)
 my_new_car.update_odometer(12)   # It will say "You can't roll back an odometer because you can't go less!"
+my_new_car.read_odometer()   # It will not change the value because of the warning message.
 # That is an example of updating and adding logic by adding more methods!
