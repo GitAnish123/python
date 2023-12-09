@@ -177,7 +177,7 @@ class Car:
         self.make = make
         self.model = model
         self.year = year
-        self.odometer_reading = 0
+        self.odometer_reading = 15     # This car has 15 miles on it
 
     def get_descriptive_name(self):
         """Return a neatly formatted descriptive name."""
@@ -193,4 +193,6 @@ class Car:
             self.odometer_reading = mileage
         else:
             print("You can't roll back an odometer!")
+my_new_car = Car('audi', 'a4', 2024)
+my_new_car.update_odometer(12)   # It will say "You can't roll back an odometer because you can't go less!"
 # That is an example of updating and adding logic by adding more methods!
