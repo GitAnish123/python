@@ -310,6 +310,8 @@ my_used_car.read_odometer()  # It will still be the same starting amount, 23500!
 # RESTAURANT (class 'Restaurant')
 
 
+
+
 # Basic class of a restaurant with a default value and printing the value.
 class Restaurant:
     """A simple representation of a restaurant."""
@@ -476,7 +478,12 @@ print(f"{restaurant.number_served} customers were served in {restaurant.restaura
 
 
 
+
+
+
 # LOGIN ATTEMPTS (class 'User')
+
+
 
 
 # Applying the same skills we did in the last example with the restaurant.
