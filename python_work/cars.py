@@ -685,3 +685,82 @@ my_leaf.provide_charging_time()
 # In "ElectricCar", add "self.battery_size" (initial: 40) ❶ and "describe_battery()" ❷ for electric car specifics.
 # General car features belong in the "Car" class, ensuring broad functionality access.
 # That is an example of how to add methods and attributes to a child class. These new ones will not appear in parent class.
+
+
+
+# Additionally, you can also override/modify any method that doesn't fit what you're trying to model with the child class.
+"""
+You can override any method from the parent class that doesn't fit what you're trying to model with the child class. 
+To do this, you define a method in the child class with the same name as the method you want to override in the parent class. 
+Python will disregard the parent class method and only pay attention to the method you define in the child class. 
+Say the class Car had a method called fill_gas_tank(). This method is meaningless for an all-electric vehicle, 
+so you might want to override this method.
+"""
+# Here is the example:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+    
+    def fill_gas_tank(self):               # Lets assume this class has the method!
+        """Stimulate filling a gas tank for a car."""          
+        print("This car's fuel is filled with gas now!")
+my_new_car = Car('audi', 'a4', 2024)
+my_new_car.fill_gas_tank()   # This will fill the gas tank   
+
+class ElectricCar(Car):
+    """A simple representation of a car, different aspects of a car, but specific to electric vehicles."""
+    def __init__(self, make, model, year, charging_time):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 40
+        self.charging_time = charging_time
+    
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charging time, in minutes."""
+        print(f"The charging time for the {self.make.title()} {self.model.title()} is {self.charging_time}.")
+    def fill_gas_tank():   # We are overriding the method because electric cars don't have gas tanks so that won't make sense.
+        """Electric cars don't have gas tanks."""
+        print("This electric car has no gas tank!")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+print(my_leaf.get_descriptive_name())
+my_leaf.describe_battery()
+my_leaf.provide_charging_time()
+my_leaf.fill_gas_tank()   # This will provide a message that you can't fill gas for an electric car!
+
+# That is an example of how to override/modify methods that doesn't fit for a child class.
+# You can apply these skills for other codes and programs/projects.
