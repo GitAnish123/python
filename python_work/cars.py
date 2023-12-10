@@ -561,3 +561,64 @@ user.show_amount_of_login_attempts()  # Result:  0
 
 # --------- PRACTICE IS OVER ------------ #
 """ PRACTICE IS CURRENTLY OVER!!! """
+
+
+
+
+
+
+
+
+
+
+"""
+When creating a specialized class that is based on another class, you can use inheritance. The new class, 
+called the child class, inherits attributes and methods from the original class, known as the parent class. 
+The child class can also define its own attributes and methods. To initialize attributes from the parent class, 
+you often call the parent class's __init__() method in the child class. For instance, 
+let's create an ElectricCar class based on the existing Car class, 
+focusing only on the specific attributes and behaviors relevant to electric cars.
+"""
+# Here is the example:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+    
+class ElectricCar(Car):    # Using inheritance
+    """A simple representation of a car, different aspects of a car, but specific to electric vehicles."""
+    def __init__(self, make, model, year):         # Making its own "__init__()" method.
+        """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)        # Accessing attributes to call methods from parent class
+    
+my_leaf = ElectricCar('nissan', 'leaf', 2024)      # Creating an instance
+print(my_leaf.get_descriptive_name())        # Using any method from the parent class
+
+# That is an example of how to use inhertitance.
+# In this example, we are only testing if inhertitance works, not creating new attributes and methods.
