@@ -622,3 +622,66 @@ print(my_leaf.get_descriptive_name())        # Using any method from the parent 
 
 # That is an example of how to use inhertitance.
 # In this example, we are only testing if inhertitance works, not creating new attributes and methods.
+
+
+
+# You can also define Attributes and Methods for the Child Class after you test inhertence from the child class!
+# Here is an example of adding two attributes and methods:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class ElectricCar(Car):
+    """A simple representation of a car, different aspects of a car, but specific to electric vehicles."""
+    def __init__(self, make, model, year, charging_time):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 40
+        self.charging_time = charging_time
+    
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charging time, in minutes."""
+        print(f"The charging time for the {self.make.title()} {self.model.title()} is {self.charging_time}.")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+print(my_leaf.get_descriptive_name())
+my_leaf.describe_battery()
+my_leaf.provide_charging_time()
+
+# In "ElectricCar", add "self.battery_size" (initial: 40) ❶ and "describe_battery()" ❷ for electric car specifics.
+# General car features belong in the "Car" class, ensuring broad functionality access.
+# That is an example of how to add methods and attributes to a child class. These new ones will not appear in parent class.
