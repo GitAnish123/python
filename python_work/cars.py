@@ -752,6 +752,7 @@ class ElectricCar(Car):
     def provide_charging_time(self):
         """Print a statement that provides the charging time, in minutes."""
         print(f"The charging time for the {self.make.title()} {self.model.title()} is {self.charging_time}.")
+    
     def fill_gas_tank(self):   # We are overriding the method because electric cars don't have gas tanks so that won't make sense.
         """Electric cars don't have gas tanks."""
         print("This electric car has no gas tank!")
