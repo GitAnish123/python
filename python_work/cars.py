@@ -765,3 +765,269 @@ my_leaf.fill_gas_tank()   # This will provide a message that you can't fill gas 
 
 # That is an example of how to override/modify methods that doesn't fit for a child class.
 # You can apply these skills for other codes and programs/projects.
+
+
+
+# Lets learn about composition!
+# This is basically instances as attributes!
+"""
+In coding real-world situations, as your class grows with many details, you can simplify by using composition. 
+For instance, if your ElectricCar class becomes too complex, 
+create a separate class called Battery to handle battery-related details. 
+Then, use a Battery instance as an attribute in the ElectricCar class.
+"""
+# Here is some BONUS and OPTIONAL rules/guidelines and tips!
+"""
+Composition is a design principle in object-oriented programming that involves creating instances of one class within 
+another class. It emphasizes separation of concerns, ensuring that each class has a specific and independent responsibility. 
+Unlike inheritance, 
+composition does not involve an "is-a" relationship but instead encapsulates the functionality of one class within another, 
+promoting modularity. This approach offers flexibility by allowing classes to be combined to form more complex structures, 
+enhancing code reuse and maintainability. 
+Instances of the composed class are typically created and initialized in the constructor of the containing class, 
+and methods of the composed class can be delegated or called within the methods of the containing class. These rules 
+contribute to a clear and meaningful relationship between classes and promote a structured and maintainable codebase.
+"""
+# Here is an example:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size=40):     # Creating an optional value. This value will be presented if no value provided.
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size   # Taking the value as a parameter.
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()     # Making the attribute as an instance
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()    # Accessing the method by first using the attribute.
+
+# We introduce a class named Battery without inheritance, containing an optional battery_size parameter in its "init" method. 
+# In the ElectricCar class, we add a self.battery attribute, 
+# automatically creating a Battery instance with a default size of 40 for every ElectricCar instance.
+# That is an example of how to use composition. Here are more examples of how to use it. 
+# There are also so many ways & options for how to use composition. Here are some examples...
+
+
+# Keeping it general with no default value(s) but defining the value in the "__init__()" line.
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size):    # No default value, and instead we are keeping it general.
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery(65)    # Providing a value
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
+
+
+# Same structure but creating an instance to store the attributes and calling it in the "__init__()" line.
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+my_battery = Battery(65)    # Creating an instance.
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = my_battery   # Using the instance here.
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
+
+
+# Here is another example for doing this. In the example, the "my_leaf" instance MUST provide the battery size as a parameter.
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size    # Keeping the parameter as the value
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year, battery_size):   # Including the parameter in the "__init__()" line.
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery(battery_size)    # Changing the value
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 40)  # Including the battery size value as a parameter in the instance.
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
+
+# These are some examples and explainations of what is composition and how to use it in many ways.
