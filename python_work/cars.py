@@ -1031,3 +1031,97 @@ print(my_leaf.get_descriptive_name())
 my_leaf.battery.describe_battery()
 
 # These are some examples and explainations of what is composition and how to use it in many ways.
+
+
+
+# This looks like a lot of extra work, 
+# but now we can describe the battery in as much detail as we want without cluttering the ElectricCar class. 
+# Let’s add another method to Battery that reports the range of the car based on the battery size:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size=40):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+    
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def get_range(self):      # New method provided
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 40:
+            range = 150
+        elif self.battery_size == 65:
+            range = 225
+
+        print(f"This car can go about {range} miles on a full charge.")
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):   
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()   
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024) 
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
+my_leaf.battery.get_range()    # Result:  This car can go about 150 miles on a full charge.
+
+# The "get_range()" method in Battery analyzes and reports the range based on the car's battery attribute.
+# That is an example of how to add more methods and be free for adding AS MANY methods and attributes you want.
+
+
+
+# Lets learn some more tips.
+# Here are some rules and tips of how to model real-world objects and understanding them followed by good practice skills.
+
+"""
+Modeling complex things like electric cars prompts interesting questions. 
+Is the car's range a property of the battery or the car? 
+If describing only one car, it's okay to keep the get_range() method in the Battery class. 
+But for a whole lineup, it might be better in the ElectricCar class. 
+This decision-making marks a shift to higher-level, logical thinking about code representation, 
+where there's no strict right or wrong. Some approaches are more efficient, but finding the best takes practice. 
+If your code works as intended, you're doing well. 
+Don't be discouraged if you rewrite your classes several times; it's a common part of writing accurate, efficient code.
+"""
+
+# These are some tips and guidelines to model real-world objects and understand it as you dive deeper.
+# Practice frequently/daily to write accurate and efficient code always for understanding, better results, and quickness.
