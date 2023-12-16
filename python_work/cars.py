@@ -1253,8 +1253,176 @@ class Admin(User):
     def show_privileges(self):
         """Show the lists the administrator's set of privileges."""
         print("\nHere are SOME of the BASIC privileges an admin can do:")
-        for privilege in self.basic_privileges:
-            print(f"-- {privilege}")
+        for the_privilege in self.basic_privileges:
+            print(f"-- {the_privilege}")
 
 admin = Admin('Justin', 'Champ', 41, 'Male', 69, 153)   # Creating new instance
 admin.show_privileges()   # Calling method
+
+
+
+# Creating an instance as an attribute with a new class that stores more specific information related to a child class.
+class User:   
+    """A simple representation to model a user"""     # The original parent class
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initilize the attributes of the class user."""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.height_in_inches = height_in_inches
+        self.weight_in_pounds = weight_in_pounds
+        self.login_attempts = 0
+    
+    def describe_user(self):
+        """Stimulate describing a user with some of the simple characteristics listed."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"The user name is {self.full_name}. (first: {self.first_name}) (last: {self.last_name})")
+        print(f"{self.full_name}'s age is {self.age}, height in inches is {self.height_in_inches}, and weight in pounds is {self.weight_in_pounds}.")
+        print(f"The gender of {self.first_name} is {self.gender}.")
+    
+    def greet_user(self):
+        """Stimulate greeting a user by its full name."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"Hello, {self.full_name}!")
+    
+    def increment_login_attempts(self):
+        """
+        Increase the amount of login attempts that have been there. 
+        Increases the value then adds that value with the existing value to make the total value.
+        """
+        self.login_attempts += 1
+    
+    def reset_login_attempts(self):
+        """Reset the amount of login attempts to zero! Regarding all values, value is set to zero."""
+        self.login_attempts = 0
+    
+    def show_amount_of_login_attempts(self):
+        """Show the amount of login attempts to log in to a website or another source."""
+        print(self.login_attempts)
+
+class Privileges:   # New class
+    """A simple attempt to model privileges for an admin to do when nessesary or normally."""
+    def __init__(self, basic_privileges):
+        """Initialize attributes for a class."""
+        self.basic_privileges = basic_privileges 
+    
+    def show_privileges(self):    # Using the method in this area
+        """Show the lists the administrator's set of privileges."""
+        print("\nHere are SOME of the BASIC privileges an admin can do:")
+        for the_privilege in self.basic_privileges:
+            print(f"-- {the_privilege}")   
+
+# Create an instance
+admin_privilege = Privileges(["can add post", "can delete post", "can ban user", "can add user", "can see user's info/records", "can track user", "can fire user", "can direct user", "can call user", "can schedule almost anything"])
+
+class Admin(User):
+    """A simple representation of a User, but relating to a Admin for specific information for that type of person."""
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initialize attributes of an Admin child class that is specific to a User class."""
+        super().__init__(first_name, last_name, age, gender, height_in_inches, weight_in_pounds)
+        self.privilege = admin_privilege   # Using the instance as an attribute
+
+admin = Admin('Justin', 'Champ', 41, 'Male', 69, 153)   # Creating new instance
+admin.privilege.show_privileges()   # Accessing and calling the method
+
+
+
+# Modeling real-world objects by creating a new method and keeping it in the right area with the right job.
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size=40):     
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size  
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def get_range(self):      
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 40:
+            range = 150
+        elif self.battery_size == 65:
+            range = 225
+
+        print(f"This car can go about {range} miles on a full charge.")
+
+    def upgrade_battery(self):   # Creating a new method at the right spot.
+        """Upgrade a battery to 65 kWh no matter any size it is."""
+        if self.battery_size:  # If there is a battery...
+            if self.battery_size != 65:
+                self.battery_size = 65
+                print("Processing upgrade...\tGetting it ready...\nBattery successfully upgraded!")
+                print("This car has now at 65 kWh battery!")
+            else:
+                print("Battery is already upgraded to max size!")
+        else:    # If there is no battery...
+            print("No BATTERY PROVIDED!\nPlease provide a battery for upgrading.")
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()    
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)   # Creating an instance
+
+my_leaf.battery.battery_size = 40    # Setting the battery size to 40 kWh
+my_leaf.battery.describe_battery()   # Describing the battery
+my_leaf.battery.get_range()   # Result:  This car can go about 150 miles on a full charge.
+
+my_leaf.battery.upgrade_battery()   # Using the method to upgrade the battery to 65 kWh, the max size!
+my_leaf.battery.describe_battery()  # Describing the battery again, this will show an upgraded result.
+my_leaf.battery.get_range()   # Result:  This car can go about 225 miles on a full charge.
+
+# These examples above are ways of how inhertence works & ways we can use these classes for deeper knowledge & understanding.
+
+
+
+
+
+
+
+
+
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
