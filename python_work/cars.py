@@ -1125,3 +1125,136 @@ Don't be discouraged if you rewrite your classes several times; it's a common pa
 
 # These are some tips and guidelines to model real-world objects and understand it as you dive deeper.
 # Practice frequently/daily to write accurate and efficient code always for understanding, better results, and quickness.
+
+
+
+
+
+
+
+
+
+
+
+# ----------- PRACTICE -------------- #
+""" Practice now begins """
+
+
+
+
+
+
+
+
+
+
+# Inherting a class along with adding a attribute and instance and finally creating an instance and calling it.
+class Restaurant:   # Parent class
+    """A simple representation of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initillize attributes of a restaurant."""
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 25
+    
+    def describe_restaurant(self):
+        """Describe a restaurant"""
+        print(f"The restaurant name is {self.restaurant_name} and the cuisine type is: {self.cuisine_type}.")
+    
+    def open_restaurant(self):
+        """Stimulate making a restaurant be opened."""
+        print(f"{self.restaurant_name} is now currently open!")
+
+    def set_number_served(self, customers_total):
+        """Set the amount of customers that have been served, typically in a restaurant."""
+        if customers_total >= self.number_served:
+            self.number_served = customers_total
+        else:
+            print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
+    
+    def increment_number_served(self, amount_increasing):
+        """
+        Increase the amount of customers that have been served, typically in a restaurant. 
+        Increases the value then adds that value with the existing value to make the total value.
+        """
+        if amount_increasing >= self.number_served:
+            self.number_served += amount_increasing
+        else:
+            print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
+
+class IceCreamStand(Restaurant):     # Child class
+    """A simple representation of an ice-cream stand, but relating to a restaurant that shares the same information."""
+    def __init__(self, restaurant_name, cuisine_type='ice cream'):   # Child class attributes
+        """Create/review and access attributes for a child class."""
+        super().__init__(restaurant_name, cuisine_type)    # Telling to refer the superclass (parent class)
+        self.flavors = []   # Empty list, we can modify it when we create an instance.
+    
+    def display_ice_cream_flavors(self):   # New method and using the new attribute
+        """Display all the ice cream flavors avaliable in the ice-cream stand."""
+        print("\nHere are all the ice-cream flavors available:")
+        for flavor in self.flavors:   # Looping through the list
+            print(f"-- {flavor}")
+
+ice_cream = IceCreamStand('Marble Slab Creamery')
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 'butterscotch', 'cotton candy', "cookies 'n cream"]
+
+ice_cream.describe_restaurant()
+ice_cream.display_ice_cream_flavors()
+
+
+
+# Another example of the SAME concept by applying users and admins.
+class User:
+    """A simple representation to model a user"""
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initilize the attributes of the class user."""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.height_in_inches = height_in_inches
+        self.weight_in_pounds = weight_in_pounds
+        self.login_attempts = 0
+    
+    def describe_user(self):
+        """Stimulate describing a user with some of the simple characteristics listed."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"The user name is {self.full_name}. (first: {self.first_name}) (last: {self.last_name})")
+        print(f"{self.full_name}'s age is {self.age}, height in inches is {self.height_in_inches}, and weight in pounds is {self.weight_in_pounds}.")
+        print(f"The gender of {self.first_name} is {self.gender}.")
+    
+    def greet_user(self):
+        """Stimulate greeting a user by its full name."""
+        self.full_name = f"{self.first_name} {self.last_name}"
+        print(f"Hello, {self.full_name}!")
+    
+    def increment_login_attempts(self):
+        """
+        Increase the amount of login attempts that have been there. 
+        Increases the value then adds that value with the existing value to make the total value.
+        """
+        self.login_attempts += 1
+    
+    def reset_login_attempts(self):
+        """Reset the amount of login attempts to zero! Regarding all values, value is set to zero."""
+        self.login_attempts = 0
+    
+    def show_amount_of_login_attempts(self):
+        """Show the amount of login attempts to log in to a website or another source."""
+        print(self.login_attempts)
+
+class Admin(User):
+    """A simple representation of a User, but relating to a Admin for specific information for that type of person."""
+    def __init__(self, first_name, last_name, age, gender, height_in_inches, weight_in_pounds):
+        """Initialize attributes of an Admin child class that is specific to a User class."""
+        super().__init__(first_name, last_name, age, gender, height_in_inches, weight_in_pounds)
+        self.basic_privileges = ["can add post", "can delete post", "can ban user", "can add user", "can see user's info/records", "can track user", "can fire user", "can direct user", "can call user", "can schedule almost anything"]
+    
+    def show_privileges(self):
+        """Show the lists the administrator's set of privileges."""
+        print("\nHere are SOME of the BASIC privileges an admin can do:")
+        for privilege in self.basic_privileges:
+            print(f"-- {privilege}")
+
+admin = Admin('Justin', 'Champ', 41, 'Male', 69, 153)   # Creating new instance
+admin.show_privileges()   # Calling method
