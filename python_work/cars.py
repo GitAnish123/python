@@ -1400,7 +1400,7 @@ class ElectricCar(Car):
         Then initialize attributes specific to an electric car.
         """
         super().__init__(make, model, year)
-        self.battery = Battery()    
+        self.battery = Battery()  
 
 my_leaf = ElectricCar('nissan', 'leaf', 2024)   # Creating an instance
 
