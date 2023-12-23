@@ -6,7 +6,8 @@ import random
 while True:
     name = input("What is your name?: ")
     your_choice = input("Lets play the guessing game! If you guess the number between 1-10, you get a prize!\nPlease guess a number between 1-10: ")
-    possible_actions = ['1','2','3','4','5','6','7','8','9','10']
+    your_choice = int(your_choice)
+    possible_actions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     computer_action = random.choice(possible_actions)
     print(f"\nYou chose {your_choice}, computer chose {computer_action}.\n")
     game_host_name = "Anish Pasumarthi"
