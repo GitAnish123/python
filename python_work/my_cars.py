@@ -69,3 +69,18 @@ my_leaf = ec.ElectricCar('nissan', 'leaf', 2024)
 
 # These are some examples of how you can apply and inplument aliases in classes.
 # You can use it for real-world situations as well!
+
+
+
+
+# Finally, find your own workflow! Here is some advice to get started and think:
+"""
+As you can see, Python gives you many options for how to structure code in a large project. 
+It's important to know all these possibilities. 
+So then, you can determine the best ways to organize your projects as well as understand other people's projects.
+When you're starting out, keep your code structure simple. 
+Try doing everything in one file and moving your classes to separate modules once everything is working. 
+If you like how modules and files interact, try storing your classes in modules when you start a project. 
+Find an approach that lets you write code that works, and go from there.
+"""
+# Remember to read this carefully and also finding your own workflow is very important, so start simple!
