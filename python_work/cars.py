@@ -1426,3 +1426,26 @@ my_leaf.battery.get_range()   # Result:  This car can go about 225 miles on a fu
 
 # --------- PRACTICE IS OVER ------------ #
 """ PRACTICE IS CURRENTLY OVER!!! """
+
+
+
+
+
+
+
+
+# Lessons are currently on the other "car" files!
+# Refer to them if you want to learn to import classes, finding workflows, using aliases, and more!
+
+
+
+
+
+
+
+
+
+
+
+                ########### LESSONS CURRENTLY FINISHED BY DEFAULT ############
+"""Lessons are currently finished by default, program ends!"""
