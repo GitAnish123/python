@@ -48,3 +48,24 @@ my_leaf = ElectricCar('nissan', 'leaf', 2024)
 print(my_leaf.get_descriptive_name())
 # That is an example of how those kinds of advanced importing works!
 # This could apply for real-world situations too!
+
+
+
+
+
+# You also can use aliases to make calling/using them easier.
+# As an example, consider a program where you want to make a bunch of electric cars. 
+# It might get tedious to type (and read) ElectricCar over and over again. 
+# You can give ElectricCar an alias in the import statement:
+
+# Giving a class an alias.
+from my_electric_car import ElectricCar as EC    # creating
+my_leaf = EC('nissan', 'leaf', 2024)    # using
+
+
+# You can give a module an alias as well!
+import my_electric_car as ec
+my_leaf = ec.ElectricCar('nissan', 'leaf', 2024)
+
+# These are some examples of how you can apply and inplument aliases in classes.
+# You can use it for real-world situations as well!
