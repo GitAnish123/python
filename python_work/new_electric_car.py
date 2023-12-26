@@ -1,6 +1,7 @@
 # We’ll make a new module called "electric_car.py" —replacing the "electric_car.py" file we created earlier.
 # Then copy just the Battery and ElectricCar classes into this file
 # The class ElectricCar needs access to its parent class Car, so we import Car directly into the module:
+# Use the other modules, "car.py" and "my_cars.py" for reference what is happening. We are importing module into module.
 
 from car import Car
 
