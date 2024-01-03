@@ -595,7 +595,7 @@ while True:
         if money >= 2_500_000:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
             break
-        if game_credits >= 2:
+        if game_credits >= 2.5:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
             break
 
@@ -611,7 +611,7 @@ while True:
         if money >= 7_500_000:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
             break
-        if game_credits >= 4:
+        if game_credits >= 3.5:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
             break
     
@@ -619,6 +619,6 @@ while True:
         if money >= 10_000_000:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
             break
-        if game_credits >= 5:
+        if game_credits >= 4:
             print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
             break
