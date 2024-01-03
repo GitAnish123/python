@@ -82,7 +82,7 @@ while True:
         if game_difficulty == 'hardcore':
             health -= random.randint(15,30)
         elif game_difficulty == 'easy':
-            health -= random.randint(5,10)
+            health -= random.randint(10,15)
         else: 
             health -= random.randint(10,25)
         print(f"You have {health} health left.")
