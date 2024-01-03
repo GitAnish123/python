@@ -16,11 +16,11 @@ while game_difficulty not in ['easy', 'medium', 'hard', 'hardcore']:
 
 if game_difficulty == 'medium':
     money = random.randint(80, 500)
-    health = random.randint(50, 200)
+    health = random.randint(100, 200)
     game_credits = 0.1
 elif game_difficulty == 'hardcore':
-    money = random.randint(40, 250)
-    health = 100
+    money = random.randint(40, 100)
+    health = 75
     game_credits = 0.01
 elif game_difficulty == 'hard':
     money = random.randint(50, 400)
@@ -28,8 +28,8 @@ elif game_difficulty == 'hard':
     game_credits = 0.05
 elif game_difficulty == 'easy':
     money = random.randint(100, 1000)
-    health = random.randint(100, 250)
-    game_credits = 0.1
+    health = random.randint(120, 250)
+    game_credits = 0.2
 
 # Set a limit for doctor attempts. First make the value to 0.
 doctor_attempts = 0
