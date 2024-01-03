@@ -34,6 +34,9 @@ elif game_difficulty == 'easy':
 # Set a limit for doctor attempts. First make the value to 0.
 doctor_attempts = 0
 
+# Set a limit for shop attempts. First make value to 0.
+shop_attempts = 0
+
 # Flag if you have a wife
 has_wife = False
 
@@ -79,61 +82,75 @@ while True:
             print("Max amount of attempts reached, sorry!")
     
     if welcome_message == 'shop':
-        if game_difficulty == 'hardcore':
-            health -= random.randint(15,30)
-        elif game_difficulty == 'easy':
-            health -= random.randint(10,15)
-        else: 
-            health -= random.randint(10,25)
-        print(f"You have {health} health left.")
-        print("You have chose to shop!!!")
-        shop_message = input("What do you want to shop?: ")
-        if len(shop_message) < 3:
-            price = 10
-        elif len(shop_message) < 4:
-            price = 20
-        elif len(shop_message) < 6:
-            price = 35
-        elif len(shop_message) < 8:
-            price = 72
-        elif len(shop_message) < 10:
-            price = 90
-        elif len(shop_message) < 12:
-            price = 100
-        elif len(shop_message) < 20:
-            price = random.randint(101, 500)
-        else:
-            price = random.randint(501, 1000)
-        print(f"Price of item: ${price}")
-        do_you_want_to_pay = input("Do you want to pay? (yes, no) ")
-        if do_you_want_to_pay == 'yes':
-            if money >= price:
-                if_you_want_to_use_coupon = input("Do you want to use a coupon, if you have one? (yes, no) ")
-                if if_you_want_to_use_coupon == 'yes':
-                    new_price = price * (100 - your_discount_price) / 100
-                    print(f"New price: ${new_price}")
-                    money = money - new_price
-                    del your_discount_price
-                    print(f"You have ${money} left.")
-                    get_credits = round(random.uniform(0, 0.5), 2)
-                    game_credits = game_credits + get_credits
-                    coupon_extra_credits = round(random.uniform(0, 0.5), 2)
-                    print(f"You got an extra {coupon_extra_credits} credits for using a coupon.")
-                    game_credits = game_credits + coupon_extra_credits
-                    print(f"You have now {game_credits} credits.")
-                else:
-                    print("Okay then pay up!")
-                    money = money - price
-                    print(f"You have ${money} left.")
-                    get_credits = round(random.uniform(0, 0.5), 2)
-                    game_credits = game_credits + get_credits
-                    print(f"You have now {game_credits} credits.")
+        if shop_attempts < 3:
+            if game_difficulty == 'hardcore':
+                health -= random.randint(25,50)
+            elif game_difficulty == 'easy':
+                health -= random.randint(15,25)
+            else: 
+                health -= random.randint(20,40)
+            print(f"You have {health} health left.")
+            print("You have chose to shop!!!")
+            shop_message = input("What do you want to shop?: ")
+            if len(shop_message) < 3:
+                price = 10
+            elif len(shop_message) < 4:
+                price = 20
+            elif len(shop_message) < 6:
+                price = 35
+            elif len(shop_message) < 8:
+                price = 72
+            elif len(shop_message) < 10:
+                price = 90
+            elif len(shop_message) < 12:
+                price = 100
+            elif len(shop_message) < 20:
+                price = random.randint(101, 500)
             else:
-                print("Sorry, you don't have enough money to buy the item!")
+                price = random.randint(501, 1000)
+            print(f"Price of item: ${price}")
+            do_you_want_to_pay = input("Do you want to pay? (yes, no) ")
+            if do_you_want_to_pay == 'yes':
+                if money >= price:
+                    if_you_want_to_use_coupon = input("Do you want to use a coupon, if you have one? (yes, no) ")
+                    if if_you_want_to_use_coupon == 'yes':
+                        new_price = price * (100 - your_discount_price) / 100
+                        print(f"New price: ${new_price}")
+                        money = money - new_price
+                        del your_discount_price
+                        print(f"You have ${money} left.")
+                        get_credits = round(random.uniform(0, 0.5), 2)
+                        game_credits = game_credits + get_credits
+                        coupon_extra_credits = round(random.uniform(0, 0.5), 2)
+                        print(f"You got an extra {coupon_extra_credits} credits for using a coupon.")
+                        game_credits = game_credits + coupon_extra_credits
+                        print(f"You have now {game_credits} credits.")
+                        if game_difficulty == 'easy':
+                            shop_attempts += 0.5
+                        elif game_difficulty == 'hardcore':
+                            shop_attempts += 1.5
+                        else:
+                            shop_attempts += 1
+                    else:
+                        print("Okay then pay up!")
+                        money = money - price
+                        print(f"You have ${money} left.")
+                        get_credits = round(random.uniform(0, 0.5), 2)
+                        game_credits = game_credits + get_credits
+                        print(f"You have now {game_credits} credits.")
+                        if game_difficulty == 'easy':
+                            shop_attempts += 0.5
+                        elif game_difficulty == 'hardcore':
+                            shop_attempts += 1.5
+                        else:
+                            shop_attempts += 1
+                else:
+                    print("Sorry, you don't have enough money to buy the item!")
+            else:
+                print("Ok, have a good day!")
+                print(f"You have ${money} left.")
         else:
-            print("Ok, have a good day!")
-            print(f"You have ${money} left.")
-        
+            print("You have max shopping attempts.")
 
     if welcome_message == 'fair business for credits':
         if game_difficulty == 'hardcore':
@@ -432,10 +449,13 @@ while True:
                 print(f"You don't have a wife! Action cannot be completed.")
         
         if result == 'wife rewards':
-            print("You get your wife rewards:")
-            game_credits = game_credits + round(random.uniform(0, 0.5), 2)
-            money += random.randint(100, 10000)
-            print(f"You have ${money} and {game_credits} credits.")
+            if has_wife == True:
+                print("You get your wife rewards:")
+                game_credits = game_credits + round(random.uniform(0, 0.5), 2)
+                money += random.randint(100, 10000)
+                print(f"You have ${money} and {game_credits} credits.")
+            else:
+                print("Cannot recieve wife rewards because no wife!")
         
         if result == 'kill wife':
             if has_wife == True:
