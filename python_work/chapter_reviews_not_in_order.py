@@ -1727,3 +1727,703 @@ separated by a dot. When Python reads my_dog.sit(),
 it looks for the method sit() in the class Dog and runs that code. 
 Python interprets the line my_dog.roll_over() in the same way. Now Willie does what we tell him to.
 """
+
+
+
+# You can call as many instances as you need.
+class Dog:
+    """A simple attempt to model a dog"""
+
+    def __init__(self, name, age):
+        """Initialize name and age attributes."""
+        self.name = name
+        self.age = age
+    
+    def sit(self):
+        """Stimulate sitting in response to a command."""
+        print(f"{self.name} is now sitting.")
+    
+    def roll_over(self):
+        """Stimulate a dog rolling over."""
+        print(f"{self.name} rolled over.")
+
+my_dog = Dog('Willie', 6)
+your_dog = Dog('Lucy', 3)
+
+print(f"My dog's name is {my_dog.name}.")
+print(f"My dog is {my_dog.age} years old.")
+my_dog.sit()
+
+print(f"\nYour dog's name is {your_dog.name}.")
+print(f"Your dog is {your_dog.age} years old.")
+your_dog.sit()
+"""
+Even if we used the same name and age for the second dog, 
+Python would still create a separate instance from the Dog class. 
+You can make as many instances from one class as you need, 
+as long as you give each instance a unique variable name or it occupies a unique spot in a list or dictionary.
+Each dog is a separate instance with its own set of attributes, capable of the same set of actions
+"""
+
+
+
+"""
+You can use classes to represent many real-world situations. 
+Once you write a class, you'll spend most of your time working with instances created from that class. 
+One of the first tasks you'll want to do is modify the attributes associated with a particular instance. 
+You can modify the attributes of an instance directly or write methods that update attributes in specific ways.
+"""
+# Lets create a new class that is a class car:
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name
+    
+my_new_car = Car('audi', 'a4', 2024)
+print(my_new_car.get_descriptive_name())
+
+"""
+In the Car class, we define the __init__() method with the self parameter first ❶, just like we did with the Dog class. 
+We also give it three other parameters: make, model, and year. 
+The __init__() method takes in these parameters and assigns them to the attributes that will be associated with instances 
+made from this class. When we make a new Car instance, we'll need to specify a make, model, and year for our instance.
+We define a method called get_descriptive_name() ❷ that puts a car's year, make, and model into one string neatly 
+describing the car. This will spare us from having to print each attribute's value individually. 
+To work with the attribute values in this method, we use self.make, self.model, and self.year. Outside of the class, 
+we make an instance from the Car class and assign it to the variable my_new_car ❸. 
+Then we call get_descriptive_name() to show what kind of car we have. 
+To make the class more interesting, let's add an attribute that changes over time. 
+We'll add an attribute that stores the car's overall mileage.
+"""
+
+
+
+# You can set a default value for an attribute to use it for an instance.
+# It can be defined in the "__init__()" method. Lets create a default value called "odometer_reading" that value is 0.
+# We also add a method that reads the car's mileage:
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+my_new_car = Car('audi', 'a4', 2024)
+print(my_new_car.get_descriptive_name())
+my_new_car.read_odometer()
+
+"""
+This time, when Python calls the __init__() method to create a new instance, it stores the make, model, and year values 
+as attributes, like it did in the previous example.  Then Python creates a new attribute called odometer_reading and sets 
+its initial value to 0 ❶.  We also have a new method called read_odometer() that makes it easy to read a car's mileage. 
+Our car starts with a mileage of 0.
+Not many cars are sold with exactly 0 miles on the odometer, so we need a way to change the value of this attribute.
+"""
+
+
+
+# You can modify attribute values by modifying them directly. This is the simplest way!
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+my_new_car = Car('audi', 'a4', 2024)
+print(my_new_car.get_descriptive_name())
+my_new_car.read_odometer()
+
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+# We use dot notation to access the car's odometer_reading attribute, and set its value directly. 
+# This line tells Python to take the instance my_new_car, and sets the value of that attribute to 23
+
+
+
+# You can modify an attribute value through a method.
+# Instead of accessing the attribute directly, you pass the new value to a method that handles the updating internally.
+# Lets also add some logic so nobody can roll back the odometer to a less value than the existing value.
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """        
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+
+my_new_car = Car('audi', 'a4', 2024)
+print(my_new_car.get_descriptive_name())
+my_new_car.update_odometer(23)   # Updates to 23
+my_new_car.read_odometer()    # Reads the odometer
+my_new_car.update_odometer(0)    # Prints a message that cannot roll back the odometer
+
+"""
+The only modification to Car is the addition of update_odometer(). 
+This method takes in a mileage value and assigns it to self.odometer_reading. 
+Using the my_new_car instance, we call update_odometer() with 23 as an argument ❶. 
+This sets the odometer reading to 23, and read_odometer() prints the reading. 
+Now update_odometer() checks that the new reading makes sense before modifying the attribute. 
+If the value provided for mileage is greater than or equal to the existing mileage, self.odometer_reading, 
+you can update the odometer reading to the new mileage ❶. 
+If the new mileage is less than the existing mileage, you'll get a warning that you can't roll back an odometer ❷.
+"""
+
+
+
+# You can increment the value by using a method as well. Same logic goes for decreasing.
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+    
+my_new_car = Car('audi', 'a4', 2024)
+print(my_new_car.get_descriptive_name())
+
+my_new_car.update_odometer(23_500)
+my_new_car.read_odometer()
+
+my_new_car.increment_odometer(100)
+my_new_car.read_odometer()
+
+"""
+The new method increment_odometer() takes in a number of miles, and adds this value to self.odometer_reading.
+We set its odometer to 23,500 by calling update_odometer() and passing it 23_500 ❷. 
+Finally, we call increment_odometer() and pass it 100 to add the 100 miles that we drove between buying the car and 
+registering it.
+"""
+
+
+
+# You can also use inheritence in classes. Here is some more:
+"""
+You don't always have to start from scratch when writing a class. 
+If the class you're writing is a specialized version of another class you wrote, you can use inheritance. 
+When one class inherits from another, it takes on the attributes and methods of the first class. 
+The original class is called the parent class, and the new class is the child class. 
+The child class can inherit any or all of the attributes and methods of its parent class, 
+but it's also free to define new attributes and methods of its own. 
+When you're writing a new class based on an existing class, you'll often want to call the __init__() method from the 
+parent class. 
+This will initialize any attributes that were defined in the parent __init__() method and make them available in the 
+child class. As an example, let's model an electric car. An electric car is just a specific kind of car, 
+so we can base our new ElectricCar class on the Car class we wrote earlier. 
+Then we'll only have to write code for the attributes and behaviors specific to electric cars. 
+Let's start by making a simple version of the ElectricCar class, which does everything the Car class does:
+"""
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+
+class ElectricCar(Car):
+    """Similar characteristics to a car, but specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+my_leaf.get_descriptive_name()
+
+"""
+We start with Car ❶. 
+When you create a child class, the parent class must be part of the current file and must appear before the child class 
+in the file. We then define the child class, ElectricCar ❷. 
+The name of the parent class must be included in parentheses in the definition of a child class. The __init__() method 
+takes in the information required to make a Car instance ❸. The super() function ❹ is a special function that allows you 
+to call a method from the parent class. 
+This line tells Python to call the __init__() method from Car, 
+which gives an ElectricCar instance all the attributes defined in that method. 
+The name super comes from a convention of calling the parent class a superclass and the child class a subclass. 
+We test whether inheritance is working properly by trying to create an electric car with the same kind of information 
+we'd provide when making a regular car. 
+We make an instance of the ElectricCar class and assign it to my_leaf ❺. 
+This line calls the __init__() method defined in ElectricCar,
+which in turn tells Python to call the __init__() method defined in the parent class Car. 
+We provide the arguments 'nissan', 'leaf', and 2024. Aside from __init__(), there are no attributes or methods yet that 
+are SPECIFIC to an electric car. At this point we're just making sure the electric car has the appropriate Car behaviors.
+The ElectricCar instance works just like an instance of Car, 
+so now we can begin defining attributes and methods specific to electric cars.
+"""
+
+
+
+# You can define attributes and methods for a child class after creating the child class __init__ method.
+# Once you have a child class that inherits from a parent class, ...
+# you can add any new attributes and methods necessary to differentiate the child class from the parent class.
+# Lets create two attributes and methods for the child class ONLY!
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+
+class ElectricCar(Car):
+    """Similar characteristics to a car, but specific to electric vehicles."""
+
+    def __init__(self, make, model, year, charging_time):
+        super().__init__(make, model, year)
+        self.battery = 40
+        self.charging_time = charging_time
+    
+    def describe_battery(self):
+        """Print a statement that describes the battery size."""
+        print(f"This car has a {self.battery}-kWh battery.")
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charge time, in minutes."""
+        print(f"The charge time is {self.charging_time} minutes.")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+my_leaf.get_descriptive_name()
+my_leaf.describe_battery()
+my_leaf.provide_charging_time()
+
+"""
+These attributes will be associated with all instances created from the ElectricCar class 
+but won't be associated with any instances of Car. 
+We also add a method called describe_battery() and provide_charging_time() that prints information about the battery ❷.
+There's no limit to how much you can specialize the ElectricCar class. 
+You can add as many attributes and methods as you need to model an electric car to whatever degree of accuracy you need. 
+An attribute or method that could belong to any car, rather than one that's specific to an electric car, 
+should be added to the Car class instead of the ElectricCar class. 
+Then anyone who uses the Car class will have that functionality available as well, 
+and the ElectricCar class will only contain code for the information and behavior specific to electric vehicles.
+"""
+
+
+
+# You can override any method from the parent class that doesn’t fit what you’re trying to model with the child class.
+# You define a method in the child class with the same name as the method you want to override in the parent class.
+# Say the class Car had a method called fill_gas_tank(). In the electric car class, we'll modify it because...
+# electric cars don't have fuel tanks and don't store gas.
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+    
+    def fill_gas_tank(self):
+        """Stimulate filling a gas tank for a car."""
+        print("Gas is filled, car is ready to drive.")
+
+class ElectricCar(Car):
+    """Similar characteristics to a car, but specific to electric vehicles."""
+
+    def __init__(self, make, model, year, charging_time):
+        super().__init__(make, model, year)
+        self.battery = 40
+        self.charging_time = charging_time
+    
+    def describe_battery(self):
+        """Print a statement that describes the battery size."""
+        print(f"This car has a {self.battery}-kWh battery.")
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charge time, in minutes."""
+        print(f"The charge time is {self.charging_time} minutes.")
+    
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't have a gas tank!")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+my_leaf.get_descriptive_name()
+my_leaf.describe_battery()
+my_leaf.provide_charging_time()
+
+"""
+Now if someone tries to call fill_gas_tank() with an electric car, 
+Python will ignore the method fill_gas_tank() in Car and run this code instead. 
+When you use inheritance, you can make your child classes retain what you need and override anything 
+you don't need from the parent class.
+"""
+
+
+
+"""
+When modeling something from the real world in code, you may find that you're adding more and more detail to a class. 
+You'll find that you have a growing list of attributes and methods and that your files are becoming lengthy. 
+In these situations, you might recognize that part of one class can be written as a separate class. 
+You can break your large class into smaller classes that work together; this approach is called composition.
+For example, if we continue adding detail to the ElectricCar class, we might notice that we're adding many attributes and 
+methods specific to the car's battery. When we see this happening, we can stop and move those attributes and methods 
+to a separate class called Battery. Then we can use a Battery instance as an attribute in the ElectricCar class:
+"""
+# There are many ways to do it, here is one example using a default value:
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+    
+    def fill_gas_tank(self):
+        """Stimulate filling a gas tank for a car."""
+        print("Gas is filled, car is ready to drive.")
+
+
+class Battery:
+    """Modeling a battery for electric car use."""
+
+    def __init__(self, battery=40):
+        """Initialize the battery attribute."""
+        self.battery = battery
+    
+    def describe_battery(self):
+        """Print a statement that describes the battery size."""
+        print(f"This car has a {self.battery}-kWh battery.")
+
+# Create an instance to use as an attribute
+my_battery = Battery(40)
+
+
+class ElectricCar(Car):
+    """Similar characteristics to a car, but specific to electric vehicles."""
+
+    def __init__(self, make, model, year, charging_time):
+        """Initialize child class attributes."""
+        super().__init__(make, model, year)
+        self.charging_time = charging_time
+        self.battery = my_battery   # Using the instance as the attribte
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charge time, in minutes."""
+        print(f"The charge time is {self.charging_time} minutes.")
+    
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't have a gas tank!")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+my_leaf.get_descriptive_name()
+my_leaf.battery.describe_battery()   # Accessing method
+my_leaf.provide_charging_time()
+
+"""
+We define a new class called Battery that doesn't inherit from any other class. 
+The __init__() method ❶ has one parameter, battery_size, in addition to self. 
+This is an optional parameter that sets the battery's size to 40 if no value is provided. 
+The method describe_battery() has been moved to this class as well ❷. 
+In the ElectricCar class, we now add an attribute called self.battery ❸. 
+This line tells Python to create a new instance of Battery (with a default size of 40, 
+because we're not specifying a value) and assign that instance to the attribute self.battery. 
+This will happen every time the __init__() method is called; 
+any ElectricCar instance will now have a Battery instance created automatically. 
+We create an electric car and assign it to the variable my_leaf. When we want to describe the battery, 
+we need to work through the car's battery attribute: 
+This line tells Python to look at the instance my_leaf, find its battery attribute, 
+and call the method describe_battery() that's associated with the Battery instance assigned to the attribute.
+The output is identical to what we saw previously.
+"""
+
+# This looks like a lot of extra work.
+# But now we can describe the battery in as much detail as we want without cluttering the ElectricCar class. 
+# Let’s add another method to Battery that reports the range of the car based on the battery size:
+
+class Car:
+    """A simple attempt to represent and model a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a statement that prints the full name of a car."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement that tells the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        """
+        Stimulate updating the car's odometer and telling the final mileage of the car.
+        Make sure that odometer cannot roll back after updating.
+        """
+        if mileage >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading = self.odometer_reading + mileage
+    
+    def increment_odometer(self, miles):
+        """Increment the car's odometer. Make sure to apply the logic of not rolling back the odometer."""
+        if miles >= self.odometer_reading:
+            print("You can't roll back an odometer!")
+        else:
+            self.odometer_reading += miles
+    
+    def fill_gas_tank(self):
+        """Stimulate filling a gas tank for a car."""
+        print("Gas is filled, car is ready to drive.")
+
+
+class Battery:
+    """Modeling a battery for electric car use."""
+
+    def __init__(self, battery_size=40):
+        """Initialize the battery attribute."""
+        self.battery_size = battery_size
+    
+    def describe_battery(self):
+        """Print a statement that describes the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 40:
+            range = 150
+        elif self.battery_size == 65:
+            range = 225
+
+        print(f"This car can go about {range} miles on a full charge.")
+
+
+class ElectricCar(Car):
+    """Similar characteristics to a car, but specific to electric vehicles."""
+
+    def __init__(self, make, model, year, charging_time):
+        """Initialize child class attributes."""
+        super().__init__(make, model, year)
+        self.charging_time = charging_time
+        self.battery = Battery()   # Using the instance as the attribte
+    
+    def provide_charging_time(self):
+        """Print a statement that provides the charge time, in minutes."""
+        print(f"The charge time is {self.charging_time} minutes.")
+    
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't have a gas tank!")
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024, 450)
+my_leaf.get_descriptive_name()
+my_leaf.battery.describe_battery()   # Accessing method
+my_leaf.provide_charging_time()
+my_leaf.battery.get_range()
+
+"""
+The new method get_range() performs some simple analysis. 
+If the battery's capacity is 40 kWh, get_range() sets the range to 150 miles, and if the capacity is 65 kWh, 
+it sets the range to 225 miles. It then reports this value. When we want to use this method, 
+we again have to call it through the car's battery attribute.
+The output tells us the range of the car based on its battery size.
+"""
+
+
+
+# Here is some tips to Model Real-World Objects
+"""
+Modeling electric cars raises questions about associating the get_range() method. 
+For a single car, linking it to the Battery class is fine. 
+Yet, for a manufacturer's lineup, it might be better in the ElectricCar class. 
+Another option is keeping the link with the battery but using a parameter like car_model. 
+This growth stage involves thinking beyond syntax, focusing on real-world representation. 
+Embrace the learning process, even if it means revising classes and trying different approaches.
+"""
