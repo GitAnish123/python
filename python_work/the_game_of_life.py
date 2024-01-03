@@ -40,7 +40,7 @@ has_wife = False
 print(f"You start with ${money}")
 print(f"You start with {health} health.")
 print(f"You start with {game_credits} credits.")
-print(f"You have {doctor_attempts} doctor attempts.")
+print(f"You currently have 3 doctor attempts. You used 0 doctor attempts.")
 
 while True:
     welcome_message = input(f"Welcome to your life! What do you want to do?\nEnter 'quit' to quit: ")
