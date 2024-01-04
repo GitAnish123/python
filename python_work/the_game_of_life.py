@@ -7,7 +7,10 @@ You earn credits ONLY when if you shop for stuff and do a business. BEWARE it co
 When you earn 4 credits, you win. So watch out for those three things: health, money, and credits.
 """
 
-import random
+import random, math, time
+
+name = input("What is your name?: ")
+print(f"Hello, {name}!")
 
 game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
 while game_difficulty not in ['easy', 'medium', 'hard', 'hardcore']:
@@ -50,14 +53,15 @@ while True:
     discount_attempts = 0
 
     if welcome_message == 'quit':
+        print(f"Thanks for playing, {name}!")
         break
     
     if money <= 0:
-        print("GAME OVER: YOU RAN OUT OF MONEY")
+        print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
         break
     
     if health <= 0:
-        print("GAME OVER: YOU HAVE NO HEALTH")
+        print(f"{name}, GAME OVER: YOU HAVE NO HEALTH")
         break
 
     if welcome_message == 'get coupon':
@@ -82,7 +86,7 @@ while True:
             print("Max amount of attempts reached, sorry!")
     
     if welcome_message == 'shop':
-        if shop_attempts < 3:
+        if shop_attempts < 4:
             if game_difficulty == 'hardcore':
                 health -= random.randint(25,50)
             elif game_difficulty == 'easy':
@@ -218,7 +222,7 @@ while True:
         actions = ['get money', 'lose money', 'get coupon', 'bad stock rates', 'geoperdy', 'good stock rates',
                     'paying taxes', 'sue person', 'doctor', 'sleep', 'entertainment', 'work', 'socializing', 
                     'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife', 'divorce wife',
-                    'wife rewards', 'wife killed']
+                    'wife rewards', 'wife killed', 'double geoperdy', 'math challenge', 'sightsee']
         result = random.choice(actions)
         if result == 'get money':
             additional_money_result = random.randint(100, 10000)
@@ -242,22 +246,134 @@ while True:
             money = money - lose_stocks
             print(f"You lost ${lose_stocks}\nYou now currently have ${money}.")
         if result == 'geoperdy':
-            print("Welcome to geoperdy!")
-            amount = input("Choose your amount to wager for the question in numeric form: ")
-            amount = int(amount)
-            answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-            the_answer = random.choice(answers)
-            question_for_geoperdy = input("What number am I thinking of from 1-10: ")
-            question_for_geoperdy = int(question_for_geoperdy)
-            print(f"You picked {question_for_geoperdy} and we picked {the_answer}.")
-            if question_for_geoperdy == the_answer:
-                print(f"You win! You get ${amount}")
-                money = money + amount
-                print(f"You now have ${money}")
+            geoperdy_questions = {
+            "Capital of France?": "Paris",
+            "Year World War II ended?": "1945",
+            "Largest planet in the solar system?": "Jupiter",
+            "Number of continents on Earth?": "7",
+            "Element with the symbol 'H'?": "Hydrogen",
+            "Currency used in Japan?": "Yen",
+            "Who wrote 'Romeo and Juliet'?": "William Shakespeare",
+            "Current US President (as of 2024)?": "Joe Biden",
+            "Square root of 64?": "8",
+            "Country with the longest coastline?": "Canada",
+            "The Great Barrier Reef is located in which ocean?": "Pacific Ocean",
+            "What is the smallest prime number?": "2",
+            "The Mona Lisa was painted by?": "Leonardo da Vinci",
+            "First man to step on the moon?": "Neil Armstrong",
+            "What is the capital of Australia?": "Canberra",
+            "What is the speed of light?": "299,792 kilometers per second",
+            "Who developed the theory of relativity?": "Albert Einstein",
+            "In what year did the Titanic sink?": "1912",
+            "The Eiffel Tower is located in which city?": "Paris",
+            "What is the largest mammal in the world?": "Blue Whale",
+            "Who painted the Sistine Chapel ceiling?": "Michelangelo",
+            "What is the largest desert in the world?": "Antarctica",
+            "The currency of China is called?": "Renminbi",
+            "What is the capital of Brazil?": "Brasília",
+            "How many planets are in our solar system?": "8",
+            "Who wrote 'To Kill a Mockingbird'?": "Harper Lee",
+            "The Great Wall of China is approximately how long?": "13,170 miles",
+            "Which planet is known as the Red Planet?": "Mars",
+            "Who is known as the 'Father of Computers'?": "Charles Babbage",
+            "What is the currency of South Africa?": "Rand",
+            "Who discovered penicillin?": "Alexander Fleming",
+            "What is the national flower of Japan?": "Cherry Blossom",
+            "The Nile River is located on which continent?": "Africa",
+            "Who painted 'Starry Night'?": "Vincent van Gogh",
+            "What is the capital of South Korea?": "Seoul",
+            "How many bones are in the human body?": "206",
+            "What is the main ingredient in guacamole?": "Avocado",
+            "Who wrote '1984'?": "George Orwell",
+            "What is the largest bird in the world?": "Ostrich",
+            "Who is the author of 'Harry Potter' series?": "J.K. Rowling",
+            "What is the currency of Japan?": "Yen",
+            "What is the national animal of Australia?": "Kangaroo",
+            "Who developed the polio vaccine?": "Jonas Salk",
+            "What is the smallest country in the world?": "Vatican City",
+            "What is the largest ocean on Earth?": "Pacific Ocean",
+            "Who discovered the law of gravity?": "Isaac Newton",
+            "What is the capital of Russia?": "Moscow",
+            "What is the currency of Mexico?": "Peso",
+            "Who wrote 'Pride and Prejudice'?": "Jane Austen",
+            "What is the capital of China?": "Beijing",
+            "What is the largest fish in the world?": "Whale Shark",
+            "In what year did the Berlin Wall fall?": "1989",
+            "Who discovered electricity?": "Benjamin Franklin",
+            "What is the smallest ocean on Earth?": "Arctic Ocean",
+            "Who is the lead singer of the band Queen?": "Freddie Mercury",
+            "What is the largest volcano in the world?": "Mauna Loa",
+            "Who is the Greek god of the sea?": "Poseidon",
+            "What is the national sport of Japan?": "Sumo Wrestling",
+            "Which planet is known as the 'Morning Star' or 'Evening Star'?": "Venus",
+            "What is the capital of South Africa?": "Pretoria",
+            "Who painted the 'Mona Lisa'?": "Leonardo da Vinci",
+            "What is the main ingredient in hummus?": "Chickpeas",
+            "In what year was the Declaration of Independence signed?": "1776",
+            "Who is known as the 'Father of Modern Physics'?": "Albert Einstein",
+            "What is the national flower of the United States?": "Rose",
+            "Which element has the chemical symbol 'O'?": "Oxygen",
+            "What is the currency of India?": "Indian Rupee",
+            "What is the capital of Argentina?": "Buenos Aires",
+            "Who wrote 'The Great Gatsby'?": "F. Scott Fitzgerald",
+            "Which planet is known as the 'Red Planet'?": "Mars",
+            "What is the largest island in the world?": "Greenland",
+            "Who painted 'The Starry Night'?": "Vincent van Gogh",
+            "What is the main ingredient in sushi?": "Rice",
+            "In what year did the Renaissance begin?": "14th century",
+            "Who is the founder of Microsoft?": "Bill Gates",
+            "What is the largest mammal on land?": "Elephant",
+            "What is the currency of Brazil?": "Brazilian Real",
+            "Who wrote 'The Catcher in the Rye'?": "J.D. Salinger",
+            "What is the speed of sound in air?": "343 meters per second",
+            "What is the smallest prime number?": "2",
+            "In what year did the Titanic sink?": "1912",
+            "Who discovered penicillin?": "Alexander Fleming",
+            "What is the largest ocean on Earth?": "Pacific Ocean",
+            "What is the capital of Italy?": "Rome",
+            "Who is the author of 'The Lord of the Rings' series?": "J.R.R. Tolkien",
+            "What is the national animal of China?": "Giant Panda",
+            "What is the chemical symbol for gold?": "Au",
+            "What is the capital of Australia?": "Canberra",
+            "Who is the author of 'War and Peace'?": "Leo Tolstoy",
+            "Which gas do plants primarily absorb from the atmosphere?": "Carbon Dioxide",
+            "What is the largest moon in our solar system?": "Ganymede",
+            "In what year did the American Civil War end?": "1865",
+            "Who is the lead singer of the Rolling Stones?": "Mick Jagger",
+            "What is the main component of Earth's atmosphere?": "Nitrogen",
+            "Which river is the longest in the world?": "Nile",
+            "Who painted the 'Girl with a Pearl Earring'?": "Johannes Vermeer",
+            "What is the currency of South Korea?": "Korean Won",
+            "What is the largest desert in Africa?": "Sahara",
+            "Who developed the theory of evolution by natural selection?": "Charles Darwin",
+            "What is the capital of Canada?": "Ottawa",
+            "Which element has the chemical symbol 'Fe'?": "Iron",
+            "Who is known as the 'Father of Medicine'?": "Hippocrates",
+            "What is the national bird of the United States?": "Bald Eagle",
+            "In what year did Christopher Columbus first reach the Americas?": "1492",
+            "Who is the author of 'The Great Escape'?": "Paul Brickhill",
+            "What is the speed of light in a vacuum?": "299,792 kilometers per second",
+            "What is the largest city in India?": "Mumbai",
+            "Who directed the movie 'Schindler's List'?": "Steven Spielberg",
+            "What is the currency of Egypt?": "Egyptian Pound",
+            "Who wrote 'The Chronicles of Narnia' series?": "C.S. Lewis",
+            "What is the boiling point of water in Celsius?": "100 degrees",
+            "Who is the Roman god of war?": "Mars",
+            "What is the smallest bone in the human body?": "Stapes (in the ear)",
+            "Who was the first woman to win a Nobel Prize?": "Marie Curie",
+            }
+            print(f"Welcome to geoperdy! If you win, you get MONEY, if you lose, pay the wager amount.")
+            wager = input(f"Choose ANY amount to wager for GEOPERDY! ")
+            wager = int(wager)
+            question, answer = random.choice(list(geoperdy_questions.items()))
+            user_answer = input(f"Question: {question}\nYour Answer: ").strip().lower()
+            if user_answer.lower() == answer.lower():
+                money += wager
+                print(f"Correct! You now have ${money}!")
             else:
-                print(f"You lose! You lost ${amount}")
-                money = money - amount
-                print(f"You are dropped down to ${money}")
+                money -= wager
+                print(f"Wrong! The correct answer was '{answer}'. You lose ${wager}. Your remaining balance: ${money}")
+            
         if result == 'good stock rates':
             print("There are some great stock rates happening around here...")
             xtra_money = random.randint(0,5)
@@ -464,6 +580,304 @@ while True:
                 actions.insert(18, 'wife')
             else:
                 print(f"Action: wife dead, cannot be done. Reason: NO WIFE!")
+        
+        if result == 'double geoperdy':
+            questions_and_answers = {
+            "Capital of France?": "Paris",
+            "Year World War II ended?": "1945",
+            "Largest planet in the solar system?": "Jupiter",
+            "Number of continents on Earth?": "7",
+            "Element with the symbol 'H'?": "Hydrogen",
+            "Currency used in Japan?": "Yen",
+            "Who wrote 'Romeo and Juliet'?": "William Shakespeare",
+            "Current US President (as of 2024)?": "Joe Biden",
+            "Square root of 64?": "8",
+            "Country with the longest coastline?": "Canada",
+            "The Great Barrier Reef is located in which ocean?": "Pacific Ocean",
+            "What is the smallest prime number?": "2",
+            "The Mona Lisa was painted by?": "Leonardo da Vinci",
+            "First man to step on the moon?": "Neil Armstrong",
+            "What is the capital of Australia?": "Canberra",
+            "What is the speed of light?": "299,792 kilometers per second",
+            "Who developed the theory of relativity?": "Albert Einstein",
+            "In what year did the Titanic sink?": "1912",
+            "The Eiffel Tower is located in which city?": "Paris",
+            "What is the largest mammal in the world?": "Blue Whale",
+            "Who painted the Sistine Chapel ceiling?": "Michelangelo",
+            "What is the largest desert in the world?": "Antarctica",
+            "The currency of China is called?": "Renminbi",
+            "What is the capital of Brazil?": "Brasília",
+            "How many planets are in our solar system?": "8",
+            "Who wrote 'To Kill a Mockingbird'?": "Harper Lee",
+            "The Great Wall of China is approximately how long?": "13,170 miles",
+            "Which planet is known as the Red Planet?": "Mars",
+            "Who is known as the 'Father of Computers'?": "Charles Babbage",
+            "What is the currency of South Africa?": "Rand",
+            "Who discovered penicillin?": "Alexander Fleming",
+            "What is the national flower of Japan?": "Cherry Blossom",
+            "The Nile River is located on which continent?": "Africa",
+            "Who painted 'Starry Night'?": "Vincent van Gogh",
+            "What is the capital of South Korea?": "Seoul",
+            "How many bones are in the human body?": "206",
+            "What is the main ingredient in guacamole?": "Avocado",
+            "Who wrote '1984'?": "George Orwell",
+            "What is the largest bird in the world?": "Ostrich",
+            "Who is the author of 'Harry Potter' series?": "J.K. Rowling",
+            "What is the currency of Japan?": "Yen",
+            "What is the national animal of Australia?": "Kangaroo",
+            "Who developed the polio vaccine?": "Jonas Salk",
+            "What is the smallest country in the world?": "Vatican City",
+            "What is the largest ocean on Earth?": "Pacific Ocean",
+            "Who discovered the law of gravity?": "Isaac Newton",
+            "What is the capital of Russia?": "Moscow",
+            "What is the currency of Mexico?": "Peso",
+            "Who wrote 'Pride and Prejudice'?": "Jane Austen",
+            "What is the capital of China?": "Beijing",
+            "What is the largest fish in the world?": "Whale Shark",
+            "In what year did the Berlin Wall fall?": "1989",
+            "Who discovered electricity?": "Benjamin Franklin",
+            "What is the smallest ocean on Earth?": "Arctic Ocean",
+            "Who is the lead singer of the band Queen?": "Freddie Mercury",
+            "What is the largest volcano in the world?": "Mauna Loa",
+            "Who is the Greek god of the sea?": "Poseidon",
+            "What is the national sport of Japan?": "Sumo Wrestling",
+            "Which planet is known as the 'Morning Star' or 'Evening Star'?": "Venus",
+            "What is the capital of South Africa?": "Pretoria",
+            "Who painted the 'Mona Lisa'?": "Leonardo da Vinci",
+            "What is the main ingredient in hummus?": "Chickpeas",
+            "In what year was the Declaration of Independence signed?": "1776",
+            "Who is known as the 'Father of Modern Physics'?": "Albert Einstein",
+            "What is the national flower of the United States?": "Rose",
+            "Which element has the chemical symbol 'O'?": "Oxygen",
+            "What is the currency of India?": "Indian Rupee",
+            "What is the capital of Argentina?": "Buenos Aires",
+            "Who wrote 'The Great Gatsby'?": "F. Scott Fitzgerald",
+            "Which planet is known as the 'Red Planet'?": "Mars",
+            "What is the largest island in the world?": "Greenland",
+            "Who painted 'The Starry Night'?": "Vincent van Gogh",
+            "What is the main ingredient in sushi?": "Rice",
+            "In what year did the Renaissance begin?": "14th century",
+            "Who is the founder of Microsoft?": "Bill Gates",
+            "What is the largest mammal on land?": "Elephant",
+            "What is the currency of Brazil?": "Brazilian Real",
+            "Who wrote 'The Catcher in the Rye'?": "J.D. Salinger",
+            "What is the speed of sound in air?": "343 meters per second",
+            "What is the smallest prime number?": "2",
+            "In what year did the Titanic sink?": "1912",
+            "Who discovered penicillin?": "Alexander Fleming",
+            "What is the largest ocean on Earth?": "Pacific Ocean",
+            "What is the capital of Italy?": "Rome",
+            "Who is the author of 'The Lord of the Rings' series?": "J.R.R. Tolkien",
+            "What is the national animal of China?": "Giant Panda",
+            "What is the chemical symbol for gold?": "Au",
+            "What is the capital of Australia?": "Canberra",
+            "Who is the author of 'War and Peace'?": "Leo Tolstoy",
+            "Which gas do plants primarily absorb from the atmosphere?": "Carbon Dioxide",
+            "What is the largest moon in our solar system?": "Ganymede",
+            "In what year did the American Civil War end?": "1865",
+            "Who is the lead singer of the Rolling Stones?": "Mick Jagger",
+            "What is the main component of Earth's atmosphere?": "Nitrogen",
+            "Which river is the longest in the world?": "Nile",
+            "Who painted the 'Girl with a Pearl Earring'?": "Johannes Vermeer",
+            "What is the currency of South Korea?": "Korean Won",
+            "What is the largest desert in Africa?": "Sahara",
+            "Who developed the theory of evolution by natural selection?": "Charles Darwin",
+            "What is the capital of Canada?": "Ottawa",
+            "Which element has the chemical symbol 'Fe'?": "Iron",
+            "Who is known as the 'Father of Medicine'?": "Hippocrates",
+            "What is the national bird of the United States?": "Bald Eagle",
+            "In what year did Christopher Columbus first reach the Americas?": "1492",
+            "Who is the author of 'The Great Escape'?": "Paul Brickhill",
+            "What is the speed of light in a vacuum?": "299,792 kilometers per second",
+            "What is the largest city in India?": "Mumbai",
+            "Who directed the movie 'Schindler's List'?": "Steven Spielberg",
+            "What is the currency of Egypt?": "Egyptian Pound",
+            "Who wrote 'The Chronicles of Narnia' series?": "C.S. Lewis",
+            "What is the boiling point of water in Celsius?": "100 degrees",
+            "Who is the Roman god of war?": "Mars",
+            "What is the smallest bone in the human body?": "Stapes (in the ear)",
+            "Who was the first woman to win a Nobel Prize?": "Marie Curie",
+            }
+            print(f"You have ${money}!")
+            print(f"Welcome to double geoperdy! If you win, you get double MONEY, if you lose, pay the price 1-3 times amount.")
+            wager = input(f"Choose an amount to wager for DOUBLE GEOPERDY! (amount should be less or equal to your money) ")
+            wager = int(wager)
+            if wager > money:
+                print(f"You can't wager that much money as you don't have that much!")
+            else:
+                question, answer = random.choice(list(questions_and_answers.items()))
+                user_answer = input(f"Question: {question}\nYour Answer: ").strip().lower()
+                if user_answer.lower() == answer.lower():
+                    money = money + wager * 2
+                    print(f"Correct! You now have ${money}!")
+                else:
+                    loss = wager * random.randint(1, 3)
+                    money -= loss
+                    print(f"Wrong! The correct answer was '{answer}'. You lose ${loss}. Your remaining balance: ${money}")
+        
+        if result == 'math challenge':
+            msg_for_math_enter = input("Do you want to enter the math challenge to earn rewards? (yes, no):  ")
+            if msg_for_math_enter == 'no':
+                print(f"Ok, so long!")
+                if game_difficulty != 'easy':
+                    money -= random.randint(100, 2000)
+                    print(f"You have ${money} left.")
+            else:
+                print("Great! If you lose, you lose money, every time you survive a round, you get credits.")
+                print("When you win, you get money!")
+                print("Here is round 1...")
+                num1 = random.randint(1, 100000000)
+                num2 = random.randint(1, 100000000)
+                correct_answer = num1 + num2
+
+                user_answer = int(input(f"What is {num1} + {num2}? "))
+                if user_answer == correct_answer:
+                    print(f"Great! You gained 0.05 credits.")
+                    game_credits += 0.05
+                    print(f"Lets start round 2...")
+                    num1 = random.randint(1, 100000000)
+                    num2 = random.randint(1, 100000000)
+                    correct_answer = num1 - num2
+                    user_answer = int(input(f"What is {num1} - {num2}? "))
+                    if user_answer == correct_answer:
+                        print(f"Great you gained 0.05 credits.")
+                        game_credits += 0.05
+                        print(f"Lets start round 3...")
+                        num1 = random.randint(1, 100000000)
+                        num2 = random.randint(1, 100000000)
+                        correct_answer = num1 * num2
+                        user_answer = int(input(f"What is {num1} * {num2}? "))
+                        if user_answer == correct_answer:
+                            print(f"Great, you gained 0.05 credits.")
+                            game_credits += 0.05
+                            print(f"Wow... Lets start round 4!")
+                            num1 = random.randint(1, 100000000)
+                            num2 = random.randint(1, 100000000)
+                            correct_answer = num1 / num2
+                            user_answer = float(input(f"What is {num1} ÷ {num2}? "))
+                            if user_answer == correct_answer:
+                                print("Great! You earned 0.05 credits.")
+                                game_credits += 0.05
+                                print(f"Lets start round 5...")
+                                num1 = round(random.uniform(1, 100000000), 3)
+                                num2 = round(random.uniform(1, 100000000), 3)
+                                num1 = random.randint(1, 100000000)
+                                num2 = random.randint(1, 100000000)
+                                operator = random.choice(['+', '-', '*', '/'])
+                                expression = f"{num1} {operator} {num2}"
+                                correct_answer = eval(expression)
+                                user_answer = float(input(f"What is {expression}? "))
+                                if user_answer == correct_answer:
+                                    print(f"Nice! You get 0.05 credits.")
+                                    game_credits += 0.05
+                                    print(f"Your HALFWAY done! Suprisingly impressed...\nHere comes round 6!")
+                                    num1 = round(random.uniform(100000, 10000000000000), 5)
+                                    num2 = round(random.uniform(100000, 10000000000000), 5)
+                                    num1 = random.randint(1, 100000000)
+                                    num2 = random.randint(1, 100000000)
+                                    operator = random.choice(['*', '/'])
+                                    expression = f"{num1} {operator} {num2}"
+                                    correct_answer = eval(expression)
+                                    user_answer = float(input(f"What is {expression}? "))
+                                    if user_answer == correct_answer:
+                                        print(f"Nice! You earned another 0.05 credits")
+                                        game_credits += 0.05
+                                        print(f"Very impressive! Lets move on to round 7!")
+                                        num1 = round(random.uniform(1, 100000), 2)
+                                        num2 = random.randint(1, 10000)
+                                        num3 = round(random.uniform(1, 100000), 4)
+                                        num4 = round(random.uniform(1, 100000), 3)
+
+                                        operators = ['+', '-', '*', '/']
+                                        expression = f"{num1} {random.choice(operators)} {num2} {random.choice(operators)} {num3} {random.choice(operators)} {num4}"
+                                        correct_answer = eval(expression)
+                                        user_answer = float(input(f"What is the result of {expression}? "))
+                                        if user_answer == correct_answer:
+                                            print(f"Great! You won 0.05 credits.")
+                                            game_credits += 0.05
+                                            print(f"Make way for round 8...")
+                                            num5 = round(random.uniform(1, 100), 2)
+                                            correct_answer = math.sqrt(num5)
+                                            user_answer = float(input(f"What is the square root of {num5}? "))
+                                            if user_answer == correct_answer:
+                                                print(f"Excellent! You won 0.05 credits.")
+                                                game_credits += 0.05
+                                                print("Almost there! Clown Stine, round 9...")
+                                                num6 = round(random.uniform(10, 20))
+                                                num7 = round(random.randint(10, 20))
+                                                divisor_for_round_9 = round(random.uniform(10, 100), 5)
+                                                correct_answer = math.pow(num6, num7) / divisor_for_round_9
+                                                user_answer = float(input(f"What is {num6}^{num7} divided by {divisor_for_round_9}? "))
+                                                if user_answer == correct_answer:
+                                                    print(f"Almost there! You won 0.05 credits.")
+                                                    game_credits += 0.05
+                                                    print(f"Now lets do the last, hardest, and unique problem! Make way for round 10...")
+                                                    expression = f"((3.5 * {random.uniform(1, 10)}) + ({random.randint(1, 5)} ** 2) - {math.sqrt(random.randint(1, 100))}) * {random.uniform(0.1, 1)}"
+                                                    correct_answer = eval(expression)
+                                                    user_answer = float(input(f"Solve the expression: {expression} "))
+                                                    if user_answer == correct_answer:
+                                                        print(f"CONGRATS!!! YOU FINISHED THE MATH CHALLENGE. For starters take 0.15 credits...")
+                                                        game_credits += 15
+                                                        print("And you also get a random amount from $1,000,000 to $2,000,000. To see final amounts, go to your stats.")
+                                                        math_finished_reward = random.randint(1_000_000, 2_000,000)
+                                                        money = money + math_finished_reward
+                                                        print(f"You got some health too!")
+                                                        health += 15
+                                                        print("Good job, and congrats again!")
+                                                    else:
+                                                        loss_money_for_math = random.randint(75000, 500000)
+                                                        print(f"You lost the final round!!! NO!!! You lost ${loss_money_for_math}!")
+                                                        print(f"The correct answer is {correct_answer}!")
+                                                        money = money - loss_money_for_math
+                                                else:
+                                                    loss_money_for_math = random.randint(50000, 75000)
+                                                    print(f"OH NO!!! You were almost there! You lost ${loss_money_for_math}!")
+                                                    print(f"The correct answer is {correct_answer}!")
+                                                    money = money - loss_money_for_math
+                                            else:
+                                                loss_money_for_math = random.randint(40000, 50000)
+                                                print(f"OH NO!!! You made it so far! You lost ${loss_money_for_math}!")
+                                                print(f"The correct answer is {correct_answer}!")
+                                                money = money - loss_money_for_math
+                                        else:
+                                            loss_money_for_math = random.randint(25000, 40000)
+                                            print(f"OH NO!!! You lost ${loss_money_for_math}")
+                                            print(f"The correct answer is {correct_answer}!")
+                                            money = money - loss_money_for_math
+                                            
+                                    else:
+                                        loss_money_for_math = random.randint(20000, 25000)
+                                        print(f"OH NO!!! You lost ${loss_money_for_math}")
+                                        print(f"The correct answer is {correct_answer}!")
+                                        money = money - loss_money_for_math
+                                else:
+                                    loss_money_for_math = random.randint(12500, 20000)
+                                    print(f"OH NO!!! You lost ${loss_money_for_math}")
+                                    print(f"The correct answer is {correct_answer}!")
+                                    money = money - loss_money_for_math
+                                
+                            else:
+                                loss_money_for_math = random.randint(10000, 12500)
+                                print(f"OH NO!!! You lost ${loss_money_for_math}.")
+                                print(f"The correct answer is {correct_answer}!")
+                                money = money - loss_money_for_math
+                        else:
+                            loss_money_for_math = random.randint(7500, 10000)
+                            print(f"OH NO!!! You lost ${loss_money_for_math}.")
+                            print(f"The correct answer is {correct_answer}!")
+                            money = money - loss_money_for_math
+                    else:
+                        print("OH NO!!! You lost $7500")
+                        print(f"The correct answer is {correct_answer}!")
+                        money -= 18500
+                else:
+                    print(f"OH NO!!! You lost $5000")
+                    print(f"The correct answer is {correct_answer}!")
+                    money -= 20000
+        if result == 'sightsee':
+            money -= 1000
+            health += 15
+            print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
     
     if welcome_message == 'gamble':
         if game_difficulty == 'hardcore':
@@ -546,6 +960,16 @@ while True:
         else:
             print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
         print(f"You currently have ${money}.")
+    
+    if welcome_message == 'secret wheel_fortune23 gameisTRUE':
+        print(f"Welcome to your favorite game!")
+        print("Wheel.", end=" ")
+        time.sleep(1)
+        print("Of.", end=" ")
+        time.sleep(1)
+        print("Fortune!")
+        time.sleep(1)
+
     
     if welcome_message == 'doctor':
         if doctor_attempts < 3:
