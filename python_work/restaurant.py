@@ -1,5 +1,7 @@
-# Lets create a class restaurant.
-
+"""
+A simple attempt to model a restaurant and representing with describing a restuarant with other small kinds like
+ice cream stands, using inheritence, and more. 
+"""
 
 
 
@@ -48,7 +50,3 @@ class IceCreamStand(Restaurant):
         print("\nHere are all the ice-cream flavors available:")
         for flavor in self.flavors:   
             print(f"-- {flavor}")
-
-ice_cream = IceCreamStand('Marble Slab Creamery')
-ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
-                     'butterscotch', 'cotton candy', "cookies 'n cream"]
