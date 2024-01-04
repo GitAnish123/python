@@ -7,10 +7,12 @@ You earn credits ONLY when if you shop for stuff and do a business. BEWARE it co
 When you earn 4 credits, you win. So watch out for those three things: health, money, and credits.
 """
 
-import random, math, time
+import random, time
 
 name = input("What is your name?: ")
 print(f"Hello, {name}!")
+
+gender = input("What is your gender? (male, female): ")
 
 game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
 while game_difficulty not in ['easy', 'medium', 'hard', 'hardcore']:
@@ -537,20 +539,28 @@ while True:
                 print("You already have a wife/husband! Enter 'action' to divorce a wife/husband if needed.")
             else:
                 has_wife = True
-                wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
-                            'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
-                ywn = random.choice(wife_names)
+                if gender == 'female':
+                    lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                                'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+                else:
+                    lover_names = [
+                    "Liam", "Noah", "Oliver", "Elijah", "William",
+                    "James", "Benjamin", "Lucas", "Henry", "Alexander",
+                    "Mason", "Ethan", "Logan", "Jackson", "Aiden",
+                    "Sebastian", "Caleb", "Matthew", "Samuel", "David"
+                    ]
+                ywn = random.choice(lover_names)
                 wife_amount = random.randint(10_000, 100_000)
                 wife_choose_giving_money_options = ['yes', 'no', 'you give money']
                 wife_choose_giving_money = random.choice(wife_choose_giving_money_options)
                 if wife_choose_giving_money == 'yes':
-                    print(f"You got a wife, {ywn.title()}. He/She chose to give her money to you as his/her net worth is ${wife_amount}!")
+                    print(f"You got a wife/husband, {ywn.title()}. He/She chose to give her money to you as his/her net worth is ${wife_amount}!")
                     money = money + wife_amount
                 elif wife_choose_giving_money == 'no':
-                    print(f"You got a wife, {ywn.title()}. He/she chose to NOT give her money to you as his/her net worth is ${wife_amount}!")
+                    print(f"You got a wife/husband, {ywn.title()}. He/she chose to NOT give her money to you as his/her net worth is ${wife_amount}!")
                 elif wife_choose_giving_money == 'you give money':
                     amount_wife_wants = random.randint(1000, 10000)
-                    print(f"You got a wife, {ywn.title()}. He/She wants you to give ${amount_wife_wants} to him/her!")
+                    print(f"You got a wife/husband, {ywn.title()}. He/She wants you to give ${amount_wife_wants} to him/her!")
                     money = money - amount_wife_wants
                 print(f"You have ${money} left.")
                 del actions[18]
@@ -911,13 +921,24 @@ while True:
         else:
             health -= random.randint(10, 15)
             print(f"You have {health} health left.")
-            wife_possibilities = ''
-            has_wife == True
-            wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
-                            'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
-            ywn = random.choice(wife_names)
-            print(f"You got a wife/husband, her/his name is {ywn.title()}.")
-
+            wife_possibilities = ['yes', 'no']
+            if_you_got_wife = random.choices(wife_possibilities, weights=[0.10, 0.90])[0]
+            if if_you_got_wife == 'yes':
+                has_wife == True
+                if gender == 'female':
+                    lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                                    'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+                else:
+                    lover_names = [
+                    "Liam", "Noah", "Oliver", "Elijah", "William",
+                    "James", "Benjamin", "Lucas", "Henry", "Alexander",
+                    "Mason", "Ethan", "Logan", "Jackson", "Aiden",
+                    "Sebastian", "Caleb", "Matthew", "Samuel", "David"
+                    ]
+                ywn = random.choice(lover_names)
+                print(f"You got a wife/husband, her/his name is {ywn.title()}.")
+            else:
+                print("Sorry, you didn't have any luck finding a lover!")
     
     if welcome_message == 'secret wheel_fortune23 gameisTRUE':
         if game_difficulty == 'hardcore':
