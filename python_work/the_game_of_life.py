@@ -924,7 +924,7 @@ while True:
             wife_possibilities = ['yes', 'no']
             if_you_got_wife = random.choices(wife_possibilities, weights=[0.10, 0.90])[0]
             if if_you_got_wife == 'yes':
-                has_wife == True
+                has_wife = True
                 if gender == 'male':
                     lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
                                     'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
