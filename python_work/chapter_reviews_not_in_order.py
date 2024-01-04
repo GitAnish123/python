@@ -2430,6 +2430,7 @@ Embrace the learning process, even if it means revising classes and trying diffe
 
 
 
+
 # You can import classes as well instead of functions.
 """
 As you add more functionality to your classes, 
@@ -2446,3 +2447,180 @@ from restaurant import Restaurant
 favorite_restaurant = Restaurant('chick-fil-a', 'chicken sandwiches')
 favorite_restaurant.describe_restaurant()
 favorite_restaurant.set_number_served(100)
+print(favorite_restaurant.number_served)
+
+
+
+
+# You can store multiple classes instead of one class in a module. Here, we also added the inheritence class...
+# of restaurant.py. IceCreamStand also helps represents restaurants. Now we can import the IceCream class:
+
+from restaurant import IceCreamStand
+ice_cream = IceCreamStand('Marble Slab Creamery')
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
+                     'butterscotch', 'cotton candy', "cookies 'n cream"]
+ice_cream.display_ice_cream_flavors()
+ice_cream.describe_restaurant()
+
+
+
+
+# Now since we have more classes stored, we can import them at once instead of one class at one time:
+from restaurant import Restaurant, IceCreamStand
+favorite_restaurant = Restaurant('chick-fil-a', 'chicken sandwiches')
+favorite_restaurant.describe_restaurant()
+ice_cream = IceCreamStand('Marble Slab Creamery')
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
+                     'butterscotch', 'cotton candy', "cookies 'n cream"]
+ice_cream.display_ice_cream_flavors()
+
+
+
+
+# You also can import an entire module and access everything inside it!
+# Here is an example using the same module that ends with .py...
+
+import restaurant
+favorite_restaurant = restaurant.Restaurant('chick-fil-a', 'chicken sandwiches')
+ice_cream = restaurant.IceCreamStand('Marble Slab Creamery')
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
+                     'butterscotch', 'cotton candy', "cookies 'n cream"]
+favorite_restaurant.describe_restaurant()
+ice_cream.describe_restaurant()
+ice_cream.display_ice_cream_flavors()
+
+
+
+
+# You can import ALL classes from a module using this syntax:  from 'module_name' import *
+"""
+This method is not recommended for two reasons. 
+First, it's helpful to be able to read the import statements at the top of a file and get a clear sense of which classes 
+a program uses. With this approach it's unclear which classes you're using from the module. 
+This approach can also lead to confusion with names in the file. 
+If you accidentally import a class with the same name as something else in your program file, 
+you can create errors that are hard to diagnose. I show this here because even though it's not a recommended approach, 
+you're likely to see it in other people's code at some point.
+If you need to import many classes from a module, you're better off importing the entire module and using the module_name.
+ClassName syntax. You won't see all the classes used at the top of the file, 
+but you'll see clearly where the module is used in the program. 
+You'll also avoid the potential naming conflicts that can arise when you import every class in a module.
+"""
+# Even though this approach is not good, here is the example:
+
+from restaurant import *
+favorite_restaurant = Restaurant('chick-fil-a', 'chicken sandwiches')
+ice_cream = IceCreamStand('Marble Slab Creamery')
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
+                     'butterscotch', 'cotton candy', "cookies 'n cream"]
+favorite_restaurant.describe_restaurant()
+ice_cream.describe_restaurant()
+ice_cream.display_ice_cream_flavors()
+
+
+
+
+# Finally, you can import a module into a module. While i'm not going to show you how to do it here, but i'll tell...
+# you the instructions of how to do it. If you want to see how to do it, go to the car.py and new_electric_car.py module.
+# These modules have examples and explainations of how to import modules, classes, functions, and a module into a module.
+# Here is how you do it with instructions:
+
+"""
+Sometimes you'll want to spread out your classes over several modules to keep any one file from growing too large and 
+avoid storing unrelated classes in the same module. When you store your classes in several modules, 
+you may find that a class in one module depends on a class in another module. 
+When this happens, you can import the required class into the first module.
+For example, let's store the Car class in one module and the ElectricCar and Battery classes in a separate module. 
+We'll make a new module called electric_car.py—replacing the electric_car.py file we created earlier—and copy just the 
+Battery and ElectricCar classes into this file. 
+The class ElectricCar needs access to its parent class Car, so we import Car directly into the module. 
+If we forget this line, Python will raise an error when we try to import the electric_car module. 
+We also need to update the Car module so it contains only the Car class.
+Now we can import from each module separately and create whatever kind of car we need in a different module.
+We import Car from its module, and ElectricCar from its module. We then create one regular car and one electric car. 
+Both cars are created correctly.
+"""
+
+
+
+
+# You can use aliases for classes and modules, not just functions! Here are some examples.
+# Here is how you create an alias for a class.
+from restaurant import Restaurant as R
+from restaurant import IceCreamStand as ICS
+
+# Now we can use these aliases.
+favorite_restaurant = R('chick-fil-a', 'chicken sandwiches')
+ice_cream = ICS('Marble Slab Creamery')
+
+# You also can use aliases for a module name and use the aliases for classes:
+import restaurant as r
+favorite_restaurant = r.Restaurant('chick-fil-a', 'chicken sandwiches')
+ice_cream = r.IceCreamStand('Marble Slab Creamery')
+
+
+
+
+# Find your own workflow explainations and tips:
+"""
+As you can see, Python gives you many options for how to structure code in a large project. 
+It's important to know all these possibilities so you can determine the best ways to organize your projects as well as 
+understand other people's projects.
+When you're starting out, keep your code structure simple. 
+Try doing everything in one file and moving your classes to separate modules once everything is working. 
+If you like how modules and files interact, try storing your classes in modules when you start a project. 
+Find an approach that lets you write code that works, and go from there.
+"""
+
+
+
+
+# Lets talk about the Python Standard Library that contains many modules, classes, and functions!
+"""
+The Python standard library is a set of modules included with every Python installation. 
+Now that you have a basic understanding of how functions and classes work, 
+you can start to use modules like these that other programmers have written. 
+You can use any function or class in the standard library by including a simple import statement at the top of your file. 
+Let's look at one module, random, which can be useful in modeling many real-world situations.
+One interesting function from the random module is randint(). 
+This function takes two integer arguments and returns a randomly selected integer between (and including) those numbers.
+Here's how to generate a random number between 1 and 6:
+"""
+# Here is how you do it:
+
+from random import randint
+print(randint(1, 6))
+
+
+# Another useful function is choice(). This function takes in a list or tuple and returns a randomly chosen element:
+from random import choice
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+first_up = choice(players)
+print(first_up)
+"""
+The random module shouldn't be used when building security-related applications, 
+but it works well for many fun and interesting projects. You can also download modules from external sources. 
+You'll see a number of these examples in Part II, where we'll need external modules to complete each project.
+"""
+
+
+
+# You can style classes as well as not only functions. Here is some style tips and guidelines to help you.
+"""
+A few styling issues related to classes are worth clarifying, especially as your programs become more complicated.
+Class names should be written in CamelCase. To do this, capitalize the first letter of each word in the name, 
+and don't use underscores. Instance and module names should be written in lowercase, with underscores between words.
+Every class should have a docstring immediately following the class definition. 
+The docstring should be a brief description of what the class does, 
+and you should follow the same formatting conventions you used for writing docstrings in functions. 
+Each module should also have a docstring describing what the classes in a module can be used for.
+You can use blank lines to organize code, but don't use them excessively. 
+Within a class you can use one blank line between methods, 
+and within a module you can use two blank lines to separate classes.
+If you need to import a module from the standard library and a module that you wrote, 
+place the import statement for the standard library module first. 
+Then add a blank line and the import statement for the module you wrote. 
+In programs with multiple import statements, 
+this convention makes it easier to see where the different modules used in the program come from.
+"""
+# These are some styling tips and guidelines to help you style classes and more!
