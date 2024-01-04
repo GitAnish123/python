@@ -50,4 +50,5 @@ class IceCreamStand(Restaurant):
             print(f"-- {flavor}")
 
 ice_cream = IceCreamStand('Marble Slab Creamery')
-ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 'butterscotch', 'cotton candy', "cookies 'n cream"]
+ice_cream.flavors = ['strawberry', 'mint chocolate ship', 'vanilla', 'chocolate', 
+                     'butterscotch', 'cotton candy', "cookies 'n cream"]
