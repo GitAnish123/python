@@ -719,9 +719,8 @@ while True:
             msg_for_math_enter = input("Do you want to enter the math challenge to earn rewards? (yes, no):  ")
             if msg_for_math_enter == 'no':
                 print(f"Ok, so long!")
-                if game_difficulty != 'easy':
-                    money -= random.randint(100, 2000)
-                    print(f"You have ${money} left.")
+                money -= random.randint(100, 2000)
+                print(f"You have ${money} left.")
             else:
                 print("Great! If you lose, you lose money, every time you survive a round, you get credits.")
                 print("When you win, you get money!")
@@ -735,149 +734,91 @@ while True:
                     print(f"Great! You gained 0.05 credits.")
                     game_credits += 0.05
                     print(f"Lets start round 2...")
-                    num1 = random.randint(1, 100000000)
-                    num2 = random.randint(1, 100000000)
+                    num1 = random.randint(100000, 100000000)
+                    num2 = random.randint(100000, 100000000)
                     correct_answer = num1 - num2
-                    user_answer = int(input(f"What is {num1} - {num2}? "))
+                    user_answer = float(input(f"What is {num1} - {num2}? "))
                     if user_answer == correct_answer:
                         print(f"Great you gained 0.05 credits.")
                         game_credits += 0.05
                         print(f"Lets start round 3...")
-                        num1 = random.randint(1, 100000000)
-                        num2 = random.randint(1, 100000000)
+                        num1 = random.randint(1, 100000)
+                        num2 = random.randint(1, 100000)
                         correct_answer = num1 * num2
                         user_answer = int(input(f"What is {num1} * {num2}? "))
                         if user_answer == correct_answer:
                             print(f"Great, you gained 0.05 credits.")
                             game_credits += 0.05
                             print(f"Wow... Lets start round 4!")
-                            num1 = random.randint(1, 100000000)
-                            num2 = random.randint(1, 100000000)
-                            correct_answer = num1 / num2
-                            user_answer = float(input(f"What is {num1} ÷ {num2}? "))
+                            num1 = random.randint(1, 100000)
+                            num2 = random.randint(1, 100000)
+                            correct_answer = round(num1 / num2, 2)
+                            user_answer = float(input(f"What is {num1} ÷ {num2}? Round to nearest hundreth if nessesary! "))
                             if user_answer == correct_answer:
                                 print("Great! You earned 0.05 credits.")
                                 game_credits += 0.05
-                                print(f"Lets start round 5...")
-                                num1 = round(random.uniform(1, 100000000), 3)
-                                num2 = round(random.uniform(1, 100000000), 3)
-                                num1 = random.randint(1, 100000000)
-                                num2 = random.randint(1, 100000000)
-                                operator = random.choice(['+', '-', '*', '/'])
-                                expression = f"{num1} {operator} {num2}"
-                                correct_answer = eval(expression)
-                                user_answer = float(input(f"What is {expression}? "))
+                                print(f"Lets start round 5... THE FINAL ROUND!!!")
+                                num1 = random.uniform(100, 1000)
+                                num2 = random.uniform(100, 1000)
+                                num3 = random.uniform(10, 1000)
+                                operator = random.choice(['+', '*', '/', '-'])
+                                operator2 = random.choice(['+', '*', '/', '-'])
+                                expression = f"{num1} {operator} {num2} {operator2} {num3}"
+                                correct_answer = round(eval(expression), 2)
+                                user_answer = float(input(f"What is {expression}? Round to nearest hundreth if nessesary! "))
                                 if user_answer == correct_answer:
-                                    print(f"Nice! You get 0.05 credits.")
+                                    print(f"Nice! You get 0.10 credits.")
+                                    print(f"YOU DID IT!!! You get money, health, and much more. See your stats for updates.")
                                     game_credits += 0.05
-                                    print(f"Your HALFWAY done! Suprisingly impressed...\nHere comes round 6!")
-                                    num1 = round(random.uniform(100000, 10000000000000), 5)
-                                    num2 = round(random.uniform(100000, 10000000000000), 5)
-                                    num1 = random.randint(1, 100000000)
-                                    num2 = random.randint(1, 100000000)
-                                    operator = random.choice(['*', '/'])
-                                    expression = f"{num1} {operator} {num2}"
-                                    correct_answer = eval(expression)
-                                    user_answer = float(input(f"What is {expression}? "))
-                                    if user_answer == correct_answer:
-                                        print(f"Nice! You earned another 0.05 credits")
+                                    if game_difficulty == 'medium':
+                                        health += 15
+                                        money += 1_500_000
+                                        game_credits += 0.01
+                                    elif game_difficulty == 'easy':
+                                        health += 20
+                                        money += 1_500_000
                                         game_credits += 0.05
-                                        print(f"Very impressive! Lets move on to round 7!")
-                                        num1 = round(random.uniform(1, 100000), 2)
-                                        num2 = random.randint(1, 10000)
-                                        num3 = round(random.uniform(1, 100000), 4)
-                                        num4 = round(random.uniform(1, 100000), 3)
-
-                                        operators = ['+', '-', '*', '/']
-                                        expression = f"{num1} {random.choice(operators)} {num2} {random.choice(operators)} {num3} {random.choice(operators)} {num4}"
-                                        correct_answer = eval(expression)
-                                        user_answer = float(input(f"What is the result of {expression}? "))
-                                        if user_answer == correct_answer:
-                                            print(f"Great! You won 0.05 credits.")
-                                            game_credits += 0.05
-                                            print(f"Make way for round 8...")
-                                            num5 = round(random.uniform(1, 100), 2)
-                                            correct_answer = math.sqrt(num5)
-                                            user_answer = float(input(f"What is the square root of {num5}? "))
-                                            if user_answer == correct_answer:
-                                                print(f"Excellent! You won 0.05 credits.")
-                                                game_credits += 0.05
-                                                print("Almost there! Clown Stine, round 9...")
-                                                num6 = round(random.uniform(10, 20))
-                                                num7 = round(random.randint(10, 20))
-                                                divisor_for_round_9 = round(random.uniform(10, 100), 5)
-                                                correct_answer = math.pow(num6, num7) / divisor_for_round_9
-                                                user_answer = float(input(f"What is {num6}^{num7} divided by {divisor_for_round_9}? "))
-                                                if user_answer == correct_answer:
-                                                    print(f"Almost there! You won 0.05 credits.")
-                                                    game_credits += 0.05
-                                                    print(f"Now lets do the last, hardest, and unique problem! Make way for round 10...")
-                                                    expression = f"((3.5 * {random.uniform(1, 10)}) + ({random.randint(1, 5)} ** 2) - {math.sqrt(random.randint(1, 100))}) * {random.uniform(0.1, 1)}"
-                                                    correct_answer = eval(expression)
-                                                    user_answer = float(input(f"Solve the expression: {expression} "))
-                                                    if user_answer == correct_answer:
-                                                        print(f"CONGRATS!!! YOU FINISHED THE MATH CHALLENGE. For starters take 0.15 credits...")
-                                                        game_credits += 15
-                                                        print("And you also get a random amount from $1,000,000 to $2,000,000. To see final amounts, go to your stats.")
-                                                        math_finished_reward = random.randint(1_000_000, 2_000,000)
-                                                        money = money + math_finished_reward
-                                                        print(f"You got some health too!")
-                                                        health += 15
-                                                        print("Good job, and congrats again!")
-                                                    else:
-                                                        loss_money_for_math = random.randint(75000, 500000)
-                                                        print(f"You lost the final round!!! NO!!! You lost ${loss_money_for_math}!")
-                                                        print(f"The correct answer is {correct_answer}!")
-                                                        money = money - loss_money_for_math
-                                                else:
-                                                    loss_money_for_math = random.randint(50000, 75000)
-                                                    print(f"OH NO!!! You were almost there! You lost ${loss_money_for_math}!")
-                                                    print(f"The correct answer is {correct_answer}!")
-                                                    money = money - loss_money_for_math
-                                            else:
-                                                loss_money_for_math = random.randint(40000, 50000)
-                                                print(f"OH NO!!! You made it so far! You lost ${loss_money_for_math}!")
-                                                print(f"The correct answer is {correct_answer}!")
-                                                money = money - loss_money_for_math
-                                        else:
-                                            loss_money_for_math = random.randint(25000, 40000)
-                                            print(f"OH NO!!! You lost ${loss_money_for_math}")
-                                            print(f"The correct answer is {correct_answer}!")
-                                            money = money - loss_money_for_math
-                                            
+                                    elif game_difficulty == 'hard':
+                                        health += 10
+                                        money += 1_000_000
                                     else:
-                                        loss_money_for_math = random.randint(20000, 25000)
-                                        print(f"OH NO!!! You lost ${loss_money_for_math}")
-                                        print(f"The correct answer is {correct_answer}!")
-                                        money = money - loss_money_for_math
+                                        health += 5
+                                        money += 750_000
+                                    
+                                    if game_difficulty != 'hardcore':
+                                        more_money_for_math_win = random.randint(1000, 100000)
+                                        money = money + more_money_for_math_win
                                 else:
-                                    loss_money_for_math = random.randint(12500, 20000)
+                                    loss_money_for_math = random.randint(100000, 500000)
                                     print(f"OH NO!!! You lost ${loss_money_for_math}")
                                     print(f"The correct answer is {correct_answer}!")
                                     money = money - loss_money_for_math
                                 
                             else:
-                                loss_money_for_math = random.randint(10000, 12500)
+                                loss_money_for_math = random.randint(50000, 100000)
                                 print(f"OH NO!!! You lost ${loss_money_for_math}.")
                                 print(f"The correct answer is {correct_answer}!")
                                 money = money - loss_money_for_math
                         else:
-                            loss_money_for_math = random.randint(7500, 10000)
+                            loss_money_for_math = random.randint(20000, 50000)
                             print(f"OH NO!!! You lost ${loss_money_for_math}.")
                             print(f"The correct answer is {correct_answer}!")
                             money = money - loss_money_for_math
                     else:
-                        print("OH NO!!! You lost $7500")
+                        print("OH NO!!! You lost $20000")
                         print(f"The correct answer is {correct_answer}!")
-                        money -= 18500
+                        money -= 20000
                 else:
-                    print(f"OH NO!!! You lost $5000")
+                    print(f"OH NO!!! You MAY lose $5000")
                     print(f"The correct answer is {correct_answer}!")
-                    money -= 20000
+                    if game_difficulty != 'easy':
+                        money -= 5000
+        
         if result == 'sightsee':
             money -= 1000
             health += 15
             print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
+            print(f"You currently have ${money} and {health} health")
     
     if welcome_message == 'gamble':
         if game_difficulty == 'hardcore':
@@ -962,6 +903,206 @@ while True:
         print(f"You currently have ${money}.")
     
     if welcome_message == 'secret wheel_fortune23 gameisTRUE':
+        words = [
+            "APPLE",
+            "BOOK",
+            "CANDLE",
+            "DOG",
+            "ELEPHANT",
+            "FLOWER",
+            "GUITAR",
+            "HAPPINESS",
+            "ICICLE",
+            "JUNGLE",
+            "KITE",
+            "LAUGHTER",
+            "MOUNTAIN",
+            "NECKLACE",
+            "OCEAN",
+            "PINEAPPLE",
+            "QUARTER",
+            "RIVER",
+            "SUNSHINE",
+            "TIGER",
+            "UMBRELLA",
+            "VIOLIN",
+            "WATERFALL",
+            "XYLOPHONE",
+            "YELLOW",
+            "ZEBRA",
+            "FIREWORKS",
+            "JOURNEY",
+            "SNOWFLAKE",
+            "MOONLIGHT",
+            "WISDOM",
+            "DOLPHIN",
+            "MYSTERY",
+            "SYMPHONY",
+            "WILDERNESS",
+            "BUTTERFLY",
+            "CLOCKWORK",
+            "DREAM",
+            "FANTASY",
+            "GLACIER",
+            "HORIZON",
+            "LANTERN",
+            "MEADOW",
+            "NOVEL",
+            "PARADISE",
+            "QUEST",
+            "SPARKLE"
+            "BICYCLE",
+            "CHOCOLATE",
+            "DINOSAUR",
+            "EXPLORER",
+            "FIREPLACE",
+            "GALAXY",
+            "HARMONY",
+            "INSPIRATION",
+            "JOURNAL",
+            "KANGAROO",
+            "LANTERN",
+            "MARATHON",
+            "NOSTALGIA",
+            "OASIS",
+            "PARACHUTE",
+            "QUEST",
+            "RECIPE",
+            "SUNFLOWER",
+            "TREASURE",
+            "UNICORN",
+            "VOLCANO",
+            "WILDFLOWER",
+            "XANADU",
+            "YESTERDAY",
+            "ZEPPELIN",
+            "AFRICAN",
+            "BLOSSOM",
+            "COASTAL",
+            "DELIGHT",
+            "ECLIPSE",
+            "FREEDOM",
+            "GALAXY",
+            "HORIZON",
+            "ILLUMINATE",
+            "JUBILANT",
+            "KALEIDOSCOPE",
+            "LUMINOUS",
+            "MAGICAL",
+            "NURTURING",
+            "OBLIVION",
+            "PRECIOUS",
+            "QUIETUDE",
+            "RADIANCE",
+            "SERENITY",
+            "TRANQUILITY",
+            "UTOPIA",
+            "VELVET"
+            "AMBER",
+            "BREEZE",
+            "CASCADE",
+            "DREAMY",
+            "ENCHANT",
+            "FLUTTER",
+            "GLOW",
+            "HARMONY",
+            "IGNITE",
+            "JUBILANT",
+            "KINETIC",
+            "LULLABY",
+            "MELODY",
+            "NIRVANA",
+            "OPULENT",
+            "PLEASANT",
+            "QUILL",
+            "RADIANT",
+            "SUBLIME",
+            "TRIUMPH",
+            "UNISON",
+            "VIBRANT",
+            "WONDER",
+            "XYLOPHONE",
+            "ZENITH",
+            "ALABASTER",
+            "BRILLIANT",
+            "CASCADING",
+            "DELICATE",
+            "ELEGANT",
+            "FANTASY",
+            "GALLANT",
+            "HORIZON",
+            "ILLUMINATE",
+            "JASMINE",
+            "KALEIDOSCOPE",
+            "LUMINOUS",
+            "MAGICAL",
+            "NEBULA",
+            "OBLIVION",
+            "PLEASURE",
+            "QUEST",
+            "RADIANCE",
+            "SERENE",
+            "TRANQUIL",
+            "UTOPIA",
+            "VELVET",
+            "WHISPER",
+            "AMETHYST",
+            "BLISS",
+            "CHARM",
+            "DAZZLE",
+            "ETHEREAL",
+            "FABLE",
+            "GRACE",
+            "HALO",
+            "IRIDESCENCE",
+            "JOURNEY",
+            "KEYNOTE",
+            "LUMBER",
+            "MIRAGE",
+            "NOBLE",
+            "ONYX",
+            "PASTURE",
+            "QUAGMIRE",
+            "RUSTIC",
+            "SCARLET",
+            "TRANSCEND",
+            "UPLIFT",
+            "VELOCITY",
+            "WILLOW",
+            "XANADU",
+            "YONDER",
+            "ZEPHYR",
+            "ADEPT",
+            "BLISSFUL",
+            "CHERISH",
+            "DIVINE",
+            "ETERNAL",
+            "FABULOUS",
+            "GENTLE",
+            "HALCYON",
+            "ILLUMINATE",
+            "JUBILEE",
+            "KISS",
+            "LUXURIANT",
+            "MELLOW",
+            "NOURISH",
+            "OPAL",
+            "PURITY",
+            "QUIESCENT",
+            "RUSTLE",
+            "SERENADE",
+            "TRIUMPHANT",
+            "UTOPIAN",
+            "VIVID",
+            "WANDER",
+            "XOXO",
+            "YEARNING",
+            "ZEST"
+        ]
+        selected_word = random.choice(words)
+        guessed_letters = []
+        max_attempts = 12
+        
         print(f"Welcome to your favorite game!")
         print("Wheel.", end=" ")
         time.sleep(1)
@@ -969,7 +1110,39 @@ while True:
         time.sleep(1)
         print("Fortune!")
         time.sleep(1)
+        while max_attempts > 0:
+            print("\nAttempts left:", max_attempts)
 
+            display_word = ""
+            for letter in selected_word:
+                if letter in guessed_letters:
+                    display_word += letter
+                else:
+                    display_word += "_"
+            print(display_word)
+
+            guess = input("Enter a letter: ").upper()
+
+            if len(guess) != 1 or not guess.isalpha():
+                print("Please enter a valid single letter.")
+                continue
+
+            if guess in guessed_letters:
+                print("You've already guessed that letter. Try again.")
+                continue
+
+            guessed_letters.append(guess)
+
+            if guess not in selected_word:
+                max_attempts -= 1
+                print("Incorrect guess!")
+
+            if set(selected_word) <= set(guessed_letters):
+                print("\nCongratulations! You guessed the word:", selected_word)
+                break
+
+        if max_attempts == 0:
+            print("\nSorry, you ran out of attempts. The word was:", selected_word)
     
     if welcome_message == 'doctor':
         if doctor_attempts < 3:
