@@ -539,7 +539,7 @@ while True:
                 print("You already have a wife/husband! Enter 'action' to divorce a wife/husband if needed.")
             else:
                 has_wife = True
-                if gender == 'female':
+                if gender == 'male':
                     lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
                                 'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
                 else:
@@ -925,7 +925,7 @@ while True:
             if_you_got_wife = random.choices(wife_possibilities, weights=[0.10, 0.90])[0]
             if if_you_got_wife == 'yes':
                 has_wife == True
-                if gender == 'female':
+                if gender == 'male':
                     lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
                                     'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
                 else:
