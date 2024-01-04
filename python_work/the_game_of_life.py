@@ -903,6 +903,11 @@ while True:
         print(f"You currently have ${money}.")
     
     if welcome_message == 'secret wheel_fortune23 gameisTRUE':
+        if game_difficulty == 'hardcore':
+            health -= random.randint(75, 150)
+        else:
+            health -= random.randint(75, 100)
+        print(f"You have {health} health left!")
         words = [
             "APPLE",
             "BOOK",
@@ -1104,6 +1109,7 @@ while True:
         max_attempts = 12
         
         print(f"Welcome to your favorite game!")
+        time.sleep(1)
         print("Wheel.", end=" ")
         time.sleep(1)
         print("Of.", end=" ")
@@ -1139,6 +1145,11 @@ while True:
 
             if set(selected_word) <= set(guessed_letters):
                 print("\nCongratulations! You guessed the word:", selected_word)
+                money_amounts_for_wheel_of_fortune = [40000, 75000, 100000]
+                the_money_amount_for_wheel_of_fortune = random.choices(money_amounts_for_wheel_of_fortune, 
+                                                                    weights=[0.90, 0.095, 0.005])
+                money = money + the_money_amount_for_wheel_of_fortune
+                print(f"You get ${the_money_amount_for_wheel_of_fortune}\nNow you have ${money}!")
                 break
 
         if max_attempts == 0:
