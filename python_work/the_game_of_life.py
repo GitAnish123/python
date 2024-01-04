@@ -904,6 +904,16 @@ while True:
         else:
             print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
         print(f"You currently have ${money}.")
+
+    if welcome_message == 'wife/husband':
+        if has_wife == True:
+            print(f"You already have a wife/husband!")
+        else:
+            has_wife == True
+            wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                            'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+            ywn = random.choice(wife_names)
+
     
     if welcome_message == 'secret wheel_fortune23 gameisTRUE':
         if game_difficulty == 'hardcore':
