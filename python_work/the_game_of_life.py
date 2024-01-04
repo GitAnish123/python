@@ -909,10 +909,14 @@ while True:
         if has_wife == True:
             print(f"You already have a wife/husband!")
         else:
+            health -= random.randint(10, 15)
+            print(f"You have {health} health left.")
+            wife_possibilities = ''
             has_wife == True
             wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
                             'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
             ywn = random.choice(wife_names)
+            print(f"You got a wife/husband, her/his name is {ywn.title()}.")
 
     
     if welcome_message == 'secret wheel_fortune23 gameisTRUE':
