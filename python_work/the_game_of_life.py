@@ -1147,7 +1147,7 @@ while True:
                 print("\nCongratulations! You guessed the word:", selected_word)
                 money_amounts_for_wheel_of_fortune = [40000, 75000, 100000]
                 the_money_amount_for_wheel_of_fortune = random.choices(money_amounts_for_wheel_of_fortune, 
-                                                                    weights=[0.90, 0.095, 0.005])
+                                                                    weights=[0.90, 0.095, 0.005])[0]
                 money = money + the_money_amount_for_wheel_of_fortune
                 print(f"You get ${the_money_amount_for_wheel_of_fortune}\nNow you have ${money}!")
                 break
