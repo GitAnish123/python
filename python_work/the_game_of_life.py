@@ -221,8 +221,8 @@ while True:
         print(f"You have {health} health left.")
         actions = ['get money', 'lose money', 'get coupon', 'bad stock rates', 'geoperdy', 'good stock rates',
                     'paying taxes', 'sue person', 'doctor', 'sleep', 'entertainment', 'work', 'socializing', 
-                    'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife', 'divorce wife',
-                    'wife rewards', 'wife killed', 'double geoperdy', 'math challenge', 'sightsee']
+                    'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife/husband', 'divorce wife/husband',
+                    'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee']
         result = random.choice(actions)
         if result == 'get money':
             additional_money_result = random.randint(100, 10000)
@@ -532,54 +532,57 @@ while True:
                 money = money + video_game_money
                 print(f"You now have {health} health and ${money}.")
 
-        if result == 'wife':
-            has_wife = True
-            wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
-                          'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
-            ywn = random.choice(wife_names)
-            wife_amount = random.randint(10_000, 100_000)
-            wife_choose_giving_money_options = ['yes', 'no', 'you give money']
-            wife_choose_giving_money = random.choice(wife_choose_giving_money_options)
-            if wife_choose_giving_money == 'yes':
-                print(f"You got a wife, {ywn.title()}. She chose to give her money to you as her net worth is ${wife_amount}!")
-                money = money + wife_amount
-            elif wife_choose_giving_money == 'no':
-                print(f"You got a wife, {ywn.title()}. she chose to NOT give her money to you as her net worth is ${wife_amount}!")
-            elif wife_choose_giving_money == 'you give money':
-                amount_wife_wants = random.randint(1000, 10000)
-                print(f"You got a wife, {ywn.title()}. She wants you to give ${amount_wife_wants} to her!")
-                money = money - amount_wife_wants
-            print(f"You have ${money} left.")
-            del actions[18]
-        
-        if result == 'divorce wife':
+        if result == 'wife/husband':
             if has_wife == True:
-                do_you_want_to_divorce = input("Do you want to divorce your wife? (yes, no) ")
+                print("You already have a wife/husband! Enter 'action' to divorce a wife/husband if needed.")
+            else:
+                has_wife = True
+                wife_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                            'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+                ywn = random.choice(wife_names)
+                wife_amount = random.randint(10_000, 100_000)
+                wife_choose_giving_money_options = ['yes', 'no', 'you give money']
+                wife_choose_giving_money = random.choice(wife_choose_giving_money_options)
+                if wife_choose_giving_money == 'yes':
+                    print(f"You got a wife, {ywn.title()}. He/She chose to give her money to you as his/her net worth is ${wife_amount}!")
+                    money = money + wife_amount
+                elif wife_choose_giving_money == 'no':
+                    print(f"You got a wife, {ywn.title()}. He/she chose to NOT give her money to you as his/her net worth is ${wife_amount}!")
+                elif wife_choose_giving_money == 'you give money':
+                    amount_wife_wants = random.randint(1000, 10000)
+                    print(f"You got a wife, {ywn.title()}. He/She wants you to give ${amount_wife_wants} to him/her!")
+                    money = money - amount_wife_wants
+                print(f"You have ${money} left.")
+                del actions[18]
+        
+        if result == 'divorce wife/husband':
+            if has_wife == True:
+                do_you_want_to_divorce = input("Do you want to divorce your wife/husband? (yes, no) ")
                 if do_you_want_to_divorce == 'yes':
-                    actions.insert(18, 'wife')
+                    actions.insert(18, 'wife/husband')
                     has_wife = False
                     print(f"You divorced {ywn.title()}!")
                 else:
                     print("Ok, have a nice day.")
             else:
-                print(f"You don't have a wife! Action cannot be completed.")
+                print(f"You don't have a wife/husband! Action cannot be completed.")
         
-        if result == 'wife rewards':
+        if result == 'wife/husband rewards':
             if has_wife == True:
-                print("You get your wife rewards:")
+                print("You get your wife/husband rewards:")
                 game_credits = game_credits + round(random.uniform(0, 0.5), 2)
                 money += random.randint(100, 10000)
                 print(f"You have ${money} and {game_credits} credits.")
             else:
-                print("Cannot recieve wife rewards because no wife!")
+                print("Cannot recieve wife/husband rewards because no wife/husband!")
         
-        if result == 'kill wife':
+        if result == 'kill wife/husband':
             if has_wife == True:
                 has_wife == False
-                print(f"Your wife died! You arranged a funeral for {ywn.title()} for this sad moment.")
+                print(f"Your wife/husband died! You arranged a funeral for {ywn.title()} for this sad moment.")
                 actions.insert(18, 'wife')
             else:
-                print(f"Action: wife dead, cannot be done. Reason: NO WIFE!")
+                print(f"Action: wife/husband dead, cannot be done. Reason: NO WIFE/HUSBAND!")
         
         if result == 'double geoperdy':
             questions_and_answers = {
