@@ -2427,3 +2427,22 @@ Another option is keeping the link with the battery but using a parameter like c
 This growth stage involves thinking beyond syntax, focusing on real-world representation. 
 Embrace the learning process, even if it means revising classes and trying different approaches.
 """
+
+
+
+# You can import classes as well instead of functions.
+"""
+As you add more functionality to your classes, 
+your files can get long, even when you use inheritance and composition properly. 
+In keeping with the overall philosophy of Python, you'll want to keep your files as uncluttered as possible. 
+To help, Python lets you store classes in modules and then import the classes you need into your main program.
+"""
+# Lets import an example file that ends with ".py" in this directory.
+# This restaurant.py module has already one class that is stored.
+# Here is how you import a single class from the "restaurant" module and importing the entire class of Restaurant.
+# Remember, it has to be in the same directory:
+
+from restaurant import Restaurant
+favorite_restaurant = Restaurant('chick-fil-a', 'chicken sandwiches')
+favorite_restaurant.describe_restaurant()
+favorite_restaurant.set_number_served(100)
