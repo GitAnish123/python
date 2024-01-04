@@ -3,7 +3,7 @@
 
 
 
-class Restaurant:   # Parent class
+class Restaurant:   
     """A simple representation of a restaurant."""
     def __init__(self, restaurant_name, cuisine_type):
         """Initillize attributes of a restaurant."""
@@ -36,17 +36,17 @@ class Restaurant:   # Parent class
         else:
             print("You already had a greater amount of customers, you can't reduce the amount of customers served!")
 
-class IceCreamStand(Restaurant):     # Child class
+class IceCreamStand(Restaurant):    
     """A simple representation of an ice-cream stand, but relating to a restaurant that shares the same information."""
-    def __init__(self, restaurant_name, cuisine_type='ice cream'):   # Child class attributes
+    def __init__(self, restaurant_name, cuisine_type='ice cream'):   
         """Create/review and access attributes for a child class."""
-        super().__init__(restaurant_name, cuisine_type)    # Telling to refer the superclass (parent class)
-        self.flavors = []   # Empty list, we can modify it when we create an instance.
+        super().__init__(restaurant_name, cuisine_type)    
+        self.flavors = []   
     
-    def display_ice_cream_flavors(self):   # New method and using the new attribute
+    def display_ice_cream_flavors(self):   
         """Display all the ice cream flavors avaliable in the ice-cream stand."""
         print("\nHere are all the ice-cream flavors available:")
-        for flavor in self.flavors:   # Looping through the list
+        for flavor in self.flavors:   
             print(f"-- {flavor}")
 
 ice_cream = IceCreamStand('Marble Slab Creamery')
