@@ -10,6 +10,9 @@ try:
 
     import random, time
 
+    # Set default value if you have a job. Currently, it will be False
+    has_job = False
+
     name = input("What is your name?: ")
     print(f"Hello, {name}!")
 
@@ -24,6 +27,7 @@ try:
         game_difficulty = input("Choose your difficulty (college, career): ").lower()
     if which_path == 'college':
         print(f"You picked college path! You will have to pay $500,000 later!")
+        paid_for_college = False
         time.sleep(5)
         graduated_or_not_options = ['graduate', 'not graduate']
         graduated_or_not = random.choice(graduated_or_not_options)
@@ -33,6 +37,7 @@ try:
         else:
             jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer']
             your_job = random.choice(jobs_for_college)
+            has_job = True
             print(f"Your job is: {your_job} (you work for 8 hours)")
             print(f"Calculating salary per day:")
             time.sleep(2.5)
@@ -51,6 +56,7 @@ try:
         print(f"You picked career path!")
         jobs_for_college = ['artist', 'police officer', 'athlete', 'salesperson', 'teacher']
         your_job = random.choice(jobs_for_college)
+        has_job = True
         print(f"Your job is: {your_job} (you work for 8 hours)")
         print(f"Calculating salary per day:")
         time.sleep(2.5)
@@ -84,7 +90,7 @@ try:
         health = random.randint(75, 120)
         game_credits = 0.05
     elif game_difficulty == 'easy':
-        money = random.randint(100, 1000)
+        money = random.randint(1_000_000, 1_000_001)
         health = random.randint(120, 250)
         game_credits = 0.2
 
@@ -120,6 +126,14 @@ try:
         if health <= 0:
             print(f"{name}, GAME OVER: YOU HAVE NO HEALTH")
             break
+
+        if which_path == 'college':
+            if paid_for_college == False:
+                if money > 500_000:
+                    print(f"You have enough to pay for your college funds!")
+                    money -= 500_000
+                    print(f"You have ${money} left.")
+                    paid_for_college = True
 
         if welcome_message == 'get coupon':
             if game_difficulty == 'hardcore':
@@ -253,7 +267,9 @@ try:
             actions_count += -1
             print("\nHere are your stats:")
             print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
-            print(f"Has wife: {has_wife}\nJob: {your_job}\nSalary: {salary}\nTotal actions played: {actions_count}")
+            print(f"Has wife: {has_wife}\nHas Job: {has_job}\nTotal actions played: {actions_count}")
+            if has_job == True:
+                print(f"Job: {your_job}\nSalary: {salary}")
 
         if welcome_message == 'eminem101greatone':
             if game_difficulty != 'hardcore':
@@ -1591,9 +1607,10 @@ try:
         actions_count += 1
 
         # Check if the player has performed 5 actions
-        if actions_count % 5 == 0:
-            money = money + salary
-            print(f"You earned ${salary} as your salary per day!")
+        if has_job == True:
+            if actions_count % 5 == 0:
+                money = money + salary
+                print(f"You earned ${salary} as your salary per day!")
 
         if game_difficulty == 'easy':
             if money >= 2_500_000:
