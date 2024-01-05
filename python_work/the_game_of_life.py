@@ -24,7 +24,7 @@ try:
     which_path = input("Which path, college or career?:  ").lower()
     while which_path not in ['college', 'career']:
         print("Invalid difficulty. Please choose from 'college' and 'career.")
-        game_difficulty = input("Choose your difficulty (college, career): ").lower()
+        which_path = input("Choose your difficulty (college, career): ").lower()
     if which_path == 'college':
         print(f"You picked college path! You will have to pay $500,000 later!")
         paid_for_college = False
