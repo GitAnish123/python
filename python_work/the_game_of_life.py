@@ -264,12 +264,22 @@ try:
                 print("Okay, have a good day!")
         
         if welcome_message == 'stats':
-            actions_count += -1
-            print("\nHere are your stats:")
-            print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
-            print(f"Has wife: {has_wife}\nHas Job: {has_job}\nTotal actions played: {actions_count}")
-            if has_job == True:
-                print(f"Job: {your_job}\nSalary: {salary}")
+            if game_difficulty == 'hardcore':
+                health -= 25
+            else:
+                health -= random.randint(10, 20)
+            print(f"You have {health} health.")
+            see_stats_amount = random.randint(1_000, 10_000)
+            pay_for_stats = input(f"You pay ${see_stats_amount} to see stats: (yes, no)  ")
+            if pay_for_stats == 'yes':
+                money = money - see_stats_amount
+                print("\nHere are your stats:")
+                print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
+                print(f"Has wife: {has_wife}\nHas Job: {has_job}\nTotal actions played: {actions_count}")
+                if has_job == True:
+                    print(f"Job: {your_job}\nSalary: {salary}")
+            else:
+                print(f"Ok, have a nice day!")
 
         if welcome_message == 'eminem101greatone':
             if game_difficulty != 'hardcore':
