@@ -1611,6 +1611,17 @@ try:
             if actions_count % 5 == 0:
                 money = money + salary
                 print(f"You earned ${salary} as your salary per day!")
+                if game_difficulty == 'easy':
+                    credit_salary = 0.1
+                elif game_difficulty == 'medium':
+                    credit_salary = 0.05
+                elif game_difficulty == 'hard':
+                    credit_salary = 0.025
+                elif game_difficulty == 'hardcore':
+                    credit_salary = 0.01
+                game_credits = game_credits + credit_salary
+                print(f"You earned {credit_salary} credits too!")
+                print(f"You have ${money} and {game_credits} credits!")
 
         if game_difficulty == 'easy':
             if money >= 2_500_000:
