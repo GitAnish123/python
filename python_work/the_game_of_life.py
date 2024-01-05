@@ -90,7 +90,7 @@ try:
         health = random.randint(75, 120)
         game_credits = 0.05
     elif game_difficulty == 'easy':
-        money = random.randint(1_000_000, 1_000_001)
+        money = random.randint(100, 1000)
         health = random.randint(120, 250)
         game_credits = 0.2
 
