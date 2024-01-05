@@ -18,6 +18,54 @@ try:
         print("Please choose 'male' or 'female'.")
         gender = input("What is your gender? (male, female): ")
 
+    which_path = input("Which path, college or career?:  ").lower()
+    while which_path not in ['college', 'career']:
+        print("Invalid difficulty. Please choose from 'college' and 'career.")
+        game_difficulty = input("Choose your difficulty (college, career): ").lower()
+    if which_path == 'college':
+        print(f"You picked college path! You will have to pay $500,000 later!")
+        time.sleep(5)
+        graduated_or_not_options = ['graduate', 'not graduate']
+        graduated_or_not = random.choice(graduated_or_not_options)
+        print(f"You did {graduated_or_not} from college!")
+        if graduated_or_not == 'not graduate':
+            print(f"GAME OVER!!! -- You didn't graduate")
+        else:
+            jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer']
+            your_job = random.choice(jobs_for_college)
+            print(f"Your job is: {your_job} (you work for 8 hours)")
+            print(f"Calculating salary per day:")
+            time.sleep(2.5)
+            if your_job == 'doctor':
+                salary = random.randint(800, 900)
+            if your_job == 'scientist':
+                salary = random.randint(300, 400)
+            if your_job == 'buisnessman':
+                salary = random.randint(320, 380)
+            if your_job == 'lawyer':
+                salary = random.randint(500, 650)
+            if your_job == 'software engineer':
+                salary = random.randint(560, 620)
+            print(f"Your salary is ${salary} per day!")
+    if which_path == 'career':
+        print(f"You picked career path!")
+        jobs_for_college = ['artist', 'police officer', 'athlete', 'salesperson', 'teacher']
+        your_job = random.choice(jobs_for_college)
+        print(f"Your job is: {your_job} (you work for 8 hours)")
+        print(f"Calculating salary per day:")
+        time.sleep(2.5)
+        if your_job == 'artist':
+            salary = random.randint(200, 250)
+        if your_job == 'police officer':
+            salary = random.randint(180, 230)
+        if your_job == 'athlete':
+            salary = random.randint(210, 260)
+        if your_job == 'salesperson':
+            salary = random.randint(280, 350)
+        if your_job == 'teacher':
+            salary = random.randint(130, 200)
+        print(f"Your salary is ${salary} per day!")
+    
     game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
     while game_difficulty not in ['easy', 'medium', 'hard', 'hardcore']:
         print("Invalid difficulty. Please choose from 'easy', 'medium', 'hard', or 'hardcore'.")
@@ -48,6 +96,9 @@ try:
 
     # Flag if you have a wife
     has_wife = False
+
+    # Every 5 turns, you earn your salary. Count every action.
+    actions_count = 0
 
     print(f"You start with ${money}")
     print(f"You start with {health} health.")
@@ -199,8 +250,10 @@ try:
                 print("Okay, have a good day!")
         
         if welcome_message == 'stats':
+            actions_count += -1
             print("\nHere are your stats:")
             print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
+            print(f"Has wife: {has_wife}\nJob: {your_job}\nSalary: {salary}\nTotal actions played: {actions_count}")
 
         if welcome_message == 'eminem101greatone':
             if game_difficulty != 'hardcore':
@@ -228,7 +281,8 @@ try:
             actions = ['get money', 'lose money', 'get coupon', 'bad stock rates', 'geoperdy', 'good stock rates',
                         'paying taxes', 'sue person', 'doctor', 'sleep', 'entertainment', 'work', 'socializing', 
                         'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife/husband', 'divorce wife/husband',
-                        'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee']
+                        'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
+                        'poo', 'get money']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -464,6 +518,7 @@ try:
                     m_money = random.randint(10_000, 1_500_000)
                 else:
                     m_money = random.randint(100_000, 2_000_000)
+                print(f"You earned ${m_money}!!! You now have ${money}")
             
             if result == 'hardcore ONLY action':
                 if game_difficulty != 'hardcore':
@@ -836,7 +891,173 @@ try:
                 health += 15
                 print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
                 print(f"You currently have ${money} and {health} health")
-        
+
+            if result == 'poo':
+                print(f"You went poo!")
+                health += 1
+                print(f"You have {health} health!")
+            
+            if result == 'get money':
+                if has_wife == True:
+                    want_money = input("u want monei? ")
+                    print(f"Either 'yes' or 'no', you are participating in this because your wife/husband forced you!")
+                    print(f"Guess my 2-digit number password to earn money. The less attempts you take to win, the more money you get!")
+                    two_digit_password = random.randint(10, 99)
+                    attempts_for_success = 0
+                    can_guess = True
+                    time.sleep(2)
+                    while can_guess:
+                        guess_digit = input("Guess the number: ")
+                        guess_digit = int(guess_digit)
+                        attempts_for_success += 1
+                        if guess_digit == two_digit_password:
+                            print(f"You win!")
+                            print(f"It took you {attempts_for_success} attempts to win.")
+                            if attempts_for_success <= 1:
+                                if game_difficulty == 'hardcore':
+                                    guess_money = 2_500_000
+                                elif game_difficulty == 'hard':
+                                    guess_money = 3_000_000
+                                elif game_difficulty == 'medium':
+                                    guess_money = 4_000_000
+                                elif game_difficulty == 'easy':
+                                    guess_money = 5_000_000
+                            elif attempts_for_success <= 5:
+                                if game_difficulty == 'easy':
+                                    guess_money = 2_500_000
+                                else:
+                                    game_difficulty = 1_500_000
+                            elif attempts_for_success <= 10:
+                                if game_difficulty == 'easy':
+                                    guess_money = 1_000_000
+                                elif game_difficulty == 'medium':
+                                    guess_money = 1_000_000
+                                else:
+                                    guess_money = 875_000
+                            elif attempts_for_success <= 15:
+                                guess_money = 750_000
+                            elif attempts_for_success <= 30:
+                                if game_difficulty == 'easy':
+                                    guess_money = 500_000
+                                elif game_difficulty == 'medium':
+                                    guess_money = 100_000
+                                elif game_difficulty == 'hard':
+                                    guess_money = 25_000
+                                elif game_difficulty == 'hardcore':
+                                    guess_money = 5000
+                            elif attempts_for_success <= 40:
+                                guess_money = 1000
+                            elif attempts_for_success <= 50:
+                                if game_difficulty == 'easy':
+                                    guess_money = 0
+                                else:
+                                    guess_money = -5000
+                            elif attempts_for_success <= 65:
+                                if game_difficulty == 'hardcore':
+                                    guess_money = -100_000
+                                else:
+                                    guess_money = -10000
+                            elif attempts_for_success <= 80:
+                                if game_difficulty == 'hardcore':
+                                    guess_money = -500_000
+                                else:
+                                    guess_money = -100_000
+                            else:
+                                if game_difficulty == 'hardcore':
+                                    guess_money = -5_000_000
+                                elif game_difficulty == 'hard':
+                                    guess_money = -4_000_000
+                                elif game_difficulty == 'medium':
+                                    guess_money = -2_500_000
+                                elif game_difficulty == 'easy':
+                                    guess_money = -1_500_000
+                            print(f"You got ${guess_money}!")
+                            money = money + guess_money
+                            print(f"You now have ${money}.")
+                            can_guess = False
+                        else:
+                            print(f"Wrong, guess again! {attempts_for_success} attempts so far!")
+                else:
+                    want_money = input("u want monei? (yes, no) ")
+                    if want_money == 'no':
+                        print(f"Ok! Have a nice day.")
+                    else:
+                        print(f"Guess my 2-digit number password to earn money. The less attempts you take to win, the more money you get!")
+                        two_digit_password = random.randint(10, 99)
+                        attempts_for_success = 0
+                        can_guess = True
+                        time.sleep(2)
+                        while can_guess:
+                            guess_digit = input("Guess the number: ")
+                            guess_digit = int(guess_digit)
+                            attempts_for_success += 1
+                            if guess_digit == two_digit_password:
+                                print(f"You win!")
+                                print(f"It took you {attempts_for_success} attempts to win.")
+                                if attempts_for_success <= 1:
+                                    if game_difficulty == 'hardcore':
+                                        guess_money = 2_500_000
+                                    elif game_difficulty == 'hard':
+                                        guess_money = 3_000_000
+                                    elif game_difficulty == 'medium':
+                                        guess_money = 4_000_000
+                                    elif game_difficulty == 'easy':
+                                        guess_money = 5_000_000
+                                elif attempts_for_success <= 5:
+                                    if game_difficulty == 'easy':
+                                        guess_money = 2_500_000
+                                    else:
+                                        game_difficulty = 1_500_000
+                                elif attempts_for_success <= 10:
+                                    if game_difficulty == 'easy':
+                                        guess_money = 1_000_000
+                                    elif game_difficulty == 'medium':
+                                        guess_money = 1_000_000
+                                    else:
+                                        guess_money = 875_000
+                                elif attempts_for_success <= 15:
+                                    guess_money = 750_000
+                                elif attempts_for_success <= 30:
+                                    if game_difficulty == 'easy':
+                                        guess_money = 500_000
+                                    elif game_difficulty == 'medium':
+                                        guess_money = 100_000
+                                    elif game_difficulty == 'hard':
+                                        guess_money = 25_000
+                                    elif game_difficulty == 'hardcore':
+                                        guess_money = 5000
+                                elif attempts_for_success <= 40:
+                                    guess_money = 1000
+                                elif attempts_for_success <= 50:
+                                    if game_difficulty == 'easy':
+                                        guess_money = 0
+                                    else:
+                                        guess_money = -5000
+                                elif attempts_for_success <= 65:
+                                    if game_difficulty == 'hardcore':
+                                        guess_money = -100_000
+                                    else:
+                                        guess_money = -10000
+                                elif attempts_for_success <= 80:
+                                    if game_difficulty == 'hardcore':
+                                        guess_money = -500_000
+                                    else:
+                                        guess_money = -100_000
+                                else:
+                                    if game_difficulty == 'hardcore':
+                                        guess_money = -5_000_000
+                                    elif game_difficulty == 'hard':
+                                        guess_money = -4_000_000
+                                    elif game_difficulty == 'medium':
+                                        guess_money = -2_500_000
+                                    elif game_difficulty == 'easy':
+                                        guess_money = -1_500_000
+                                print(f"You got ${guess_money}!")
+                                money = money + guess_money
+                                print(f"You now have ${money}.")
+                                can_guess = False
+                            else:
+                                print(f"Wrong, guess again! {attempts_for_success} attempts so far!")
         if welcome_message == 'gamble':
             if game_difficulty == 'hardcore':
                 health = health - random.randint(5, 10)
@@ -918,6 +1139,110 @@ try:
             else:
                 print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
             print(f"You currently have ${money}.")
+        
+        if welcome_message == 'hard math test':
+            if game_difficulty == 'hardcore':
+                health -= 25
+            else:
+                health -= random.randint(15, 25)
+            print(f"You have {health} health left.")
+            msg_for_math_enter = input("Do you want to enter the HARD math challenge to earn rewards? (yes, no):  ")
+            if msg_for_math_enter == 'no':
+                print(f"Ok, so long!")
+                money -= random.randint(100, 2000)
+                print(f"You have ${money} left.")
+            else:
+                print("Great! If you lose, you lose money, every time you survive a round, you get credits.")
+                print("When you win, you get money!")
+                print("Here is round 1...")
+                num1 = random.randint(1, 100000000)
+                num2 = random.randint(1, 100000000)
+                correct_answer = num1 + num2
+
+                user_answer = int(input(f"What is {num1} + {num2}? "))
+                if user_answer == correct_answer:
+                    print(f"Great! You gained 0.05 credits.")
+                    game_credits += 0.05
+                    print(f"Lets start round 2...")
+                    num1 = random.randint(100000, 100000000)
+                    num2 = random.randint(100000, 100000000)
+                    correct_answer = num1 - num2
+                    user_answer = float(input(f"What is {num1} - {num2}? "))
+                    if user_answer == correct_answer:
+                        print(f"Great you gained 0.05 credits.")
+                        game_credits += 0.05
+                        print(f"Lets start round 3...")
+                        num1 = random.randint(1, 100000)
+                        num2 = random.randint(1, 100000)
+                        correct_answer = num1 * num2
+                        user_answer = int(input(f"What is {num1} * {num2}? "))
+                        if user_answer == correct_answer:
+                            print(f"Great, you gained 0.05 credits.")
+                            game_credits += 0.05
+                            print(f"Wow... Lets start round 4!")
+                            num1 = random.randint(1, 100000)
+                            num2 = random.randint(1, 100000)
+                            correct_answer = round(num1 / num2, 2)
+                            user_answer = float(input(f"What is {num1} ÷ {num2}? Round to nearest hundreth if nessesary! "))
+                            if user_answer == correct_answer:
+                                print("Great! You earned 0.05 credits.")
+                                game_credits += 0.05
+                                print(f"Lets start round 5... THE FINAL ROUND!!!")
+                                num1 = random.uniform(100, 1000)
+                                num2 = random.uniform(100, 1000)
+                                num3 = random.uniform(10, 1000)
+                                operator = random.choice(['+', '*', '/', '-'])
+                                operator2 = random.choice(['+', '*', '/', '-'])
+                                expression = f"{num1} {operator} {num2} {operator2} {num3}"
+                                correct_answer = round(eval(expression), 2)
+                                user_answer = float(input(f"What is {expression}? Round to nearest hundreth if nessesary! "))
+                                if user_answer == correct_answer:
+                                    print(f"Nice! You get 0.10 credits.")
+                                    print(f"YOU DID IT!!! You get money, health, and much more. See your stats for updates.")
+                                    game_credits += 0.05
+                                    if game_difficulty == 'medium':
+                                        health += 15
+                                        money += 1_500_000
+                                        game_credits += 0.01
+                                    elif game_difficulty == 'easy':
+                                        health += 20
+                                        money += 1_500_000
+                                        game_credits += 0.05
+                                    elif game_difficulty == 'hard':
+                                        health += 10
+                                        money += 1_000_000
+                                    else:
+                                        health += 5
+                                        money += 750_000
+                                    
+                                    if game_difficulty != 'hardcore':
+                                        more_money_for_math_win = random.randint(1000, 100000)
+                                        money = money + more_money_for_math_win
+                                else:
+                                    loss_money_for_math = random.randint(100000, 500000)
+                                    print(f"OH NO!!! You lost ${loss_money_for_math}")
+                                    print(f"The correct answer is {correct_answer}!")
+                                    money = money - loss_money_for_math
+                                
+                            else:
+                                loss_money_for_math = random.randint(50000, 100000)
+                                print(f"OH NO!!! You lost ${loss_money_for_math}.")
+                                print(f"The correct answer is {correct_answer}!")
+                                money = money - loss_money_for_math
+                        else:
+                            loss_money_for_math = random.randint(20000, 50000)
+                            print(f"OH NO!!! You lost ${loss_money_for_math}.")
+                            print(f"The correct answer is {correct_answer}!")
+                            money = money - loss_money_for_math
+                    else:
+                        print("OH NO!!! You lost $20000")
+                        print(f"The correct answer is {correct_answer}!")
+                        money -= 20000
+                else:
+                    print(f"OH NO!!! You MAY lose $5000")
+                    print(f"The correct answer is {correct_answer}!")
+                    if game_difficulty != 'easy':
+                        money -= 5000
 
         if welcome_message == 'wife/husband':
             if has_wife == True:
@@ -1261,6 +1586,15 @@ try:
             else:
                 print("You have max doctor attempts in this game.")
         
+        
+        # Increment the action count every turn.
+        actions_count += 1
+
+        # Check if the player has performed 5 actions
+        if actions_count % 5 == 0:
+            money = money + salary
+            print(f"You earned ${salary} as your salary per day!")
+
         if game_difficulty == 'easy':
             if money >= 2_500_000:
                 print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
