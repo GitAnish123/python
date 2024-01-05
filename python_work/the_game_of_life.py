@@ -14,6 +14,9 @@ try:
     print(f"Hello, {name}!")
 
     gender = input("What is your gender? (male, female): ")
+    while gender not in ['male', 'female']:
+        print("Please choose 'male' or 'female'.")
+        gender = input("What is your gender? (male, female): ")
 
     game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
     while game_difficulty not in ['easy', 'medium', 'hard', 'hardcore']:
@@ -1291,3 +1294,5 @@ try:
                 break
 except Exception as e:
     print(f"GAME OVER (Error occured): {e}")
+finally:
+    print("Remember to enter good/right information!")
