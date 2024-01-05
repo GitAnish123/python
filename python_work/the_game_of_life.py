@@ -42,15 +42,15 @@ try:
             print(f"Calculating salary per day:")
             time.sleep(2.5)
             if your_job == 'doctor':
-                salary = random.randint(800, 900)
+                salary = random.randint(800, 1000)
             if your_job == 'scientist':
-                salary = random.randint(300, 400)
+                salary = random.randint(300, 500)
             if your_job == 'buisnessman':
-                salary = random.randint(320, 380)
+                salary = random.randint(320, 520)
             if your_job == 'lawyer':
-                salary = random.randint(500, 650)
+                salary = random.randint(500, 700)
             if your_job == 'software engineer':
-                salary = random.randint(560, 620)
+                salary = random.randint(560, 760)
             print(f"Your salary is ${salary} per day!")
     if which_path == 'career':
         print(f"You picked career path!")
@@ -67,9 +67,9 @@ try:
         if your_job == 'athlete':
             salary = random.randint(210, 260)
         if your_job == 'salesperson':
-            salary = random.randint(280, 350)
+            salary = random.randint(280, 330)
         if your_job == 'teacher':
-            salary = random.randint(130, 200)
+            salary = random.randint(130, 180)
         print(f"Your salary is ${salary} per day!")
     
     game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
@@ -1617,6 +1617,24 @@ try:
                     credit_salary = 0.05
                 elif game_difficulty == 'hard':
                     credit_salary = 0.025
+                elif game_difficulty == 'hardcore':
+                    credit_salary = 0.01
+                game_credits = game_credits + credit_salary
+                print(f"You earned {credit_salary} credits too!")
+                print(f"You have ${money} and {game_credits} credits!")
+        
+        # Bouns salary every 12 rounds!
+        if has_job == True:
+            if actions_count % 12 == 0:
+                bonus_salary = salary * 10
+                money = money + bonus_salary
+                print(f"You earned ${bonus_salary} as your BOUNS salary!")
+                if game_difficulty == 'easy':
+                    credit_salary = 0.15
+                elif game_difficulty == 'medium':
+                    credit_salary = 0.1
+                elif game_difficulty == 'hard':
+                    credit_salary = 0.05
                 elif game_difficulty == 'hardcore':
                     credit_salary = 0.01
                 game_credits = game_credits + credit_salary
