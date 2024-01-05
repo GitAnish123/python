@@ -33,7 +33,7 @@ try:
         graduated_or_not = random.choice(graduated_or_not_options)
         print(f"You did {graduated_or_not} from college!")
         if graduated_or_not == 'not graduate':
-            print(f"GAME OVER!!! -- You didn't graduate")
+            print(f"NO GOOD!!! -- You didn't graduate")
         else:
             jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer']
             your_job = random.choice(jobs_for_college)
