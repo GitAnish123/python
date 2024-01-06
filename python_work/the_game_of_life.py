@@ -35,7 +35,8 @@ try:
         if graduated_or_not == 'not graduate':
             print(f"NO GOOD!!! -- You didn't graduate")
         else:
-            jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer']
+            jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer', 'teacher',
+                                'video game designer', 'vet', 'fashion designer', 'secret agent']
             your_job = random.choice(jobs_for_college)
             has_job = True
             print(f"Your job is: {your_job} (you work for 8 hours)")
@@ -51,10 +52,21 @@ try:
                 salary = random.randint(500, 700)
             if your_job == 'software engineer':
                 salary = random.randint(560, 760)
+            if your_job == 'teacher':
+                salary = random.randint(280, 480)
+            if your_job == 'video game designer':
+                salary = random.randint(600, 800)
+            if your_job == 'vet':
+                salary = random.randint(640, 840)
+            if your_job == 'fashion designer':
+                salary = random.randint(250, 450)
+            if your_job == 'secret agent':
+                salary = random.randint(310, 510)
             print(f"Your salary is ${salary} per day!")
     if which_path == 'career':
         print(f"You picked career path!")
-        jobs_for_college = ['artist', 'police officer', 'athlete', 'salesperson', 'teacher']
+        jobs_for_college = ['artist', 'police officer', 'athlete', 'salesperson', 'singer', 'chef', 'race car driver',
+                            'inventor', 'actor', 'dancer']
         your_job = random.choice(jobs_for_college)
         has_job = True
         print(f"Your job is: {your_job} (you work for 8 hours)")
@@ -68,8 +80,18 @@ try:
             salary = random.randint(210, 260)
         if your_job == 'salesperson':
             salary = random.randint(280, 330)
-        if your_job == 'teacher':
+        if your_job == 'singer':
             salary = random.randint(130, 180)
+        if your_job == 'chef':
+            salary = random.randint(150, 200)
+        if your_job == 'race car driver':
+            salary = random.randint(160, 210)
+        if your_job == 'inventor':
+            salary = random.randint(200, 250)
+        if your_job == 'actor':
+            salary = random.randint(260, 310)
+        if your_job == 'dancer':
+            salary = random.randint(180, 230)
         print(f"Your salary is ${salary} per day!")
     
     game_difficulty = input("Choose your difficulty (easy, medium, hard, hardcore): ").lower()
