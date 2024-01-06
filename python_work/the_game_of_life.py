@@ -136,6 +136,7 @@ try:
                     paid_for_college = True
 
         if welcome_message == 'get coupon':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= 3
             else:
@@ -158,6 +159,7 @@ try:
         
         if welcome_message == 'shop':
             if shop_attempts < 4:
+                actions_count += 1
                 if game_difficulty == 'hardcore':
                     health -= random.randint(25,50)
                 elif game_difficulty == 'easy':
@@ -240,6 +242,7 @@ try:
             print(f"\nHere is the offer: ${money_amount} for {credits_recieved} credits.")
             will_you_do_business = input("Are you going to accept the offer? (yes, no) ")
             if will_you_do_business == 'yes':
+                actions_count += 1
                 money = money - money_amount
                 game_credits = game_credits + credits_recieved
                 print(f"You have ${money} left.\nYou have {game_credits} credits.")
@@ -247,6 +250,7 @@ try:
                 print("Ok, have a nice day!")
 
         if welcome_message == 'get money':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= 3
             else:
@@ -264,25 +268,16 @@ try:
                 print("Okay, have a good day!")
         
         if welcome_message == 'stats':
-            if game_difficulty == 'hardcore':
-                health -= 25
-            else:
-                health -= random.randint(10, 20)
-            print(f"You have {health} health.")
-            see_stats_amount = random.randint(1_000, 10_000)
-            pay_for_stats = input(f"You pay ${see_stats_amount} to see stats: (yes, no)  ")
-            if pay_for_stats == 'yes':
-                money = money - see_stats_amount
-                print("\nHere are your stats:")
-                print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
-                print(f"Has wife: {has_wife}\nHas Job: {has_job}\nTotal actions played: {actions_count}")
-                if has_job == True:
-                    print(f"Job: {your_job}\nSalary: {salary}")
-            else:
-                print(f"Ok, have a nice day!")
+            print("\nHere are your stats:")
+            print(f"{health} health\nMoney: ${money}\n{game_credits} credits.")
+            print(f"Has wife: {has_wife}\nHas Job: {has_job}\nTotal actions played: {actions_count}")
+            if has_job == True:
+                print(f"Job: {your_job}\nSalary: {salary}")
+            
 
         if welcome_message == 'eminem101greatone':
             if game_difficulty != 'hardcore':
+                actions_count += 1
                 health -= 5
                 print(f"You have {health} health left.")
                 starting_money = random.randint(10,250)
@@ -299,6 +294,7 @@ try:
                 print(f"This feature is disabled for hardcore mode!")
         
         if welcome_message == 'action':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= random.randint(2,5)
             else:
@@ -1085,6 +1081,7 @@ try:
                             else:
                                 print(f"Wrong, guess again! {attempts_for_success} attempts so far!")
         if welcome_message == 'gamble':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health = health - random.randint(5, 10)
             else:
@@ -1178,6 +1175,7 @@ try:
                 money -= random.randint(100, 2000)
                 print(f"You have ${money} left.")
             else:
+                actions_count += 1
                 print("Great! If you lose, you lose money, every time you survive a round, you get credits.")
                 print("When you win, you get money!")
                 print("Here is round 1...")
@@ -1274,6 +1272,7 @@ try:
             if has_wife == True:
                 print(f"You already have a wife/husband!")
             else:
+                actions_count += 1
                 health -= random.randint(10, 15)
                 print(f"You have {health} health left.")
                 wife_possibilities = ['yes', 'no']
@@ -1296,6 +1295,7 @@ try:
                     print("Sorry, you didn't have any luck finding a lover!")
         
         if welcome_message == 'secret wheel_fortune23 gameisTRUE':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= random.randint(75, 150)
             else:
@@ -1550,6 +1550,7 @@ try:
         
         if welcome_message == 'doctor':
             if doctor_attempts < 3:
+                actions_count += 1
                 which_doctor = input("Which doctor you want to go to? (successful, good, bad) ")
                 if which_doctor == 'successful':
                     if game_difficulty == 'hardcore':
