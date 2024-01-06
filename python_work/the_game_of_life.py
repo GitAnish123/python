@@ -463,7 +463,7 @@ try:
                 "Who wrote 'The Chronicles of Narnia' series?": "C.S. Lewis",
                 "What is the boiling point of water in Celsius?": "100 degrees",
                 "Who is the Roman god of war?": "Mars",
-                "What is the smallest bone in the human body?": "Stapes (in the ear)",
+                "What is the smallest bone in the human body?": "Stapes",
                 "Who was the first woman to win a Nobel Prize?": "Marie Curie",
                 }
                 print(f"Welcome to geoperdy! If you win, you get MONEY, if you lose, pay the wager amount.")
@@ -811,7 +811,7 @@ try:
                 "Who wrote 'The Chronicles of Narnia' series?": "C.S. Lewis",
                 "What is the boiling point of water in Celsius?": "100 degrees",
                 "Who is the Roman god of war?": "Mars",
-                "What is the smallest bone in the human body?": "Stapes (in the ear)",
+                "What is the smallest bone in the human body?": "Stapes",
                 "Who was the first woman to win a Nobel Prize?": "Marie Curie",
                 }
                 print(f"You have ${money}!")
