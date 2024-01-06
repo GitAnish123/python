@@ -1612,10 +1612,7 @@ try:
                     doctor_attempts += 0.5
             else:
                 print("You have max doctor attempts in this game.")
-        
-        
-        # Increment the action count every turn.
-        actions_count += 1
+
 
         # Check if the player has performed 5 actions
         if has_job == True:
