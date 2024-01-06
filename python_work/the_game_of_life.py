@@ -170,6 +170,7 @@ try:
             if has_loan:
                 print("You already have a loan! Repay it before taking another one.")
             else:
+                time.sleep(4)
                 actions_count += 1
                 loan_amount = random.randint(1000, 10000)
                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
