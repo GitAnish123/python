@@ -250,7 +250,6 @@ try:
                 print("Ok, have a nice day!")
 
         if welcome_message == 'get money':
-            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= 3
             else:
@@ -259,6 +258,7 @@ try:
             starting_money = random.randint(1,100)
             if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? ")
             if if_do_you_want_to_pay == 'yes':
+                actions_count += 1
                 money = money - starting_money
                 more_money = random.randint(-10000, 10000)
                 print(f"Here is the amount increased: ${more_money}")
@@ -277,12 +277,12 @@ try:
 
         if welcome_message == 'eminem101greatone':
             if game_difficulty != 'hardcore':
-                actions_count += 1
                 health -= 5
                 print(f"You have {health} health left.")
                 starting_money = random.randint(10,250)
                 if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? You are in the BONUS money: ")
                 if if_do_you_want_to_pay == 'yes':
+                    actions_count += 1
                     money = money - starting_money
                     more_money = random.randint(-2_000_000, 2_000_000)
                     print(f"Here is the amount increased: ${more_money}")
