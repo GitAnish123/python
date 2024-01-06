@@ -128,6 +128,12 @@ try:
     # Every 5 turns, you earn your salary. Count every action.
     actions_count = 0
 
+    # Initialize loan-related variables
+    has_loan = False
+    loan_amount = 0
+    loan_repayment_actions = 5
+    actions_since_loan = 0
+
     print(f"You start with ${money}")
     print(f"You start with {health} health.")
     print(f"You start with {game_credits} credits.")
@@ -142,7 +148,10 @@ try:
             break
         
         if money <= 0:
-            print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+            if has_loan:
+                print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY AND FAILED TO REPAY THE LOAN")
+            else:
+                print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
             break
         
         if health <= 0:
@@ -157,6 +166,35 @@ try:
                     print(f"You have ${money} left.")
                     paid_for_college = True
 
+        if welcome_message == 'take loan':
+            if has_loan:
+                print("You already have a loan! Repay it before taking another one.")
+            else:
+                actions_count += 1
+                loan_amount = random.randint(1000, 10000)
+                print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
+                has_loan = True
+        
+        if has_loan:
+            actions_since_loan += 1
+            if actions_since_loan >= loan_repayment_actions:
+                print(f"GAME OVER: You failed to repay the loan of ${loan_amount} within {loan_repayment_actions} actions.")
+                break
+        
+        if welcome_message == 'repay loan':
+            actions_count += 1
+            repay_amount = int(input("Enter the amount to repay: $"))
+            if repay_amount <= money:
+                money -= repay_amount
+                loan_amount -= repay_amount
+                print(f"You repaid ${repay_amount}. Remaining loan amount: ${loan_amount}")
+                if loan_amount <= 0:
+                    print("Congratulations! You have successfully repaid the loan.")
+                    has_loan = False
+                    actions_since_loan = 0
+            else:
+                print("You don't have enough money to repay that amount.")
+        
         if welcome_message == 'get coupon':
             actions_count += 1
             if game_difficulty == 'hardcore':
