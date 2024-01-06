@@ -365,7 +365,7 @@ try:
                         'paying taxes', 'sue person', 'doctor', 'sleep', 'entertainment', 'work', 'socializing', 
                         'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife/husband', 'divorce wife/husband',
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
-                        'poo', 'get money']
+                        'poo', 'get money', 'describe yourself for fun', 'sports', 'pee']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -974,9 +974,38 @@ try:
                 health += 15
                 print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
                 print(f"You currently have ${money} and {health} health")
+            
+            if result == 'sports':
+                kind_sport = ['basketball', 'football', 'baseball', 'soccer', 'volleyball', 'hockey', 'swimming']
+                random_kind_sport = random.choice(kind_sport)
+                print(f"You joined in the professional sports team, {random_kind_sport}.")
+                print(f"You went to the final game! Lets see if your team won...")
+                time.sleep(3)
+                if_sport_team_won = ['yes', 'no']
+                sport_team_result = random.choice(if_sport_team_won)
+                if sport_team_result == 'yes':
+                    print(f"Your team won!\nYou earned $7500 and 15 health!")
+                    money += 7500
+                    health += 15
+                else:
+                    print(f"Your team lost!\nYou lost $5000 and 10 health.")
+                    money -= 5000
+                    health -= 10
+            
+            if result == 'describe yourself for fun':
+                characteristics = ['funny', 'smart', 'kind', 'mean', 'rude', 'bad', 'dumb', 'serious', 'cool',
+                                   'not funny', 'brave', 'clever', 'cheerful', 'an idiot', 'amusing', 'bright', 'right',
+                                   'comfortable', 'dashing', 'gentle', 'popular', 'famous', 'strong', 'talented']
+                random_characteristic = random.choice(characteristics)
+                print(f"I am {random_characteristic}!")
 
             if result == 'poo':
                 print(f"You went poo!")
+                health += 1
+                print(f"You have {health} health!")
+            
+            if result == 'pee':
+                print(f"You went pee!")
                 health += 1
                 print(f"You have {health} health!")
             
