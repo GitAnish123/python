@@ -994,7 +994,7 @@ try:
             
             if result == 'less money':
                 less_money_amount_for_the_action_that_is_unique = random.randint(1000, 5000)
-                print(f"You earned ${less_money_amount_for_the_action_that_is_unique}!")
+                print(f"You lost ${less_money_amount_for_the_action_that_is_unique}!")
                 money = money - less_money_amount_for_the_action_that_is_unique
                 print(f"You have ${money} left.")
             
