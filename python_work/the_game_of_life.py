@@ -181,6 +181,7 @@ try:
                 actions_count += 1
                 loan_amount = int(input("How much money you want: $"))
                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
+                money = money + loan_amount
                 has_loan = True
         
         if has_loan:
@@ -1074,7 +1075,8 @@ try:
                     print(f"You have {health} health left!")
                 second_adventure = input("Where do you want to return to: (backyard, porch)  ")
                 options_for_adventure2 = ['backyard', 'porch']
-                if second_adventure == options_for_adventure2:
+                random_option_for_adventure_result2 = random.choice(options_for_adventure2)
+                if second_adventure == random_option_for_adventure_result2:
                     print(f"Great choice, you escaped from the situation of the murder! You earn 0.1 credits.")
                     game_credits += 0.1
                 else:
@@ -1090,7 +1092,8 @@ try:
                         health -= 50
                 third_adventure = input("Do you go inside? (yes, no)  ")
                 options_for_adventure = ['yes', 'no']
-                if third_adventure == options_for_adventure:
+                random_result_of_options_for_adventure = random.choice(options_for_adventure)
+                if third_adventure == random_result_of_options_for_adventure:
                     print(f"You went inside successfully to your house and won! (See your stats for updated rewards).")
                     money += random.randint(1000, 10000)
                     health += random.randint(10, 20)
@@ -1973,12 +1976,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
             if game_credits >= 2.5:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
 
         elif game_difficulty == 'medium':
             if money >= 5_000_000:
@@ -1987,12 +1992,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
             if game_credits >= 3:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
 
         elif game_difficulty == 'hard':
             if money >= 7_500_000:
@@ -2001,12 +2008,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
             if game_credits >= 3.5:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
         
         elif game_difficulty == 'hardcore':
             if money >= 10_000_000:
@@ -2015,12 +2024,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
             if game_credits >= 4:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
+                    break
 
 except Exception as e:
     print(f"GAME OVER (Error occured): {e}")
