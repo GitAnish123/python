@@ -1618,9 +1618,9 @@ try:
         if welcome_message == 'secret wheel_fortune23 gameisTRUE':
             actions_count += 1
             if game_difficulty == 'hardcore':
-                health -= random.randint(75, 150)
+                health -= random.randint(150, 200)
             else:
-                health -= random.randint(75, 100)
+                health -= random.randint(100, 150)
             print(f"You have {health} health left!")
             words = [
                 "APPLE",
