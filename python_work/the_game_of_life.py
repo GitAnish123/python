@@ -1048,7 +1048,7 @@ try:
                     elif random_action_job == 'increase salary':
                         amount_increase_salary = round(random.uniform(1, 3), 2)
                         print(f"Your salary has been increased by {amount_increase_salary} times!")
-                        salary = salary * amount_decrease_salary
+                        salary = salary * amount_increase_salary
                         print(f"Your salary is now ${salary}.")
                     elif random_action_job == 'removal':
                         print(f"You got removed from your job!")
