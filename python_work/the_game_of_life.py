@@ -1224,21 +1224,25 @@ try:
                     game_credits += 0.75
                     
             if result == 'school':
-                print(f"Lets see if you can go to school...")
-                time.sleep(15)
-                if has_job == True:
-                    print(f"You want to go back to school and increase your salary? ($100,000)")
-                    if money >= 100_000:
-                        print(f"You went back to school and paid $100,000! Lets see your salary increase for your work.")
-                        money -= 100000
-                        time.sleep(3)
-                        increased_salary_amount = round(random.uniform(1, 3), 2)
-                        salary = salary * increased_salary_amount
-                        print(f"Your salary is now ${salary} per day!")
+                do_you_want_to_go_to_school = input("Do you want to go to school to increase salary for $100,000? (yes, no)  ")
+                if do_you_want_to_go_to_school == 'yes':
+                    print(f"Lets see if you can go to school...")
+                    time.sleep(15)
+                    if has_job == True:
+                        print(f"You want to go back to school and increase your salary? ($100,000)")
+                        if money >= 100_000:
+                            print(f"You went back to school and paid $100,000! Lets see your salary increase for your work.")
+                            money -= 100000
+                            time.sleep(3)
+                            increased_salary_amount = round(random.uniform(1, 3), 2)
+                            salary = salary * increased_salary_amount
+                            print(f"Your salary is now ${salary} per day!")
+                        else:
+                            print(f"You don't have enough money to go back to school!")
                     else:
-                        print(f"You don't have enough money to go back to school!")
+                        print(f"Sorry, you got rejected to go to school because no job application(s) or degree.")
                 else:
-                    print(f"Sorry, you got rejected to go to school because no job application(s) or degree.")
+                    print(f"Ok, enjoy your life!")
 
             if result == 'get money':
                 if has_wife == True:
