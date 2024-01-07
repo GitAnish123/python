@@ -131,7 +131,14 @@ try:
     # Initialize loan-related variables
     has_loan = False
     loan_amount = 0
-    loan_repayment_actions = 5
+    if game_difficulty == 'easy':
+        loan_repayment_actions = 10
+    elif game_difficulty == 'medium':
+        loan_repayment_actions = 7
+    elif game_difficulty == 'hard':
+        loan_repayment_actions = 5
+    elif game_difficulty == 'hardcore':
+        loan_repayment_actions = 4
     actions_since_loan = 0
 
     print(f"You start with ${money}")
@@ -172,7 +179,7 @@ try:
             else:
                 time.sleep(4)
                 actions_count += 1
-                loan_amount = random.randint(1000, 10000)
+                loan_amount = int(input("How much money you want: $"))
                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
                 has_loan = True
         
@@ -365,7 +372,9 @@ try:
                         'paying taxes', 'sue person', 'doctor', 'sleep', 'entertainment', 'work', 'socializing', 
                         'money earner', 'hardcore ONLY action', 'credit geoperdy', 'travel', 'gaming', 'wife/husband', 'divorce wife/husband',
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
-                        'poo', 'get money', 'describe yourself for fun', 'sports', 'pee']
+                        'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
+                        'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
+                        'less money', 'job result']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -975,6 +984,18 @@ try:
                 print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
                 print(f"You currently have ${money} and {health} health")
             
+            if result == 'more money':
+                more_money_amount_for_the_action_that_is_unique = random.randint(1000, 5000)
+                print(f"You earned ${more_money_amount_for_the_action_that_is_unique}!")
+                money = money + more_money_amount_for_the_action_that_is_unique
+                print(f"You have ${money} left.")
+            
+            if result == 'less money':
+                less_money_amount_for_the_action_that_is_unique = random.randint(1000, 5000)
+                print(f"You earned ${less_money_amount_for_the_action_that_is_unique}!")
+                money = money - less_money_amount_for_the_action_that_is_unique
+                print(f"You have ${money} left.")
+            
             if result == 'sports':
                 kind_sport = ['basketball', 'football', 'baseball', 'soccer', 'volleyball', 'hockey', 'swimming']
                 random_kind_sport = random.choice(kind_sport)
@@ -1009,6 +1030,212 @@ try:
                 health += 1
                 print(f"You have {health} health!")
             
+            if result == 'job result':
+                if has_job:
+                    print(f"Your company decided to do something for your job!")
+                    time.sleep(2)
+                    job_actions = ['nothing', 'removal', 'decrease salary', 'increase salary']
+                    random_action_job = random.choice(job_actions)
+                    if random_action_job == 'nothing':
+                        print(f"Nothing happened! Lucky your on the same side...")
+                    elif random_action_job == 'decrease salary':
+                        amount_decrease_salary = round(random.uniform(1, 3), 2)
+                        print(f"Your salary has been decreased by {amount_decrease_salary} times!")
+                        salary = salary / amount_decrease_salary
+                        print(f"Your salary is now ${salary}.")
+                    elif random_action_job == 'increase salary':
+                        amount_increase_salary = round(random.uniform(1, 3), 2)
+                        print(f"Your salary has been increased by {amount_increase_salary} times!")
+                        salary = salary * amount_decrease_salary
+                        print(f"Your salary is now ${salary}.")
+                    elif random_action_job == 'removal':
+                        print(f"You got removed from your job!")
+                        has_job = False
+                    
+            if result == 'bad brother':
+                what_kind_of_brother = ['younger', 'older', 'twin', 'alien', 'super', 'idiotic', 'autistic']
+                what_kind_of_brother_result = random.choice(what_kind_of_brother)
+                print(f"Your {what_kind_of_brother_result} brother hit you so hard! You fell to the ground, almost dead!")
+                health = 1
+                print(f"You have only 1 health!")
+            
+            if result == 'choose your adventure':
+                print(f"Welcome to 'choose your adventure'. (3 adventures) Here is the storyline of what to do!")
+                time.sleep(2)
+                first_adventure = input("Do you want to murder your next door man? (yes, no)  ")
+                options_for_adventure = ['yes', 'no']
+                random_result_of_options_for_adventure = random.choice(options_for_adventure)
+                if first_adventure == random_result_of_options_for_adventure:
+                    print(f"Okay! You earned $1000 for doing the following action.")
+                    money += 1000
+                else:
+                    print(f"NOPE!!! Wrong move, the man slipped into your underwear and blasted you! (you lost health)")
+                    health -= random.randint(15, 30)
+                    print(f"You have {health} health left!")
+                second_adventure = input("Where do you want to return to: (backyard, porch)  ")
+                options_for_adventure2 = ['backyard', 'porch']
+                if second_adventure == options_for_adventure2:
+                    print(f"Great choice, you escaped from the situation of the murder! You earn 0.1 credits.")
+                    game_credits += 0.1
+                else:
+                    print(f"Wrong location, the police saw you and accused you because you are up past curfew")
+                    second_adventure_escape = input("(run, stay)  ")
+                    if second_adventure_escape == 'run':
+                        print(f"You ran away successfully, but got caught by another group of policemen!")
+                        print(f"You lost $150,000 for a fine for being late after curfew and escaping policemen.")
+                        money -= 150_000
+                    else:
+                        print(f"You chose to stay! You stayed in jail for 5 years but finally got released.")
+                        print(f"You lost 50 health!")
+                        health -= 50
+                third_adventure = input("Do you go inside? (yes, no)  ")
+                options_for_adventure = ['yes', 'no']
+                if third_adventure == options_for_adventure:
+                    print(f"You went inside successfully to your house and won! (See your stats for updated rewards).")
+                    money += random.randint(1000, 10000)
+                    health += random.randint(10, 20)
+                    game_credits += round(random.uniform(0, 0.5), 2)
+                else:
+                    print(f"You realized that you went inside another random ghost house! A random skeleton killed you!")
+                    print(f"GAME OVER!!! -- You died")
+                    break
+
+            if result == 'multiplication':
+                print(f"Solve a multiplication problem to earn money!!!")
+                multiplication_difficulty = input("(easy, medium, hard)  ")
+                if multiplication_difficulty == 'hard':
+                    factor1 = random.uniform(1, 10000)
+                    factor2 = random.uniform(1, 10000)
+                    answer_to_multiplication_question = factor1 * factor2
+                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $1000.")
+                        money -= 1000
+                    else:
+                        print(f"Correct! You earned $10000!")
+                        money += 10000
+                elif multiplication_difficulty == 'medium':
+                    factor1 = random.uniform(1, 100)
+                    factor2 = random.uniform(1, 100)
+                    answer_to_multiplication_question = factor1 * factor2
+                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $500.")
+                        money -= 500
+                    else:
+                        print(f"Correct! You earned $5000!")
+                        money += 5000
+                elif multiplication_difficulty == 'easy':
+                    factor1 = random.randint(1, 100)
+                    factor2 = random.randint(1, 100)
+                    answer_to_multiplication_question = factor1 * factor2
+                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $100.")
+                        money -= 100
+                    else:
+                        print(f"Correct! You earned $750!")
+                        money += 750
+            
+            if result == 'division':
+                print(f"Solve a division problem to earn money!!!")
+                multiplication_difficulty = input("(easy, medium, hard)  ")
+                if multiplication_difficulty == 'hard':
+                    factor1 = random.uniform(1, 10000)
+                    factor2 = random.uniform(1, 10000)
+                    answer_to_multiplication_question = round(factor1 / factor2, 2)
+                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $1000.")
+                        money -= 1000
+                    else:
+                        print(f"Correct! You earned $10000!")
+                        money += 10000
+                elif multiplication_difficulty == 'medium':
+                    factor1 = random.uniform(1, 100)
+                    factor2 = random.uniform(1, 100)
+                    answer_to_multiplication_question = round(factor1 / factor2, 2)
+                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $500.")
+                        money -= 500
+                    else:
+                        print(f"Correct! You earned $5000!")
+                        money += 5000
+                elif multiplication_difficulty == 'easy':
+                    factor1 = random.randint(1, 100)
+                    factor2 = random.randint(1, 100)
+                    answer_to_multiplication_question = round(factor1 / factor2, 2)
+                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
+                    if multiplication_difficulty != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer}. Sorry, you lost $100.")
+                        money -= 100
+                    else:
+                        print(f"Correct! You earned $750!")
+                        money += 750
+
+            if result == 'merry':
+                print(f"You felt merry! You got $1300 and 3 health!")
+                health += 3
+                money += 1300
+                print(f"You have ${money} and {health} health!")
+            
+            if result == 'loser':
+                print(f"Eminem and his friends hijacked you and called you loser! You lost some health and money.")
+                money -= random.randint(10, 2000)
+                health -= random.randint(1, 15)
+                print(f"You have ${money} and {health} health!")
+            
+            if result == 'eminem':
+                print(f"You were watching rap music, eminem!")
+                health -= 1
+                print(f"You have {health} health left!")
+            
+            if result == 'sofa':
+                print(f"You want a sofa!")
+                time.sleep(1)
+                what_sofa = int(input("How much money you want to spend for your sofa? $"))
+                if what_sofa <= 100:
+                    money = money - what_sofa
+                    print(f"Nice try! You get no sofa...")
+                elif what_sofa <= 500:
+                    money = money - what_sofa
+                    print(f"You have a okay sofa!")
+                    health += 10
+                    game_credits += 0.1
+                elif what_sofa <= 1000:
+                    money = money - what_sofa
+                    print(f"You have a good sofa!")
+                    health += 20
+                    game_credits += 0.5
+                elif what_sofa <= 10000:
+                    money = money - what_sofa
+                    print(f"You have a nice sofa!")
+                    health += 100
+                    game_credits += 0.5
+                else:
+                    money = money - what_sofa
+                    print(f"You have a AWESOME sofa!")
+                    health += 200
+                    game_credits += 0.75
+                    
+            if result == 'school':
+                print(f"Lets see if you can go to school...")
+                time.sleep(15)
+                if has_job == True:
+                    print(f"You want to go back to school and increase your salary? ($100,000)")
+                    if money >= 100_000:
+                        print(f"You went back to school and paid $100,000! Lets see your salary increase for your work.")
+                        money -= 100000
+                        time.sleep(3)
+                        increased_salary_amount = round(random.uniform(1, 3), 2)
+                        salary = salary * increased_salary_amount
+                        print(f"Your salary is now ${salary} per day!")
+                    else:
+                        print(f"You don't have enough money to go back to school!")
+                else:
+                    print(f"Sorry, you got rejected to go to school because no job application(s) or degree.")
+
             if result == 'get money':
                 if has_wife == True:
                     want_money = input("u want monei? ")
@@ -1741,35 +1968,60 @@ try:
 
         if game_difficulty == 'easy':
             if money >= 2_500_000:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
             if game_credits >= 2.5:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
 
         elif game_difficulty == 'medium':
             if money >= 5_000_000:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
             if game_credits >= 3:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
 
         elif game_difficulty == 'hard':
             if money >= 7_500_000:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
             if game_credits >= 3.5:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
         
         elif game_difficulty == 'hardcore':
             if money >= 10_000_000:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH MONEY!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
             if game_credits >= 4:
-                print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
-                break
+                if has_loan == False:
+                    print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
+                    break
+                else:
+                    print(f"Even if you have money or credits, you can't win because you are on dept!")
+
 except Exception as e:
     print(f"GAME OVER (Error occured): {e}")
 finally:
