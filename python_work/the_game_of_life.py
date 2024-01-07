@@ -1494,7 +1494,7 @@ try:
             else:
                 health -= random.randint(15, 25)
             print(f"You have {health} health left.")
-            msg_for_math_enter = input("Do you want to enter the HARD math challenge to earn rewards? (yes, no):  ")
+            msg_for_math_enter = input("Do you want to enter the HARD math challenge to earn rewards? [harder than the action one] (yes, no):  ")
             if msg_for_math_enter == 'no':
                 print(f"Ok, so long!")
                 money -= random.randint(100, 2000)
