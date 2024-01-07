@@ -1488,7 +1488,7 @@ try:
                 print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
             print(f"You currently have ${money}.")
         
-        if welcome_message == 'hard math test':
+        if welcome_message == 'very hard math test':
             if game_difficulty == 'hardcore':
                 health -= 25
             else:
