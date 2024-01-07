@@ -611,6 +611,7 @@ try:
                     m_money = random.randint(10_000, 1_500_000)
                 else:
                     m_money = random.randint(100_000, 2_000_000)
+                money = money + m_money
                 print(f"You earned ${m_money}!!! You now have ${money}")
             
             if result == 'hardcore ONLY action':
