@@ -8,7 +8,7 @@ try:
     When you earn 4 credits, you win. So watch out for those three things: health, money, and credits.
     """
 
-    import random, time
+    import random, time, math
 
     # Set default value if you have a job. Currently, it will be False
     has_job = False
@@ -1567,6 +1567,106 @@ try:
                                     if game_difficulty != 'hardcore':
                                         more_money_for_math_win = random.randint(1000, 100000)
                                         money = money + more_money_for_math_win
+                                    
+                                    bonusROUND = input("Do you want to enter the bonus rounds for more (less) money? [yes, no]  ")
+                                    if bonusROUND == 'yes':
+                                        print("Here comes round 6 out of 10...")
+                                        num1 = random.uniform(10, 100)
+                                        num2 = random.uniform(10, 100)
+                                        num3 = random.uniform(10, 100)
+                                        num4 = random.uniform(10, 100)
+                                        operator = random.choice(['+', '*', '/', '-'])
+                                        operator2 = random.choice(['+', '*', '/', '-'])
+                                        operator3 = random.choice(['+', '*', '/', '-'])
+                                        expression = f"{num1} {operator} {num2} {operator2} {num3} {operator3} {num4}"
+                                        correct_answer = round(eval(expression), 2)
+                                        user_answer = float(input(f"What is {expression}? Round to nearest hundreth if nessesary! "))
+                                        if user_answer == correct_answer:
+                                            print(f"Here is your 0.01 credits!")
+                                            game_credits += 0.01
+                                            print(f"Great! Lets continue to round 7...")
+                                            num1 = random.uniform(100, 1000)
+                                            num2 = random.uniform(100, 1000)
+                                            num3 = random.uniform(100, 1000)
+                                            operator = random.choice(['+', '*', '/', '-'])
+                                            operator2 = random.choice(['+', '*', '/', '-'])
+                                            expression = f"{num1} {operator} {num2} {operator2} {num3}"
+                                            correct_answer = round(eval(expression), 2)
+                                            user_answer = float(input(f"What is {expression}? Round to nearest hundreth if nessesary! "))
+                                            if user_answer == correct_answer:
+                                                print(f"Right! Your on track, and here is your 0.02 credits.")
+                                                game_credits += 0.02
+                                                print(f"Here goes round 8...")
+                                                num1 = random.uniform(100, 1000)
+                                                num2 = random.uniform(250, 1000)
+                                                num3 = random.uniform(500, 1000)
+                                                operator = random.choice(['+', '*', '/', '-'])
+                                                operator2 = random.choice(['+', '*', '/', '-'])
+                                                expression = f"{num1} {operator} {num2} {operator2} {num3}"
+                                                correct_answer = round(eval(expression), 2)
+                                                user_answer = float(input(f"What is {expression}? Round to nearest hundreth if nessesary! "))
+                                                if user_answer == correct_answer:
+                                                    print(f"Correct! Lets move on to line 9, round 9...")
+                                                    print(f"You earn 0.02 credits!")
+                                                    game_credits += 0.02
+                                                    num1 = random.uniform(1, 9.25)
+                                                    num2 = random.uniform(1, 9.25)
+                                                    correct_answer = num1 ** num2
+                                                    user_answer = float(input(f"What is {num1} ^ {num2}? Round to nearest hundreth if nessesary! "))
+                                                    if user_answer == correct_answer:
+                                                        print(f"Correct! Lets move on to THE FINAL ROUND, 10!")
+                                                        game_credits += 0.02
+                                                        print(f"You earned 0.02 credits!")
+                                                        number_for_root_square = random.uniform(10, 100_000)
+                                                        correct_answer = math.sqrt(number_for_root_square)
+                                                        user_answer = float(input(f"What is the square root of {number_for_root_square}? Round to nearest hundreth if nessesary! "))
+                                                        if user_answer == correct_answer:
+                                                            print(f"Nice! You get 0.05 credits.")
+                                                            print(f"YOU DID IT!!! You get money, health, and much more. See your stats for updates.")
+                                                            game_credits += 0.05
+                                                            if game_difficulty == 'medium':
+                                                                health += 15
+                                                                money += 2_500_000
+                                                                game_credits += 0.01
+                                                            elif game_difficulty == 'easy':
+                                                                health += 20
+                                                                money += 3_500_000
+                                                                game_credits += 0.05
+                                                            elif game_difficulty == 'hard':
+                                                                health += 10
+                                                                money += 2_000_000
+                                                            else:
+                                                                health += 5
+                                                                money += 1_750_000
+                                                        else:
+                                                            print(f"Wrong! Answer is {correct_answer}.")
+                                                            loss_money_for_math = random.randint(900_000, 1_000_000)
+                                                            money = money - loss_money_for_math
+                                                            print(f"You lost ${loss_money_for_math}!")
+                                                    else:
+                                                        print(f"Wrong! Answer is {expression}.")
+                                                        loss_money_for_math = random.randint(750_000, 900_000)
+                                                        money = money - loss_money_for_math
+                                                        print(f"You lost ${loss_money_for_math}!")
+                                                else:
+                                                    print(f"Wrong! Answer is {correct_answer}.")
+                                                    loss_money_for_math = random.randint(250000, 750000)
+                                                    money = money - loss_money_for_math
+                                                    print(f"You lost ${loss_money_for_math}!")
+                                            
+                                            else:
+                                                print(f"Wrong! Answer is {correct_answer}.")
+                                                loss_money_for_math = random.randint(100000, 750000)
+                                                money = money - loss_money_for_math
+                                                print(f"You lost ${loss_money_for_math}!")   
+                                            
+                                        else:
+                                            print(f"Wrong! Answer is {correct_answer}.")
+                                            loss_money_for_math = random.randint(100000, 500000)
+                                            money = money - loss_money_for_math
+                                            print(f"You lost ${loss_money_for_math}!")
+                                    else:
+                                        print(f"Ok, Have a nice day!")
                                 else:
                                     loss_money_for_math = random.randint(100000, 500000)
                                     print(f"OH NO!!! You lost ${loss_money_for_math}")
