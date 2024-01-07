@@ -222,11 +222,11 @@ try:
             if shop_attempts < 4:
                 actions_count += 1
                 if game_difficulty == 'hardcore':
-                    health -= random.randint(25,50)
+                    health -= random.randint(80, 120)
                 elif game_difficulty == 'easy':
-                    health -= random.randint(15,25)
+                    health -= random.randint(40, 85)
                 else: 
-                    health -= random.randint(20,40)
+                    health -= random.randint(50, 100)
                 print(f"You have {health} health left.")
                 print("You have chose to shop!!!")
                 shop_message = input("What do you want to shop?: ")
