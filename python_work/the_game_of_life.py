@@ -1111,9 +1111,9 @@ try:
                     factor1 = random.uniform(1, 10000)
                     factor2 = random.uniform(1, 10000)
                     answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $1000.")
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    if multiplication_question != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $1000.")
                         money -= 1000
                     else:
                         print(f"Correct! You earned $10000!")
@@ -1122,9 +1122,9 @@ try:
                     factor1 = random.uniform(1, 100)
                     factor2 = random.uniform(1, 100)
                     answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $500.")
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    if multiplication_question != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $500.")
                         money -= 500
                     else:
                         print(f"Correct! You earned $5000!")
@@ -1133,9 +1133,9 @@ try:
                     factor1 = random.randint(1, 100)
                     factor2 = random.randint(1, 100)
                     answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = input(f"What is {factor1} * {factor2}?  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $100.")
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    if multiplication_question != answer_to_multiplication_question:
+                        print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $100.")
                         money -= 100
                     else:
                         print(f"Correct! You earned $750!")
@@ -1147,10 +1147,10 @@ try:
                 if multiplication_difficulty == 'hard':
                     factor1 = random.uniform(1, 10000)
                     factor2 = random.uniform(1, 10000)
-                    answer_to_multiplication_question = round(factor1 / factor2, 2)
-                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $1000.")
+                    answer_to_division_question = round(factor1 / factor2, 2)
+                    division_question = float(input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  "))
+                    if division_question != answer_to_division_question:
+                        print(f"No, the right answer is {answer_to_division_question}. Sorry, you lost $1000.")
                         money -= 1000
                     else:
                         print(f"Correct! You earned $10000!")
@@ -1158,10 +1158,10 @@ try:
                 elif multiplication_difficulty == 'medium':
                     factor1 = random.uniform(1, 100)
                     factor2 = random.uniform(1, 100)
-                    answer_to_multiplication_question = round(factor1 / factor2, 2)
-                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $500.")
+                    answer_to_division_question = round(factor1 / factor2, 2)
+                    division_question = float(input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  "))
+                    if division_question != answer_to_division_question:
+                        print(f"No, the right answer is {answer_to_division_question}. Sorry, you lost $500.")
                         money -= 500
                     else:
                         print(f"Correct! You earned $5000!")
@@ -1169,10 +1169,10 @@ try:
                 elif multiplication_difficulty == 'easy':
                     factor1 = random.randint(1, 100)
                     factor2 = random.randint(1, 100)
-                    answer_to_multiplication_question = round(factor1 / factor2, 2)
-                    multiplication_question = input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  ")
-                    if multiplication_difficulty != answer_to_multiplication_question:
-                        print(f"No, the right answer is {answer}. Sorry, you lost $100.")
+                    answer_to_division_question = round(factor1 / factor2, 2)
+                    division_question = float(input(f"What is {factor1} / {factor2}? Round to nearest hundredth.  "))
+                    if division_question != answer_to_division_question:
+                        print(f"No, the right answer is {answer_to_division_question}. Sorry, you lost $100.")
                         money -= 100
                     else:
                         print(f"Correct! You earned $750!")
