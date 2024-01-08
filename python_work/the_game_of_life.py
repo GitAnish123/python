@@ -1973,6 +1973,75 @@ try:
             if max_attempts == 0:
                 print("\nSorry, you ran out of attempts. The word was:", selected_word)
         
+        if welcome_message == 'education':
+            health -= 50
+            if has_job == False:
+                print(f"Ok, lets see if you can build back your education [guarenteed]! ($750,000)")
+                if money > 750_000:
+                    pay_for_second_education = (f"Do you want to pay for your education? (yes, no)  ")
+                    if pay_for_second_education == 'yes':
+                        time.sleep(5)
+                        print(f"Ok... {time.sleep(3)} You paid for your education!")
+                        money -= 750_000
+                        print(f"You graduated from college successfully!")
+                        print(f"Lets see your jobs...")
+                        time.sleep(1.5)
+                        jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer', 'teacher',
+                                'video game designer', 'vet', 'fashion designer', 'secret agent']
+                        your_job = random.choice(jobs_for_college)
+                        has_job = True
+                        print(f"Your job is: {your_job} (you work for 8 hours)")
+                        print(f"Calculating salary per day:")
+                        time.sleep(2.5)
+                        if your_job == 'doctor':
+                            salary = random.randint(800, 900)
+                        if your_job == 'scientist':
+                            salary = random.randint(300, 400)
+                        if your_job == 'buisnessman':
+                            salary = random.randint(320, 420)
+                        if your_job == 'lawyer':
+                            salary = random.randint(500, 600)
+                        if your_job == 'software engineer':
+                            salary = random.randint(560, 660)
+                        if your_job == 'teacher':
+                            salary = random.randint(280, 380)
+                        if your_job == 'video game designer':
+                            salary = random.randint(600, 700)
+                        if your_job == 'vet':
+                            salary = random.randint(640, 740)
+                        if your_job == 'fashion designer':
+                            salary = random.randint(250, 350)
+                        if your_job == 'secret agent':
+                            salary = random.randint(310, 410)
+                        print(f"Your salary is ${salary} per day!")
+                    else:
+                        print(f"Ok, have a good life!")
+                else:
+                    print(f"Sorry, you don't have enough money to educate yourself!")
+            else:
+                print(f"You already graduated from college or did career life! Lets see if we can upgrade our salary!")
+                time.sleep(1.5)
+                do_you_want_to_go_to_school = input("Do you want to go to school to increase salary for $250,000? (yes, no)  ")
+                if do_you_want_to_go_to_school == 'yes':
+                    print(f"Lets see if you can go to school...")
+                    time.sleep(15)
+                    if has_job == True:
+                        print(f"You want to go back to school and increase your salary? ($250,000)")
+                        if money > 250_000:
+                            print(f"You went back to school and paid $250,000! Lets see your salary increase for your work.")
+                            money -= 100000
+                            time.sleep(3)
+                            increased_salary_amount = round(random.uniform(1, 2.5), 2)
+                            salary = salary * increased_salary_amount
+                            print(f"Your salary is now ${salary} per day!")
+                        else:
+                            print(f"You don't have enough money to go back to school!")
+                    else:
+                        print(f"Sorry, you got rejected to go to school because no job application(s) or degree.")
+                else:
+                    print(f"Ok, enjoy your life!")
+            
+        
         if welcome_message == 'doctor':
             if doctor_attempts < 3:
                 actions_count += 1
