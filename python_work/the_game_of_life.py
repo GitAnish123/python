@@ -1978,7 +1978,7 @@ try:
             if has_job == False:
                 print(f"Ok, lets see if you can build back your education [guarenteed]! ($750,000)")
                 if money > 750_000:
-                    pay_for_second_education = (f"Do you want to pay for your education? (yes, no)  ")
+                    pay_for_second_education = input(f"Do you want to pay for your education? (yes, no)  ")
                     if pay_for_second_education == 'yes':
                         time.sleep(5)
                         print(f"Ok... {time.sleep(3)} You paid for your education!")
