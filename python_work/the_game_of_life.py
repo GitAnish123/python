@@ -1974,7 +1974,11 @@ try:
                 print("\nSorry, you ran out of attempts. The word was:", selected_word)
         
         if welcome_message == 'education':
-            health -= 50
+            if game_difficulty == 'hardcore':
+                health -= random.randint(75, 150)
+            else:
+                health -= random.randint(50, 100)
+            print(f"You have {health} health left!")
             if has_job == False:
                 print(f"Ok, lets see if you can build back your education [guarenteed]! ($750,000)")
                 if money > 750_000:
@@ -2031,7 +2035,7 @@ try:
                             print(f"You went back to school and paid $250,000! Lets see your salary increase for your work.")
                             money -= 100000
                             time.sleep(3)
-                            increased_salary_amount = round(random.uniform(1, 2.5), 2)
+                            increased_salary_amount = round(random.uniform(1, 3), 2)
                             salary = salary * increased_salary_amount
                             print(f"Your salary is now ${salary} per day!")
                         else:
