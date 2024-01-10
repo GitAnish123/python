@@ -130,6 +130,7 @@ try:
 
     # Initialize loan-related variables
     has_loan = False
+    loan_when_dead = False
     loan_amount = 0
     if game_difficulty == 'easy':
         loan_repayment_actions = 10
@@ -158,8 +159,26 @@ try:
             if has_loan:
                 print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY AND FAILED TO REPAY THE LOAN")
             else:
-                print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
-            break
+                if loan_when_dead == False:
+                    print(f"You have no money!")
+                    want_a_loan_for_money = input("Want a loan? (yes, no)  ")
+                    if want_a_loan_for_money == 'yes':
+                        if has_loan:
+                            print("You already have a loan! Repay it before taking another one.")
+                        else:
+                            time.sleep(4)
+                            actions_count += 1
+                            loan_amount = int(input("How much money you want: $"))
+                            print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
+                            money = money + loan_amount
+                            has_loan = True
+                            loan_when_dead = True
+                    else:
+                        print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+                        break
+                else:
+                    print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+                    break
         
         if health <= 0:
             print(f"{name}, GAME OVER: YOU HAVE NO HEALTH")
@@ -375,7 +394,7 @@ try:
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
                         'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                         'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
-                        'less money', 'job result']
+                        'less money', 'job result', 'risky trade']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -1110,8 +1129,8 @@ try:
                 if multiplication_difficulty == 'hard':
                     factor1 = random.uniform(1, 10000)
                     factor2 = random.uniform(1, 10000)
-                    answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    answer_to_multiplication_question = round(factor1 * factor2, 2)
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  Round to nearest hundreth:  "))
                     if multiplication_question != answer_to_multiplication_question:
                         print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $1000.")
                         money -= 1000
@@ -1121,8 +1140,8 @@ try:
                 elif multiplication_difficulty == 'medium':
                     factor1 = random.uniform(1, 100)
                     factor2 = random.uniform(1, 100)
-                    answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    answer_to_multiplication_question = round(factor1 * factor2, 2)
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  Round to nearest hundreth:  "))
                     if multiplication_question != answer_to_multiplication_question:
                         print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $500.")
                         money -= 500
@@ -1132,8 +1151,8 @@ try:
                 elif multiplication_difficulty == 'easy':
                     factor1 = random.randint(1, 100)
                     factor2 = random.randint(1, 100)
-                    answer_to_multiplication_question = factor1 * factor2
-                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  "))
+                    answer_to_multiplication_question = round(factor1 * factor2, 2)
+                    multiplication_question = float(input(f"What is {factor1} * {factor2}?  Round to nearest hundreth:  "))
                     if multiplication_question != answer_to_multiplication_question:
                         print(f"No, the right answer is {answer_to_multiplication_question}. Sorry, you lost $100.")
                         money -= 100
@@ -1189,6 +1208,50 @@ try:
                 money -= random.randint(10, 2000)
                 health -= random.randint(1, 15)
                 print(f"You have ${money} and {health} health!")
+            
+            if result == 'risky trade':
+                risky_enter_trade = input("Do you want to do a risky trade? (yes, no)  ")
+                if risky_enter_trade == 'no':
+                    if gender == 'male':
+                        wording_for_risky_trade_enter_risk = 'man'
+                    else:
+                        wording_for_risky_trade_enter_risk = 'woman'
+                    print(f"Ok, have a nice life! Here is something risky for you, young {wording_for_risky_trade_enter_risk}:")
+                    money -= random.randint(1, 5000)
+                else:
+                    money_risky_trade_amount = random.randint(1, 1_000_000)
+                    credits_risky_trade_amount = round(random.uniform(0, 2), 1)
+                    health_risky_trade_amount = random.randint(-50, 50)
+                    what_you_want_for_risk_trade = input("What do you want? (money, credits)  ")
+                    if what_you_want_for_risk_trade == 'money':
+                        print(f"You get ${money_risky_trade_amount}! You give {credits_risky_trade_amount}!")
+                        money = money + money_risky_trade_amount
+                        game_credits = game_credits - credits_risky_trade_amount
+                        print(f"You have ${money} and {game_credits} credits")
+                        if money <= 0:
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of money:")
+                            break
+                        if game_credits <= 0:
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of credits:")
+                            break
+                        print(f"You got {health_risky_trade_amount} health!")
+                        health = health + health_risky_trade_amount
+                    elif what_you_want_for_risk_trade == 'money':
+                        print(f"You get {credits_risky_trade_amount}! You give ${money_risky_trade_amount}!")
+                        money = money - money_risky_trade_amount
+                        game_credits = game_credits + credits_risky_trade_amount
+                        print(f"You have ${money} and {game_credits} credits")
+                        if money <= 0:
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of money:")
+                        if game_credits <= 0:
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of credits:")
+                        print(f"You got {health_risky_trade_amount} health!")
+                        health = health + health_risky_trade_amount
+                    else:
+                        print(f"FOLLOW DIRECTIONS!!! YOU LOST SO MUCH STUFF! See stats for updates...")
+                        money -= random.randint(1, 1_500_000)
+                        health -= random.randint(25, 70)
+
             
             if result == 'eminem':
                 print(f"You were watching rap music, eminem!")
@@ -1921,6 +1984,145 @@ try:
                 "XOXO",
                 "YEARNING",
                 "ZEST"
+                "ADVENTURE",
+                "CLEVER",
+                "CURIOUS",
+                "DELIGHT",
+                "DISCOVER",
+                "EXCITING",
+                "FRIENDSHIP",
+                "GIGGLE",
+                "IMAGINE",
+                "JOURNEY",
+                "LUCKY",
+                "MYSTERY",
+                "PLAYFUL",
+                "SILLY",
+                "SURPRISE",
+                "TREASURE",
+                "WONDERFUL",
+                "BRAVE",
+                "CHEERFUL",
+                "COZY",
+                "DAZZLING",
+                "DELICIOUS",
+                "ENCHANT",
+                "FANTASTIC",
+                "GENTLE",
+                "HARMONY",
+                "INVENT",
+                "JOYFUL",
+                "KINDNESS",
+                "LIVELY",
+                "MAGIC",
+                "MARVEL",
+                "NATURE",
+                "OPTIMISTIC",
+                "RADIANT",
+                "SUNNY",
+                "TALENT",
+                "VIBRANT",
+                "WHIMSICAL",
+                "ADORABLE",
+                "BALANCE",
+                "CELEBRATE",
+                "DANCE",
+                "EFFORT",
+                "EXPLORE",
+                "FRIENDSHIP",
+                "GENEROUS",
+                "HEALTHY",
+                "INSPIRE",
+                "KNOWLEDGE",
+                "LAUGHTER",
+                "MOTIVATE",
+                "NURTURE",
+                "ORGANIZE",
+                "POLITE",
+                "QUEST",
+                "RESPECT",
+                "SMILE",
+                "TEAMWORK",
+                "UNDERSTANDING",
+                "VALUE",
+                "WISDOM",
+                "YUMMY",
+                "ZEAL",
+                "ASTONISH",
+                "BLOSSOM",
+                "CLEVER",
+                "DELIGHTFUL",
+                "ENERGETIC",
+                "FASCINATE",
+                "GLORIOUS",
+                "HEARTWARMING",
+                "INVENTIVE",
+                "JUBILANT",
+                "KEEN",
+                "LUMINOUS",
+                "MAGNIFICENT",
+                "NOBLE",
+                "OUTSTANDING",
+                "PLEASANT",
+                "QUEST",
+                "RADIANT",
+                "SPECTACULAR",
+                "THRILLING",
+                "UNIQUE",
+                "VIVID",
+                "WHOLESOME",
+                "YOUTHFUL",
+                "ADVENTUROUS",
+                "BRIGHT",
+                "CHERISH",
+                "CREATIVE",
+                "DETERMINED",
+                "EAGER",
+                "FASCINATING",
+                "GENUINE",
+                "HAPPY",
+                "IMAGINATIVE",
+                "JOYOUS",
+                "KINDHEARTED",
+                "LIVELY",
+                "MINDFUL",
+                "NURTURING",
+                "OPTIMISTIC",
+                "PLAYFUL",
+                "QUIRKY",
+                "RADIANT",
+                "SPIRITED",
+                "THOUGHTFUL",
+                "UPLIFTING",
+                "VIVACIOUS",
+                "WHOLESOME",
+                "YOUTHFUL",
+                "ZEALOUS",
+                "AFFECTIONATE",
+                "BRILLIANT",
+                "CARING",
+                "DILIGENT",
+                "ENERGETIC",
+                "FRIENDLY",
+                "GENEROUS",
+                "HONEST",
+                "INQUISITIVE",
+                "JOVIAL",
+                "KIND",
+                "LOVING",
+                "MODEST",
+                "NEIGHBORLY",
+                "OPEN-MINDED",
+                "PATIENT",
+                "RESPONSIBLE",
+                "SUPPORTIVE",
+                "TALENTED",
+                "UNDERSTANDING",
+                "VALIANT",
+                "WARMHEARTED",
+                "XTRAORDINARY",  # Creatively using 'X' for extra fun!
+                "YOUTHFUL",
+                "ZESTY"
             ]
             selected_word = random.choice(words)
             guessed_letters = []
@@ -1943,7 +2145,7 @@ try:
                         display_word += letter
                     else:
                         display_word += "_"
-                print(display_word)
+                print(" ".join(display_word))
 
                 guess = input("Enter a letter: ").upper()
 
