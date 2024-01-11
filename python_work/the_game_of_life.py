@@ -404,7 +404,7 @@ try:
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
                         'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                         'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
-                        'less money', 'job result', 'risky trade']
+                        'less money', 'job result', 'risky trade', 'best friend']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -1213,6 +1213,35 @@ try:
                 money += 1300
                 print(f"You have ${money} and {health} health!")
             
+            if result == 'credit holder':
+                print(f"WELCOME TO THE CREDIT HOLDER VAULT!")
+                the_credit_vault_get_money = input("Do you want to sneak up and steal credits? (yes, no)  ")
+                random_option_for_stealing_credits_from_vault = ['successfully made it', 'got caught by a monster',
+                                                                 'got bit by a monster', 'did not got anything', 'fell']
+                the_option_for_stealing_credits_from_vault = random.choice(random_option_for_stealing_credits_from_vault)
+                if the_credit_vault_get_money == 'no':
+                    print(f"Ok! Have a nice day.")
+                    health -= random.randint(1, 5)
+                else:
+                    if the_option_for_stealing_credits_from_vault == 'fell':
+                        print(f"You fell down!!! You got lucky someone saved you. Otherwise you could have died!")
+                        health_after_falling = random.randint(1, 5)
+                        health = health_after_falling
+                        print(f"You have {health} health left!")
+                    elif the_option_for_stealing_credits_from_vault == 'did not got anything':
+                        print(f"You made the wise move of not getting anything!")
+                    elif the_option_for_stealing_credits_from_vault == 'successfully made it':
+                        credits_recieved_from_the_vault = round(random.uniform(0.75, 1.5), 2)
+                        game_credits = game_credits + credits_recieved_from_the_vault
+                        print(f"You successfully made it! You got {credits_recieved_from_the_vault} credits!")
+                    elif the_option_for_stealing_credits_from_vault == 'got bit by a monster':
+                        health -= random.randint(10, 50)
+                        print(f"You got bit by a monster! You lost some health, and you have {health} health left!")
+                    else:
+                        print(f"You got caught by a monster! You were able to escape successfully but lost LITTLE money!")
+                        money -= random.randint(10, 1000)
+                        print(f"You have ${money} left!")
+                    
             if result == 'loser':
                 print(f"Eminem and his friends hijacked you and called you loser! You lost some health and money.")
                 money -= random.randint(10, 2000)
@@ -1226,8 +1255,8 @@ try:
                         wording_for_risky_trade_enter_risk = 'man'
                     else:
                         wording_for_risky_trade_enter_risk = 'woman'
-                    print(f"Ok, have a nice life! Here is something risky for you, young {wording_for_risky_trade_enter_risk}:")
-                    money -= random.randint(1, 5000)
+                    print(f"Ok, have a nice life! Here is something risky for you, young {wording_for_risky_trade_enter_risk} You lose money (lots):")
+                    money -= random.randint(1, 50_000)
                 else:
                     money_risky_trade_amount = random.randint(1, 1_000_000)
                     credits_risky_trade_amount = round(random.uniform(0, 2), 1)
@@ -1262,6 +1291,11 @@ try:
                         money -= random.randint(1, 1_500_000)
                         health -= random.randint(25, 70)
 
+            if result == 'best friend':
+                print(f"You get a best friend! Cool!")
+                best_friend_health = random.randint(10, 20)
+                money += random.randint(10, 100)
+                print(f"YES!!! You got {best_friend_health} health from your BEST friend! You also got some money!")
             
             if result == 'eminem':
                 print(f"You were watching rap music, eminem!")
