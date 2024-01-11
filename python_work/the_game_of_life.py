@@ -1304,9 +1304,9 @@ try:
                         game_credits = game_credits + credits_risky_trade_amount
                         print(f"You have ${money} and {game_credits} credits")
                         if money <= 0:
-                            print(f"GAME OVER -- You lost the risky trade! Ran out of money:")
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of money. LOSE ALL HEALTH")
                         if game_credits <= 0:
-                            print(f"GAME OVER -- You lost the risky trade! Ran out of credits:")
+                            print(f"GAME OVER -- You lost the risky trade! Ran out of credits. LOSE ALL HEALTH")
                         print(f"You got {health_risky_trade_amount} health!")
                         health = health + health_risky_trade_amount
                     else:
