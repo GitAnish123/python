@@ -113,7 +113,7 @@ try:
         game_credits = 0.05
     elif game_difficulty == 'easy':
         money = random.randint(100, 1000)
-        health = random.randint(0, 3)
+        health = random.randint(250, 400)
         game_credits = 0.2
 
     # Set a limit for doctor attempts. First make the value to 0.
