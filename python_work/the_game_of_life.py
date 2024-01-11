@@ -112,8 +112,8 @@ try:
         health = random.randint(75, 120)
         game_credits = 0.05
     elif game_difficulty == 'easy':
-        money = random.randint(1_000_000, 1_000_001)
-        health = random.randint(120, 250)
+        money = random.randint(100, 1000)
+        health = random.randint(0, 3)
         game_credits = 0.2
 
     # Set a limit for doctor attempts. First make the value to 0.
@@ -198,12 +198,16 @@ try:
                 print("You chose a number outside the valid range! The game is terminated.")
                 time.sleep(2)
                 print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                break
             else:
                 if int(guessing_choice) == int(computer_action):
-                    print(f"Congrats {game_host_name}, You WON the game, you gain 5 health")
+                    health_for_guessing = random.randint(1, 10)
+                    print(f"Congrats {game_host_name}, You WON the game, you gain {health_for_guessing} health!")
+                    health = health + health_for_guessing
                 else:
                     print(f"Sorry {game_host_name}, you DID NOT win the game. SO YOU DIE!!!!!")
                     print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                    break
                     
         if which_path == 'college':
             if paid_for_college == False:
