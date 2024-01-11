@@ -2323,6 +2323,10 @@ try:
                     if game_difficulty != 'easy':
                         print(f"Sorry, this secret doctor is disabled in this game mode!")
                     else:
+                        print(f"secret...")
+                        time.sleep(1.5)
+                        print(f"doctor...")
+                        time.sleep(1.5)
                         doctors_money_amount = random.randint(1_000_000, 2_000_000)
                         see_amount = input(f"This is the amount you pay: ${doctors_money_amount}. Is that ok with you? (yes, no)")
                         if see_amount == 'yes':
