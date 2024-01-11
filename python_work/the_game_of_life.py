@@ -185,9 +185,28 @@ try:
                     break
         
         if health <= 0:
-            print(f"{name}, GAME OVER: YOU HAVE NO HEALTH")
-            break
-
+            print(f"You lost all of your health!")
+            time.sleep(1)
+            print(f"If you want to live, guess the number I am thinking about from 1-10. Enter any positive integer to quit!")
+            guessing_choice = input("Lets play the guessing game! If you guess the number between 1-10, you gain health! If you lose, you snooze!  ")
+            possible_actions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            computer_action = random.choice(possible_actions)
+            print(f"\nYou chose {guessing_choice}, we chose {computer_action}.\n")
+            game_host_name = "Anish Pasumarthi"
+            
+            if int(guessing_choice) > int(possible_actions):
+                print(f"You chose a number higher or lower than the amount! So this is 'quitted'.")
+                time.sleep(2)
+                print(f"{name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                break
+            elif guessing_choice == computer_action:
+                print(f"Congrats {name.title()}, You WON the game, you gain 5 health")
+                health += 5
+            else:
+                print(f"Sorry {name.title()}, you DID NOT win the game. SO YOU DIE!!!!!")
+                print(f"{name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                break
+                    
         if which_path == 'college':
             if paid_for_college == False:
                 if money > 500_000:
