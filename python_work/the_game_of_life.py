@@ -2319,6 +2319,22 @@ try:
             if doctor_attempts < 3:
                 actions_count += 1
                 which_doctor = input("Which doctor you want to go to? (successful, good, bad) ")
+                if which_doctor == 'BESTdoctorEVERinWORLD':
+                    if game_difficulty != 'easy':
+                        print(f"Sorry, this secret doctor is disabled in this game mode!")
+                    else:
+                        doctors_money_amount = random.randint(1_000_000, 2_000_000)
+                        see_amount = input(f"This is the amount you pay: ${doctors_money_amount}. Is that ok with you? (yes, no)")
+                        if see_amount == 'yes':
+                            money = money - doctors_money_amount
+                            health_gained_by_doctor = random.randint(10, 150)
+                            health = health + health_gained_by_doctor
+                            print(f"You gained {health_gained_by_doctor} health from the doctor.")
+                            if game_credits > 2:
+                                extra_health = random.randint(1, 15)
+                                health = health + extra_health
+                                print("I like your trust by credits! Here is some more health included from your package."
+                                    f"You got {extra_health} health more!")
                 if which_doctor == 'successful':
                     if game_difficulty == 'hardcore':
                         print("This doctor disabled in hardcore mode! Pick a different kind of doctor.")
