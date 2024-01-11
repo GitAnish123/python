@@ -204,8 +204,10 @@ try:
                     health_for_guessing = random.randint(1, 10)
                     print(f"Congrats {game_host_name}, You WON the game, you gain {health_for_guessing} health!")
                     health = health + health_for_guessing
+                    print(f"You now have {health} health!")
                 else:
                     print(f"Sorry {game_host_name}, you DID NOT win the game. SO YOU DIE!!!!!")
+                    time.sleep(2)
                     print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
                     break
                     
