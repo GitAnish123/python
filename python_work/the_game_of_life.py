@@ -1280,11 +1280,11 @@ try:
                     else:
                         wording_for_risky_trade_enter_risk = 'woman'
                     print(f"Ok, have a nice life! Here is something risky for you, young {wording_for_risky_trade_enter_risk} You lose money (lots):")
-                    money -= random.randint(1, 50_000)
+                    money -= random.randint(1, 10_000)
                 else:
                     money_risky_trade_amount = random.randint(1, 1_000_000)
                     credits_risky_trade_amount = round(random.uniform(0, 2), 1)
-                    health_risky_trade_amount = random.randint(-50, 50)
+                    health_risky_trade_amount = random.randint(-50, 10)
                     what_you_want_for_risk_trade = input("What do you want? (money, credits)  ")
                     if what_you_want_for_risk_trade == 'money':
                         print(f"You get ${money_risky_trade_amount}! You give {credits_risky_trade_amount}!")
@@ -1306,8 +1306,10 @@ try:
                         print(f"You have ${money} and {game_credits} credits")
                         if money <= 0:
                             print(f"GAME OVER -- You lost the risky trade! Ran out of money. LOSE ALL HEALTH")
+                            health = 0
                         if game_credits <= 0:
                             print(f"GAME OVER -- You lost the risky trade! Ran out of credits. LOSE ALL HEALTH")
+                            health = 0
                         print(f"You got {health_risky_trade_amount} health!")
                         health = health + health_risky_trade_amount
                     else:
