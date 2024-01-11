@@ -112,7 +112,7 @@ try:
         health = random.randint(75, 120)
         game_credits = 0.05
     elif game_difficulty == 'easy':
-        money = random.randint(100, 1000)
+        money = random.randint(1_000_000, 1_000_001)
         health = random.randint(120, 250)
         game_credits = 0.2
 
@@ -158,6 +158,7 @@ try:
         if money <= 0:
             if has_loan:
                 print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY AND FAILED TO REPAY THE LOAN")
+                break
             else:
                 if loan_when_dead == False:
                     print(f"You have no money!")
@@ -169,10 +170,13 @@ try:
                             time.sleep(4)
                             actions_count += 1
                             loan_amount = int(input("How much money you want: $"))
-                            print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
-                            money = money + loan_amount
-                            has_loan = True
-                            loan_when_dead = True
+                            if actions_count < 24:
+                                print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
+                                money = money + loan_amount
+                                has_loan = True
+                                loan_when_dead = True
+                            else:
+                                print(f"Sorry you can't get a loan due to many actions played!")
                     else:
                         print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
                         break
@@ -212,6 +216,12 @@ try:
         if welcome_message == 'repay loan':
             actions_count += 1
             repay_amount = int(input("Enter the amount to repay: $"))
+            interest_rate = round(random.uniform(0.1, 1), 1)
+            print(f"You also have an interest of {interest_rate}%")
+            interest_rate = loan_amount * interest_rate
+            loan_amount = loan_amount + interest_rate
+            print(f"You will have to pay ${loan_amount}")
+            repay_amount = int(input("Enter again, enter the amount to repay: $"))
             if repay_amount <= money:
                 money -= repay_amount
                 loan_amount -= repay_amount
@@ -1236,7 +1246,7 @@ try:
                             break
                         print(f"You got {health_risky_trade_amount} health!")
                         health = health + health_risky_trade_amount
-                    elif what_you_want_for_risk_trade == 'money':
+                    elif what_you_want_for_risk_trade == 'credits':
                         print(f"You get {credits_risky_trade_amount}! You give ${money_risky_trade_amount}!")
                         money = money - money_risky_trade_amount
                         game_credits = game_credits + credits_risky_trade_amount
