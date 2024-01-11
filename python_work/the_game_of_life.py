@@ -427,7 +427,8 @@ try:
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
                         'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                         'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
-                        'less money', 'job result', 'risky trade', 'best friend', 'credit holder']
+                        'less money', 'job result', 'job result', 'job result', 'job result', 'job result', 'risky trade', 
+                        'best friend', 'credit holder']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
