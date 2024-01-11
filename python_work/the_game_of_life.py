@@ -1744,14 +1744,14 @@ try:
                                                     game_credits += 0.02
                                                     num1 = random.uniform(1, 9.25)
                                                     num2 = random.uniform(1, 9.25)
-                                                    correct_answer = num1 ** num2
+                                                    correct_answer = round(num1 ** num2, 2)
                                                     user_answer = float(input(f"What is {num1} ^ {num2}? Round to nearest hundreth if nessesary! "))
                                                     if user_answer == correct_answer:
                                                         print(f"Correct! Lets move on to THE FINAL ROUND, 10!")
                                                         game_credits += 0.02
                                                         print(f"You earned 0.02 credits!")
                                                         number_for_root_square = random.uniform(10, 100_000)
-                                                        correct_answer = math.sqrt(number_for_root_square)
+                                                        correct_answer = round(math.sqrt(number_for_root_square), 2)
                                                         user_answer = float(input(f"What is the square root of {number_for_root_square}? Round to nearest hundreth if nessesary! "))
                                                         if user_answer == correct_answer:
                                                             print(f"Nice! You get 0.05 credits.")
@@ -1777,7 +1777,7 @@ try:
                                                             money = money - loss_money_for_math
                                                             print(f"You lost ${loss_money_for_math}!")
                                                     else:
-                                                        print(f"Wrong! Answer is {expression}.")
+                                                        print(f"Wrong! Answer is {correct_answer}.")
                                                         loss_money_for_math = random.randint(750_000, 900_000)
                                                         money = money - loss_money_for_math
                                                         print(f"You lost ${loss_money_for_math}!")
