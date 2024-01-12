@@ -150,6 +150,8 @@ try:
     while True:
         welcome_message = input(f"Welcome to your life! What do you want to do?\nEnter 'quit' to quit: ")
         discount_attempts = 0
+        round(money, 2)
+        round(game_credits, 3)
 
         if welcome_message == 'quit':
             print(f"Thanks for playing, {name}!")
