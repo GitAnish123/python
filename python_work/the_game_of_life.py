@@ -2850,5 +2850,6 @@ try:
 
 except Exception as e:
     print(f"GAME OVER (Error occured): {e}")
+
 finally:
     print("Remember to enter good/right information!")
