@@ -2791,14 +2791,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
             if game_credits >= 2.5:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
 
         elif game_difficulty == 'medium':
             if money >= 5_000_000:
@@ -2807,14 +2807,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
             if game_credits >= 3:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
 
         elif game_difficulty == 'hard':
             if money >= 7_500_000:
@@ -2823,14 +2823,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
             if game_credits >= 3.5:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
         
         elif game_difficulty == 'hardcore':
             if money >= 10_000_000:
@@ -2839,15 +2839,14 @@ try:
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
+                    
             if game_credits >= 4:
                 if has_loan == False:
                     print("YOU WIN THE GAME!!! YOU HAVE ENOUGH CREDITS!")
                     break
                 else:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
-                    break
-
+                    
 except Exception as e:
     print(f"GAME OVER (Error occured): {e}")
 
