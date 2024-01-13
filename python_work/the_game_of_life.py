@@ -2599,8 +2599,16 @@ try:
                 health -= random.randint(50, 100)
             print(f"You have {health} health left!")
             if has_job == False:
-                print(f"Ok, lets see if you can build back your education [guarenteed]! ($750,000)")
-                if money > 750_000:
+                if game_difficulty == 'easy':
+                    print(f"Ok, lets see if you can build back your education [guarenteed]! ($500,000)")
+                    college_education = 500_000
+                elif game_difficulty == 'medium':
+                    print(f"Ok, lets see if you can build back your education [guarenteed]! ($600,000)")
+                    college_education = 600_000
+                else:
+                    print(f"Ok, lets see if you can build back your education [guarenteed]! ($750,000)")
+                    college_education = 750_000
+                if money > college_education:
                     pay_for_second_education = input(f"Do you want to pay for your education? (yes, no)  ")
                     if pay_for_second_education == 'yes':
                         time.sleep(5)
