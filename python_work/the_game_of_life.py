@@ -306,26 +306,30 @@ try:
                     print(f"Your pin is VERY safe! [5/5]")
                 
         if welcome_message == 'get coupon':
-            actions_count += 1
-            if game_difficulty == 'hardcore':
-                health -= 3
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                actions_count += 1
+                if game_difficulty == 'hardcore':
+                    health -= 3
+                else:
+                    health -= 1
+                print(f"You have {health} health left.")
+                message_forced_pay = random.randint(1,10)
+                print(f"You pay ${message_forced_pay} for discounts. Pretty cheap!")
+                money = money - message_forced_pay
+                print(f"You have ${money} left.")
+                if discount_attempts < 1:
+                    discounts = [95, 90, 85, 80, 75, 72, 70, 65, 60, 50, 45, 40, 35, 33, 30, 25, 20, 15, 10, 5]
+                    d_prices = random.choices(discounts, weights=[0.001, 0.002, 0.002, 0.002, 0.003, 0.01, 0.01, 0.01, 0.02, 
+                                                                    0.02, 0.02, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 
+                                                                    0.30, 0.39])[0]
+                    your_discount_price = d_prices
+                    print(f"Here is your discount price ticket: {your_discount_price}% off for any item.")
+                    discount_attempts += 1
+                else:
+                    print("Max amount of attempts reached, sorry!")
             else:
-                health -= 1
-            print(f"You have {health} health left.")
-            message_forced_pay = random.randint(1,10)
-            print(f"You pay ${message_forced_pay} for discounts. Pretty cheap!")
-            money = money - message_forced_pay
-            print(f"You have ${money} left.")
-            if discount_attempts < 1:
-                discounts = [95, 90, 85, 80, 75, 72, 70, 65, 60, 50, 45, 40, 35, 33, 30, 25, 20, 15, 10, 5]
-                d_prices = random.choices(discounts, weights=[0.001, 0.002, 0.002, 0.002, 0.003, 0.01, 0.01, 0.01, 0.02, 
-                                                                0.02, 0.02, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 
-                                                                0.30, 0.39])[0]
-                your_discount_price = d_prices
-                print(f"Here is your discount price ticket: {your_discount_price}% off for any item.")
-                discount_attempts += 1
-            else:
-                print("Max amount of attempts reached, sorry!")
+                print("Wrong pin!")
         
         if welcome_message == 'shop':
             enter_pin = int(input(f"Enter pin: "))
@@ -404,42 +408,50 @@ try:
                 print("Wrong pin!")
 
         if welcome_message == 'fair business for credits':
-            if game_difficulty == 'hardcore':
-                health -= 7
-            elif game_difficulty == 'hard':
-                health -= 5
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                if game_difficulty == 'hardcore':
+                    health -= 7
+                elif game_difficulty == 'hard':
+                    health -= 5
+                else:
+                    health -= 4
+                print(f"You have {health} health left.")
+                money_amount = random.randint(500_000, 10_000_000)
+                credits_recieved = round(random.uniform(0, 2), 2)
+                print(f"\nHere is the offer: ${money_amount} for {credits_recieved} credits.")
+                will_you_do_business = input("Are you going to accept the offer? (yes, no) ")
+                if will_you_do_business == 'yes':
+                    actions_count += 1
+                    money = money - money_amount
+                    game_credits = game_credits + credits_recieved
+                    print(f"You have ${money} left.\nYou have {game_credits} credits.")
+                else:
+                    print("Ok, have a nice day!")
             else:
-                health -= 4
-            print(f"You have {health} health left.")
-            money_amount = random.randint(500_000, 10_000_000)
-            credits_recieved = round(random.uniform(0, 2), 2)
-            print(f"\nHere is the offer: ${money_amount} for {credits_recieved} credits.")
-            will_you_do_business = input("Are you going to accept the offer? (yes, no) ")
-            if will_you_do_business == 'yes':
-                actions_count += 1
-                money = money - money_amount
-                game_credits = game_credits + credits_recieved
-                print(f"You have ${money} left.\nYou have {game_credits} credits.")
-            else:
-                print("Ok, have a nice day!")
+                print("Wrong pin!")
 
         if welcome_message == 'get money':
-            if game_difficulty == 'hardcore':
-                health -= 3
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                if game_difficulty == 'hardcore':
+                    health -= 3
+                else:
+                    health -= 1
+                print(f"You have {health} health left.")
+                starting_money = random.randint(1,100)
+                if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? ")
+                if if_do_you_want_to_pay == 'yes':
+                    actions_count += 1
+                    money = money - starting_money
+                    more_money = random.randint(-10000, 10000)
+                    print(f"Here is the amount increased: ${more_money}")
+                    money = money + more_money
+                    print(f"\nAdded money successfully!\nNew amount: ${money}")
+                else:
+                    print("Okay, have a good day!")
             else:
-                health -= 1
-            print(f"You have {health} health left.")
-            starting_money = random.randint(1,100)
-            if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? ")
-            if if_do_you_want_to_pay == 'yes':
-                actions_count += 1
-                money = money - starting_money
-                more_money = random.randint(-10000, 10000)
-                print(f"Here is the amount increased: ${more_money}")
-                money = money + more_money
-                print(f"\nAdded money successfully!\nNew amount: ${money}")
-            else:
-                print("Okay, have a good day!")
+                print("Wrong pin!")
         
         if welcome_message == 'stats':
             enter_pin = int(input(f"Enter pin: "))
@@ -453,23 +465,27 @@ try:
                 print(f"Wrong pin!")
             
         if welcome_message == 'eminem101greatone':
-            if game_difficulty != 'hardcore':
-                health -= 5
-                print(f"You have {health} health left.")
-                starting_money = random.randint(10,250)
-                if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? You are in the BONUS money: ")
-                if if_do_you_want_to_pay == 'yes':
-                    actions_count += 1
-                    money = money - starting_money
-                    more_money = random.randint(-2_000_000, 2_000_000)
-                    print(f"Here is the amount increased: ${more_money}")
-                    money = money + more_money
-                    print(f"\nAdded money successfully!\nNew amount: ${money}")
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                if game_difficulty != 'hardcore':
+                    health -= 5
+                    print(f"You have {health} health left.")
+                    starting_money = random.randint(10,250)
+                    if_do_you_want_to_pay = input(f"Do you want to pay ${starting_money} to enter? You are in the BONUS money: ")
+                    if if_do_you_want_to_pay == 'yes':
+                        actions_count += 1
+                        money = money - starting_money
+                        more_money = random.randint(-2_000_000, 2_000_000)
+                        print(f"Here is the amount increased: ${more_money}")
+                        money = money + more_money
+                        print(f"\nAdded money successfully!\nNew amount: ${money}")
+                    else:
+                        print("Okay, have a good day!")
                 else:
-                    print("Okay, have a good day!")
+                    print(f"This feature is disabled for hardcore mode!")
             else:
-                print(f"This feature is disabled for hardcore mode!")
-        
+                print("Wrong pin!")
+            
         if welcome_message == 'action':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
@@ -1976,48 +1992,28 @@ try:
                 print(f"Wrong pin!")
         
         if welcome_message == 'gamble':
-            actions_count += 1
-            if game_difficulty == 'hardcore':
-                health = health - random.randint(5, 10)
-            else:
-                health = health - random.randint(1, 5)
-            print(f"You currently have {health} health.")
-            # Gambling logic
-            gamble_choice = input("Choose your gambling option (slot, roulette, blackjack): ").lower()
-            if gamble_choice == 'slot':
-                # Slot machine logic
-                bet_amount = int(input("Enter the amount you want to bet: "))
-                if bet_amount > money:
-                    print("You don't have enough money to place that bet.")
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                actions_count += 1
+                if game_difficulty == 'hardcore':
+                    health = health - random.randint(5, 10)
                 else:
-                    money -= bet_amount
-                    symbols = ['Cherry', 'Lemon', 'Orange', 'Plum', 'Bell', 'Bar', 'Seven']
-                    result = [random.choice(symbols) for _ in range(3)]
-                    print(f"Slot machine result: {' - '.join(result)}")
-                    if all(symbol == result[0] for symbol in result):
-                        winnings = bet_amount * 3  # You win triple the bet amount for a matching set
-                        money += winnings
-                        print(f"You won {winnings} dollars!")
-                        money = money + winnings
+                    health = health - random.randint(1, 5)
+                print(f"You currently have {health} health.")
+                # Gambling logic
+                gamble_choice = input("Choose your gambling option (slot, roulette, blackjack): ").lower()
+                if gamble_choice == 'slot':
+                    # Slot machine logic
+                    bet_amount = int(input("Enter the amount you want to bet: "))
+                    if bet_amount > money:
+                        print("You don't have enough money to place that bet.")
                     else:
-                        lost_amount = bet_amount
-                        print(f"Sorry, you lost {lost_amount} dollars.")
-                        money = money - lost_amount
-            elif gamble_choice == 'roulette':
-                # Roulette logic
-                bet_amount = int(input("Enter the amount you want to bet: "))
-                if bet_amount > money:
-                    print("You don't have enough money to place that bet.")
-                else:
-                    money -= bet_amount
-                    color_choice = input("Choose your color (red, black): ").lower()
-                    if color_choice not in ['red', 'black']:
-                        print("Invalid color choice. Please choose red or black.")
-                    else:
-                        result_color = random.choice(['red', 'black'])
-                        print(f"Roulette result: {result_color}")
-                        if color_choice == result_color:
-                            winnings = bet_amount * 2  # You win double the bet amount for a correct color
+                        money -= bet_amount
+                        symbols = ['Cherry', 'Lemon', 'Orange', 'Plum', 'Bell', 'Bar', 'Seven']
+                        result = [random.choice(symbols) for _ in range(3)]
+                        print(f"Slot machine result: {' - '.join(result)}")
+                        if all(symbol == result[0] for symbol in result):
+                            winnings = bet_amount * 3  # You win triple the bet amount for a matching set
                             money += winnings
                             print(f"You won {winnings} dollars!")
                             money = money + winnings
@@ -2025,38 +2021,62 @@ try:
                             lost_amount = bet_amount
                             print(f"Sorry, you lost {lost_amount} dollars.")
                             money = money - lost_amount
-            elif gamble_choice == 'blackjack':
-                # Blackjack logic
-                bet_amount = int(input("Enter the amount you want to bet: "))  # Define bet_amount for blackjack
-                player_hand = [random.randint(1, 11), random.randint(1, 11)]
-                dealer_hand = [random.randint(1, 11), random.randint(1, 11)]
-                print(f"Your hand: {player_hand}")
-                print(f"Dealer's hand: {dealer_hand[0]}")
-                while sum(player_hand) < 21:
-                    action = input("Do you want to hit or stand? ").lower()
-                    if action == 'hit':
-                        player_hand.append(random.randint(1, 11))
-                        print(f"Your hand: {player_hand}")
-                    elif action == 'stand':
-                        break
+                elif gamble_choice == 'roulette':
+                    # Roulette logic
+                    bet_amount = int(input("Enter the amount you want to bet: "))
+                    if bet_amount > money:
+                        print("You don't have enough money to place that bet.")
                     else:
-                        print("Invalid action. Please choose hit or stand.")
-                while sum(dealer_hand) < 17:
-                    dealer_hand.append(random.randint(1, 11))
-                print(f"Your final hand: {player_hand}")
-                print(f"Dealer's final hand: {dealer_hand}")
-                if sum(player_hand) > 21 or (sum(dealer_hand) <= 21 and sum(dealer_hand) >= sum(player_hand)):
-                    lost_amount = bet_amount
-                    print(f"Sorry, you lost {lost_amount} dollars.")
-                    money = money - lost_amount
+                        money -= bet_amount
+                        color_choice = input("Choose your color (red, black): ").lower()
+                        if color_choice not in ['red', 'black']:
+                            print("Invalid color choice. Please choose red or black.")
+                        else:
+                            result_color = random.choice(['red', 'black'])
+                            print(f"Roulette result: {result_color}")
+                            if color_choice == result_color:
+                                winnings = bet_amount * 2  # You win double the bet amount for a correct color
+                                money += winnings
+                                print(f"You won {winnings} dollars!")
+                                money = money + winnings
+                            else:
+                                lost_amount = bet_amount
+                                print(f"Sorry, you lost {lost_amount} dollars.")
+                                money = money - lost_amount
+                elif gamble_choice == 'blackjack':
+                    # Blackjack logic
+                    bet_amount = int(input("Enter the amount you want to bet: "))  # Define bet_amount for blackjack
+                    player_hand = [random.randint(1, 11), random.randint(1, 11)]
+                    dealer_hand = [random.randint(1, 11), random.randint(1, 11)]
+                    print(f"Your hand: {player_hand}")
+                    print(f"Dealer's hand: {dealer_hand[0]}")
+                    while sum(player_hand) < 21:
+                        action = input("Do you want to hit or stand? ").lower()
+                        if action == 'hit':
+                            player_hand.append(random.randint(1, 11))
+                            print(f"Your hand: {player_hand}")
+                        elif action == 'stand':
+                            break
+                        else:
+                            print("Invalid action. Please choose hit or stand.")
+                    while sum(dealer_hand) < 17:
+                        dealer_hand.append(random.randint(1, 11))
+                    print(f"Your final hand: {player_hand}")
+                    print(f"Dealer's final hand: {dealer_hand}")
+                    if sum(player_hand) > 21 or (sum(dealer_hand) <= 21 and sum(dealer_hand) >= sum(player_hand)):
+                        lost_amount = bet_amount
+                        print(f"Sorry, you lost {lost_amount} dollars.")
+                        money = money - lost_amount
+                    else:
+                        winnings = bet_amount * 2  # You win double the bet amount for winning the round
+                        money += winnings
+                        print(f"Congratulations! You won {winnings} dollars!")
+                        money = money + winnings
                 else:
-                    winnings = bet_amount * 2  # You win double the bet amount for winning the round
-                    money += winnings
-                    print(f"Congratulations! You won {winnings} dollars!")
-                    money = money + winnings
+                    print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
+                print(f"You currently have ${money}.")
             else:
-                print("Invalid gambling option. Please choose slot, roulette, or blackjack.")
-            print(f"You currently have ${money}.")
+                print("Wrong pin!")
         
         if welcome_message == 'very hard math test':
             enter_pin = int(input(f"Enter pin: "))
@@ -2268,424 +2288,432 @@ try:
                 print("Wrong pin!")
 
         if welcome_message == 'wife/husband':
-            if has_wife == True:
-                print(f"You already have a wife/husband!")
-            else:
-                actions_count += 1
-                health -= random.randint(10, 15)
-                print(f"You have {health} health left.")
-                wife_possibilities = ['yes', 'no']
-                if_you_got_wife = random.choices(wife_possibilities, weights=[0.10, 0.90])[0]
-                if if_you_got_wife == 'yes':
-                    has_wife = True
-                    if gender == 'male':
-                        lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
-                                        'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
-                    else:
-                        lover_names = [
-                        "Liam", "Noah", "Oliver", "Elijah", "William",
-                        "James", "Benjamin", "Lucas", "Henry", "Alexander",
-                        "Mason", "Ethan", "Logan", "Jackson", "Aiden",
-                        "Sebastian", "Caleb", "Matthew", "Samuel", "David"
-                        ]
-                    ywn = random.choice(lover_names)
-                    print(f"You got a wife/husband, her/his name is {ywn.title()}.")
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                if has_wife == True:
+                    print(f"You already have a wife/husband!")
                 else:
-                    print("Sorry, you didn't have any luck finding a lover!")
-        
-        if welcome_message == 'secret wheel_fortune23 gameisTRUE':
-            actions_count += 1
-            if game_difficulty == 'hardcore':
-                health -= random.randint(150, 200)
-            else:
-                health -= random.randint(100, 150)
-            print(f"You have {health} health left!")
-            words = [
-                "APPLE",
-                "BOOK",
-                "CANDLE",
-                "DOG",
-                "ELEPHANT",
-                "FLOWER",
-                "GUITAR",
-                "HAPPINESS",
-                "ICICLE",
-                "JUNGLE",
-                "KITE",
-                "LAUGHTER",
-                "MOUNTAIN",
-                "NECKLACE",
-                "OCEAN",
-                "PINEAPPLE",
-                "QUARTER",
-                "RIVER",
-                "SUNSHINE",
-                "TIGER",
-                "UMBRELLA",
-                "VIOLIN",
-                "WATERFALL",
-                "XYLOPHONE",
-                "YELLOW",
-                "ZEBRA",
-                "FIREWORKS",
-                "JOURNEY",
-                "SNOWFLAKE",
-                "MOONLIGHT",
-                "WISDOM",
-                "DOLPHIN",
-                "MYSTERY",
-                "SYMPHONY",
-                "WILDERNESS",
-                "BUTTERFLY",
-                "CLOCKWORK",
-                "DREAM",
-                "FANTASY",
-                "GLACIER",
-                "HORIZON",
-                "LANTERN",
-                "MEADOW",
-                "NOVEL",
-                "PARADISE",
-                "QUEST",
-                "SPARKLE"
-                "BICYCLE",
-                "CHOCOLATE",
-                "DINOSAUR",
-                "EXPLORER",
-                "FIREPLACE",
-                "GALAXY",
-                "HARMONY",
-                "INSPIRATION",
-                "JOURNAL",
-                "KANGAROO",
-                "LANTERN",
-                "MARATHON",
-                "NOSTALGIA",
-                "OASIS",
-                "PARACHUTE",
-                "QUEST",
-                "RECIPE",
-                "SUNFLOWER",
-                "TREASURE",
-                "UNICORN",
-                "VOLCANO",
-                "WILDFLOWER",
-                "XANADU",
-                "YESTERDAY",
-                "ZEPPELIN",
-                "AFRICAN",
-                "BLOSSOM",
-                "COASTAL",
-                "DELIGHT",
-                "ECLIPSE",
-                "FREEDOM",
-                "GALAXY",
-                "HORIZON",
-                "ILLUMINATE",
-                "JUBILANT",
-                "KALEIDOSCOPE",
-                "LUMINOUS",
-                "MAGICAL",
-                "NURTURING",
-                "OBLIVION",
-                "PRECIOUS",
-                "QUIETUDE",
-                "RADIANCE",
-                "SERENITY",
-                "TRANQUILITY",
-                "UTOPIA",
-                "VELVET"
-                "AMBER",
-                "BREEZE",
-                "CASCADE",
-                "DREAMY",
-                "ENCHANT",
-                "FLUTTER",
-                "GLOW",
-                "HARMONY",
-                "IGNITE",
-                "JUBILANT",
-                "KINETIC",
-                "LULLABY",
-                "MELODY",
-                "NIRVANA",
-                "OPULENT",
-                "PLEASANT",
-                "QUILL",
-                "RADIANT",
-                "SUBLIME",
-                "TRIUMPH",
-                "UNISON",
-                "VIBRANT",
-                "WONDER",
-                "XYLOPHONE",
-                "ZENITH",
-                "ALABASTER",
-                "BRILLIANT",
-                "CASCADING",
-                "DELICATE",
-                "ELEGANT",
-                "FANTASY",
-                "GALLANT",
-                "HORIZON",
-                "ILLUMINATE",
-                "JASMINE",
-                "KALEIDOSCOPE",
-                "LUMINOUS",
-                "MAGICAL",
-                "NEBULA",
-                "OBLIVION",
-                "PLEASURE",
-                "QUEST",
-                "RADIANCE",
-                "SERENE",
-                "TRANQUIL",
-                "UTOPIA",
-                "VELVET",
-                "WHISPER",
-                "AMETHYST",
-                "BLISS",
-                "CHARM",
-                "DAZZLE",
-                "ETHEREAL",
-                "FABLE",
-                "GRACE",
-                "HALO",
-                "IRIDESCENCE",
-                "JOURNEY",
-                "KEYNOTE",
-                "LUMBER",
-                "MIRAGE",
-                "NOBLE",
-                "ONYX",
-                "PASTURE",
-                "QUAGMIRE",
-                "RUSTIC",
-                "SCARLET",
-                "TRANSCEND",
-                "UPLIFT",
-                "VELOCITY",
-                "WILLOW",
-                "XANADU",
-                "YONDER",
-                "ZEPHYR",
-                "ADEPT",
-                "BLISSFUL",
-                "CHERISH",
-                "DIVINE",
-                "ETERNAL",
-                "FABULOUS",
-                "GENTLE",
-                "HALCYON",
-                "ILLUMINATE",
-                "JUBILEE",
-                "KISS",
-                "LUXURIANT",
-                "MELLOW",
-                "NOURISH",
-                "OPAL",
-                "PURITY",
-                "QUIESCENT",
-                "RUSTLE",
-                "SERENADE",
-                "TRIUMPHANT",
-                "UTOPIAN",
-                "VIVID",
-                "WANDER",
-                "XOXO",
-                "YEARNING",
-                "ZEST"
-                "ADVENTURE",
-                "CLEVER",
-                "CURIOUS",
-                "DELIGHT",
-                "DISCOVER",
-                "EXCITING",
-                "FRIENDSHIP",
-                "GIGGLE",
-                "IMAGINE",
-                "JOURNEY",
-                "LUCKY",
-                "MYSTERY",
-                "PLAYFUL",
-                "SILLY",
-                "SURPRISE",
-                "TREASURE",
-                "WONDERFUL",
-                "BRAVE",
-                "CHEERFUL",
-                "COZY",
-                "DAZZLING",
-                "DELICIOUS",
-                "ENCHANT",
-                "FANTASTIC",
-                "GENTLE",
-                "HARMONY",
-                "INVENT",
-                "JOYFUL",
-                "KINDNESS",
-                "LIVELY",
-                "MAGIC",
-                "MARVEL",
-                "NATURE",
-                "OPTIMISTIC",
-                "RADIANT",
-                "SUNNY",
-                "TALENT",
-                "VIBRANT",
-                "WHIMSICAL",
-                "ADORABLE",
-                "BALANCE",
-                "CELEBRATE",
-                "DANCE",
-                "EFFORT",
-                "EXPLORE",
-                "FRIENDSHIP",
-                "GENEROUS",
-                "HEALTHY",
-                "INSPIRE",
-                "KNOWLEDGE",
-                "LAUGHTER",
-                "MOTIVATE",
-                "NURTURE",
-                "ORGANIZE",
-                "POLITE",
-                "QUEST",
-                "RESPECT",
-                "SMILE",
-                "TEAMWORK",
-                "UNDERSTANDING",
-                "VALUE",
-                "WISDOM",
-                "YUMMY",
-                "ZEAL",
-                "ASTONISH",
-                "BLOSSOM",
-                "CLEVER",
-                "DELIGHTFUL",
-                "ENERGETIC",
-                "FASCINATE",
-                "GLORIOUS",
-                "HEARTWARMING",
-                "INVENTIVE",
-                "JUBILANT",
-                "KEEN",
-                "LUMINOUS",
-                "MAGNIFICENT",
-                "NOBLE",
-                "OUTSTANDING",
-                "PLEASANT",
-                "QUEST",
-                "RADIANT",
-                "SPECTACULAR",
-                "THRILLING",
-                "UNIQUE",
-                "VIVID",
-                "WHOLESOME",
-                "YOUTHFUL",
-                "ADVENTUROUS",
-                "BRIGHT",
-                "CHERISH",
-                "CREATIVE",
-                "DETERMINED",
-                "EAGER",
-                "FASCINATING",
-                "GENUINE",
-                "HAPPY",
-                "IMAGINATIVE",
-                "JOYOUS",
-                "KINDHEARTED",
-                "LIVELY",
-                "MINDFUL",
-                "NURTURING",
-                "OPTIMISTIC",
-                "PLAYFUL",
-                "QUIRKY",
-                "RADIANT",
-                "SPIRITED",
-                "THOUGHTFUL",
-                "UPLIFTING",
-                "VIVACIOUS",
-                "WHOLESOME",
-                "YOUTHFUL",
-                "ZEALOUS",
-                "AFFECTIONATE",
-                "BRILLIANT",
-                "CARING",
-                "DILIGENT",
-                "ENERGETIC",
-                "FRIENDLY",
-                "GENEROUS",
-                "HONEST",
-                "INQUISITIVE",
-                "JOVIAL",
-                "KIND",
-                "LOVING",
-                "MODEST",
-                "NEIGHBORLY",
-                "OPEN-MINDED",
-                "PATIENT",
-                "RESPONSIBLE",
-                "SUPPORTIVE",
-                "TALENTED",
-                "UNDERSTANDING",
-                "VALIANT",
-                "WARMHEARTED",
-                "XTRAORDINARY",  # Creatively using 'X' for extra fun!
-                "YOUTHFUL",
-                "ZESTY"
-            ]
-            selected_word = random.choice(words)
-            guessed_letters = []
-            max_attempts = 12
-            
-            print(f"Welcome to your favorite game!")
-            time.sleep(1)
-            print("Wheel.", end=" ")
-            time.sleep(1)
-            print("Of.", end=" ")
-            time.sleep(1)
-            print("Fortune!")
-            time.sleep(1)
-            while max_attempts > 0:
-                print("\nAttempts left:", max_attempts)
-
-                display_word = ""
-                for letter in selected_word:
-                    if letter in guessed_letters:
-                        display_word += letter
+                    actions_count += 1
+                    health -= random.randint(10, 15)
+                    print(f"You have {health} health left.")
+                    wife_possibilities = ['yes', 'no']
+                    if_you_got_wife = random.choices(wife_possibilities, weights=[0.10, 0.90])[0]
+                    if if_you_got_wife == 'yes':
+                        has_wife = True
+                        if gender == 'male':
+                            lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                                            'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+                        else:
+                            lover_names = [
+                            "Liam", "Noah", "Oliver", "Elijah", "William",
+                            "James", "Benjamin", "Lucas", "Henry", "Alexander",
+                            "Mason", "Ethan", "Logan", "Jackson", "Aiden",
+                            "Sebastian", "Caleb", "Matthew", "Samuel", "David"
+                            ]
+                        ywn = random.choice(lover_names)
+                        print(f"You got a wife/husband, her/his name is {ywn.title()}.")
                     else:
-                        display_word += "_"
-                print(" ".join(display_word))
+                        print("Sorry, you didn't have any luck finding a lover!")
+            else:
+                print("Wrong pin!")
+            
+        if welcome_message == 'secret wheel_fortune23 gameisTRUE':
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin == pin:
+                actions_count += 1
+                if game_difficulty == 'hardcore':
+                    health -= random.randint(150, 200)
+                else:
+                    health -= random.randint(100, 150)
+                print(f"You have {health} health left!")
+                words = [
+                    "APPLE",
+                    "BOOK",
+                    "CANDLE",
+                    "DOG",
+                    "ELEPHANT",
+                    "FLOWER",
+                    "GUITAR",
+                    "HAPPINESS",
+                    "ICICLE",
+                    "JUNGLE",
+                    "KITE",
+                    "LAUGHTER",
+                    "MOUNTAIN",
+                    "NECKLACE",
+                    "OCEAN",
+                    "PINEAPPLE",
+                    "QUARTER",
+                    "RIVER",
+                    "SUNSHINE",
+                    "TIGER",
+                    "UMBRELLA",
+                    "VIOLIN",
+                    "WATERFALL",
+                    "XYLOPHONE",
+                    "YELLOW",
+                    "ZEBRA",
+                    "FIREWORKS",
+                    "JOURNEY",
+                    "SNOWFLAKE",
+                    "MOONLIGHT",
+                    "WISDOM",
+                    "DOLPHIN",
+                    "MYSTERY",
+                    "SYMPHONY",
+                    "WILDERNESS",
+                    "BUTTERFLY",
+                    "CLOCKWORK",
+                    "DREAM",
+                    "FANTASY",
+                    "GLACIER",
+                    "HORIZON",
+                    "LANTERN",
+                    "MEADOW",
+                    "NOVEL",
+                    "PARADISE",
+                    "QUEST",
+                    "SPARKLE"
+                    "BICYCLE",
+                    "CHOCOLATE",
+                    "DINOSAUR",
+                    "EXPLORER",
+                    "FIREPLACE",
+                    "GALAXY",
+                    "HARMONY",
+                    "INSPIRATION",
+                    "JOURNAL",
+                    "KANGAROO",
+                    "LANTERN",
+                    "MARATHON",
+                    "NOSTALGIA",
+                    "OASIS",
+                    "PARACHUTE",
+                    "QUEST",
+                    "RECIPE",
+                    "SUNFLOWER",
+                    "TREASURE",
+                    "UNICORN",
+                    "VOLCANO",
+                    "WILDFLOWER",
+                    "XANADU",
+                    "YESTERDAY",
+                    "ZEPPELIN",
+                    "AFRICAN",
+                    "BLOSSOM",
+                    "COASTAL",
+                    "DELIGHT",
+                    "ECLIPSE",
+                    "FREEDOM",
+                    "GALAXY",
+                    "HORIZON",
+                    "ILLUMINATE",
+                    "JUBILANT",
+                    "KALEIDOSCOPE",
+                    "LUMINOUS",
+                    "MAGICAL",
+                    "NURTURING",
+                    "OBLIVION",
+                    "PRECIOUS",
+                    "QUIETUDE",
+                    "RADIANCE",
+                    "SERENITY",
+                    "TRANQUILITY",
+                    "UTOPIA",
+                    "VELVET"
+                    "AMBER",
+                    "BREEZE",
+                    "CASCADE",
+                    "DREAMY",
+                    "ENCHANT",
+                    "FLUTTER",
+                    "GLOW",
+                    "HARMONY",
+                    "IGNITE",
+                    "JUBILANT",
+                    "KINETIC",
+                    "LULLABY",
+                    "MELODY",
+                    "NIRVANA",
+                    "OPULENT",
+                    "PLEASANT",
+                    "QUILL",
+                    "RADIANT",
+                    "SUBLIME",
+                    "TRIUMPH",
+                    "UNISON",
+                    "VIBRANT",
+                    "WONDER",
+                    "XYLOPHONE",
+                    "ZENITH",
+                    "ALABASTER",
+                    "BRILLIANT",
+                    "CASCADING",
+                    "DELICATE",
+                    "ELEGANT",
+                    "FANTASY",
+                    "GALLANT",
+                    "HORIZON",
+                    "ILLUMINATE",
+                    "JASMINE",
+                    "KALEIDOSCOPE",
+                    "LUMINOUS",
+                    "MAGICAL",
+                    "NEBULA",
+                    "OBLIVION",
+                    "PLEASURE",
+                    "QUEST",
+                    "RADIANCE",
+                    "SERENE",
+                    "TRANQUIL",
+                    "UTOPIA",
+                    "VELVET",
+                    "WHISPER",
+                    "AMETHYST",
+                    "BLISS",
+                    "CHARM",
+                    "DAZZLE",
+                    "ETHEREAL",
+                    "FABLE",
+                    "GRACE",
+                    "HALO",
+                    "IRIDESCENCE",
+                    "JOURNEY",
+                    "KEYNOTE",
+                    "LUMBER",
+                    "MIRAGE",
+                    "NOBLE",
+                    "ONYX",
+                    "PASTURE",
+                    "QUAGMIRE",
+                    "RUSTIC",
+                    "SCARLET",
+                    "TRANSCEND",
+                    "UPLIFT",
+                    "VELOCITY",
+                    "WILLOW",
+                    "XANADU",
+                    "YONDER",
+                    "ZEPHYR",
+                    "ADEPT",
+                    "BLISSFUL",
+                    "CHERISH",
+                    "DIVINE",
+                    "ETERNAL",
+                    "FABULOUS",
+                    "GENTLE",
+                    "HALCYON",
+                    "ILLUMINATE",
+                    "JUBILEE",
+                    "KISS",
+                    "LUXURIANT",
+                    "MELLOW",
+                    "NOURISH",
+                    "OPAL",
+                    "PURITY",
+                    "QUIESCENT",
+                    "RUSTLE",
+                    "SERENADE",
+                    "TRIUMPHANT",
+                    "UTOPIAN",
+                    "VIVID",
+                    "WANDER",
+                    "XOXO",
+                    "YEARNING",
+                    "ZEST"
+                    "ADVENTURE",
+                    "CLEVER",
+                    "CURIOUS",
+                    "DELIGHT",
+                    "DISCOVER",
+                    "EXCITING",
+                    "FRIENDSHIP",
+                    "GIGGLE",
+                    "IMAGINE",
+                    "JOURNEY",
+                    "LUCKY",
+                    "MYSTERY",
+                    "PLAYFUL",
+                    "SILLY",
+                    "SURPRISE",
+                    "TREASURE",
+                    "WONDERFUL",
+                    "BRAVE",
+                    "CHEERFUL",
+                    "COZY",
+                    "DAZZLING",
+                    "DELICIOUS",
+                    "ENCHANT",
+                    "FANTASTIC",
+                    "GENTLE",
+                    "HARMONY",
+                    "INVENT",
+                    "JOYFUL",
+                    "KINDNESS",
+                    "LIVELY",
+                    "MAGIC",
+                    "MARVEL",
+                    "NATURE",
+                    "OPTIMISTIC",
+                    "RADIANT",
+                    "SUNNY",
+                    "TALENT",
+                    "VIBRANT",
+                    "WHIMSICAL",
+                    "ADORABLE",
+                    "BALANCE",
+                    "CELEBRATE",
+                    "DANCE",
+                    "EFFORT",
+                    "EXPLORE",
+                    "FRIENDSHIP",
+                    "GENEROUS",
+                    "HEALTHY",
+                    "INSPIRE",
+                    "KNOWLEDGE",
+                    "LAUGHTER",
+                    "MOTIVATE",
+                    "NURTURE",
+                    "ORGANIZE",
+                    "POLITE",
+                    "QUEST",
+                    "RESPECT",
+                    "SMILE",
+                    "TEAMWORK",
+                    "UNDERSTANDING",
+                    "VALUE",
+                    "WISDOM",
+                    "YUMMY",
+                    "ZEAL",
+                    "ASTONISH",
+                    "BLOSSOM",
+                    "CLEVER",
+                    "DELIGHTFUL",
+                    "ENERGETIC",
+                    "FASCINATE",
+                    "GLORIOUS",
+                    "HEARTWARMING",
+                    "INVENTIVE",
+                    "JUBILANT",
+                    "KEEN",
+                    "LUMINOUS",
+                    "MAGNIFICENT",
+                    "NOBLE",
+                    "OUTSTANDING",
+                    "PLEASANT",
+                    "QUEST",
+                    "RADIANT",
+                    "SPECTACULAR",
+                    "THRILLING",
+                    "UNIQUE",
+                    "VIVID",
+                    "WHOLESOME",
+                    "YOUTHFUL",
+                    "ADVENTUROUS",
+                    "BRIGHT",
+                    "CHERISH",
+                    "CREATIVE",
+                    "DETERMINED",
+                    "EAGER",
+                    "FASCINATING",
+                    "GENUINE",
+                    "HAPPY",
+                    "IMAGINATIVE",
+                    "JOYOUS",
+                    "KINDHEARTED",
+                    "LIVELY",
+                    "MINDFUL",
+                    "NURTURING",
+                    "OPTIMISTIC",
+                    "PLAYFUL",
+                    "QUIRKY",
+                    "RADIANT",
+                    "SPIRITED",
+                    "THOUGHTFUL",
+                    "UPLIFTING",
+                    "VIVACIOUS",
+                    "WHOLESOME",
+                    "YOUTHFUL",
+                    "ZEALOUS",
+                    "AFFECTIONATE",
+                    "BRILLIANT",
+                    "CARING",
+                    "DILIGENT",
+                    "ENERGETIC",
+                    "FRIENDLY",
+                    "GENEROUS",
+                    "HONEST",
+                    "INQUISITIVE",
+                    "JOVIAL",
+                    "KIND",
+                    "LOVING",
+                    "MODEST",
+                    "NEIGHBORLY",
+                    "OPEN-MINDED",
+                    "PATIENT",
+                    "RESPONSIBLE",
+                    "SUPPORTIVE",
+                    "TALENTED",
+                    "UNDERSTANDING",
+                    "VALIANT",
+                    "WARMHEARTED",
+                    "XTRAORDINARY",  # Creatively using 'X' for extra fun!
+                    "YOUTHFUL",
+                    "ZESTY"
+                ]
+                selected_word = random.choice(words)
+                guessed_letters = []
+                max_attempts = 12
+                
+                print(f"Welcome to your favorite game!")
+                time.sleep(1)
+                print("Wheel.", end=" ")
+                time.sleep(1)
+                print("Of.", end=" ")
+                time.sleep(1)
+                print("Fortune!")
+                time.sleep(1)
+                while max_attempts > 0:
+                    print("\nAttempts left:", max_attempts)
 
-                guess = input("Enter a letter: ").upper()
+                    display_word = ""
+                    for letter in selected_word:
+                        if letter in guessed_letters:
+                            display_word += letter
+                        else:
+                            display_word += "_"
+                    print(" ".join(display_word))
 
-                if len(guess) != 1 or not guess.isalpha():
-                    print("Please enter a valid single letter.")
-                    continue
+                    guess = input("Enter a letter: ").upper()
 
-                if guess in guessed_letters:
-                    print("You've already guessed that letter. Try again.")
-                    continue
+                    if len(guess) != 1 or not guess.isalpha():
+                        print("Please enter a valid single letter.")
+                        continue
 
-                guessed_letters.append(guess)
+                    if guess in guessed_letters:
+                        print("You've already guessed that letter. Try again.")
+                        continue
 
-                if guess not in selected_word:
-                    max_attempts -= 1
-                    print("Incorrect guess!")
+                    guessed_letters.append(guess)
 
-                if set(selected_word) <= set(guessed_letters):
-                    print("\nCongratulations! You guessed the word:", selected_word)
-                    money_amounts_for_wheel_of_fortune = [40000, 75000, 100000]
-                    the_money_amount_for_wheel_of_fortune = random.choices(money_amounts_for_wheel_of_fortune, 
-                                                                        weights=[0.90, 0.095, 0.005])[0]
-                    money = money + the_money_amount_for_wheel_of_fortune
-                    print(f"You get ${the_money_amount_for_wheel_of_fortune}\nNow you have ${money}!")
-                    break
+                    if guess not in selected_word:
+                        max_attempts -= 1
+                        print("Incorrect guess!")
 
-            if max_attempts == 0:
-                print("\nSorry, you ran out of attempts. The word was:", selected_word)
-        
+                    if set(selected_word) <= set(guessed_letters):
+                        print("\nCongratulations! You guessed the word:", selected_word)
+                        money_amounts_for_wheel_of_fortune = [40000, 75000, 100000]
+                        the_money_amount_for_wheel_of_fortune = random.choices(money_amounts_for_wheel_of_fortune, 
+                                                                            weights=[0.90, 0.095, 0.005])[0]
+                        money = money + the_money_amount_for_wheel_of_fortune
+                        print(f"You get ${the_money_amount_for_wheel_of_fortune}\nNow you have ${money}!")
+                        break
+
+                if max_attempts == 0:
+                    print("\nSorry, you ran out of attempts. The word was:", selected_word)
+            else:
+                print("Wrong pin!")
+            
         if welcome_message == 'lottery':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
