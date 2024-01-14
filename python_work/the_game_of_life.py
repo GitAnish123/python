@@ -244,8 +244,6 @@ try:
                 if actions_since_loan >= loan_repayment_actions:
                     print(f"GAME OVER: You failed to repay the loan of ${loan_amount} within {loan_repayment_actions} actions.")
                     break
-        else:
-            print("Wrong pin!")
         
         if welcome_message == 'repay loan':
             enter_pin = int(input(f"Enter pin: "))
