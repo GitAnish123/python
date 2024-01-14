@@ -2624,10 +2624,11 @@ try:
                 print("\nSorry, you ran out of attempts. The word was:", selected_word)
         
         if welcome_message == 'lottery':
+            actions_count += 1
             if game_difficulty == 'hardcore':
                 health -= random.randint(75, 100)
             else:
-                health -= random.randint(50, 75)
+                health -= random.randint(25, 75)
             print(f"You have {health} health!")
             what_lottery = input(f"You pick three kinds of lotteries... (easy, medium, hard)  ")
             
@@ -2652,6 +2653,7 @@ try:
                     while True:
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
+                        global money
                         money = money - lottery_ticket
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
@@ -2666,6 +2668,7 @@ try:
                             print(f"You got ${easy_lottery_total}")
                             money = money + easy_lottery_total
                             print(f"You now have ${money}")
+                            global game_credits
                             game_credits += 0.25
                         else:
                             print("Better luck next time.")
@@ -2698,6 +2701,7 @@ try:
                     while True:
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
+                        global money
                         money = money - lottery_ticket
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
@@ -2712,6 +2716,7 @@ try:
                             print(f"You got ${easy_lottery_total}")
                             money = money + easy_lottery_total
                             print(f"You now have ${money}")
+                            global game_credits
                             game_credits += 0.5
                         else:
                             print("Better luck next time.")
@@ -2744,6 +2749,7 @@ try:
                     while True:
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
+                        global money
                         money = money - lottery_ticket
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
@@ -2758,6 +2764,7 @@ try:
                             print(f"You got ${easy_lottery_total}")
                             money = money + easy_lottery_total
                             print(f"You now have ${money}")
+                            global game_credits
                             game_credits += 1
                         else:
                             print("Better luck next time.")
