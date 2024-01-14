@@ -2623,6 +2623,154 @@ try:
             if max_attempts == 0:
                 print("\nSorry, you ran out of attempts. The word was:", selected_word)
         
+        if welcome_message == 'lottery':
+            if game_difficulty == 'hardcore':
+                health -= random.randint(75, 100)
+            else:
+                health -= random.randint(50, 75)
+            print(f"You have {health} health!")
+            what_lottery = input(f"You pick three kinds of lotteries... (easy, medium, hard)  ")
+            
+            if what_lottery == 'easy':
+                def generate_lottery_numbers():
+                    """Generate a list of 3 random numbers between 1 and 5."""
+                    return random.sample(range(1, 6), 3)
+
+                def buy_lottery_ticket():
+                    """Allow the user to buy a lottery ticket."""
+                    print("Welcome to the Easier Lottery! Good luck!")
+                    input("Press Enter to buy a lottery ticket...")
+                    return generate_lottery_numbers()
+
+                def check_lottery_results(ticket_numbers, winning_numbers):
+                    """Check if the ticket has won."""
+                    matched_numbers = set(ticket_numbers).intersection(winning_numbers)
+                    return len(matched_numbers)
+
+                def run_lottery():
+                    """Run the lottery."""
+                    while True:
+                        lottery_ticket = random.randint(5, 10)
+                        print(f"Ticket: ${lottery_ticket}")
+                        money = money - lottery_ticket
+                        winning_numbers = generate_lottery_numbers()
+                        user_ticket = buy_lottery_ticket()
+
+                        print("\nWinning Numbers:", winning_numbers)
+                        matched_count = check_lottery_results(user_ticket, winning_numbers)
+
+                        print("\nYou matched", matched_count, "number(s)!")
+                        if matched_count == 3:
+                            print("Congratulations! You won the jackpot!")
+                            easy_lottery_total = random.randint(10_000, 25_000)
+                            print(f"You got ${easy_lottery_total}")
+                            money = money + easy_lottery_total
+                            print(f"You now have ${money}")
+                            game_credits += 0.25
+                        else:
+                            print("Better luck next time.")
+
+                        play_again = input("\nDo you want to play again? (Enter 'quit' to exit): ").lower()
+                        if play_again == 'quit':
+                            break
+
+                if __name__ == "__main__":
+                    run_lottery()
+            
+            elif what_lottery == 'medium':
+                def generate_lottery_numbers():
+                    """Generate a list of 4 random numbers between 1 and 10."""
+                    return random.sample(range(1, 11), 4)
+
+                def buy_lottery_ticket():
+                    """Allow the user to buy a lottery ticket."""
+                    print("Welcome to the Lottery! Good luck!")
+                    input("Press Enter to buy a lottery ticket...")
+                    return generate_lottery_numbers()
+
+                def check_lottery_results(ticket_numbers, winning_numbers):
+                    """Check if the ticket has won."""
+                    matched_numbers = set(ticket_numbers).intersection(winning_numbers)
+                    return len(matched_numbers)
+
+                def run_lottery():
+                    """Run the lottery."""
+                    while True:
+                        lottery_ticket = random.randint(5, 10)
+                        print(f"Ticket: ${lottery_ticket}")
+                        money = money - lottery_ticket
+                        winning_numbers = generate_lottery_numbers()
+                        user_ticket = buy_lottery_ticket()
+
+                        print("\nWinning Numbers:", winning_numbers)
+                        matched_count = check_lottery_results(user_ticket, winning_numbers)
+
+                        print("\nYou matched", matched_count, "number(s)!")
+                        if matched_count == 4:
+                            print("Congratulations! You won the jackpot!")
+                            easy_lottery_total = random.randint(100_000, 500_000)
+                            print(f"You got ${easy_lottery_total}")
+                            money = money + easy_lottery_total
+                            print(f"You now have ${money}")
+                            game_credits += 0.5
+                        else:
+                            print("Better luck next time.")
+
+                        play_again = input("\nDo you want to play again? (Enter 'quit' to exit): ").lower()
+                        if play_again == 'quit':
+                            break
+
+                if __name__ == "__main__":
+                    run_lottery()
+            
+            elif what_lottery == 'hard':
+                def generate_lottery_numbers():
+                    """Generate a list of 6 random numbers between 1 and 49."""
+                    return random.sample(range(1, 50), 6)
+
+                def buy_lottery_ticket():
+                    """Allow the user to buy a lottery ticket."""
+                    print("Welcome to the Lottery! Good luck!")
+                    input("Press Enter to buy a lottery ticket...")
+                    return generate_lottery_numbers()
+
+                def check_lottery_results(ticket_numbers, winning_numbers):
+                    """Check if the ticket has won."""
+                    matched_numbers = set(ticket_numbers).intersection(winning_numbers)
+                    return len(matched_numbers)
+
+                def run_lottery():
+                    """Run the lottery."""
+                    while True:
+                        lottery_ticket = random.randint(5, 10)
+                        print(f"Ticket: ${lottery_ticket}")
+                        money = money - lottery_ticket
+                        winning_numbers = generate_lottery_numbers()
+                        user_ticket = buy_lottery_ticket()
+
+                        print("\nWinning Numbers:", winning_numbers)
+                        matched_count = check_lottery_results(user_ticket, winning_numbers)
+
+                        print("\nYou matched", matched_count, "number(s)!")
+                        if matched_count == 6:
+                            print("Congratulations! You won the jackpot!")
+                            easy_lottery_total = random.randint(1_000_000, 5_000_000)
+                            print(f"You got ${easy_lottery_total}")
+                            money = money + easy_lottery_total
+                            print(f"You now have ${money}")
+                            game_credits += 1
+                        else:
+                            print("Better luck next time.")
+                        
+                        play_again = input("\nDo you want to play again? (Enter 'quit' to exit): ").lower()
+                        if play_again == 'quit':
+                            break
+
+                if __name__ == "__main__":
+                    run_lottery()
+            else:
+                print("Wrong input!")
+        
         if welcome_message == 'education':
             if game_difficulty == 'hardcore':
                 health -= random.randint(75, 150)
