@@ -152,6 +152,7 @@ try:
         discount_attempts = 0
         round(money, 2)
         round(game_credits, 3)
+        round(salary, 2)
 
         if welcome_message == 'quit':
             print(f"Thanks for playing, {name}!")
@@ -204,8 +205,8 @@ try:
             else:
                 if int(guessing_choice) == int(computer_action):
                     health_for_guessing = random.randint(1, 10)
-                    print(f"Congrats {game_host_name}, You WON the game, you gain {health_for_guessing} health!")
-                    health = health + health_for_guessing
+                    print(f"Congrats {game_host_name}, You WON the game, you have {health_for_guessing} health!")
+                    health = health_for_guessing
                     print(f"You now have {health} health!")
                 else:
                     print(f"Sorry {game_host_name}, you DID NOT win the game. SO YOU DIE!!!!!")
