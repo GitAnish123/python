@@ -269,8 +269,42 @@ try:
                 else:
                     print("You don't have enough money to repay that amount.")
             else:
-                print("Wrong pin!") 
-        
+                print("Wrong pin!")
+
+        if welcome_message == 'pin':
+            actions_count += 1
+            print(f"You can change your pin, see safety settings, or you can reset your pin!")
+            pin_action = input("(reset, change, safe)  ")
+            if pin_action == 'change':
+                enter_pin = int(input("Enter pin: "))
+                if enter_pin == pin:
+                    pin = int(input(f"Enter new pin: "))
+                    print(f"Pin: {pin}")
+                else:
+                    print(f"Wrong pin!")
+            elif pin_action == 'reset':
+                enter_name = input(f"Enter your name:  ")
+                if enter_name == name:
+                    print(f"Correct!")
+                    print(f"You lost $1000")
+                    pin = int(input(f"Enter new pin: "))
+                    print(f"Pin: {pin}")
+                    money -= 1000
+                else:
+                    print(f"Wrong name!")
+            elif pin_action == 'safe':
+                str_pin = str(pin)
+                if len(str_pin) <= 1:
+                    print(f"Your pin is VERY not safe at all! [0/5]")
+                elif len(str_pin) <= 2:
+                    print(f"Your pin is not safe at all! [1/5]")
+                elif len(str_pin) <= 3:
+                    print(f"Your pin is good! [3/5]")
+                elif len(str_pin) <= 4:
+                    print(f"Your pin is safe! [4/5]")
+                elif len(str_pin) > 4:
+                    print(f"Your pin is VERY safe! [5/5]")
+                
         if welcome_message == 'get coupon':
             actions_count += 1
             if game_difficulty == 'hardcore':
