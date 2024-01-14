@@ -115,7 +115,7 @@ try:
         health = random.randint(75, 120)
         game_credits = 0.05
     elif game_difficulty == 'easy':
-        money = random.randint(100, 1000)
+        money = random.randint(1_000_000, 1_000_001)
         health = random.randint(200, 300)
         game_credits = 0.2
 
@@ -155,7 +155,8 @@ try:
         discount_attempts = 0
         money = round(money, 2)
         game_credits = round(game_credits, 3)
-        salary = round(salary, 2)
+        if has_job:
+            salary = round(salary, 2)
 
         if welcome_message == 'quit':
             print(f"Thanks for playing, {name}!")
