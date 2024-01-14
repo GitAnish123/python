@@ -2626,9 +2626,9 @@ try:
         if welcome_message == 'lottery':
             actions_count += 1
             if game_difficulty == 'hardcore':
-                health -= random.randint(75, 100)
+                health -= random.randint(20, 50)
             else:
-                health -= random.randint(25, 75)
+                health -= random.randint(5, 20)
             print(f"You have {health} health!")
             what_lottery = input(f"You pick three kinds of lotteries... (easy, medium, hard)  ")
             
@@ -2651,10 +2651,13 @@ try:
                 def run_lottery():
                     """Run the lottery."""
                     while True:
+                        global health
+                        health -= random.randint(5, 10)
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
                         global money
                         money = money - lottery_ticket
+                        print(f"You have ${money} and {health} health")
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
 
@@ -2699,10 +2702,13 @@ try:
                 def run_lottery():
                     """Run the lottery."""
                     while True:
+                        global health
+                        health -= random.randint(5, 10)
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
                         global money
                         money = money - lottery_ticket
+                        print(f"You have ${money} and {health} health")
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
 
@@ -2747,10 +2753,13 @@ try:
                 def run_lottery():
                     """Run the lottery."""
                     while True:
+                        global health
+                        health -= random.randint(5, 10)
                         lottery_ticket = random.randint(5, 10)
                         print(f"Ticket: ${lottery_ticket}")
                         global money
                         money = money - lottery_ticket
+                        print(f"You have ${money} and {health} health")
                         winning_numbers = generate_lottery_numbers()
                         user_ticket = buy_lottery_ticket()
 
