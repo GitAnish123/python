@@ -2810,7 +2810,7 @@ try:
                         """Run the lottery."""
                         while True:
                             global health
-                            health -= random.randint(5, 10)
+                            health -= random.randint(3, 6)
                             lottery_ticket = random.randint(5, 10)
                             print(f"Ticket: ${lottery_ticket}")
                             global money
@@ -2873,7 +2873,7 @@ try:
                         """Run the lottery."""
                         while True:
                             global health
-                            health -= random.randint(5, 10)
+                            health -= random.randint(1, 3)
                             lottery_ticket = random.randint(5, 10)
                             print(f"Ticket: ${lottery_ticket}")
                             global money
