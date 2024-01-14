@@ -225,18 +225,19 @@ try:
                     print(f"You have ${money} left.")
                     paid_for_college = True
 
-        enter_pin = int(input(f"Enter pin: "))
-        if enter_pin == pin:
+        
             if welcome_message == 'take loan':
-                if has_loan:
-                    print("You already have a loan! Repay it before taking another one.")
-                else:
-                    time.sleep(4)
-                    actions_count += 1
-                    loan_amount = int(input("How much money you want: $"))
-                    print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
-                    money = money + loan_amount
-                    has_loan = True
+                enter_pin = int(input(f"Enter pin: "))
+                if enter_pin == pin:
+                    if has_loan:
+                        print("You already have a loan! Repay it before taking another one.")
+                    else:
+                        time.sleep(4)
+                        actions_count += 1
+                        loan_amount = int(input("How much money you want: $"))
+                        print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
+                        money = money + loan_amount
+                        has_loan = True
             
             if has_loan:
                 actions_since_loan += 1
