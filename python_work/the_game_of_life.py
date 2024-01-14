@@ -1702,6 +1702,7 @@ try:
                     msg_for_money = input("You want money? (yes, no)  ")
                     if msg_for_money == 'yes':
                         game_participation_award = random.randint(-50000, 100_000)
+                        money = money + game_participation_award
                         print(f"You earned ${game_participation_award}!")
                     else:
                         print(f"Ok, have a nice day!")
