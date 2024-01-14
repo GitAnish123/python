@@ -429,8 +429,8 @@ try:
                         'wife/husband rewards', 'kill wife/husband', 'double geoperdy', 'math challenge', 'sightsee',
                         'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                         'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
-                        'less money', 'job result', 'job result', 'job result', 'risky trade', 'story mode', 
-                        'best friend', 'credit holder']
+                        'less money', 'job result', 'job result', 'job result', 'risky trade', 'story mode', 'log', 'safety',
+                        'best friend', 'credit holder', 'earn money yes', 'lose money no']
             result = random.choice(actions)
             if result == 'get money':
                 additional_money_result = random.randint(100, 10000)
@@ -1273,6 +1273,33 @@ try:
                 money -= random.randint(10, 2000)
                 health -= random.randint(1, 15)
                 print(f"You have ${money} and {health} health!")
+            
+            if result == 'log':
+                print(f"Stepped on a log on your favorite shoes!")
+                money -= 5000
+                print(f"You lost $5000")
+            
+            if result == 'safety':
+                print(f"You got into the safety patrol! You saved many lives and you are a good person")
+                print(f"You got $2500")
+                money += 2500
+                if has_job == True:
+                    safety_raise = round(random.uniform(1, 2), 2)
+                    print(f"Your salary got increased by {safety_raise}!")
+                    salary = salary * safety_raise
+                    print(f"Your salary is now: ${salary}!")
+            
+            if result == 'earn money yes':
+                random_earn_money = random.randint(1000, 5000)
+                print(f"You earned ${random_earn_money}")
+                money = money + random_earn_money
+                print(f"You have ${money}")
+            
+            if result == 'lose money no':
+                random_lose_money = random.randint(500, 2500)
+                print(f"You lost ${random_lose_money}")
+                money = money - random_lose_money
+                print(f"You have ${money}")
             
             if result == 'risky trade':
                 risky_enter_trade = input("Do you want to do a risky trade? (yes, no)  ")
