@@ -1462,10 +1462,10 @@ try:
                                                                         print(f"{name.title()} and Laksha had many pleasant memories together!")
                                                                         print("\n\n\nIn summary, you had a happy life!")
                                                                         print("You Won")
-                                                                        money += random.randint(1000, 10_000)
                                                                         play_again = input("You want to play 'PART 2'?")
                                                                         if play_again == "yes":
                                                                             print("The game is about to start!")
+                                                                   
                                                                             print("\n\n\n\n\n\nMeanwhile, you and your wife are enjoying the view.")
                                                                             print("You are enjoying your time of your life!")
                                                                             print("Then, you went inside to get a refill of coffee.")
@@ -1525,7 +1525,6 @@ try:
                                                                                                             print("She excitment for the adventures they will face in the future.")
                                                                                                             print(f"{name} and {tcasewife}, lived happily ever after!!!")
                                                                                                             print("\n\n\nYou Won")
-                                                                                                            money += random.randint(10000, 100_000)
                                                                                                             part_3 = input("Do you want to play part 3??? (yes,no)  ")
                                                                                                             if part_3 == "no":
                                                                                                                 print("That's ok, have a nice day!")
@@ -1622,7 +1621,6 @@ try:
                                                                                                                                                                         elif last_question == 3:
                                                                                                                                                                             print("Awesome, you got $1000000 and 100 diamonds.")
                                                                                                                                                                             print("You got the best reward and WON THE GAME!!!")
-                                                                                                                                                                            money += random.randint(100_000, 1_000_000)
                                                                                                                                                                         else:
                                                                                                                                                                             print("Sorry, your answer is out of range or invalid syntax>>>")
                                                                                                                                                                         print(f"Congrats for entering the vault, {name.title()}. Unless you entered the wrong output, I hope you enjoyed the reward.")
@@ -1701,7 +1699,12 @@ try:
                                 print("PREPARE TO DIE, fucking ass nigger dick bitch cock!!! YOU WILL LEAVE THIS WORLD!!!")
                                 print("Game Over")
                     dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489crynfiouwndsuioqj8nrdhiouasyr47rwo('anything')
-                    print(f"You have ${money}!!!")
+                    msg_for_money = input("You want money? (yes, no)  ")
+                    if msg_for_money == 'yes':
+                        game_participation_award = random.randint(-50000, 100_000)
+                        print(f"You earned ${game_participation_award}!")
+                    else:
+                        print(f"Ok, have a nice day!")
                     
             if result == 'school':
                 do_you_want_to_go_to_school = input("Do you want to go to school to increase salary for $100,000? (yes, no)  ")
