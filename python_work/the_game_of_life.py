@@ -2680,6 +2680,7 @@ try:
                                 if has_job:
                                     raise_salary = round(random.uniform(1, 2.5), 2)
                                     print(f"Raised salary:  {raise_salary}")
+                                    global salary
                                     salary = salary * raise_salary
                                     print(f"Your salary is now ${salary}")
                                 else:
@@ -2742,6 +2743,7 @@ try:
                                 if has_job:
                                     raise_salary = round(random.uniform(2, 5), 2)
                                     print(f"Raised salary:  {raise_salary}")
+                                    global salary
                                     salary = salary * raise_salary
                                     print(f"Your salary is now ${salary}")
                                 else:
@@ -2804,6 +2806,7 @@ try:
                                 if has_job:
                                     raise_salary = round(random.uniform(5, 10), 2)
                                     print(f"Raised salary:  {raise_salary}")
+                                    global salary
                                     salary = salary * raise_salary
                                     print(f"Your salary is now ${salary}")
                                 else:
