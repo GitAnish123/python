@@ -2667,12 +2667,23 @@ try:
                         print("\nYou matched", matched_count, "number(s)!")
                         if matched_count == 3:
                             print("Congratulations! You won the jackpot!")
-                            easy_lottery_total = random.randint(10_000, 25_000)
-                            print(f"You got ${easy_lottery_total}")
-                            money = money + easy_lottery_total
-                            print(f"You now have ${money}")
-                            global game_credits
-                            game_credits += 0.25
+                            money_or_raise = input("Do you want money or a salary raise? (money, raise)   ")
+                            if money_or_raise == 'money':
+                                easy_lottery_total = random.randint(10_000, 25_000)
+                                print(f"You got ${easy_lottery_total}")
+                                money = money + easy_lottery_total
+                                print(f"You now have ${money}")
+                                global game_credits
+                                game_credits += 0.25
+                            else:
+                                global has_job
+                                if has_job:
+                                    raise_salary = round(random.uniform(1, 2.5), 2)
+                                    print(f"Raised salary:  {raise_salary}")
+                                    salary = salary * raise_salary
+                                    print(f"Your salary is now ${salary}")
+                                else:
+                                    print(f"You don't have a job!")
                         else:
                             print("Better luck next time.")
 
@@ -2718,12 +2729,23 @@ try:
                         print("\nYou matched", matched_count, "number(s)!")
                         if matched_count == 4:
                             print("Congratulations! You won the jackpot!")
-                            easy_lottery_total = random.randint(100_000, 500_000)
-                            print(f"You got ${easy_lottery_total}")
-                            money = money + easy_lottery_total
-                            print(f"You now have ${money}")
-                            global game_credits
-                            game_credits += 0.5
+                            money_or_raise = input("Do you want money or a salary raise? (money, raise)   ")
+                            if money_or_raise == 'money':
+                                easy_lottery_total = random.randint(100_000, 500_000)
+                                print(f"You got ${easy_lottery_total}")
+                                money = money + easy_lottery_total
+                                print(f"You now have ${money}")
+                                global game_credits
+                                game_credits += 0.5
+                            else:
+                                global has_job
+                                if has_job:
+                                    raise_salary = round(random.uniform(2, 5), 2)
+                                    print(f"Raised salary:  {raise_salary}")
+                                    salary = salary * raise_salary
+                                    print(f"Your salary is now ${salary}")
+                                else:
+                                    print(f"You don't have a job!")
                         else:
                             print("Better luck next time.")
 
@@ -2769,12 +2791,23 @@ try:
                         print("\nYou matched", matched_count, "number(s)!")
                         if matched_count == 6:
                             print("Congratulations! You won the jackpot!")
-                            easy_lottery_total = random.randint(1_000_000, 5_000_000)
-                            print(f"You got ${easy_lottery_total}")
-                            money = money + easy_lottery_total
-                            print(f"You now have ${money}")
-                            global game_credits
-                            game_credits += 1
+                            money_or_raise = input("Do you want money or a salary raise? (money, raise)   ")
+                            if money_or_raise == 'money':
+                                easy_lottery_total = random.randint(1_000_000, 5_000_000)
+                                print(f"You got ${easy_lottery_total}")
+                                money = money + easy_lottery_total
+                                print(f"You now have ${money}")
+                                global game_credits
+                                game_credits += 1
+                            else:
+                                global has_job
+                                if has_job:
+                                    raise_salary = round(random.uniform(5, 10), 2)
+                                    print(f"Raised salary:  {raise_salary}")
+                                    salary = salary * raise_salary
+                                    print(f"Your salary is now ${salary}")
+                                else:
+                                    print(f"You don't have a job!")
                         else:
                             print("Better luck next time.")
                         
