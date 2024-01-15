@@ -13,9 +13,13 @@ try:
     # Set default value if you have a job. Currently, it will be False
     has_job = False
 
-    pin = int(input("Create a numerical pin:  "))
+    pin = input("Create a numerical pin:  ")
+    while not pin.isdigit():
+        print("Enter integer(s) for your pin!")
+        pin = input("Create a numerical pin:  ")
+    pin = int(pin)
     print(f"Pin: {pin}")
-    
+        
     name = input("What is your name?: ")
     print(f"Hello, {name}!")
 
