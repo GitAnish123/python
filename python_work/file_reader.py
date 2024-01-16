@@ -119,3 +119,34 @@ same directory as your program files, or in a folder such as text_files within t
 files.
 """
 #     path = Path('/users/anish/desktop/python_work/text_files/filename.text')      #
+
+
+
+
+"""
+When you're working with a file, you'll often want to examine each line of the file. 
+You might be looking for certain information in the file, or you might want to modify the text in the file in some way.
+For example, you might want to read through a file of weather data and work with any line that includes the word sunny in 
+the description of that day's weather. In a news report, 
+you might look for any line with the tag <headline> and rewrite that line with a specific kind of formatting.
+You can use the splitlines() method to turn a long string into a set of lines, 
+and then use a for loop to examine each line from a file, one at a time:
+"""
+from pathlib import Path
+path = Path('pi_digits.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+for line in lines:
+    print(line)
+
+# Here is the actual list without looping:
+print(lines)
+
+"""
+We start out by reading the entire contents of the file, as we did earlier ❶. 
+If you're planning to work with the individual lines in a file, 
+you don't need to strip any whitespace when reading the file. 
+The splitlines() method returns a list of all lines in the file, and we assign this list to the variable lines ❷. 
+We then loop over these lines and print each one. 
+Since we haven't modified any of the lines, the output matches the original text file exactly.
+"""
