@@ -83,3 +83,39 @@ Then it applies the rstrip() method to the string that read_text() returns.
 The cleaned-up string is then assigned to the variable contents. This approach is called method chaining, 
 and you'll see it used often in programming.
 """
+
+
+
+"""
+When you pass a simple filename like pi_digits.txt to Path, 
+Python looks in the directory where the file that's currently being executed (that is, your .py program file) is stored.
+Sometimes, depending on how you organize your work, the file you want to open won't be in the same directory as your 
+program file. For example, you might store your program files in a folder called python_work; 
+inside python_work, you might have another folder called text_files to distinguish your program files from the text files 
+they're manipulating. 
+Even though text_files is in python_work, just passing Path the name of a file in text_files won't work, 
+because Python will only look in python_work and stop there; 
+it won't go on and look in text_files. 
+To get Python to open files from a directory other than the one where your program file is stored, 
+you need to provide the correct path.
+There are two main ways to specify paths in programming. 
+A relative file path tells Python to look for a given location relative to the directory where the currently running 
+program file is stored. Since text_files is inside python_work, 
+we need to build a path that starts with the directory text_files, and ends with the filename. 
+Here's how to build this path:
+"""
+#      path = Path('text_files/filename.txt')      #
+
+"""
+You can also tell Python exactly where the file is on your computer, 
+regardless of where the program that's being executed is stored. 
+This is called an absolute file path. You can use an absolute path if a relative path doesn't work. 
+For instance, if you've put text_files in some folder other than python_work, 
+then just passing Path the path 'text_files/filename.txt' won't work because Python will only look for that location 
+inside python_work. You'll need to write out an absolute path to clarify where you want Python to look.
+Absolute paths are usually longer than relative paths, because they start at your system's root folder:
+Using absolute paths, you can read files from any location on your system. For now it's easiest to store files in the 
+same directory as your program files, or in a folder such as text_files within the directory that stores your program 
+files.
+"""
+#     path = Path('/users/anish/desktop/python_work/text_files/filename.text')      #
