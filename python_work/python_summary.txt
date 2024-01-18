@@ -1,0 +1,15 @@
+In python you can learn about simple data types and variables.
+In python you can learn about lists.
+In python you can learn about tuples.
+In python you can learn about 'if' statements.
+In python you can learn about 'for' loops.
+In python you can learn about dictionaries.
+In python you can learn about user input.
+In python you can learn about 'while' loops.
+In python you can learn about functions.
+In python you can learn about classes.
+In python you can learn about files.
+In python you can learn about exceptions.
+In python you can learn about testing your code.
+In python you can learn about modeling real world objects.
+In python you can learn about connecting information and applying knowledge to harder topics.
