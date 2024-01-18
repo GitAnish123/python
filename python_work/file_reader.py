@@ -243,3 +243,74 @@ else:
 My birthday does appear in the digits of pi! Once you've read from a file, 
 you can analyze its contents in just about any way you can imagine.
 """
+
+
+
+
+
+
+
+
+
+
+##  PRACTICE STARTS NOW ##
+""" Practice is currently starting now"""
+
+
+
+
+
+
+
+
+
+
+
+# Read and print a file's contents by finding the path of the file:
+from pathlib import Path
+path = Path('python_summary.txt')
+contents = path.read_text()
+print(contents)
+
+
+
+# Creating a list that stores the file's contents and looping through the list:
+from pathlib import Path
+path = Path('python_summary.txt')
+contents = path.read_text()
+print(contents)
+lines = contents.splitlines()
+for line in lines:
+    print(line)
+
+
+
+# Replacing any word in a string with a different word using the "replace()" method:
+from pathlib import Path
+path = Path('python_summary.txt')
+contents = path.read_text()
+contents = contents.replace('python', 'javascript')
+print(contents)
+
+
+
+# Using simpliar code to make it more concise. (Remove the temperary variable, 'lines')
+from pathlib import Path
+path = Path('python_summary.txt')
+contents = path.read_text()
+print(contents)
+for line in contents.splitlines():
+    print(line)
+
+
+
+
+
+
+
+
+
+
+
+# --------- PRACTICE IS OVER ------------ #
+""" PRACTICE IS CURRENTLY OVER!!! """
