@@ -150,3 +150,96 @@ The splitlines() method returns a list of all lines in the file, and we assign t
 We then loop over these lines and print each one. 
 Since we haven't modified any of the lines, the output matches the original text file exactly.
 """
+
+
+
+"""
+After you've read the contents of a file into memory, 
+you can do whatever you want with that data, so let's briefly explore the digits of pi. 
+First, we'll attempt to build a single string containing all the digits in the file with no whitespace in it:
+"""
+
+from pathlib import Path
+path = Path('pi_digits.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+pi_string = ''
+for line in lines:
+    pi_string += line
+print(pi_string)
+print(len(pi_string))
+"""
+We start by reading the file and storing each line of digits in a list, just as we did in the previous example. 
+We then create a variable, pi_string, to hold the digits of pi. 
+We write a loop that adds each line of digits to pi_string ❶. 
+We print this string, and also show how long the string is:
+"""
+
+# The variable pi_string contains the whitespace that was on the left side of the digits in each line, 
+# but we can get rid of that by using lstrip() on each line:
+
+from pathlib import Path
+path = Path('pi_digits.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+pi_string = ''
+for line in lines:
+    pi_string += line.lstrip()
+print(pi_string)
+print(len(pi_string))
+
+# Now we have a string containing pi to 30 decimal places. 
+# The string is 32 characters long because it also includes the leading 3 and a decimal point:
+# When Python reads from a text file, it interprets all text in the file as a string. 
+# If you read in a number and want to work with that value in a numerical context, 
+# you’ll have to convert it to an integer using the int() function or a float using the float() function.
+
+
+
+"""
+So far, we've focused on analyzing a text file that contains only three lines, 
+but the code in these examples would work just as well on much larger files. 
+If we start with a text file that contains pi to 1,000,000 decimal places, 
+instead of just 30, we can create a single string containing all these digits. 
+We don't need to change our program at all, except to pass it a different file. 
+We'll also print just the first 50 decimal places, so we don't have to watch a million digits scroll by in the terminal:
+"""
+from pathlib import Path
+path = Path('pi_million_digits.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+pi_string = ''
+for line in lines:
+    pi_string += line.lstrip()
+print(f"{pi_string[:52]}...")
+print(len(pi_string))
+
+# The output shows that we do indeed have a string containing pi to 1,000,000 decimal places:
+# Python has no inherent limit to how much data you can work with.
+# You can work with as much data as your system’s memory can handle.
+
+
+
+"""
+I've always been curious to know if my birthday appears anywhere in the digits of pi. 
+Let's use the program we just wrote to find out if someone's birthday appears anywhere in the first million digits of pi. 
+We can do this by expressing each birthday as a string of digits and seeing if that string appears anywhere in pi_string:
+"""
+
+from pathlib import Path 
+path = Path('pi_million_digits.txt')
+contents = path.read_text()
+lines = contents.splitlines()
+pi_string = ''
+for line in lines:
+    pi_string += line.lstrip()
+birthday = input("Enter your birthday, in the form mmddyy: ")
+if birthday in pi_string:
+    print("Your birthday appears in the first million digits of pi!")
+else:
+    print("Your birthday does not appear in the first million digits of pi.")
+
+"""
+My birthday does appear in the digits of pi! Once you've read from a file, 
+you can analyze its contents in just about any way you can imagine.
+"""
