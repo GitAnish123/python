@@ -3006,7 +3006,7 @@ try:
                         health = health + risky_health
                     elif serious_about_health == 'less risky':
                         if health <= random.randint(10, 50):
-                            risky_health = random.randint(-10, 75)
+                            risky_health = random.randint(-25, 75)
                             print(f"You gained {risky_health} health!")
                             health = health + risky_health
                         else:
