@@ -181,13 +181,16 @@ try:
                             time.sleep(4)
                             actions_count += 1
                             loan_amount = int(input("How much money you want: $"))
-                            if actions_count < 24:
+                            if actions_count < 35:
                                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
                                 money = money + loan_amount
                                 has_loan = True
                                 loan_when_dead = True
                             else:
                                 print(f"Sorry you can't get a loan due to many actions played!")
+                                time.sleep(2.5)
+                                print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+                                break
                     else:
                         print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
                         break
