@@ -2924,6 +2924,97 @@ try:
             else:
                 print("Wrong pin!")
 
+        if welcome_message == 'life risk':
+            risky_wanting = input("What do you want? (money, health, credits)   ")
+            if risky_wanting == 'money':
+                if money <= 1000:
+                    risky_money = random.randint(-1000, 1000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                elif money <= 10000:
+                    risky_money = random.randint(-7500, 10000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                elif money <= 50000:
+                    risky_money = random.randint(-35000, 45000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                elif money <= 100_000:
+                    risky_money = random.randint(-80_000, 90_000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                elif money <= 500_000:
+                    risky_money = random.randint(-350_000, 450_000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                elif money <= 1_000_000:
+                    risky_money = random.randint(-750_000, 750_000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                else:
+                    risky_money = random.randint(-750_000, 1_000_000)
+                    print(f"You earned ${risky_money}!")
+                    money = money + risky_money
+                if game_difficulty == 'hardcore':
+                    health -= 30
+                else:
+                    health -= 15
+                print(f"You have {health} health left!")
+            if risky_wanting == 'credits':
+                if game_credits <= 0:
+                    health -= 25
+                    risky_credits = round(random.uniform(0, 0.1), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                elif game_credits <= 0.5:
+                    risky_credits = round(random.uniform(-0.4, 0.5), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                elif game_credits <= 0.75:
+                    risky_credits = round(random.uniform(-0.5, 0.7), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                elif game_credits <= 1:
+                    risky_credits = round(random.uniform(-0.8, 0.8), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                elif game_credits <= 1.5:
+                    risky_credits = round(random.uniform(-1, 1.2), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                elif game_credits <= 2:
+                    risky_credits = round(random.uniform(-1.5, 2), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                else:
+                    risky_credits = round(random.uniform(-1.5, 2.5), 2)
+                    print(f"You earned {game_credits} credits!")
+                    game_credits = game_credits + risky_credits
+                if game_difficulty == 'hardcore':
+                    health -= 30
+                else:
+                    health -= 15
+                print(f"You have {health} health left!")
+            if risky_wanting == 'health':
+                serious_about_health = input("Pick an option: (more risky, less risky)   ")
+                if serious_about_health == 'more risky':
+                    risky_health = random.randint(-500, 500)
+                    print(f"You gained {risky_health} health!")
+                    health = health + risky_health
+                elif serious_about_health == 'less risky':
+                    if health <= random.randint(10, 50):
+                        risky_health = random.randint(-10, 75)
+                        print(f"You gained {risky_health} health!")
+                        health = health + risky_health
+                    else:
+                        risky_health = random.randint(-100, 150)
+                        print(f"You gained {risky_health} health!")
+                        health = health + risky_health
+                else:
+                    print(f"Pick a valid option please!")
+            else:
+                print(f"Please choose a valid option!")
+        
         if welcome_message == 'education':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
