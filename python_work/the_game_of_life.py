@@ -2963,42 +2963,42 @@ try:
                     else:
                         health -= 15
                     print(f"You have {health} health left!")
-                if risky_wanting == 'credits':
+                elif risky_wanting == 'credits':
                     if game_credits <= 0:
                         health -= 25
                         risky_credits = round(random.uniform(0, 0.1), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     elif game_credits <= 0.5:
                         risky_credits = round(random.uniform(-0.4, 0.5), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     elif game_credits <= 0.75:
                         risky_credits = round(random.uniform(-0.5, 0.7), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     elif game_credits <= 1:
                         risky_credits = round(random.uniform(-0.8, 0.8), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     elif game_credits <= 1.5:
                         risky_credits = round(random.uniform(-1, 1.2), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     elif game_credits <= 2:
                         risky_credits = round(random.uniform(-1.5, 2), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     else:
                         risky_credits = round(random.uniform(-1.5, 2.5), 2)
-                        print(f"You earned {game_credits} credits!")
+                        print(f"You earned {risky_credits} credits!")
                         game_credits = game_credits + risky_credits
                     if game_difficulty == 'hardcore':
                         health -= 30
                     else:
                         health -= 15
                     print(f"You have {health} health left!")
-                if risky_wanting == 'health':
+                elif risky_wanting == 'health':
                     serious_about_health = input("Pick an option: (more risky, less risky)   ")
                     if serious_about_health == 'more risky':
                         risky_health = random.randint(-500, 500)
@@ -3019,7 +3019,7 @@ try:
                     print(f"Please choose a valid option!")
             else:
                 print(f"Wrong pin!")
-                
+
         if welcome_message == 'education':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
