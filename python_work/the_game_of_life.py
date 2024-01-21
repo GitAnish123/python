@@ -18,9 +18,10 @@ try:
         print("Enter integer(s) for your pin!")
         pin = input("Create a numerical pin:  ")
     pin = int(pin)
-    print(f"Pin: {pin}")
+    print(f"Pin: {pin}", end='', flush=True)
+    time.sleep(1.5)
         
-    name = input("What is your name?: ")
+    name = input("\rWhat is your name?: ")
     print(f"Hello, {name}!")
 
     gender = input("What is your gender? (male, female): ")
