@@ -3285,9 +3285,9 @@ try:
                 salary = salary * increased_salary_amount_bonus
                 print(f"Your salary is now: ${salary}.")
         
-        # Increased salary if 100 rounds played
+        # Increased salary if 150 rounds played
         if has_job == True:
-            if actions_count == 100:
+            if actions_count == 150:
                 increased_salary_amount_bonus = 10
                 print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
                 time.sleep(1)
