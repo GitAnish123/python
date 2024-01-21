@@ -3230,6 +3230,69 @@ try:
                 game_credits = game_credits + credit_salary
                 print(f"You earned {credit_salary} credits too!")
                 print(f"You have ${money} and {game_credits} credits!")
+        
+        # Increased salary if 15 rounds played
+        if has_job == True:
+            if actions_count == 15:
+                increased_salary_amount_bonus = round(random.uniform(1, 3), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 25 rounds played
+        if has_job == True:
+            if actions_count == 25:
+                increased_salary_amount_bonus = round(random.uniform(2, 4), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 35 rounds played
+        if has_job == True:
+            if actions_count == 35:
+                increased_salary_amount_bonus = round(random.uniform(4, 5), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 50 rounds played
+        if has_job == True:
+            if actions_count == 50:
+                increased_salary_amount_bonus = round(random.uniform(4, 5), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 70 rounds played
+        if has_job == True:
+            if actions_count == 70:
+                increased_salary_amount_bonus = round(random.uniform(5, 6), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 85 rounds played
+        if has_job == True:
+            if actions_count == 85:
+                increased_salary_amount_bonus = round(random.uniform(6, 9), 2)
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
+        
+        # Increased salary if 100 rounds played
+        if has_job == True:
+            if actions_count == 100:
+                increased_salary_amount_bonus = 10
+                print(f"Salary increased by... {time.sleep(2)} {increased_salary_amount_bonus}!")
+                time.sleep(1)
+                salary = salary * increased_salary_amount_bonus
+                print(f"Your salary is now: ${salary}.")
 
         if game_difficulty == 'easy':
             if money >= 2_500_000:
