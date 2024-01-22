@@ -112,6 +112,31 @@ path.write_text(guest_book_of_names)
 
 
 
+# Adding some logic so there is no repeatitive names!
+names = []
+
+while True:
+    enter_name = input("What is your name? (Enter 'q' to quit if this is the last name or if you are done):   ")
+    if enter_name == 'q':
+        break
+    if enter_name in names:
+        print(f"This name is already used in the book, sorry!")
+    else:
+        names.append(enter_name)
+
+print(f"All names are recorded successfully in the file until another set of names are entered: guest_book.txt")
+
+path = Path('guest_book.txt')
+guest_book_of_names = ''
+for name in names:
+    guest_book_of_names += f"{name}\n"
+
+path.write_text(guest_book_of_names)
+
+
+
+
+
 
 
 
