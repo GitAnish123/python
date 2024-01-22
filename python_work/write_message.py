@@ -79,8 +79,26 @@ Later in this chapter, you'll learn to check whether a file exists using pathlib
 
 
 # Using user input and writing to a file as you write your name as an example:
-name = input("What is your name?  ")
+enter_name = input("What is your name?  ")
 
 path = Path('guest.txt')
-path.write_text(name)
-print(f"Your name is recorded temperarily on the file: {path}")
+path.write_text(enter_name)
+print(f"Your name is recorded temperarily on the file until a new name is entered: {path}")
+
+
+
+
+
+# Same concept but using a while loop, collecting all of the names, and write all of the names in a file:
+names = []
+
+while True:
+    enter_name = input("What is your name? (Enter 'q' to quit if this is the last name or if you are done):   ")
+    if enter_name == 'q':
+        break
+    names.append(enter_name)
+print(f"All names are recoreded successfully in the file: guest_book.txt")
+
+path = Path('guest_book.txt')
+for name in names:
+    path.write_text(name)
