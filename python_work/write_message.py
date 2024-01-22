@@ -52,3 +52,35 @@ Later in this chapter, you'll learn to check whether a file exists using pathlib
 # You can also use spaces, tab characters, and blank lines to format your output.
 # This is just you’ve been doing with terminal-based output.
 # There’s no limit to the length of your strings, and this is how many computer-generated documents are created.
+
+
+
+
+
+
+
+
+
+
+
+##  PRACTICE STARTS NOW ##
+""" Practice is currently starting now"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Using user input and writing to a file as you write your name as an example:
+name = input("What is your name?  ")
+
+path = Path('guest.txt')
+path.write_text(name)
+print(f"Your name is recorded temperarily on the file: {path}")
