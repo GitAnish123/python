@@ -37,3 +37,27 @@ except FileNotFoundError:
 # Result is a friendly user message!
 # The program has nothing more to do if the file doesn’t exist, so this is all the output we see. 
 # Let’s build on this example and see how exception handling can help when you’re working with more than one file.
+    
+
+
+
+# We'll count words in "Alice in Wonderland" from Project Gutenberg. We use split() to break the text into words.
+# This method splits a string based on whitespace. This helps count words effectively.
+
+from pathlib import Path
+
+path = Path('alice.txt')
+try:
+    contents = path.read_text(encoding='utf-8')
+except FileNotFoundError:
+    print(f"Sorry, the file {path} does not exist.")
+else:
+    # Count the approximate number of words in the file:
+    words = contents.split()
+    num_words = len(words)
+    print(f"The file {path} has about {num_words} words.")
+
+# We move "alice.txt" to the directory.
+# We read "Alice in Wonderland" into a string, split it into words, and count using len(). 
+# In the else block, we print the word count.
+# This is a good approximation of the length of Alice in Wonderland.
