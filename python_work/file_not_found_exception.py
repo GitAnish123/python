@@ -1,4 +1,4 @@
-#  NOTE: THE FILE "story.txt" DOES NOT exist.
+#  NOTE: THE FILE "story.txt" and "siddartha.txt" DOES NOT exist.
 
 
 
@@ -61,3 +61,56 @@ else:
 # We read "Alice in Wonderland" into a string, split it into words, and count using len(). 
 # In the else block, we print the word count.
 # This is a good approximation of the length of Alice in Wonderland.
+    
+
+
+# Let’s add more books to analyze. Before we do, let’s move the bulk of this program to a function called count_words(). 
+# This will make it easier to run the analysis for multiple books:
+
+from pathlib import Path
+
+def count_words(path):
+    """Count the approximate number of words in a file."""
+    try:
+        contents = path.read_text(encoding='utf-8')
+    except FileNotFoundError:
+        print(f"Sorry, the file {path} does not exist.")
+    else:
+        # Count the approximate number of words in the file:
+        words = contents.split()
+        num_words = len(words)
+        print(f"The file {path} has about {num_words} words.")
+
+path = Path('alice.txt')
+count_words(path)
+
+
+# Code moved into count_words(), comments updated. Loop counts words in texts. 
+# Filenames stored in list, count_words() called for each.
+
+from pathlib import Path
+
+def count_words(path):
+    """Count the approximate number of words in a file."""
+    try:
+        contents = path.read_text(encoding='utf-8')
+    except FileNotFoundError:
+        print(f"Sorry, the file {path} does not exist.")
+    else:
+        # Count the approximate number of words in the file:
+        words = contents.split()
+        num_words = len(words)
+        print(f"The file {path} has about {num_words} words.")
+
+filenames = ['alice.txt', 'siddhartha.txt', 'moby_dick.txt', 
+        'little_women.txt']
+for filename in filenames:
+    path = Path(filename)
+    count_words(path)
+
+
+# The names of the files are stored as simple strings. 
+# Each string is then converted to a Path object ❶, before the call to count_words(). 
+# The missing siddhartha.txt file has no effect on the rest of the program’s execution.
+# Try-except blocks prevent tracebacks, letting program continue analyzing found texts. 
+# FileNotFoundError handling enables analysis of all texts.
