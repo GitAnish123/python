@@ -114,3 +114,36 @@ for filename in filenames:
 # The missing siddhartha.txt file has no effect on the rest of the program’s execution.
 # Try-except blocks prevent tracebacks, letting program continue analyzing found texts. 
 # FileNotFoundError handling enables analysis of all texts.
+    
+
+
+
+# In Python, handle exceptions with try and except blocks.
+# For silent failure, use try and pass in the except block to continue program execution seamlessly.
+def count_words(path):
+    """Count the approximate number of words in a file."""
+    try:
+        contents = path.read_text(encoding='utf-8')
+    except FileNotFoundError:
+        pass                              # Add the value to just pass! (This is a placeholder)
+    else:
+        # Count the approximate number of words in the file:
+        words = contents.split()
+        num_words = len(words)
+        print(f"The file {path} has about {num_words} words.")
+
+# In this listing, using the pass statement in the except block allows the code to run without producing a ..... 
+# traceback or any output when a FileNotFoundError occurs.
+# The pass statement acts as a placeholder.
+# It signifies the intentional choice to do nothing at a specific point in the program.
+# It often indicates potential future actions.
+        
+
+
+# Deciding which errors to report and not:
+"""
+Consider user expectations when deciding to report errors or fail silently. 
+If users anticipate specific results, inform them about missing data. 
+Python's error-handling allows tailoring information sharing to improve usability as per user needs 
+and program dependencies.
+"""
