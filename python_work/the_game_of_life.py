@@ -509,7 +509,7 @@ try:
                             'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                             'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
                             'less money', 'job result', 'job result', 'job result', 'risky trade', 'story mode', 'log', 'safety',
-                            'best friend', 'credit holder', 'earn money yes', 'lose money no']
+                            'best friend', 'credit holder', 'earn money yes', 'lose money no', 'more salary']
                 result = random.choice(actions)
                 if result == 'get money':
                     additional_money_result = random.randint(100, 10000)
@@ -1374,6 +1374,63 @@ try:
                     money = money + random_earn_money
                     print(f"You have ${money}")
                 
+                if result == 'more salary':
+                    if has_job == True:
+                        want_salary = input("Want more salary to increase? This takes up HALF AMOUNT OF HEALTH YOU HAVE!  ")
+                        if want_salary == 'no':
+                            print(f"Ok, Have a nice day!")
+                        else:
+                            lose_health = health // 2
+                            health = lose_health
+                            print(f"You have {health} health left!")
+                            ending_number = salary * 12
+                            attempts = 0
+                            dream_salary = input("What is your dream times salary?\n2x, 3x, 4x, 5x, 6x, 7x, 8x, 9x, 10x\n??? ")
+                            if dream_salary == '2x':
+                                extra = salary * 2
+                                number = 100_000
+                            elif dream_salary == '3x':
+                                extra = salary * 3
+                                number = 80_000
+                            elif dream_salary == '4x':
+                                extra = salary * 4
+                                number = 65_000
+                            elif dream_salary == '5x':
+                                extra = salary * 5
+                                number = 50_000
+                            elif dream_salary == '6x':
+                                extra = salary * 6
+                                number = 40_000
+                            elif dream_salary == '7x':
+                                extra = salary * 7
+                                number = 30_000
+                            elif dream_salary == '8x':
+                                extra = salary * 8
+                                number = 20_000
+                            elif dream_salary == '9x':
+                                extra = salary * 9
+                                number = 15_000
+                            elif dream_salary == '10x':
+                                extra = salary * 10
+                                number = 10_000
+                            else:
+                                print(f"WRONG CHOICE!")
+                            while True:
+                                choice = random.randint(1, ending_number)
+                                if choice == extra:
+                                    print(f"YOU FOUND A CHOICE")
+                                    time.sleep(2)
+                                    if attempts <= number:
+                                        salary = extra
+                                    break
+                                else:
+                                    print(f"Checking...")
+                                    attempts += 1
+                            print(f"It took you {attempts} attempts to get you to your salary")
+                            print(f"New salary: ${salary}")
+                    else:
+                        print("Sorry, this action can't be done due to NO JOB!!!")
+                    
                 if result == 'lose money no':
                     random_lose_money = random.randint(500, 2500)
                     print(f"You lost ${random_lose_money}")
