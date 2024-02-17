@@ -147,3 +147,48 @@ If users anticipate specific results, inform them about missing data.
 Python's error-handling allows tailoring information sharing to improve usability as per user needs 
 and program dependencies.
 """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##  PRACTICE STARTS NOW ##
+""" Practice is currently starting now"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Addition calculator but with a different Exception that handles text instead of numbers.
+while True:
+    print("Give me two numbers and I will add them.\nEnter 'q' anytime to quit.")
+    first_number_add = input("First number:  ")
+    if first_number_add == 'q'.lower():
+        break
+    second_number_add = input("Second number:  ")
+    if second_number_add == 'q'.lower():
+        break
+    try:
+        total_sum = float(first_number_add) + float(second_number_add)
+    except ValueError:
+        print(f"Please enter a valid number!")
+    else:
+        print(f"Total sum: {total_sum}")
