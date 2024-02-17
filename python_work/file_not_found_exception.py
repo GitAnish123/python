@@ -258,7 +258,7 @@ for filename in filenames:
 
 
 # Using "count()" to count the amount of specifized characters are there in a file.
-# If I want to find how many "the" are there, I can do "the " because it could be "they" or "there" so add a space.
+# If I want to find how many "an" are there, I can do "an " because it could be "and" or more kinds, so add a space.
 # Here is an example:
 from pathlib import Path
 def count_characters(path_filename, keyword):
@@ -272,7 +272,7 @@ def count_characters(path_filename, keyword):
     keyword_counted = contents.count(keyword)
     return f"Amount: {keyword_counted}"
 
-counting_in_little_women = count_characters('/users/anish/desktop/python_work/python/python_work/little_women.txt', 'an')
+counting_in_little_women = count_characters('/users/anish/desktop/python_work/python/python_work/little_women.txt', 'an ')
 print(f"\n{counting_in_little_women}")
 
 
