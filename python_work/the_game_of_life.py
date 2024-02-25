@@ -1416,7 +1416,7 @@ try:
                             else:
                                 print(f"WRONG CHOICE!")
                             while True:
-                                choice = random.randint(1, ending_number)
+                                choice = round(random.uniform(1, ending_number), 2)
                                 if choice == extra:
                                     print(f"YOU FOUND A CHOICE")
                                     time.sleep(2)
