@@ -509,7 +509,8 @@ try:
                             'poo', 'get money', 'describe yourself for fun', 'sports', 'pee', 'multiplication', 'division',
                             'loser', 'merry', 'school', 'bad brother', 'choose your adventure', 'eminem', 'sofa', 'more money',
                             'less money', 'job result', 'job result', 'job result', 'risky trade', 'story mode', 'log', 'safety',
-                            'best friend', 'credit holder', 'earn money yes', 'lose money no', 'more salary']
+                            'best friend', 'credit holder', 'earn money yes', 'lose money no', 'more salary', 'Best Job CEO',
+                            'get sued ha', 'beta club']
                 result = random.choice(actions)
                 if result == 'get money':
                     additional_money_result = random.randint(100, 10000)
@@ -676,14 +677,14 @@ try:
                 if result == 'paying taxes':
                     are_you_paying_taxes = input("Are you going to pay taxes (yes, no): ")
                     if are_you_paying_taxes == 'yes':
-                        tax_amount = random.randint(50, 200)
+                        tax_amount = round(money / 4, 2)
                         print(f"\nTime to pay your taxes!")
                         print(f"You pay ${tax_amount}")
                         money = money - tax_amount
                         print(f"You now have ${money}.")
                     else:
                         print("\nYou don't know when to give in and pay!\nPAY YOUR STUPID TAXES!!!!!!")
-                        punishment_for_not_paying = random.randint(25, 100)
+                        punishment_for_not_paying = random.randint(50, 100)
                         print(f"You lost {punishment_for_not_paying} health.")
                         health = health - punishment_for_not_paying
                         print(f"You now have {health} health.")
@@ -1119,6 +1120,79 @@ try:
                     health += 15
                     print(f"You chose to sightsee! You paid $1000 and gained 15 health.")
                     print(f"You currently have ${money} and {health} health")
+                
+                if result == 'Best Job CEO':
+                    if your_job == 'doctor':
+                        if money >= 100_000:
+                            wanna_ceo = input(f"Do you want to be selected for the BEST JOB IN THE COUNTRY CEO???  ")
+                            if wanna_ceo == 'yes':
+                                print("Nice, lets see the avaliable spot!")
+                                time.sleep(5)
+                                ceo_or_no_ceo = random.choices(['yes', 'no'], weights=[0.30, 0.70])[0]
+                                if ceo_or_no_ceo == 'yes':
+                                    print(f"Congratulations! You have made the spot...")
+                                    time.sleep(0.5)
+                                    print(f"Lets see your new UPGRADED salary!")
+                                    salary = round(salary * random.randint(100, 10000), 2)
+                                    print(f"New salary: ${salary}")
+                                else:
+                                    money -= 25_000
+                                    print(f"Sorry, you have not been selected! Here you have lost $25,000.")
+                            else:
+                                print(f"Ok, train more harder and let us know when you're ready!")
+                        else:
+                            pass
+                    else:
+                        pass
+                
+                if result == 'get sued ha':
+                    sued_amount = round(money / 3, 2)
+                    pay_for_sued = (f"You got sued for ${sued_amount}.\nAre you gonna pay?")
+                    if pay_for_sued == 'yes':
+                        money = money - sued_amount
+                        print(f"Ok, good!")
+                    else:
+                        print(f"YOU WILL RECIEVE BEATINGS!!!!!")
+                        health = random.randint(0, 1)
+                
+                if result == 'beta club':
+                    print(f"You went to beta club!")
+                    print(f"Lets see your final standings.")
+                    time.sleep(2)
+                    beta_club_standing = random.choices(['honorable', 'excellent', 'good', 'average', 'bad', 
+                                                         'terrible', 'the worst ever'], 
+                                                       weights=[0.10, 0.15, 0.25, 0.30, 0.15, 0.05])[0]
+                    if beta_club_standing == 'honorable':
+                        print(f"BEST SERVICE EVER, you get more increased salary and lots of cash! [6/6]")
+                        salary = round(salary * 2, 2)
+                        money += random.randint(1000, 25_000)
+                    elif beta_club_standing == 'excellent':
+                        print(f"GREAT SERVICE, you get some cash and salary increase! [5/6]")
+                        salary = round(salary * 1.5, 2)
+                        money += random.randint(500, 10_000)
+                    elif beta_club_standing == 'good':
+                        print(f"GOOD SERVICE, you get some cash! [4/6]")
+                        money += random.randint(100, 7500)
+                    elif beta_club_standing == 'average':
+                        print(f"YOU DID AN ACCEPTABLE AMOUNT OF SERVICE, you can get a coupon! [3/6]")
+                        discounts = [90, 75, 70, 60, 50, 30, 25, 20, 15, 10, 5]
+                        d_prices = random.choices(discounts, weights=[0.002, 0.003, 0.005, 0.01, 0.01, 0.02, 0.02, 0.03, 0.03,
+                                                                        0.17, 0.70])[0]
+                        your_discount_price = d_prices
+                        print(f"Here is your discount price ticket: {your_discount_price}% off for any item.")
+                    elif beta_club_standing == 'bad':
+                        print(f"YOU DID BAD SERVICE, your salary has been decreased slightly! [2/6]")
+                        salary = round(salary / 1.5, 2)
+                    elif beta_club_standing == 'terrible':
+                        print(f"YOU DID TERRIBLE SERVICE, your salary has been decreased a lot and you lose cash! [1/6]")
+                        salary = round(salary / 2, 2)
+                        money -= random.randint(1000, 10_000)
+                    elif beta_club_standing == 'the worst ever':
+                        print(f"YOU DID THE WORST SERVICE EVER AND SHAME ON YOU, your salary and money decreased a lot! [0/6]")
+                        salary = round(salary / random.randint(3, 5), 2)
+                        money -= random.randint(5000, 25_000)
+                    time.sleep(2)
+                    print(f"Beta club service is open for anybody again!")
                 
                 if result == 'more money':
                     more_money_amount_for_the_action_that_is_unique = random.randint(1000, 5000)
