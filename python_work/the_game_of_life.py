@@ -1161,7 +1161,7 @@ try:
                     time.sleep(2)
                     beta_club_standing = random.choices(['honorable', 'excellent', 'good', 'average', 'bad', 
                                                          'terrible', 'the worst ever'], 
-                                                       weights=[0.10, 0.15, 0.25, 0.30, 0.15, 0.05])[0]
+                                                       weights=[0.07, 0.15, 0.25, 0.30, 0.15, 0.05, 0.03])[0]
                     if beta_club_standing == 'honorable':
                         print(f"BEST SERVICE EVER, you get more increased salary and lots of cash! [6/6]")
                         salary = round(salary * 2, 2)
