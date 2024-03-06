@@ -2428,6 +2428,383 @@ try:
             else:
                 print("Wrong pin!")
 
+        if welcome_message == 'gaming':
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin != pin:
+                print(f"Wrong pin!")
+            else:
+                health -= random.randint(30, 100)
+                what_game = input("What game?  ")
+                if what_game == 'clicker':
+                    print(f"Game: Enter clicker")
+                    time.sleep(1.5)
+                    start_time = time.time()
+                    clicks = 0
+                    clicks_per_turn = 1
+                    random_number = random.randint(1000, 500_000)
+                    irandom = True
+                    i1000000000 = True
+                    i1000000 = True
+                    i500000 = True
+                    i100000 = True
+                    i75000 = True
+                    i50000 = True
+                    i25000 = True
+                    i10000 = True
+                    i5000 = True
+                    i2500 = True
+                    while True:
+                        # Check if 120 seconds have elapsed
+                        elapsed_time = time.time() - start_time
+                        if elapsed_time > 120:
+                            print("\nTime's up! Game Over.")
+                            break
+                        click_input = input("Click: ")
+                        clicks = clicks + clicks_per_turn
+                        print(f"Clicks: {clicks}", end='', flush=True)
+                        random_more = ['1', '0']
+                        if elapsed_time <= 15:
+                            weights = [0.01, 0.99] 
+                        elif elapsed_time <= 30:
+                            weights = [0.05, 0.95]
+                        elif elapsed_time <= 45:
+                            weights = [0.06, 0.94]
+                        elif elapsed_time <= 60:
+                            weights = [0.1, 0.9]
+                        elif elapsed_time <= 90:
+                            weights = [0.15, 0.85]
+                        elif elapsed_time <= 105:
+                            weights = [0.2, 0.8]
+                        elif elapsed_time <= 115:
+                            weights = [0.3, 0.7]
+                        elif elapsed_time <= 119:
+                            weights = [0.85, 0.15]
+                        random_choice = random.choices(random_more, weights=weights)[0]
+                        if random_choice == '0':
+                            pass
+                        else:
+                            print(f"UPGRADE!!!")
+                            time.sleep(0.1)
+                            if clicks <= 1000:
+                                clicks_per_turn += random.randint(1, 4)
+                            elif clicks <= 5000:
+                                clicks_per_turn += random.randint(1, 5)
+                            elif clicks <= 10_000:
+                                clicks_per_turn += random.randint(3, 10)
+                            elif clicks <= 20_000:
+                                clicks_per_turn += random.randint(10, 25)
+                            elif clicks <= 50_000:
+                                clicks_per_turn += random.randint(15, 30)
+                            elif clicks <= 100_000:
+                                clicks_per_turn += random.randint(50, 100)
+                            elif clicks <= 1_000_000:
+                                clicks_per_turn += random.randint(100, 400)
+                            else:
+                                clicks_per_turn += random.randint(100, 500)
+                        if clicks != 0:
+                            if clicks >= 1_000_000_000:
+                                if i1000000000 == True:
+                                    print(f"New upgrade!!!")
+                                    i1000000000 = False
+                                    clicks_per_turn += random.randint(10, 200)
+                            elif clicks >= 1_000_000:
+                                if i1000000 == True:
+                                    print(f"New upgrade!!!")
+                                    i1000000 = False
+                                    clicks_per_turn += random.randint(10, 150)
+                            elif clicks >= 500_000:
+                                if i500000 == True:
+                                    print(f"New upgrade!!!")
+                                    i500000 = False
+                                    clicks_per_turn += random.randint(10, 100)
+                            elif clicks >= 100_000:
+                                if i100000 == True:
+                                    print(f"New upgrade!!!")
+                                    i100000 = False
+                                    clicks_per_turn += random.randint(10, 50)
+                            elif clicks >= 75_000:
+                                if i75000 == True:
+                                    print(f"New upgrade!!!")
+                                    i75000 = False
+                                    clicks_per_turn += random.randint(5, 40)
+                            elif clicks >= 50_000:
+                                if i50000 == True:
+                                    print(f"New upgrade!!!")
+                                    i50000 = False
+                                    clicks_per_turn += random.randint(1, 30)
+                            elif clicks >= 25_000:
+                                if i25000 == True:
+                                    print(f"New upgrade!!!")
+                                    i25000 = False
+                                    clicks_per_turn += random.randint(1, 20)
+                            elif clicks >= 10_000:
+                                if i10000 == True:
+                                    print(f"New upgrade!!!")
+                                    i10000 = False
+                                    clicks_per_turn += random.randint(1, 20)
+                            elif clicks >= 5000:
+                                if i5000 == True:
+                                    print(f"New upgrade!!!")
+                                    i5000 = False
+                                    clicks_per_turn += random.randint(1, 15)
+                            elif clicks >= 2500:
+                                if i2500 == True:
+                                    print(f"New upgrade!!!")
+                                    i2500 = False
+                                    clicks_per_turn += random.randint(1, 10)
+                        if clicks == random_number:
+                            clicks_per_turn += random.randint(100, 1000)
+                        if clicks >= random_number:
+                            if irandom == True:
+                                clicks_per_turn += random.randint(0, 1000)
+                                irandom = False
+                            else:
+                                pass
+                    if clicks <= 1000:
+                        click_money = 0
+                    elif clicks <= 10_000:
+                        click_money = random.randint(10, 100)
+                    elif clicks <= 100_000:
+                        click_money = random.randint(20, 500)
+                    elif clicks <= 1_000_000:
+                        click_money = random.randint(100, 1000)
+                        health += random.randint(1, 10)
+                    elif clicks <= 10_000_000:
+                        click_money = random.randint(100, 1500)
+                        health += 10
+                        game_credits += 0.01
+                    elif clicks <= 50_000_000:
+                        click_money = random.randint(500, 25_000)
+                        health += 25
+                        game_credits += 0.1
+                    elif clicks <= 100_000_000:
+                        click_money = random.randint(1000, 100_000)
+                        health += 50
+                        game_credits += 0.25
+                    elif clicks <= 1_000_000_000:
+                        click_money = random.randint(10000, 1_000_000)
+                        health += 75
+                        game_credits += 0.35
+                        if has_job:
+                            salary = salary * random.randint(5, 20)
+                    elif clicks <= 1_000_000_000_000:
+                        click_money = random.randint(50_000, 5_000_000)
+                        health += 100
+                        game_credits += 0.5
+                        if has_job:
+                            salary = salary * random.randint(10, 100)
+                    else:
+                        click_money = random.randint(1_000_000, 10_000_000)
+                        health += 200
+                        game_credits += 1
+                        if has_job:
+                            salary = salary * random.randint(10, 1000)
+                elif what_game == 'fortnite':
+                    fortnite_mode = input("What mode: (battle royale, save the world, creative)   ")
+                    if fortnite_mode == 'battle royale':
+                        print(f"Loading to lobby...")
+                        time.sleep(random.randint(10, 60))
+                        print(f"Inside lobby! Battle bus launching in 10 seconds...")
+                        time.sleep(1)
+                        print("\n9")
+                        time.sleep(1)
+                        print("\n8")
+                        time.sleep(1)
+                        print("\n7")
+                        time.sleep(1)
+                        print("\n6")
+                        time.sleep(1)
+                        print("\n5")
+                        time.sleep(1)
+                        print("\n4")
+                        time.sleep(1)
+                        print("\n3!")
+                        time.sleep(1)
+                        print("\n2!!")
+                        time.sleep(1)
+                        print("\n1!!!")
+                        time.sleep(1)
+                        print(f"\nLAUNCHING NOW!!!!!")
+                        time.sleep(2.5)
+                        option_battle_royale = input(f"Jump in hot spot and fight and more loot, or go in a safe spot and prepare and less loot? (hot, safe) ")
+                        if option_battle_royale == 'hot':
+                            print(f"Game is happening. You are in a war!")
+                            time.sleep(15)
+                            game_battle_result = random.randint(1, 100)
+                            print(f"You won place {game_battle_result}")
+                        elif option_battle_royale == 'safe':
+                            print(f"Game is happening. You are preparing for fighting!")
+                            time.sleep(15)
+                            game_battle_result = random.randint(25, 50)
+                            print(f"You won place {game_battle_result}")
+                        if game_battle_result == 1:
+                            print(f"You get $100000 and 1 credit")
+                            money += 100_000
+                            game_credits += 1
+                        elif game_battle_result <= 10:
+                            print(f"You get $10000 and 0.1 credits")
+                            money += 10000
+                            game_credits += 0.1
+                        elif game_battle_result <= 25:
+                            print(f"You get $5000 and 0.01 credits")
+                            money += 5000
+                            game_credits += 0.01
+                        elif game_battle_result <= 50:
+                            print(f"You get $1500")
+                            money += 1500
+                        elif game_battle_result <= 60:
+                            print(f"You get $1000")
+                            money += 1000
+                        elif game_battle_result <= 75:
+                            print(f"You get $750")
+                            money += 750
+                        elif game_battle_result <= 90:
+                            print(f"You get $500")
+                            money += 500
+                        elif game_battle_result <= 95:
+                            print(f"You get $100")
+                            money += 100
+                        elif game_battle_result <= 99:
+                            print(f"You get $50")
+                            money += 50
+                        else:
+                            print(f"You get $0")
+                            money += 0
+                    elif fortnite_mode == 'save the world':
+                        save_world_or_not = random.choices(['yes', 'no'], weights=[0.5, 0.5])[0]
+                        if save_world_or_not == 'yes':
+                            time.sleep(5)
+                            print(f"YOU SAVED THE WORLD IN FORTNITE!!!")
+                            save_the_world_reward = random.randint(-100, 100_000)
+                            money += save_the_world_reward
+                            print(f"You earned ${save_the_world_reward}!")
+                        else:
+                            print(f"Sorry, you didn't save the world in fortnite!")
+                    elif fortnite_mode == 'creative':
+                        health -= 10
+                        print(f"You created a fortnite map that costed money!")
+                        time.sleep(10)
+                        percentage_of_fortnite_creative_fans = random.randint(1, 100)
+                        print(f"{percentage_of_fortnite_creative_fans}% of fans liked/played your map!")
+                        amount_for_fortnite_map = percentage_of_fortnite_creative_fans * 100
+                        cost = amount_for_fortnite_map / round(random.uniform(1, 10), 1)
+                        final_cost = round(cost, 2)
+                        print(f"Including costs, your final amount you get is ${final_cost}")
+                        money += final_cost
+                elif what_game == 'among us':
+                    print("Welcome to Among Us Python Edition!")
+                    num_players=int(input("Enter the number of players:"))
+                    player_names=["Player "+str(i) for i in range(1,num_players+1)]
+                    random.shuffle(player_names)
+                    imposter_index=random.randint(0,num_players-1)
+                    imposter=player_names[imposter_index]
+                    print("The imposter is among us...")
+                    print("Player order:",player_names)
+                    tasks=["Fix wiring","Upload data","Swipe card","Empty garbage"]
+                    while True:
+                        decision=input("Call an emergency meeting? (yes/no):").lower()
+                        if decision=='yes':
+                            print("Emergency meeting called!")
+                            accused=random.choice(player_names)
+                            print(accused,"has been accused of being the imposter!")
+                            if accused==imposter:
+                                print("Accusation correct! The imposter has been ejected.")
+                                print("Game over.")
+                                print(f"You earned $1000")
+                                money += 1000
+                                break
+                            else:
+                                print("Accusation incorrect! Continue playing.")
+                        elif decision=='no':
+                            print("Continue playing...")
+                            print("Tasks to complete:")
+                            for task in tasks:
+                                print(task)
+                        else:
+                            print("Invalid input. Please enter 'yes' or 'no'.")
+                elif what_game == 'minecraft':
+                    print(f"Game is starting!")
+                    class MinecraftGame:
+                        def __init__(self,size=5):
+                            self.size=size
+                            self.player_pos=[0,0]
+                            self.blocks=[[''for _ in range(size)]for _ in range(size)]
+                            self.generate_blocks()
+                        def generate_blocks(self):
+                            for i in range(self.size):
+                                for j in range(self.size):
+                                    if random.random()<0.2:
+                                        self.blocks[i][j]='B'
+                        def display_world(self):
+                            for i in range(self.size):
+                                for j in range(self.size):
+                                    if self.player_pos==[i,j]:
+                                        print('P',end='')
+                                    elif self.blocks[i][j]=='B':
+                                        print('B',end='')
+                                    else:
+                                        print('-',end='')
+                                print()
+                        def mine_block(self):
+                            x,y=self.player_pos
+                            if self.blocks[x][y]=='B':
+                                print("You mined a block!")
+                                self.blocks[x][y]=''
+                            else:
+                                print("There's no block to mine here.")
+                        def move_player(self,direction):
+                            x,y=self.player_pos
+                            if direction=='up'and x>0:
+                                self.player_pos[0]-=1
+                            elif direction=='down'and x<self.size-1:
+                                self.player_pos[0]+=1
+                            elif direction=='left'and y>0:
+                                self.player_pos[1]-=1
+                            elif direction=='right'and y<self.size-1:
+                                self.player_pos[1]+=1
+                            else:
+                                print("You can't move in that direction.")
+                        def play_game(self):
+                            print("Welcome to Simple Minecraft!")
+                            while True:
+                                print("\nPlayer Position:")
+                                self.display_world()
+                                action=input("Enter 'w' to move up, 's' to move down, 'a' to move left, "
+                                            "'d' to move right, 'm' to mine, or 'q' to quit: ").lower()
+                                if action=='q':
+                                    print("Quitting the game.")
+                                    print(f"Here is $500 for playing!")
+                                    global money
+                                    money += 500
+                                    break
+                                elif action=='w':
+                                    self.move_player('up')
+                                elif action=='s':
+                                    self.move_player('down')
+                                elif action=='a':
+                                    self.move_player('left')
+                                elif action=='d':
+                                    self.move_player('right')
+                                elif action=='m':
+                                    self.mine_block()
+                                else:
+                                    print("Invalid action. Please try again.")
+                    if __name__=="__main__":
+                        game=MinecraftGame()
+                        game.play_game()
+                elif what_game == 'guessing game':
+                    print("Welcome to the Guessing Game!")
+                    print("I'm thinking of a number between 1 and 10.")
+                    target_number = random.randint(1, 10)
+                    guess=int(input("Enter your guess:"))
+                    if guess == target_number:
+                        print("Congratulations! You've guessed the correct number.")
+                        time.sleep(2)
+                        print(f"You earned $5000")
+                        money += 5000
+                    else:
+                        print("Sorry, that's not correct. The number I was thinking of is:", target_number)
+        
         if welcome_message == 'wife/husband':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
