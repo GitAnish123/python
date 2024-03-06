@@ -2604,6 +2604,7 @@ try:
                 elif what_game == 'fortnite':
                     fortnite_mode = input("What mode: (battle royale, save the world, creative)   ")
                     if fortnite_mode == 'battle royale':
+                        health -= random.randint(10, 15)
                         print(f"Loading to lobby...")
                         time.sleep(random.randint(10, 60))
                         print(f"Inside lobby! Battle bus launching in 10 seconds...")
@@ -2673,6 +2674,7 @@ try:
                             print(f"You get $0")
                             money += 0
                     elif fortnite_mode == 'save the world':
+                        health -= random.randint(25, 75)
                         save_world_or_not = random.choices(['yes', 'no'], weights=[0.5, 0.5])[0]
                         if save_world_or_not == 'yes':
                             time.sleep(5)
@@ -2683,7 +2685,7 @@ try:
                         else:
                             print(f"Sorry, you didn't save the world in fortnite!")
                     elif fortnite_mode == 'creative':
-                        health -= 10
+                        health -= random.randint(10, 25)
                         print(f"You created a fortnite map that costed money!")
                         time.sleep(10)
                         percentage_of_fortnite_creative_fans = random.randint(1, 100)
