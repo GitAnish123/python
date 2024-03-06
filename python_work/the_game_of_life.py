@@ -2434,6 +2434,7 @@ try:
                 print(f"Wrong pin!")
             else:
                 health -= random.randint(30, 100)
+                print(f"You have {health} left!")
                 what_game = input("What game?  ")
                 if what_game == 'clicker':
                     print(f"Game: Enter clicker")
