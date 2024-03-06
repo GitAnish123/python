@@ -2433,6 +2433,7 @@ try:
             if enter_pin != pin:
                 print(f"Wrong pin!")
             else:
+                actions_count += 1
                 health -= random.randint(30, 100)
                 print(f"You have {health} left!")
                 what_game = input("What game?  ")
