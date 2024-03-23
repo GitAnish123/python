@@ -3247,6 +3247,7 @@ try:
                             if money_for_wheel_of_fortune1 < opponent_amount:
                                 print(f"Sorry, your amount is less than the opponents amount of ${opponent_amount}")
                                 print(f"You cannot enter the bonus round as you lost! But have a good day!")
+                                break
                             else:
                                 print(f"You beat the other contestant that has ${opponent_amount}!")
                                 print(f"You are qualified for the bonus round!")
