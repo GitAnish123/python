@@ -3589,7 +3589,7 @@ try:
                                         break  
                                     elif remaining_time <= 0:
                                         print("Sorry, time's up! You lost.")
-                                        break 
+                                        break
 
                 if max_attempts == 0:
                     print("\nSorry, you ran out of attempts. The word was:", selected_word)
