@@ -1147,13 +1147,14 @@ try:
                 
                 if result == 'get sued ha':
                     sued_amount = round(money / 3, 2)
-                    pay_for_sued = (f"You got sued for ${sued_amount}.\nAre you gonna pay?")
+                    pay_for_sued = input(f"You got sued for ${sued_amount}.\nAre you gonna pay?")
                     if pay_for_sued == 'yes':
                         money = money - sued_amount
                         print(f"Ok, good!")
                     else:
                         print(f"YOU WILL RECIEVE BEATINGS!!!!!")
                         health = random.randint(0, 1)
+                        print(f"You have {health} left!")
                 
                 if result == 'beta club':
                     print(f"You went to beta club!")
