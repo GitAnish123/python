@@ -259,7 +259,14 @@ try:
             if enter_pin == pin:
                 actions_count += 1
                 repay_amount = int(input("Enter the amount to repay: $"))
-                interest_rate = round(random.uniform(0.1, 1), 1)
+                if actions_count < 25:
+                    interest_rate = round(random.uniform(0.1, 1), 1)
+                elif actions_count < 50:
+                    interest_rate = round(random.uniform(0.5, 2), 1)
+                elif actions_count < 100:
+                    interest_rate = round(random.uniform(1, 3), 1)
+                else:
+                    interest_rate = round(random.uniform(1, 10), 1)
                 print(f"You also have an interest of {interest_rate}%")
                 interest_rate = loan_amount * interest_rate
                 loan_amount = loan_amount + interest_rate
