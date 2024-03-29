@@ -1498,6 +1498,8 @@ try:
                                 number = 10_000
                             else:
                                 print(f"WRONG CHOICE!")
+                                extra = 1
+                                number = 1
                             while True:
                                 choice = round(random.uniform(1, ending_number), 2)
                                 if choice == extra:
