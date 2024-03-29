@@ -45,7 +45,7 @@ try:
         else:
             jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer', 'teacher',
                                 'video game designer', 'vet', 'fashion designer', 'secret agent']
-            your_job = random.choice(jobs_for_college)
+            your_job = random.choices(jobs_for_college, weights=[0.2, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05, 0.1, 0.1, 0.2])[0]
             has_job = True
             print(f"Your job is: {your_job} (you work for 8 hours)")
             print(f"Calculating salary per day:")
@@ -1129,28 +1129,29 @@ try:
                     print(f"You currently have ${money} and {health} health")
                 
                 if result == 'Best Job CEO':
-                    if your_job == 'doctor':
-                        if money >= 100_000:
-                            wanna_ceo = input(f"Do you want to be selected for the BEST JOB IN THE COUNTRY CEO???  ")
-                            if wanna_ceo == 'yes':
-                                print("Nice, lets see the avaliable spot!")
-                                time.sleep(5)
-                                ceo_or_no_ceo = random.choices(['yes', 'no'], weights=[0.30, 0.70])[0]
-                                if ceo_or_no_ceo == 'yes':
-                                    print(f"Congratulations! You have made the spot...")
-                                    time.sleep(0.5)
-                                    print(f"Lets see your new UPGRADED salary!")
-                                    salary = round(salary * random.randint(100, 10000), 2)
-                                    print(f"New salary: ${salary}")
+                    if has_job:
+                        if your_job == 'doctor':
+                            if money >= 100_000:
+                                wanna_ceo = input(f"Do you want to be selected for the BEST JOB IN THE COUNTRY CEO???  ")
+                                if wanna_ceo == 'yes':
+                                    print("Nice, lets see the avaliable spot!")
+                                    time.sleep(5)
+                                    ceo_or_no_ceo = random.choices(['yes', 'no'], weights=[0.30, 0.70])[0]
+                                    if ceo_or_no_ceo == 'yes':
+                                        print(f"Congratulations! You have made the spot...")
+                                        time.sleep(0.5)
+                                        print(f"Lets see your new UPGRADED salary!")
+                                        salary = round(salary * random.randint(100, 10000), 2)
+                                        print(f"New salary: ${salary}")
+                                    else:
+                                        money -= 25_000
+                                        print(f"Sorry, you have not been selected! Here you have lost $25,000.")
                                 else:
-                                    money -= 25_000
-                                    print(f"Sorry, you have not been selected! Here you have lost $25,000.")
+                                    print(f"Ok, train more harder and let us know when you're ready!")
                             else:
-                                print(f"Ok, train more harder and let us know when you're ready!")
+                                pass
                         else:
                             pass
-                    else:
-                        pass
                 
                 if result == 'get sued ha':
                     sued_amount = round(money / 3, 2)
