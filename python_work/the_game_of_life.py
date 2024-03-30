@@ -181,6 +181,7 @@ try:
                         else:
                             time.sleep(4)
                             actions_count += 1
+                            print(f"You have ${money} left!")
                             loan_amount = int(input("How much money you want: $"))
                             if actions_count < 35:
                                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
@@ -259,12 +260,16 @@ try:
             if enter_pin == pin:
                 actions_count += 1
                 repay_amount = int(input("Enter the amount to repay: $"))
-                if actions_count < 25:
+                if actions_count <= 10:
                     interest_rate = round(random.uniform(0.1, 1), 1)
-                elif actions_count < 50:
+                elif actions_count <= 25:
                     interest_rate = round(random.uniform(0.5, 2), 1)
-                elif actions_count < 100:
+                elif actions_count <= 50:
                     interest_rate = round(random.uniform(1, 3), 1)
+                elif actions_count <= 75:
+                    interest_rate = round(random.uniform(1, 3.5), 1)
+                elif actions_count <= 100:
+                    interest_rate = round(random.uniform(1, 5), 1)
                 else:
                     interest_rate = round(random.uniform(1, 10), 1)
                 print(f"You also have an interest of {interest_rate}%")
