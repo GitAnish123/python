@@ -512,8 +512,7 @@ try:
                                             game_credits = game_credits + more_credits_admin
                                         print(f"Added amount(s) successfully!")
                                     elif welcome_admin_message == 'admin actions':
-                                        admin_actions_page = input("What do you want to do:",
-                                        " (change game pin, increase salary, get a job, change difficulty, stop the game, get wife/husband, reset all attempts, win the game, stop loan, change action count)")
+                                        admin_actions_page = input("What do you want to do: (change game pin, increase salary, get a job, change difficulty, stop the game, get wife/husband, reset all attempts, win the game, stop loan, change action count)  ")
                                         if admin_actions_page == 'change game pin':
                                             pin = int(input("Enter new pin:  "))
                                             print(f"Pin updated successfully!")
