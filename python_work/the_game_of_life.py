@@ -441,6 +441,7 @@ try:
                 print("Wrong pin!")
 
         if welcome_message == 'admin':
+            actions_count += 1
             warning = input("Only admins only: (Anish Pasumarthi) Enter 'q' to exit:  ")
             if warning == 'q'.lower():
                 pass
