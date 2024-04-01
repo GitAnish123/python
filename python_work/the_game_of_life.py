@@ -620,6 +620,7 @@ try:
                                                 ]
                                             ywn = random.choice(lover_names)
                                             print(f"You got a wife/husband, her/his name is {ywn.title()}.")
+                                            has_wife = True
                                         elif admin_actions_page == 'reset all attempts':
                                             shop_attempts = 0
                                             doctor_attempts = 0
