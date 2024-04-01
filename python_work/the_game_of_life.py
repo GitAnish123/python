@@ -136,6 +136,12 @@ try:
     # Every 5 turns, you earn your salary. Count every action.
     actions_count = 0
 
+    # Admin stop the game
+    admin_stop_game = False
+
+    # Admin wim the game
+    admin_win_game = False
+
     # Initialize loan-related variables
     has_loan = False
     loan_when_dead = False
@@ -165,6 +171,14 @@ try:
 
         if welcome_message == 'quit':
             print(f"Thanks for playing, {name}!")
+            break
+
+        if admin_stop_game == True:
+            print(f"{name}, GAME OVER: GAME IS CURRENTLY STOPPED DUE TO ADMIN SETTINGS")
+            break
+
+        if admin_win_game == True:
+            print(f"YOU WIN THE GAME!!! ADMIN SETTINGS ALLOWED YOU! ")
             break
         
         if money <= 0:
@@ -498,7 +512,148 @@ try:
                                             game_credits = game_credits + more_credits_admin
                                         print(f"Added amount(s) successfully!")
                                     elif welcome_admin_message == 'admin actions':
-                                        pass
+                                        admin_actions_page = input("What do you want to do:",
+                                        " (change game pin, increase salary, get a job, change difficulty, stop the game, get wife/husband, reset all attempts, win the game, stop loan, change action count)")
+                                        if admin_actions_page == 'change game pin':
+                                            pin = int(input("Enter new pin:  "))
+                                            print(f"Pin updated successfully!")
+                                        elif admin_actions_page == 'increase salary':
+                                            if has_job:
+                                                how_much = int(input("Enter an integer to represent how many times your salary increase:  "))
+                                                salary = round(salary * how_much, 2)
+                                                print(f"New salary: ${salary}")
+                                            else:
+                                                print(f"You don't have a job. So you cannot increase your salary!")
+                                        elif admin_actions_page == 'get a job':
+                                            college_or_career = input("(College jobs) or (Career jobs):  ")
+                                            if college_or_career == 'College jobs':
+                                                jobs_for_college = ['doctor', 'scientist', 'buisnessman', 'lawyer', 'software engineer', 'teacher',
+                                                                    'video game designer', 'vet', 'fashion designer', 'secret agent']
+                                                your_job = random.choices(jobs_for_college, weights=[0.2, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05, 0.1, 0.1, 0.2])[0]
+                                                has_job = True
+                                                print(f"Your job is: {your_job} (you work for 8 hours)")
+                                                print(f"Calculating salary per day:")
+                                                time.sleep(2.5)
+                                                if your_job == 'doctor':
+                                                    salary = random.randint(800, 1000)
+                                                if your_job == 'scientist':
+                                                    salary = random.randint(300, 500)
+                                                if your_job == 'buisnessman':
+                                                    salary = random.randint(320, 520)
+                                                if your_job == 'lawyer':
+                                                    salary = random.randint(500, 700)
+                                                if your_job == 'software engineer':
+                                                    salary = random.randint(560, 760)
+                                                if your_job == 'teacher':
+                                                    salary = random.randint(280, 480)
+                                                if your_job == 'video game designer':
+                                                    salary = random.randint(600, 800)
+                                                if your_job == 'vet':
+                                                    salary = random.randint(640, 840)
+                                                if your_job == 'fashion designer':
+                                                    salary = random.randint(250, 450)
+                                                if your_job == 'secret agent':
+                                                    salary = random.randint(310, 510)
+                                                print(f"Your salary is ${salary} per day!")
+                                            elif college_or_career == 'Career jobs':
+                                                jobs_for_college = ['artist', 'police officer', 'athlete', 'salesperson', 'singer', 'chef', 'race car driver',
+                                                                    'inventor', 'actor', 'dancer']
+                                                your_job = random.choice(jobs_for_college)
+                                                has_job = True
+                                                print(f"Your job is: {your_job} (you work for 8 hours)")
+                                                print(f"Calculating salary per day:")
+                                                time.sleep(2.5)
+                                                if your_job == 'artist':
+                                                    salary = random.randint(200, 250)
+                                                if your_job == 'police officer':
+                                                    salary = random.randint(180, 230)
+                                                if your_job == 'athlete':
+                                                    salary = random.randint(210, 260)
+                                                if your_job == 'salesperson':
+                                                    salary = random.randint(280, 330)
+                                                if your_job == 'singer':
+                                                    salary = random.randint(130, 180)
+                                                if your_job == 'chef':
+                                                    salary = random.randint(150, 200)
+                                                if your_job == 'race car driver':
+                                                    salary = random.randint(160, 210)
+                                                if your_job == 'inventor':
+                                                    salary = random.randint(200, 250)
+                                                if your_job == 'actor':
+                                                    salary = random.randint(260, 310)
+                                                if your_job == 'dancer':
+                                                    salary = random.randint(180, 230)
+                                                print(f"Your salary is ${salary} per day!")
+                                        elif admin_actions_page == 'change difficulty':
+                                            difficulty_admin_action = input("What difficulty (easy, medium, hard, hardcore):  ")
+                                            if difficulty_admin_action == 'easy':
+                                                game_difficulty = 'easy'
+                                            elif difficulty_admin_action == 'medium':
+                                                game_difficulty == 'medium'
+                                            elif difficulty_admin_action == 'hard':
+                                                game_difficulty == 'hard'
+                                            elif difficulty_admin_action == 'hardcore':
+                                                game_difficulty == 'hardcore'
+                                            else:
+                                                print(f"Invalid difficulty, please try again!")
+                                        elif admin_actions_page == 'stop the game':
+                                            if admin_stop_game == False:
+                                                admin_stop_game = True
+                                                print(f"After you exit the admin portal, the game will stop successfully!")
+                                            else:
+                                                admin_dont_quit = input(f"Do you want to continue the game and don't stop the game?  ")
+                                                if admin_dont_quit == 'no':
+                                                    print(f"Ok!")
+                                                elif admin_dont_quit == 'yes':
+                                                    print(f"Game will not end!")
+                                                    admin_stop_game = False
+                                        elif admin_actions_page == 'get wife/husband':
+                                            if gender == 'male':
+                                                lover_names = ['amelia', 'angelina', 'olivia', 'ella', 'ellie', 'samira', 'emma', 'charlotte', 'ava', 'emily',
+                                                                'abigail', 'harper', 'evelyn', 'rylie', 'sophia', 'clara', 'chloe', 'natalie', 'mia', 'summer']
+                                            else:
+                                                lover_names = [
+                                                "Liam", "Noah", "Oliver", "Elijah", "William",
+                                                "James", "Benjamin", "Lucas", "Henry", "Alexander",
+                                                "Mason", "Ethan", "Logan", "Jackson", "Aiden",
+                                                "Sebastian", "Caleb", "Matthew", "Samuel", "David"
+                                                ]
+                                            ywn = random.choice(lover_names)
+                                            print(f"You got a wife/husband, her/his name is {ywn.title()}.")
+                                        elif admin_actions_page == 'reset all attempts':
+                                            shop_attempts = 0
+                                            doctor_attempts = 0
+                                            discount_attempts = 0
+                                            print(f"All attempts are reset!")
+                                        elif admin_actions_page == 'win the game':
+                                            if admin_win_game == False:
+                                                admin_win_game = True
+                                                print(f"You will win the game after you exit the admin portal!")
+                                            elif admin_win_game == True:
+                                                not_win_game = input(f"Do you not want to win the game now:  ")
+                                                if not_win_game == 'no':
+                                                    print("Ok!")
+                                                elif not_win_game == 'yes':
+                                                    print(f"Ok, updated successfully! You will not win the game right now!")
+                                                    admin_win_game = False
+                                        elif admin_actions_page == 'stop loan':
+                                            if has_loan:
+                                                has_loan = False
+                                                money = random.randint(1, 1000)
+                                                print(f"Your loan is canceled and you start with ${money}")
+                                            else:
+                                                print(f"You don't have a loan currently.")
+                                                reset_loan = input("Do you want to reset your loans:  ")
+                                                if reset_loan == 'yes':
+                                                    loan_when_dead = False
+                                                    print(f"Resetted successfully!")
+                                                else:
+                                                    print(f"Ok!")
+                                        elif admin_actions_page == 'change action count':
+                                            print(f"Your action count is {actions_count}.")
+                                            new_action_count = int(input("Enter new action count:  "))
+                                            actions_count = new_action_count
+                                            print(f"New action count: {actions_count}")
                     else:  
                         print(f"Incorrect password! You are logged off the portal.")
                 else:
