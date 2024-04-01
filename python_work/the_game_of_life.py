@@ -462,8 +462,8 @@ try:
                         time.sleep(random.randint(1, 10))
                         print(f"Checking if user is robot...")
                         time.sleep(random.randint(1, 15))
-                        robot_ask = input(f"Are you not a robot? (yes, no)  ")
-                        if robot_ask != 'yes':
+                        robot_ask = input(f"Are you a robot? (I am a robot, I am not a robot)  ")
+                        if robot_ask != 'I am not a robot':
                             print(f"Sorry, something went wrong of our processing. Please enter correct information!")
                         else:
                             print(f"Security...")
