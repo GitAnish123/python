@@ -426,6 +426,82 @@ try:
             else:
                 print("Wrong pin!")
 
+        if welcome_message == 'admin':
+            warning = input("Only admins only: (Anish Pasumarthi) Enter 'q' to exit:  ")
+            if warning == 'q'.lower():
+                pass
+            else:
+                time.sleep(random.randint(1, 4))
+                admin_1_enterance = input("ad")
+                if admin_1_enterance == 'min':
+                    password_for_entering = input("Password:  ")
+                    if password_for_entering == '803237':
+                        print(f"Entered barrier of portal successfully! Initializing and reviewing wheels...")
+                        time.sleep(10)
+                        print("Checking verification systems...")
+                        time.sleep(random.randint(1, 60))
+                        print(f"Meeting system requirements...")
+                        time.sleep(random.randint(1, 45))
+                        print(f"Parsing the code...")
+                        time.sleep(random.randint(1, 30))
+                        print(f"Checking elegibility and connection status...")
+                        time.sleep(random.randint(1, 30))
+                        print(f"Verifying user and accepting information...")
+                        time.sleep(random.randint(1, 5))
+                        print(f"     -- Verifying user")
+                        time.sleep(10)
+                        print(f"     -- Accepting cookies")
+                        time.sleep(8)
+                        print(f"     -- Accepting settings and policies")
+                        time.sleep(10)
+                        print(f"     -- Checking other files and popups")
+                        time.sleep(5)
+                        print(f"     -- Accepting and checking other information")
+                        time.sleep(random.randint(1, 25))
+                        print(f"Doing something...")
+                        time.sleep(random.randint(1, 10))
+                        print(f"Checking if user is robot...")
+                        time.sleep(random.randint(1, 15))
+                        robot_ask = input(f"Are you not a robot? (yes, no)  ")
+                        if robot_ask != 'yes':
+                            print(f"Sorry, something went wrong of our processing. Please enter correct information!")
+                        else:
+                            print(f"Security...")
+                            time.sleep(5)
+                            verification_code = input("Enter your verification code:  ")
+                            time.sleep(5)
+                            if verification_code != '325':
+                                print("Sorry, incorrect code! For security reasons, you are logged off.")
+                            else:
+                                print(f"Information sent!")
+                                time.sleep(1) 
+                                print(f"System processing...")
+                                time.sleep(1, 90)
+                                print(f"Finished loading everything! Every requirement and data is set!")
+                                time.sleep(1)
+                                while True:
+                                    welcome_admin_message = input("What do you want to do:  (Get resources, admin actions, exit portal)  ")
+                                    if welcome_admin_message == 'exit portal':
+                                        break
+                                    elif welcome_admin_message == 'Get resources':
+                                        what = (f"What do you want, (money, health, credits)  ")
+                                        if what == 'money':
+                                            more_money_admin = int(input(f"How much you want?  $"))
+                                            money = money + more_money_admin
+                                        elif what == 'health':
+                                            more_health_admin = int(input(f"How much you want?  "))
+                                            health = health + more_health_admin
+                                        elif what == 'credits':
+                                            more_credits_admin = float(input(f"How much you want?  "))
+                                            game_credits = game_credits + more_credits_admin
+                                        print(f"Added amount(s) successfully!")
+                                    elif welcome_admin_message == 'admin actions':
+                                        pass
+                    else:  
+                        print(f"Incorrect password! You are logged off the portal.")
+                else:
+                    pass
+
         if welcome_message == 'fair business for credits':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
