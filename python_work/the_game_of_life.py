@@ -447,7 +447,7 @@ try:
                         print(f"Checking elegibility and connection status...")
                         time.sleep(random.randint(1, 30))
                         print(f"Verifying user and accepting information...")
-                        time.sleep(random.randint(1, 5))
+                        time.sleep(random.randint(1, 15))
                         print(f"     -- Verifying user")
                         time.sleep(10)
                         print(f"     -- Accepting cookies")
