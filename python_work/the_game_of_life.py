@@ -476,15 +476,17 @@ try:
                                 print(f"Information sent!")
                                 time.sleep(1) 
                                 print(f"System processing...")
-                                time.sleep(1, 90)
+                                time.sleep(random.randint(1, 90))
                                 print(f"Finished loading everything! Every requirement and data is set!")
                                 time.sleep(1)
                                 while True:
                                     welcome_admin_message = input("What do you want to do:  (Get resources, admin actions, exit portal)  ")
                                     if welcome_admin_message == 'exit portal':
+                                        print(f"Exited portal successfully!")
+                                        time.sleep(2)
                                         break
                                     elif welcome_admin_message == 'Get resources':
-                                        what = (f"What do you want, (money, health, credits)  ")
+                                        what = input(f"What do you want, (money, health, credits)  ")
                                         if what == 'money':
                                             more_money_admin = int(input(f"How much you want?  $"))
                                             money = money + more_money_admin
