@@ -1383,16 +1383,16 @@ try:
                                 if wanna_ceo == 'yes':
                                     print("Nice, lets see the avaliable spot!")
                                     time.sleep(5)
-                                    ceo_or_no_ceo = random.choices(['yes', 'no'], weights=[0.30, 0.70])[0]
+                                    ceo_or_no_ceo = random.choices(['yes', 'no'], weights=[0.7, 0.3])[0]
                                     if ceo_or_no_ceo == 'yes':
                                         print(f"Congratulations! You have made the spot...")
                                         time.sleep(0.5)
                                         print(f"Lets see your new UPGRADED salary!")
-                                        salary = round(salary * random.randint(100, 10000), 2)
+                                        salary = round(salary * random.randint(100, 100000), 2)
                                         print(f"New salary: ${salary}")
                                     else:
-                                        money -= 25_000
-                                        print(f"Sorry, you have not been selected! Here you have lost $25,000.")
+                                        money -= 10_000
+                                        print(f"Sorry, you have not been selected! Here you have lost $10,000.")
                                 else:
                                     print(f"Ok, train more harder and let us know when you're ready!")
                             else:
