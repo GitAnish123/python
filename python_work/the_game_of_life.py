@@ -1420,11 +1420,13 @@ try:
                                                        weights=[0.07, 0.15, 0.25, 0.30, 0.15, 0.05, 0.03])[0]
                     if beta_club_standing == 'honorable':
                         print(f"BEST SERVICE EVER, you get more increased salary and lots of cash! [6/6]")
-                        salary = round(salary * 2, 2)
+                        if has_job:
+                            salary = round(salary * 2, 2)
                         money += random.randint(1000, 25_000)
                     elif beta_club_standing == 'excellent':
                         print(f"GREAT SERVICE, you get some cash and salary increase! [5/6]")
-                        salary = round(salary * 1.5, 2)
+                        if has_job:
+                            salary = round(salary * 1.5, 2)
                         money += random.randint(500, 10_000)
                     elif beta_club_standing == 'good':
                         print(f"GOOD SERVICE, you get some cash! [4/6]")
@@ -1438,14 +1440,17 @@ try:
                         print(f"Here is your discount price ticket: {your_discount_price}% off for any item.")
                     elif beta_club_standing == 'bad':
                         print(f"YOU DID BAD SERVICE, your salary has been decreased slightly! [2/6]")
-                        salary = round(salary / 1.5, 2)
+                        if has_job:
+                            salary = round(salary / 1.5, 2)
                     elif beta_club_standing == 'terrible':
                         print(f"YOU DID TERRIBLE SERVICE, your salary has been decreased a lot and you lose cash! [1/6]")
-                        salary = round(salary / 2, 2)
+                        if has_job:
+                            salary = round(salary / 2, 2)
                         money -= random.randint(1000, 10_000)
                     elif beta_club_standing == 'the worst ever':
                         print(f"YOU DID THE WORST SERVICE EVER AND SHAME ON YOU, your salary and money decreased a lot! [0/6]")
-                        salary = round(salary / random.randint(3, 5), 2)
+                        if has_job:
+                            salary = round(salary / random.randint(3, 5), 2)
                         money -= random.randint(5000, 25_000)
                     time.sleep(2)
                     print(f"Beta club service is open for anybody again!")
