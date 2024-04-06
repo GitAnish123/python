@@ -397,7 +397,6 @@ try:
                     print(f"Price of item: ${price}")
                     do_you_want_to_pay = input("Do you want to pay? (yes, no) ")
                     if do_you_want_to_pay == 'yes':
-                        if money >= price:
                             if_you_want_to_use_coupon = input("Do you want to use a coupon, if you have one? (yes, no) ")
                             if if_you_want_to_use_coupon == 'yes':
                                 new_price = price * (100 - your_discount_price) / 100
@@ -430,8 +429,6 @@ try:
                                     shop_attempts += 1.5
                                 else:
                                     shop_attempts += 1
-                        else:
-                            print("Sorry, you don't have enough money to buy the item!")
                     else:
                         print("Ok, have a good day!")
                         print(f"You have ${money} left.")
