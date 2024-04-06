@@ -142,6 +142,9 @@ try:
     # Admin wim the game
     admin_win_game = False
 
+    # Set discount attempts to 0 starting
+    discount_attempts = 0
+
     # Initialize loan-related variables
     has_loan = False
     loan_when_dead = False
@@ -163,7 +166,6 @@ try:
 
     while True:
         welcome_message = input(f"Welcome to your life! What do you want to do?\nEnter 'quit' to quit: ")
-        discount_attempts = 0
         money = round(money, 2)
         game_credits = round(game_credits, 3)
         if has_job == True:
@@ -343,15 +345,19 @@ try:
             if enter_pin == pin:
                 actions_count += 1
                 if game_difficulty == 'hardcore':
-                    health -= 3
-                else:
-                    health -= 1
+                    health -= 8
+                elif game_difficulty == 'hard':
+                    health -= 6
+                elif game_difficulty == 'medium':
+                    health -= 4
+                elif game_difficulty == 'easy':
+                    health -= 2
                 print(f"You have {health} health left.")
-                message_forced_pay = random.randint(1,10)
-                print(f"You pay ${message_forced_pay} for discounts. Pretty cheap!")
+                message_forced_pay = money / 20
+                print(f"You pay ${message_forced_pay} for discounts. Pretty solid!")
                 money = money - message_forced_pay
                 print(f"You have ${money} left.")
-                if discount_attempts < 1:
+                if discount_attempts < 100:
                     discounts = [95, 90, 85, 80, 75, 72, 70, 65, 60, 50, 45, 40, 35, 33, 30, 25, 20, 15, 10, 5]
                     d_prices = random.choices(discounts, weights=[0.001, 0.002, 0.002, 0.002, 0.003, 0.01, 0.01, 0.01, 0.02, 
                                                                     0.02, 0.02, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 
