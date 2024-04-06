@@ -379,21 +379,21 @@ try:
                     print("You have chose to shop!!!")
                     shop_message = input("What do you want to shop?: ")
                     if len(shop_message) < 3:
-                        price = 10
+                        price = random.randint(1, 2500)
                     elif len(shop_message) < 4:
-                        price = 20
+                        price = random.randint(1000, 3000)
                     elif len(shop_message) < 6:
-                        price = 35
+                        price = random.randint(2000, 5000)
                     elif len(shop_message) < 8:
-                        price = 72
+                        price = random.randint(3500, 8000)
                     elif len(shop_message) < 10:
-                        price = 90
+                        price = random.randint(5000, 9000)
                     elif len(shop_message) < 12:
-                        price = 100
+                        price = random.randint(8000, 15_000)
                     elif len(shop_message) < 20:
-                        price = random.randint(101, 500)
+                        price = random.randint(10_000, 50_000)
                     else:
-                        price = random.randint(501, 1000)
+                        price = random.randint(25_000, 100_000)
                     print(f"Price of item: ${price}")
                     do_you_want_to_pay = input("Do you want to pay? (yes, no) ")
                     if do_you_want_to_pay == 'yes':
