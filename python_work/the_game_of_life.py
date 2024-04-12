@@ -145,6 +145,9 @@ try:
     # Set discount attempts to 0 starting
     discount_attempts = 0
 
+    # Dying protection
+    dying_immunity = False
+
     # Initialize loan-related variables
     has_loan = False
     loan_when_dead = False
@@ -182,6 +185,23 @@ try:
         if admin_win_game == True:
             print(f"YOU WIN THE GAME!!! ADMIN SETTINGS ALLOWED YOU! ")
             break
+
+        if dying_immunity == False:
+            number_getting_immunity = random.choices([0, 1], weights=[0.05, 0.95])
+            if number_getting_immunity == 1:
+                pass
+            else:
+                print(f"You earned the dying immunity! You cannot die if you are supposed to die!")
+                time.sleep(5)
+                print(f"This does not work towards loans and any extra special actions and others!")
+                time.sleep(2.5)
+                print("It only can be handy if you lose health or money!")
+                time.sleep(1.5)
+                print(f"It is ONLY a ONE-TIME USE.")
+                time.sleep(1)
+                print(f"Good luck with your life, {name}!")
+                time.sleep(5)
+                dying_immunity = True
         
         if money <= 0:
             if has_loan:
@@ -199,7 +219,7 @@ try:
                             actions_count += 1
                             print(f"You have ${money} left!")
                             loan_amount = int(input("How much money you want: $"))
-                            if actions_count < 35:
+                            if actions_count < 1000:
                                 print(f"You took a loan of ${loan_amount}. You need to repay it within {loan_repayment_actions} actions.")
                                 money = money + loan_amount
                                 has_loan = True
@@ -207,14 +227,32 @@ try:
                             else:
                                 print(f"Sorry you can't get a loan due to many actions played!")
                                 time.sleep(2.5)
-                                print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
-                                break
+                                if dying_immunity == False:
+                                    print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+                                    break
+                                else:
+                                    print(f"You used your dying immunity!!! You are still alive!")
+                                    money = random.randint(100, 500)
+                                    print(f"You start with ${money}")
+                                    dying_immunity = False
+                    else:
+                        if dying_immunity == True:
+                            print(f"You used your dying immunity! You are alive!")
+                            money = random.randint(100, 500)
+                            print(f"You start with ${money}")
+                            dying_immunity = False
+                        else:
+                            print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
+                            break
+                else:
+                    if dying_immunity == True:
+                        print(f"You used your dying immunity! You are alive!")
+                        money = random.randint(100, 500)
+                        print(f"You start with ${money}")
+                        dying_immunity = False
                     else:
                         print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
                         break
-                else:
-                    print(f"{name}, GAME OVER: YOU RAN OUT OF MONEY")
-                    break
         
         if health <= 0:
             print("You lost all of your health!")
@@ -227,10 +265,16 @@ try:
             print(f"\nYou chose {guessing_choice}, we chose {computer_action}.\n")
             game_host_name = name
             if int(guessing_choice) < 1 or int(guessing_choice) > int(possible_actions[-1]):
-                print("You chose a number outside the valid range! The game is terminated.")
+                print("You chose a number outside the valid range! The game is terminated. YOU WILL DIE!!!!!")
                 time.sleep(2)
-                print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
-                break
+                if dying_immunity == False:
+                    print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                    break
+                else:
+                    print(f"Fortunatly, you used your dying immunity! You do not die!")
+                    health = random.randint(5, 20)
+                    print(f"You start with {health} health!")
+                    dying_immunity = False
             else:
                 if int(guessing_choice) == int(computer_action):
                     health_for_guessing = random.randint(1, 10)
@@ -238,10 +282,16 @@ try:
                     health = health_for_guessing
                     print(f"You now have {health} health!")
                 else:
-                    print(f"Sorry {game_host_name}, you DID NOT win the game. SO YOU DIE!!!!!")
-                    time.sleep(2)
-                    print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
-                    break
+                    if dying_immunity == True:
+                        print(f"You lost the game! Fortunatly, you used your dying immunity! You do not die!")
+                        health = random.randint(5, 20)
+                        print(f"You start with {health} health!")
+                        dying_immunity = False
+                    else:
+                        print(f"Sorry {game_host_name}, you DID NOT win the game. SO YOU DIE!!!!!")
+                        time.sleep(2)
+                        print(f"{game_host_name}, GAME OVER: YOU RAN OUT OF HEALTH")
+                        break
                     
         if which_path == 'college':
             if paid_for_college == False:
