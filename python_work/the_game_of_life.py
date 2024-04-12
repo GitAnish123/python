@@ -187,8 +187,8 @@ try:
             break
 
         if dying_immunity == False:
-            number_getting_immunity = random.choices([0, 1], weights=[0.05, 0.95])
-            if number_getting_immunity == 1:
+            number_getting_immunity = random.choices(['0', '1'], weights=[0.05, 0.95])[0]
+            if number_getting_immunity == '1':
                 pass
             else:
                 print(f"You earned the dying immunity! You cannot die if you are supposed to die!")
