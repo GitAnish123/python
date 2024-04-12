@@ -3827,7 +3827,7 @@ try:
                     print(f"Even if you have money or credits, you can't win because you are on dept!")
                     
 except Exception as e:
-    print(f"GAME OVER (Error occured): {e}")
+    print(f"GAME CRASHED (Error occured): {e}")
 
 finally:
     print("Remember to enter good/right information!")
