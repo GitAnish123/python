@@ -2996,12 +2996,12 @@ try:
                             print(f"You get $0")
                             money += 0
                     elif fortnite_mode == 'save the world':
-                        health -= random.randint(25, 75)
+                        health -= random.randint(25, 50)
                         save_world_or_not = random.choices(['yes', 'no'], weights=[0.5, 0.5])[0]
                         if save_world_or_not == 'yes':
                             time.sleep(5)
                             print(f"YOU SAVED THE WORLD IN FORTNITE!!!")
-                            save_the_world_reward = random.randint(-100, 100_000)
+                            save_the_world_reward = random.randint(-1000, 50_000)
                             money += save_the_world_reward
                             print(f"You earned ${save_the_world_reward}!")
                         else:
