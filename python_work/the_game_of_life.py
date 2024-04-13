@@ -1622,9 +1622,15 @@ try:
                         health += random.randint(10, 20)
                         game_credits += round(random.uniform(0, 0.5), 2)
                     else:
-                        print(f"You realized that you went inside another random ghost house! A random skeleton killed you!")
-                        print(f"GAME OVER!!! -- You died")
-                        break
+                        if game_difficulty != 'easy':
+                            print(f"You realized that you went inside another random ghost house! A random skeleton killed you!")
+                            print(f"GAME OVER!!! -- You died")
+                            break
+                        else:
+                            print(f"You realized that you went inside another random ghost house! A random skeleton killed you!")
+                            print(f"YOU LOST ALMOST ALL OF YOUR MONEY!!!")
+                            money = round(money / random.randint(10, 100), 2)
+                            print(f"You have ${money} left!")
 
                 if result == 'multiplication':
                     print(f"Solve a multiplication problem to earn money!!!")
