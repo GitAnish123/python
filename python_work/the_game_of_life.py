@@ -2319,7 +2319,7 @@ try:
                                     if game_difficulty == 'easy':
                                         guess_money = 2_500_000
                                     else:
-                                        game_difficulty = 1_500_000
+                                        guess_money = 1_500_000
                                 elif attempts_for_success <= 10:
                                     if game_difficulty == 'easy':
                                         guess_money = 1_000_000
