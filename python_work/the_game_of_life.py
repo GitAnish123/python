@@ -2681,18 +2681,18 @@ try:
                                                                 game_credits += 0.05
                                                                 if game_difficulty == 'medium':
                                                                     health += 15
-                                                                    money += 2_500_000
+                                                                    money += 500_000
                                                                     game_credits += 0.01
                                                                 elif game_difficulty == 'easy':
                                                                     health += 20
-                                                                    money += 3_500_000
+                                                                    money += 750_000
                                                                     game_credits += 0.05
                                                                 elif game_difficulty == 'hard':
                                                                     health += 10
-                                                                    money += 2_000_000
+                                                                    money += 400_000
                                                                 else:
                                                                     health += 5
-                                                                    money += 1_750_000
+                                                                    money += 300_000
                                                             else:
                                                                 print(f"Wrong! Answer is {correct_answer}.")
                                                                 loss_money_for_math = random.randint(900_000, 1_000_000)
