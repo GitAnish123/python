@@ -143,3 +143,6 @@ def onMouseRelease(mouseX, mouseY):
         else:
             app.background = rgb(135, 206, 235)
             sun.fill = gradient('orange', 'red', start='top')
+
+
+cmu_graphics.run()
