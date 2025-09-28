@@ -60,3 +60,6 @@ def onMouseRelease(x, y):
     # Reset when the mouse is released
     app.prevX = None
     app.prevY = None
+
+
+app.run()
