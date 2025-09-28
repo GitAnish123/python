@@ -95,6 +95,7 @@ screenHide = Rect(0, 0, 400, 400, fill='blue', visible=True)
 startInstruction = Label("Press the 'enter' key to start the game.", 200, 200, visible = True,
     size=20, fill='darkRed', bold=True)
 startInstruction2 = Label("DO NOT MOVE THE MOUSE OR PRESS ANYTHING", 200, 250, fill='darkRed', bold=True, size=15)
+
 def onKeyPress(key):
     if key == 'enter':
         screenHide.visible = False
