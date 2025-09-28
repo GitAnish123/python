@@ -37,7 +37,7 @@ def onMouseDrag(x, y):
     if app.prevX is not None and app.prevY is not None:
         dx = x - app.prevX
         dy = y - app.prevY
-        speed = (dx**2 + dy**2) ** 0.5
+        speed = (dx**2 + dy**2) ** 0.5  # Comes from pythagorean therom or DISTANCE FORMULA, etc.
         
         # Map speed to brush size (clamped between 2 and 30)
         brushSize = clamp(speed * 1.5, 2, 30)
