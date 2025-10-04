@@ -76,21 +76,22 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
                                             print("You punched the monster so hard, the monster collapsed and died! You Won the Fight!")
                                             print("Now You have lots of money!!! (over 10 million dollars)")
                                             
-                                            
+                                            wife = "ellie hanson"
+                                            tcasewife = wife.title()
                                             q4 = input("Do you want to return to the human world? ('yes' or 'no'): ")
                                             if q4 == "yes":
-                                                print("You went back to human world, got a good wife (Ellie Hanson), good job, good finance including houses and cars, and you have a very pleasant life")
-                                                print("Besides, you and your wife (Ellie Hanson) kissed for the first time!!!")
-                                                breakup = input("You want to break up with Ellie Hanson? ('yes' or 'no'): ")
+                                                print("You went back to human world, got a good wife, good job, good finance including houses and cars, and you have a very pleasant life")
+                                                print(f"Besides, you and your wife, {tcasewife} kissed for the first time!!!")
+                                                breakup = input("You want to break up with her ('yes' or 'no'): ")
                                                 if breakup == "yes":
-                                                    print("Ellie Hanson left you the next day after you told her 'I want to break up with you'")
+                                                    print("She left you the next day after you told her 'I want to break up with you'")
                                                     print("After a couple of weeks, you felt guilty and tried to make up with her")
-                                                    print("Ellie did not want to marry you again!")
+                                                    print("She did not want to marry you again!")
                                                     print("You felt really sad and died out of sadness!")
                                                     print("Game Over")
                                                 else:
                                                     print("Your life was at peace. Your life is very easy since you are rich!")
-                                                    print(f"{name.title()} and Ellie Hanson had many pleasant memories together!")
+                                                    print(f"{name.title()} and her had many pleasant memories together!")
                                                     print("\n\n\nIn summary, you had a happy life!")
                                                     print("You Won")
                                                     play_again = input("You want to play 'PART 2'?")
@@ -99,9 +100,7 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
                                                         print("\n\n\n\n\n\nMeanwhile, you and your wife are enjoying the view.")
                                                         print("You are enjoying your time of your life!")
                                                         print("Then, you went inside to get a refill of coffee.")
-                                                        print("Then, when you came back outside, Ellie Hanson is gone")
-                                                        wife = "ellie hanson"
-                                                        tcasewife = wife.title()
+                                                        print("Then, when you came back outside, she is gone")
                                                         first_reaction = input("What will you do? ('search nearby' or 'call the cops'): ")
                                                         if first_reaction == "search nearby":
                                                             print("You tried, but some random person scared your life out of existence!")
@@ -284,7 +283,7 @@ def dfhjsksfjsdfh3i3u2tr38oiasdfhu34qofoqew8fq2f3u8alfjewuf832quofl32io8rfr3489c
                                                                                 else:
                                                                                     print("Your wife is happy.")
                                                                                     print("After a few days, the cops took away your house")
-                                                                                    print("You and Ellie Hanson are really sad and you both commit suicide")
+                                                                                    print("You and her are really sad and you both commit suicide")
                                                                                     print("Game Over")
                                                                             else:
                                                                                 print("Do NOT DESRESPECT ME. You are under arrest.")
