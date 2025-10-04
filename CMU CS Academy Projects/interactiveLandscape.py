@@ -199,3 +199,5 @@ def onMouseRelease(mouseX, mouseY):
     grass2.fill = rgb(142, 252, 0)
     currentTime.value = "Current Time: 7:55 AM"
     currentTime.fill = 'black'
+
+cmu_graphics.run()
