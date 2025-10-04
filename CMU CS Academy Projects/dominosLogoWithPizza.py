@@ -43,3 +43,5 @@ Circle(332, 65, 10, fill=gradient(rgb(181, 42, 4), rgb(225, 35, 1)))
 Circle(353, 24, 5, fill=gradient(rgb(181, 42, 4), rgb(225, 35, 1)))
 Rect(340, 40, 15, 8, fill='green')
 Rect(327, 85, 6, 12) 
+
+cmu_graphics.run()
