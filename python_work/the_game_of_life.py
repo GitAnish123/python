@@ -382,7 +382,7 @@ try:
                 if len(str_pin) <= 1:
                     print(f"Your pin is VERY not safe at all! [0/5]")
                 elif len(str_pin) <= 2:
-                    print(f"Your pin is not safe at all! [1/5]")
+                    print(f"Your pin is not safe at all! [{random.randint(1, 2)}/5]")
                 elif len(str_pin) <= 3:
                     print(f"Your pin is good! [3/5]")
                 elif len(str_pin) <= 4:
