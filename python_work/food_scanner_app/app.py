@@ -19,7 +19,7 @@ st.set_page_config(
 # Sidebar instructions
 st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
-1. Use your camera to take a photo of your food.
+1. Choose input method: take a photo or upload one.
 2. The app will predict what the food is.
 3. Nutrition info will appear for the top prediction.
 4. Add this app to your home screen for a full mobile experience.
@@ -41,11 +41,10 @@ def load_model():
 model = load_model()
 
 # -------------------------------
-# USDA API Key
+# USDA API Key & Function
 # -------------------------------
 API_KEY = "WPJ29FiN6XjLhX1VljTsAfpRVzl4aa8gTuOWDmrU"
 
-# Function to search USDA
 def search_usda(query):
     url = "https://api.nal.usda.gov/fdc/v1/foods/search"
     params = {"api_key": API_KEY, "query": query, "pageSize": 3}
@@ -58,15 +57,21 @@ def search_usda(query):
     return data["foods"][0]
 
 # -------------------------------
-# Camera Input Section
+# Input Method Toggle
 # -------------------------------
-st.markdown("## 🍏 Capture Your Food Image")
-uploaded_file = st.camera_input("Take a photo of your food")
+input_method = st.radio("Choose input method:", ["Camera", "Upload Photo"])
 
+if input_method == "Camera":
+    uploaded_file = st.camera_input("Take a photo of your food")
+else:
+    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg","jpeg","png"])
+
+# -------------------------------
+# Process Image if Provided
+# -------------------------------
 if uploaded_file is not None:
-    # Open image
     img = Image.open(uploaded_file)
-    st.image(img, caption="Captured Image", use_column_width=True)
+    st.image(img, caption="Selected Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
 
     # Preprocess for MobileNetV2
@@ -75,9 +80,7 @@ if uploaded_file is not None:
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
 
-    # -------------------------------
-    # Predictions Section
-    # -------------------------------
+    # Predictions
     preds = model.predict(x)
     decoded = decode_predictions(preds, top=3)[0]
 
@@ -85,9 +88,7 @@ if uploaded_file is not None:
     for i, pred in enumerate(decoded, start=1):
         st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
 
-    # -------------------------------
-    # Nutrition Info Section
-    # -------------------------------
+    # Nutrition Info
     top_guess = decoded[0][1].replace('_', ' ')
     st.markdown("## 🥗 Nutrition Info")
     food_info = search_usda(top_guess)
@@ -96,9 +97,8 @@ if uploaded_file is not None:
         st.write("**Item:**", food_info.get("description", "Unknown"))
         nutrients = food_info.get("foodNutrients", [])
         if nutrients:
-            # Create DataFrame for table
             data = []
-            for n in nutrients[:15]:  # first 15 nutrients
+            for n in nutrients[:15]:
                 name = n.get("nutrientName", "")
                 value = n.get("value", "")
                 unit = n.get("unitName", "")
@@ -109,6 +109,5 @@ if uploaded_file is not None:
             st.write("No nutrient info found.")
     else:
         st.warning("No nutrition data found. Try a more specific food name.")
-
 else:
-    st.write("👆 Please take a photo first.")
+    st.write("👆 Please take a photo or upload an image first.")
