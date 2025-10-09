@@ -1,8 +1,8 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-import tensorflow as tf
-import tensorflow_hub as hub
+from keras.applications.efficientnet import EfficientNetB0, preprocess_input, decode_predictions
+from keras.utils import img_to_array
 import pandas as pd
 import requests
 
@@ -31,18 +31,14 @@ st.markdown("<h1 style='text-align: center;'>🍎 Food Scanner App</h1>", unsafe
 st.markdown("---")
 
 # -------------------------------
-# Load Food-101 Model (Best Accuracy)
+# Load Model (EfficientNetB0)
 # -------------------------------
 @st.cache_resource
 def load_model():
-    model = hub.load("https://tfhub.dev/google/food_classifier_mobilenet_v2_1.0_224/1")
+    model = EfficientNetB0(weights="imagenet")
     return model
 
 model = load_model()
-
-# Load Food-101 labels
-LABELS_URL = "https://raw.githubusercontent.com/tensorflow/models/master/research/slim/datasets/food101_labels.txt"
-labels = requests.get(LABELS_URL).text.strip().split("\n")
 
 # -------------------------------
 # USDA API Key & Function
@@ -68,34 +64,32 @@ input_method = st.radio("Choose input method:", ["Camera", "Upload Photo"])
 if input_method == "Camera":
     uploaded_file = st.camera_input("Take a photo of your food")
 else:
-    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg","jpeg","png"])
+    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg", "jpeg", "png"])
 
 # -------------------------------
 # Process Image if Provided
 # -------------------------------
 if uploaded_file is not None:
-    img = Image.open(uploaded_file).convert("RGB")
+    img = Image.open(uploaded_file)
     st.image(img, caption="Selected Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
 
-    # Preprocess for Food-101 model
+    # Preprocess for EfficientNetB0
     img_resized = img.resize((224, 224))
-    img_array = np.array(img_resized) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+    x = img_to_array(img_resized)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
 
-    # Predict
-    preds = model(img_array)
-    top_indices = tf.argsort(preds, direction='DESCENDING')[0][:3].numpy()
-    confidences = tf.nn.softmax(preds[0]).numpy()
+    # Predictions
+    preds = model.predict(x)
+    decoded = decode_predictions(preds, top=3)[0]
 
     st.markdown("## 🔍 Top Predictions")
-    for i, idx in enumerate(top_indices):
-        label = labels[idx].replace("_", " ").title()
-        confidence = confidences[idx] * 100
-        st.write(f"{i+1}. {label} ({confidence:.2f}%)")
+    for i, pred in enumerate(decoded, start=1):
+        st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
 
     # Nutrition Info
-    top_guess = labels[top_indices[0]].replace("_", " ")
+    top_guess = decoded[0][1].replace('_', ' ')
     st.markdown("## 🥗 Nutrition Info")
     food_info = search_usda(top_guess)
 
