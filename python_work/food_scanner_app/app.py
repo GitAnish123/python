@@ -8,10 +8,16 @@ import pandas as pd
 import requests
 
 # -------------------------------
-# App title
+# App Title and Sidebar
 # -------------------------------
+st.set_page_config(page_title="🍎 Food Scanner App", layout="wide")
 st.title("🍎 Food Scanner App")
-st.write("Upload a photo of your food. I’ll guess what it is and show its nutrients!")
+st.sidebar.title("🍽 Food Scanner Instructions")
+st.sidebar.write("""
+1. Upload a photo of your food.
+2. The app will predict what the food is.
+3. Nutrition info will appear for the top prediction.
+""")
 
 # -------------------------------
 # Load MobileNetV2 model
@@ -40,8 +46,10 @@ def search_usda(query):
     return data["foods"][0]
 
 # -------------------------------
-# File uploader
+# Upload Section
 # -------------------------------
+st.markdown("## 🍏 Upload Your Food Image")
+st.markdown("---")
 uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
@@ -56,16 +64,23 @@ if uploaded_file is not None:
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
 
-    # Predict top 3 food labels
+    # -------------------------------
+    # Predictions Section
+    # -------------------------------
     preds = model.predict(x)
     decoded = decode_predictions(preds, top=3)[0]
 
-    st.subheader("Top Predictions:")
+    st.markdown("## 🔍 Top Predictions")
+    st.markdown("---")
     for i, pred in enumerate(decoded, start=1):
         st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
 
-    # Take top guess for nutrient lookup
+    # -------------------------------
+    # Nutrition Info Section
+    # -------------------------------
     top_guess = decoded[0][1].replace('_', ' ')
+    st.markdown("## 🥗 Nutrition Info")
+    st.markdown("---")
     st.subheader(f"Nutrition Info for {top_guess.title()}:")
 
     food_info = search_usda(top_guess)
@@ -82,10 +97,11 @@ if uploaded_file is not None:
                 unit = n.get("unitName", "")
                 data.append([name, value, unit])
             df = pd.DataFrame(data, columns=["Nutrient", "Amount", "Unit"])
-            st.dataframe(df)
+            st.dataframe(df, use_container_width=True)
         else:
             st.write("No nutrient info found.")
     else:
         st.warning("No nutrition data found. Try a more specific food name.")
+
 else:
     st.write("👆 Please upload an image first.")
