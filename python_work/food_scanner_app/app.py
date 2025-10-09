@@ -75,6 +75,8 @@ if uploaded_file is not None:
 
     # Text labels (thousands of common foods)
     # This is just a sample; you can expand the list as needed
+    food_labels = ["pizza", "hamburger", "hot dog", "ice cream", "donut", "cake", "spaghetti", "sushi", "salad", "banana"]
+    """
     food_labels = [
     "pizza", "hamburger", "hot dog", "ice cream", "donut", "cake", "spaghetti", "sushi", "salad", "banana",
     "apple", "orange", "sandwich", "tacos", "pasta", "fried chicken", "steak", "pancakes", "waffles", "burrito",
@@ -450,7 +452,9 @@ if uploaded_file is not None:
     "donut mini", "ice cream snack", "frozen yogurt snack", "gelato snack", "sorbet snack", "pudding snack",
     "yogurt snack", "cheese snack", "cheese cube", "cheese wedge", "cheese stick", "cheese slice"
     ]
+    
     food_labels = list(dict.fromkeys(food_labels))
+    """
     
     text_inputs = torch.cat([clip.tokenize(f) for f in food_labels]).to(device)
 
