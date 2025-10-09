@@ -1,7 +1,8 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-from keras.applications.efficientnet import EfficientNetB0, preprocess_input, decode_predictions
+from keras.applications import MobileNetV2
+from keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
 from keras.utils import img_to_array
 import pandas as pd
 import requests
@@ -15,7 +16,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Sidebar instructions
 st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
 1. Choose input method: take a photo or upload one.
@@ -24,19 +24,15 @@ st.sidebar.write("""
 4. Add this app to your home screen for a full mobile experience.
 """)
 
-# -------------------------------
-# App Title
-# -------------------------------
 st.markdown("<h1 style='text-align: center;'>🍎 Food Scanner App</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
 # -------------------------------
-# Load Model (EfficientNetB0)
+# Load Model
 # -------------------------------
 @st.cache_resource
 def load_model():
-    model = EfficientNetB0(weights="imagenet")
-    return model
+    return MobileNetV2(weights="imagenet")
 
 model = load_model()
 
@@ -57,54 +53,49 @@ def search_usda(query):
     return data["foods"][0]
 
 # -------------------------------
-# Input Method Toggle
+# Input Method
 # -------------------------------
 input_method = st.radio("Choose input method:", ["Camera", "Upload Photo"])
-
 if input_method == "Camera":
     uploaded_file = st.camera_input("Take a photo of your food")
 else:
-    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg","jpeg","png"])
 
 # -------------------------------
-# Process Image if Provided
+# Process Image
 # -------------------------------
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
     st.image(img, caption="Selected Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
 
-    # Preprocess for EfficientNetB0
     img_resized = img.resize((224, 224))
     x = img_to_array(img_resized)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
 
-    # Predictions
     preds = model.predict(x)
-    decoded = decode_predictions(preds, top=3)[0]
+    decoded = decode_predictions(preds, top=5)[0]
+
+    # Simple mapping to common foods to improve accuracy
+    food_labels = ["pizza","hamburger","hotdog","ice_cream","donut","cake","spaghetti","sushi","salad","banana","apple","orange","sandwich"]
+    top_food = next((d[1].replace("_"," ") for d in decoded if d[1].replace("_"," ") in food_labels), decoded[0][1].replace("_"," "))
 
     st.markdown("## 🔍 Top Predictions")
-    for i, pred in enumerate(decoded, start=1):
-        st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
+    for i, d in enumerate(decoded[:3], start=1):
+        st.write(f"{i}. {d[1].replace('_',' ').title()} ({d[2]*100:.2f}%)")
 
-    # Nutrition Info
-    top_guess = decoded[0][1].replace('_', ' ')
     st.markdown("## 🥗 Nutrition Info")
-    food_info = search_usda(top_guess)
-
+    food_info = search_usda(top_food)
     if food_info:
-        st.write("**Item:**", food_info.get("description", "Unknown"))
+        st.write("**Item:**", food_info.get("description","Unknown"))
         nutrients = food_info.get("foodNutrients", [])
         if nutrients:
-            data = []
+            data=[]
             for n in nutrients[:15]:
-                name = n.get("nutrientName", "")
-                value = n.get("value", "")
-                unit = n.get("unitName", "")
-                data.append([name, value, unit])
-            df = pd.DataFrame(data, columns=["Nutrient", "Amount", "Unit"])
-            st.dataframe(df, use_container_width=True)
+                data.append([n.get("nutrientName",""), n.get("value",""), n.get("unitName","")])
+            df = pd.DataFrame(data, columns=["Nutrient","Amount","Unit"])
+            st.dataframe(df,use_container_width=True)
         else:
             st.write("No nutrient info found.")
     else:
