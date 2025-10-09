@@ -1,6 +1,11 @@
 streamlit
-tensorflow
-pillow
-numpy
+torch
+torchvision
+torchaudio
+ftfy
+regex
+tqdm
 pandas
+Pillow
 requests
+git+https://github.com/openai/CLIP.git
