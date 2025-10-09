@@ -19,7 +19,7 @@ st.set_page_config(
 # Sidebar instructions
 st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
-1. Upload a photo of your food.
+1. Use your camera to take a photo of your food.
 2. The app will predict what the food is.
 3. Nutrition info will appear for the top prediction.
 4. Add this app to your home screen for a full mobile experience.
@@ -58,15 +58,15 @@ def search_usda(query):
     return data["foods"][0]
 
 # -------------------------------
-# Upload Section
+# Camera Input Section
 # -------------------------------
-st.markdown("## 🍏 Upload Your Food Image")
-uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
+st.markdown("## 🍏 Capture Your Food Image")
+uploaded_file = st.camera_input("Take a photo of your food")
 
 if uploaded_file is not None:
     # Open image
     img = Image.open(uploaded_file)
-    st.image(img, caption="Uploaded Image", use_column_width=True)
+    st.image(img, caption="Captured Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
 
     # Preprocess for MobileNetV2
@@ -111,4 +111,4 @@ if uploaded_file is not None:
         st.warning("No nutrition data found. Try a more specific food name.")
 
 else:
-    st.write("👆 Please upload an image first.")
+    st.write("👆 Please take a photo first.")
