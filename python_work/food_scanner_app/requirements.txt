@@ -5,3 +5,4 @@ pillow
 numpy
 pandas
 requests
+tensorflow_hub
