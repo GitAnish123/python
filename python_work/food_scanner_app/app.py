@@ -1,11 +1,10 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-from keras.applications import MobileNetV2
-from keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
-from keras.utils import img_to_array
 import pandas as pd
 import requests
+import torch
+import clip
 
 # -------------------------------
 # App Configuration
@@ -28,13 +27,15 @@ st.markdown("<h1 style='text-align: center;'>🍎 Food Scanner App</h1>", unsafe
 st.markdown("---")
 
 # -------------------------------
-# Load Model
+# Load CLIP Model
 # -------------------------------
 @st.cache_resource
 def load_model():
-    return MobileNetV2(weights="imagenet")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model, preprocess = clip.load("ViT-B/32", device=device)
+    return model, preprocess, device
 
-model = load_model()
+model, preprocess, device = load_model()
 
 # -------------------------------
 # USDA API Key & Function
@@ -65,33 +66,46 @@ else:
 # Process Image
 # -------------------------------
 if uploaded_file is not None:
-    img = Image.open(uploaded_file)
+    img = Image.open(uploaded_file).convert("RGB")
     st.image(img, caption="Selected Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
 
-    img_resized = img.resize((224, 224))
-    x = img_to_array(img_resized)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+    # Preprocess image for CLIP
+    image_input = preprocess(img).unsqueeze(0).to(device)
 
-    preds = model.predict(x)
-    decoded = decode_predictions(preds, top=5)[0]
+    # Text labels (thousands of common foods)
+    # This is just a sample; you can expand the list as needed
+    food_labels = [
+        "pizza", "hamburger", "hot dog", "ice cream", "donut", "cake", "spaghetti",
+        "sushi", "salad", "banana", "apple", "orange", "sandwich", "tacos", "pasta",
+        "fried chicken", "steak", "pancakes", "waffles", "burrito", "ramen", "soup",
+        "dumplings", "falafel", "chocolate", "cheese", "bagel", "croissant", "cookies"
+    ]
+    text_inputs = torch.cat([clip.tokenize(f) for f in food_labels]).to(device)
 
-    # Simple mapping to common foods to improve accuracy
-    food_labels = ["pizza","hamburger","hotdog","ice_cream","donut","cake","spaghetti","sushi","salad","banana","apple","orange","sandwich"]
-    top_food = next((d[1].replace("_"," ") for d in decoded if d[1].replace("_"," ") in food_labels), decoded[0][1].replace("_"," "))
+    with torch.no_grad():
+        image_features = model.encode_image(image_input)
+        text_features = model.encode_text(text_inputs)
+        image_features /= image_features.norm(dim=-1, keepdim=True)
+        text_features /= text_features.norm(dim=-1, keepdim=True)
+        similarity = (100.0 * image_features @ text_features.T).squeeze(0)
+        values, indices = similarity.topk(5)
 
     st.markdown("## 🔍 Top Predictions")
-    for i, d in enumerate(decoded[:3], start=1):
-        st.write(f"{i}. {d[1].replace('_',' ').title()} ({d[2]*100:.2f}%)")
+    for i, idx in enumerate(indices):
+        st.write(f"{i+1}. {food_labels[idx]} ({values[i]:.2f}%)")
 
+    # -------------------------------
+    # Nutrition Info
+    # -------------------------------
+    top_food = food_labels[indices[0]]
     st.markdown("## 🥗 Nutrition Info")
     food_info = search_usda(top_food)
     if food_info:
-        st.write("**Item:**", food_info.get("description","Unknown"))
+        st.write("**Item:**", food_info.get("description", "Unknown"))
         nutrients = food_info.get("foodNutrients", [])
         if nutrients:
-            data=[]
+            data = []
             for n in nutrients[:15]:
                 data.append([n.get("nutrientName",""), n.get("value",""), n.get("unitName","")])
             df = pd.DataFrame(data, columns=["Nutrient","Amount","Unit"])
