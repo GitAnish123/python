@@ -1,48 +1,49 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-from keras.applications import MobileNetV2
-from keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
-from keras.utils import img_to_array
+import tensorflow as tf
+import tensorflow_hub as hub
 import pandas as pd
 import requests
 
-# -------------------------------
-# App Configuration
-# -------------------------------
+# ---------------------------------
+# Streamlit App Config
+# ---------------------------------
 st.set_page_config(
     page_title="🍎 Food Scanner App",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Sidebar instructions
 st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
-1. Choose input method: take a photo or upload one.
-2. The app will predict what the food is.
-3. Nutrition info will appear for the top prediction.
-4. Add this app to your home screen for a full mobile experience.
+1. Use your camera or upload a food image.
+2. The app will identify the food using a trained Food-101 model.
+3. Nutrition info will appear for the top result.
 """)
 
-# -------------------------------
-# App Title
-# -------------------------------
-st.markdown("<h1 style='text-align: center;'>🍎 Food Scanner App</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>🍱 Food Scanner App</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
-# -------------------------------
-# Load Model
-# -------------------------------
+# ---------------------------------
+# Load Food-101 Model
+# ---------------------------------
 @st.cache_resource
-def load_model():
-    return MobileNetV2(weights="imagenet")
+def load_food_model():
+    model = hub.load("https://tfhub.dev/google/food_classifier_mobilenet_v2_1.0_224/1")
+    return model
 
-model = load_model()
+model = load_food_model()
 
-# -------------------------------
-# USDA API Key & Function
-# -------------------------------
+# ---------------------------------
+# Food-101 labels
+# ---------------------------------
+LABELS_URL = "https://raw.githubusercontent.com/tensorflow/models/master/research/slim/datasets/food101_labels.txt"
+labels = requests.get(LABELS_URL).text.strip().split("\n")
+
+# ---------------------------------
+# USDA API Key
+# ---------------------------------
 API_KEY = "WPJ29FiN6XjLhX1VljTsAfpRVzl4aa8gTuOWDmrU"
 
 def search_usda(query):
@@ -56,42 +57,37 @@ def search_usda(query):
         return None
     return data["foods"][0]
 
-# -------------------------------
-# Input Method Toggle
-# -------------------------------
-input_method = st.radio("Choose input method:", ["Camera", "Upload Photo"])
+# ---------------------------------
+# Image Upload / Camera Input
+# ---------------------------------
+st.markdown("## 📸 Capture or Upload Your Food Image")
+uploaded_file = st.camera_input("Take a photo") or st.file_uploader("...or upload an image", type=["jpg", "jpeg", "png"])
 
-if input_method == "Camera":
-    uploaded_file = st.camera_input("Take a photo of your food")
-else:
-    uploaded_file = st.file_uploader("Upload a photo of your food", type=["jpg","jpeg","png"])
-
-# -------------------------------
-# Process Image if Provided
-# -------------------------------
 if uploaded_file is not None:
-    img = Image.open(uploaded_file)
-    st.image(img, caption="Selected Image", use_column_width=True)
-    st.write("🔍 Analyzing image...")
+    # Load image
+    img = Image.open(uploaded_file).convert("RGB")
+    st.image(img, caption="Your Image", use_column_width=True)
+    st.write("🔍 Analyzing...")
 
-    # Preprocess for MobileNetV2
+    # Preprocess for model
     img_resized = img.resize((224, 224))
-    x = img_to_array(img_resized)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+    img_array = np.array(img_resized) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    # Predictions
-    preds = model.predict(x)
-    decoded = decode_predictions(preds, top=3)[0]
+    # Predict food class
+    preds = model(img_array)
+    pred_idx = tf.argmax(preds, axis=-1).numpy()[0]
+    confidence = tf.reduce_max(preds, axis=-1).numpy()[0]
+    food_name = labels[pred_idx].replace("_", " ").title()
 
-    st.markdown("## 🔍 Top Predictions")
-    for i, pred in enumerate(decoded, start=1):
-        st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
+    # ---------------------------------
+    # Display results
+    # ---------------------------------
+    st.markdown(f"### 🍔 Predicted Food: **{food_name}** ({confidence*100:.2f}%)")
 
-    # Nutrition Info
-    top_guess = decoded[0][1].replace('_', ' ')
+    # Nutrition info
     st.markdown("## 🥗 Nutrition Info")
-    food_info = search_usda(top_guess)
+    food_info = search_usda(food_name)
 
     if food_info:
         st.write("**Item:**", food_info.get("description", "Unknown"))
@@ -99,15 +95,17 @@ if uploaded_file is not None:
         if nutrients:
             data = []
             for n in nutrients[:15]:
-                name = n.get("nutrientName", "")
-                value = n.get("value", "")
-                unit = n.get("unitName", "")
-                data.append([name, value, unit])
+                data.append([
+                    n.get("nutrientName", ""),
+                    n.get("value", ""),
+                    n.get("unitName", "")
+                ])
             df = pd.DataFrame(data, columns=["Nutrient", "Amount", "Unit"])
             st.dataframe(df, use_container_width=True)
         else:
-            st.write("No nutrient info found.")
+            st.info("No nutrient info found.")
     else:
-        st.warning("No nutrition data found. Try a more specific food name.")
+        st.warning("No nutrition data found. Try a more common food name.")
+
 else:
-    st.write("👆 Please take a photo or upload an image first.")
+    st.info("👆 Please take or upload a photo to start.")
