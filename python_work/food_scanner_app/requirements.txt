@@ -1,8 +1,6 @@
 streamlit
-keras
-tensorflow
+tensorflow==2.15.0
 pillow
 numpy
 pandas
 requests
-tensorflow_hub
