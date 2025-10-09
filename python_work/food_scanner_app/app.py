@@ -8,19 +8,31 @@ import pandas as pd
 import requests
 
 # -------------------------------
-# App Title and Sidebar
+# App Configuration
 # -------------------------------
-st.set_page_config(page_title="🍎 Food Scanner App", layout="wide")
-st.title("🍎 Food Scanner App")
+st.set_page_config(
+    page_title="🍎 Food Scanner App",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Sidebar instructions
 st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
 1. Upload a photo of your food.
 2. The app will predict what the food is.
 3. Nutrition info will appear for the top prediction.
+4. Add this app to your home screen for a full mobile experience.
 """)
 
 # -------------------------------
-# Load MobileNetV2 model
+# App Title
+# -------------------------------
+st.markdown("<h1 style='text-align: center;'>🍎 Food Scanner App</h1>", unsafe_allow_html=True)
+st.markdown("---")
+
+# -------------------------------
+# Load Model
 # -------------------------------
 @st.cache_resource
 def load_model():
@@ -49,11 +61,10 @@ def search_usda(query):
 # Upload Section
 # -------------------------------
 st.markdown("## 🍏 Upload Your Food Image")
-st.markdown("---")
-uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Open and display image
+    # Open image
     img = Image.open(uploaded_file)
     st.image(img, caption="Uploaded Image", use_column_width=True)
     st.write("🔍 Analyzing image...")
@@ -71,7 +82,6 @@ if uploaded_file is not None:
     decoded = decode_predictions(preds, top=3)[0]
 
     st.markdown("## 🔍 Top Predictions")
-    st.markdown("---")
     for i, pred in enumerate(decoded, start=1):
         st.write(f"{i}. {pred[1].replace('_', ' ').title()} ({pred[2]*100:.2f}%)")
 
@@ -80,16 +90,13 @@ if uploaded_file is not None:
     # -------------------------------
     top_guess = decoded[0][1].replace('_', ' ')
     st.markdown("## 🥗 Nutrition Info")
-    st.markdown("---")
-    st.subheader(f"Nutrition Info for {top_guess.title()}:")
-
     food_info = search_usda(top_guess)
+
     if food_info:
         st.write("**Item:**", food_info.get("description", "Unknown"))
-
         nutrients = food_info.get("foodNutrients", [])
         if nutrients:
-            # Convert to table
+            # Create DataFrame for table
             data = []
             for n in nutrients[:15]:  # first 15 nutrients
                 name = n.get("nutrientName", "")
