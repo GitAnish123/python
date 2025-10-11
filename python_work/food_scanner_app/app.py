@@ -117,7 +117,9 @@ if uploaded_file is not None:
     'pumpkin', 'zucchini', 'radish', 'beetroot', 'turnip', 'celery', 'leek', 'asparagus',
     'artichoke', 'mushroom', 'kale', 'mustard greens', 'fenugreek leaves', 'drumstick',
     'bottle gourd', 'ridge gourd', 'bitter gourd', 'coriander', 'mint', 'parsley', 'basil',
-    'spring onion', 'curry leaves'
+    'spring onion', 'curry leaves', 'almond', 'cashew', 'peanut', 'walnut', 'pistachio', 'hazelnut', 'pecan', 
+    'macadamia', 'brazil nut', 'pine nut', 'chestnut', 'sunflower seed', 'pumpkin seed', 'chia seed',
+    'flaxseed', 'sesame seed', 'melon seed', 'coconut meat', 'groundnut'
 ]
     text_inputs = torch.cat([clip.tokenize(f) for f in food_labels]).to(device)
 
