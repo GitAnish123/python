@@ -125,7 +125,7 @@ if uploaded_file is not None:
     'spring onion', 'curry leaves', 'curry leaf powder', 'amaranth leaves', 'drumstick leaves',
     'spinach leaves', 'betel leaves', 'lemongrass', 'dill leaves', 'beans', 'black beans' 'fish', 'chicken',
     'pinto beans', 'mutton', 'beef', 'pork', 'pepperoni', 'sausage', 'turkey', 'chicken sandwich', 'dumpling',
-]
+    ]
     text_inputs = torch.cat([clip.tokenize(f) for f in food_labels]).to(device)
 
     with torch.no_grad():
