@@ -77,7 +77,7 @@ if uploaded_file is not None:
     # This is just a sample; you can expand the list as needed
     food_labels = [
     'pizza', 'hamburger', 'hot dog', 'ice cream', 'donut', 'cake', 'spaghetti', 'salad',
-    'banana bread', 'apple pie', 'sandwich', 'pasta', 'fried chicken', 'steak', 'pancakes',
+    'banana bread', 'bread', 'apple pie', 'sandwich', 'pasta', 'fried chicken', 'steak', 'pancakes',
     'waffles', 'soup', 'chocolate', 'cheese', 'bagel', 'cookies', 'mac and cheese',
     'lasagna', 'carbonara', 'bolognese', 'alfredo pasta', 'grilled cheese', 'fish and chips',
     'mashed potatoes', 'roast beef', 'beef wellington', 'yorkshire pudding',
@@ -99,7 +99,7 @@ if uploaded_file is not None:
     'sambar', 'rasam', 'thepla', 'dhokla', 'khandvi', 'fafda', 'kachori', 'samosa', 'pakora',
     'bonda', 'pani puri', 'golgappa', 'sev puri', 'dahi puri', 'chaat', 'masala peanuts',
     'pulao', 'jeera rice', 'fried rice veg', 'paneer manchurian', 'bread pakora',
-    'grilled sandwich', 'cheese sandwich', 'burger veg', 'burger chicken', 'chai',
+    'grilled sandwich', 'cheese sandwich', 'burger veg', 'burger chicken', 'chai', 'mackerel', 'cod',
     'masala chai', 'ginger chai', 'lassi', 'mango lassi', 'sweet lassi', 'falooda', 'kulfi',
     'gulab jamun', 'rasgulla', 'jalebi', 'barfi', 'kaju katli', 'peda', 'modak', 'ladoos',
     'besan ladoo', 'motichoor ladoo', 'soan papdi', 'imarti', 'basundi', 'rabri', 'phirni',
@@ -110,16 +110,21 @@ if uploaded_file is not None:
     'blueberry', 'raspberry', 'blackberry', 'watermelon', 'cantaloupe', 'honeydew',
     'pineapple', 'mango', 'papaya', 'guava', 'kiwi', 'lemon', 'lime', 'pomegranate',
     'coconut', 'fig', 'date', 'apricot', 'tangerine', 'nectarine', 'cranberry', 'dragon fruit',
-    'passion fruit', 'jackfruit', 'lychee', 'star fruit', 'mulberry', 'custard apple', 'sapota',
-    'berries', 'avocado', 'grapefruit', 'potato', 'sweet potato', 'carrot', 'onion', 'tomato', 'garlic', 
-    'ginger', 'cucumber', 'spinach', 'lettuce', 'cabbage', 'cauliflower', 'broccoli', 'peas', 'green beans',
-    'bell pepper', 'capsicum', 'chili pepper', 'corn', 'eggplant', 'brinjal', 'okra', 'ladyfinger',
-    'pumpkin', 'zucchini', 'radish', 'beetroot', 'turnip', 'celery', 'leek', 'asparagus',
-    'artichoke', 'mushroom', 'kale', 'mustard greens', 'fenugreek leaves', 'drumstick',
-    'bottle gourd', 'ridge gourd', 'bitter gourd', 'coriander', 'mint', 'parsley', 'basil',
-    'spring onion', 'curry leaves', 'almond', 'cashew', 'peanut', 'walnut', 'pistachio', 'hazelnut', 'pecan', 
-    'macadamia', 'brazil nut', 'pine nut', 'chestnut', 'sunflower seed', 'pumpkin seed', 'chia seed',
-    'flaxseed', 'sesame seed', 'melon seed', 'coconut meat', 'groundnut'
+    'passion fruit', 'jackfruit', 'lychee', 'star fruit', 'mulberry', 'custard apple',
+    'sapota', 'berries', 'avocado', 'grapefruit', 'potato', 'sweet potato', 'carrot', 'onion', 
+    'tomato', 'garlic', 'ginger', 'cucumber', 'spinach', 'lettuce', 'cabbage', 'cauliflower', 
+    'broccoli', 'peas', 'green peas', 'black-eyed pea', 'snow pea', 'sugar snap pea', 'chickpea', 
+    'lentil', 'green beans', 'bell pepper', 'capsicum', 'chili pepper', 'corn', 'eggplant', 'brinjal', 'okra',
+    'ladyfinger', 'pumpkin', 'zucchini', 'radish', 'beetroot', 'turnip', 'celery', 'leek',
+    'asparagus', 'artichoke', 'mushroom', 'kale', 'mustard greens', 'fenugreek leaves',
+    'drumstick', 'bottle gourd', 'ridge gourd', 'bitter gourd', 'broccoli rabe', 'lotus root',
+    'almond', 'cashew', 'peanut', 'walnut', 'pistachio', 'hazelnut', 'pecan', 'macadamia', 'seafood',
+    'brazil nut', 'pine nut', 'chestnut', 'sunflower seed', 'pumpkin seed', 'chia seed', 'shrimp', 'salmon'
+    'flaxseed', 'sesame seed', 'melon seed', 'coconut meat', 'groundnut', 'pumpkin pie', 'french fry', 'onion ring'
+    'coriander', 'coriander leaves', 'cilantro', 'mint', 'mint leaves', 'parsley', 'basil',
+    'spring onion', 'curry leaves', 'curry leaf powder', 'amaranth leaves', 'drumstick leaves',
+    'spinach leaves', 'betel leaves', 'lemongrass', 'dill leaves', 'beans', 'black beans' 'fish', 'chicken',
+    'pinto beans', 'mutton', 'beef', 'pork', 'pepperoni', 'sausage', 'turkey', 'chicken sandwich', 'dumpling',
 ]
     text_inputs = torch.cat([clip.tokenize(f) for f in food_labels]).to(device)
 
