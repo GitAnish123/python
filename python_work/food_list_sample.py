@@ -1098,3 +1098,8 @@ if uploaded_file is not None:
 
 else:
     st.write("👆 Please take a photo or upload an image first.")
+
+
+
+
+# ADD MORE AND DO EVERYTHING AS I GO
