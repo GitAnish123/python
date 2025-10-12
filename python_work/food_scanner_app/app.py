@@ -19,7 +19,7 @@ st.sidebar.title("🍽 Food Scanner Instructions")
 st.sidebar.write("""
 1. Choose input method: take a photo or upload one.
 2. The app will predict what the food is.
-3. Nutrition info will appear for the top prediction.
+3. Nutrition info will appear for the top predictions.
 4. Add this app to your home screen for a full mobile experience.
 """)
 
@@ -74,7 +74,7 @@ if uploaded_file is not None:
     image_input = preprocess(img).unsqueeze(0).to(device)
 
     # Text labels (thousands of common foods)
-    # This is just a sample; you can expand the list as needed
+    # This is just a sample; you can expand the list as needed    
     food_labels = [
     'pizza', 'hamburger', 'hot dog', 'ice cream', 'donut', 'cake', 'spaghetti', 'salad',
     'banana bread', 'bread', 'apple pie', 'sandwich', 'pasta', 'fried chicken', 'steak', 'pancakes',
@@ -141,23 +141,27 @@ if uploaded_file is not None:
         st.write(f"{i+1}. {food_labels[idx]} ({values[i]:.2f}%)")
 
     # -------------------------------
-    # Nutrition Info
+    # Nutrition Info for All Top 5
     # -------------------------------
-    top_food = food_labels[indices[0]]
-    st.markdown("## 🥗 Nutrition Info")
-    food_info = search_usda(top_food)
-    if food_info:
-        st.write("**Item:**", food_info.get("description", "Unknown"))
-        nutrients = food_info.get("foodNutrients", [])
-        if nutrients:
-            data = []
-            for n in nutrients[:15]:
-                data.append([n.get("nutrientName",""), n.get("value",""), n.get("unitName","")])
-            df = pd.DataFrame(data, columns=["Nutrient","Amount","Unit"])
-            st.dataframe(df,use_container_width=True)
+    st.markdown("## 🥗 Nutrition Info for Top 5 Predictions")
+
+    for i, idx in enumerate(indices):
+        food_name = food_labels[idx]
+        st.markdown(f"### 🥣 {i+1}. {food_name.title()}")
+        food_info = search_usda(food_name)
+        if food_info:
+            st.write("**Item:**", food_info.get("description", "Unknown"))
+            nutrients = food_info.get("foodNutrients", [])
+            if nutrients:
+                data = []
+                for n in nutrients[:15]:
+                    data.append([n.get("nutrientName",""), n.get("value",""), n.get("unitName","")])
+                df = pd.DataFrame(data, columns=["Nutrient","Amount","Unit"])
+                st.dataframe(df,use_container_width=True)
+            else:
+                st.write("No nutrient info found.")
         else:
-            st.write("No nutrient info found.")
-    else:
-        st.warning("No nutrition data found. Try a more specific food name.")
+            st.warning(f"No nutrition data found for **{food_name}**.")
+
 else:
     st.write("👆 Please take a photo or upload an image first.")
