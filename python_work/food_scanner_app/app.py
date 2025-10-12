@@ -51,17 +51,14 @@ def search_usda(query):
     data = res.json()
     if "foods" not in data or len(data["foods"]) == 0:
         return None
+    
+    # Filter for raw/fresh items if available
+    for food in data["foods"]:
+        desc = food.get("description", "").lower()
+        if "raw" in desc or "fresh" in desc:
+            return food
 
-    # Apply "raw/fresh" preference only for simple foods
-    simple_foods = ["apple", "banana", "orange", "mango", "pear", "grape", "carrot", "potato",
-                    "tomato", "chicken", "beef", "fish", "egg", "broccoli", "lettuce"]
-
-    if any(sf in query.lower() for sf in simple_foods):
-        for food in data["foods"]:
-            desc = food.get("description", "").lower()
-            if "raw" in desc or "fresh" in desc:
-                return food
-
+    # Otherwise, just return the first one
     return data["foods"][0]
 
 # -------------------------------
