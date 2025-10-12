@@ -1443,3 +1443,13 @@ def game_over():
 @app.route("/win")
 def win():
     return render_template_string(WIN_TEMPLATE)
+
+
+
+
+
+
+
+
+
+# ADD MORE AND DO EVERYTHING AS I GO
