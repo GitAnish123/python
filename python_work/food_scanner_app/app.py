@@ -44,13 +44,24 @@ API_KEY = "WPJ29FiN6XjLhX1VljTsAfpRVzl4aa8gTuOWDmrU"
 
 def search_usda(query):
     url = "https://api.nal.usda.gov/fdc/v1/foods/search"
-    params = {"api_key": API_KEY, "query": query, "pageSize": 3}
+    params = {"api_key": API_KEY, "query": query, "pageSize": 5}
     res = requests.get(url, params=params)
     if res.status_code != 200:
         return None
     data = res.json()
     if "foods" not in data or len(data["foods"]) == 0:
         return None
+
+    # Apply "raw/fresh" preference only for simple foods
+    simple_foods = ["apple", "banana", "orange", "mango", "pear", "grape", "carrot", "potato",
+                    "tomato", "chicken", "beef", "fish", "egg", "broccoli", "lettuce"]
+
+    if any(sf in query.lower() for sf in simple_foods):
+        for food in data["foods"]:
+            desc = food.get("description", "").lower()
+            if "raw" in desc or "fresh" in desc:
+                return food
+
     return data["foods"][0]
 
 # -------------------------------
