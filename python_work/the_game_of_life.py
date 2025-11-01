@@ -3545,6 +3545,393 @@ try:
             else:
                 print("Wrong pin!")
         
+        if welcome_message == 'wheel of fortune':
+            enter_pin = int(input(f"Enter pin: "))
+            if enter_pin != pin:
+                print("Wrong pin!")
+            else:
+                time.sleep(1)
+                note_WOF = print("10 percent chance acceptance rate")
+                time.sleep(0.5)
+                msg_WOF = input("Wheel of fortune game: It requires a lottery ticket. Press enter to get one. It costs little money and health. Press 'q' to quit.")
+                if msg_WOF == 'q':
+                    print("Alright, have a good one!")
+                else:
+                    actions_count += 1
+                    WOF_lottery_ticket = random.randint(1, 100)
+                    health -= random.randint(1, 10)
+                    print(f"You paid ${WOF_lottery_ticket} and you have {health} health left.")
+                    lottery_WOF = random.choice(['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes'])
+                    if lottery_WOF == 'no':
+                        print("Sorry, you didn't enter, better luck next time!")
+                    else:
+                        print("YES! You got in!!!!")
+                        time.sleep(2)
+
+                        import random
+                        import time
+                        import string
+                        from threading import Timer
+
+                        # -------------------------
+                        # List of phrases/puzzles
+                        # -------------------------
+                        puzzles = [
+                            "HELLO WORLD", "PYTHON PROGRAMMING", "OPENAI GPT MODEL", "WHEEL OF FORTUNE",
+                            "STACK OVERFLOW", "HAPPY BIRTHDAY", "GOOD MORNING", "HOT DOG", "ICE CREAM",
+                            "COFFEE BREAK", "THANK YOU", "BEST FRIEND", "FAMILY TIME", "SUMMER VACATION",
+                            "CHRISTMAS TREE", "NEW YEAR CELEBRATION", "LOVE YOU", "SLEEP WELL", "ENJOY LIFE",
+                            "SWEET DREAMS", "A BLESSING IN DISGUISE", "ACTION SPEAKS LOUDER THAN WORDS",
+                            "BACK TO SQUARE ONE", "BITE THE BULLET", "BREAK THE ICE", "COSTS AN ARM AND A LEG",
+                            "HIT THE NAIL ON THE HEAD", "LET THE CAT OUT OF THE BAG", "ONCE IN A BLUE MOON",
+                            "PIECE OF CAKE", "STAR WARS", "THE LION KING", "AVENGERS ENDGAME", "HARRY POTTER",
+                            "GAME OF THRONES", "STRANGER THINGS", "FROZEN", "TOY STORY", "JURASSIC PARK",
+                            "THE SIMPSONS", "SHAPE OF YOU", "BOHEMIAN RHAPSODY", "BLINDING LIGHTS", "BAD GUY",
+                            "DESPACITO", "SWEET CHILD O MINE", "THRILLER", "HOTEL CALIFORNIA", "ALL OF ME",
+                            "UPTOWN FUNK", "PIZZA MARGARITA", "CHOCOLATE CAKE", "BURGER KING", "CHEESEBURGER",
+                            "SPAGHETTI BOLOGNESE", "FRENCH FRIES", "ICE TEA", "LEMON SORBET", "SUSHI ROLL",
+                            "PANCAKES AND SYRUP"
+                        ]
+
+                        # -------------------------
+                        # Wheel possibilities
+                        # -------------------------
+                        default_wheel = [
+                            "BANKRUPT", "LOSE A TURN", "MYSTERY",
+                            "SUPER 5000", "MINI SUPER 2500",
+                            100, 200, 300, 400, 500, 600, 700, 800, 900
+                        ]
+
+                        # For round 2, include TRIP PRIZE
+                        round2_wheel = default_wheel + ["TRIP PRIZE"]
+
+                        # Bonus round reward options
+                        bonus_rewards = [38000, 40000, 45000, 50000, 65000, 75000, 100000]
+
+                        # Game variables
+                        player_money = 0
+                        rounds_played = 0
+                        max_rounds = 4
+                        million_wedge_obtained = False
+                        trip_won = None
+                        trip_taken = False  # Ensures only one trip per game
+
+                        vowels = "AEIOU"
+                        consonants = ''.join([c for c in string.ascii_uppercase if c not in vowels])
+
+                        trip_destinations = [
+                            "ALASKA", "HAWAII", "PARIS", "NEW YORK CITY", "ROME", "LONDON",
+                            "TOKYO", "SYDNEY", "DUBAI", "LOS ANGELES", "LAS VEGAS", "MIAMI",
+                            "SAN FRANCISCO", "ORLANDO", "TORONTO", "VANCOUVER", "SINGAPORE",
+                            "BARCELONA", "BALI", "ICELAND"
+                        ]
+
+                        # -------------------------
+                        # Functions
+                        # -------------------------
+
+                        def spin_wheel(current_round):
+                            if current_round == 2:
+                                wheel = round2_wheel
+                                weights = [1, 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5]
+                            else:
+                                wheel = default_wheel
+                                weights = [1, 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 5, 5, 5]
+                            return random.choices(wheel, weights=weights, k=1)[0]
+
+                        def silent_million_spin():
+                            return random.choices([True, False], weights=[5, 95])[0]
+
+                        def display_puzzle(puzzle, guessed):
+                            display = ''
+                            for letter in puzzle:
+                                if letter == ' ':
+                                    display += '  '
+                                elif letter in guessed:
+                                    display += letter + ' '
+                                else:
+                                    display += '_ '
+                            return display.strip()
+
+                        def play_round(puzzle, current_round):
+                            global player_money, trip_won, million_wedge_obtained, trip_taken
+                            guessed_letters = set()
+                            round_money = 0
+                            trip_won = None
+
+                            if current_round == 2:
+                                print("\n🎁 This round has a TRIP PRIZE wedge chance!")
+                                time.sleep(1)
+
+                            while True:
+                                print("\nCurrent Puzzle: ")
+                                print(display_puzzle(puzzle, guessed_letters))
+                                print(f"Round Money: ${round_money}")
+                                print(f"Total Money: ${player_money}")
+                                time.sleep(0.5)
+
+                                action = input("\nDo you want to (S)pin, (B)uy a vowel, or (G)uess the puzzle? ").upper()
+
+                                if action == "S":
+                                    print("Spinning the wheel...")
+                                    time.sleep(1.5)
+                                    result = spin_wheel(current_round)
+                                    print(f"The wheel landed on: {result}")
+                                    time.sleep(1)
+
+                                    # BANKRUPT resets round and removes special prizes
+                                    if result == "BANKRUPT":
+                                        print("💥 Oh no! BANKRUPT! You lost all of your money!")
+                                        time.sleep(1)
+                                        player_money = 0
+                                        million_wedge_obtained = False
+                                        trip_won = None
+                                        round_money = 0
+                                        return
+
+                                    elif result == "LOSE A TURN":
+                                        print("You lost your turn! Moving to next round...")
+                                        time.sleep(1)
+                                        return
+
+                                    elif result == "TRIP PRIZE":
+                                        if not trip_taken:
+                                            destination = random.choice(trip_destinations)
+                                            trip_value = random.randint(5000, 12000)
+                                            trip_won = (destination, trip_value)
+                                            trip_taken = True
+                                            print(f"🎁 You landed on a TRIP PRIZE wedge!")
+                                            time.sleep(1)
+                                            print(f"If you solve this puzzle without going bankrupt, you’ll win a trip to {destination} worth ${trip_value}!")
+                                            continue
+                                        else:
+                                            print("You landed on a TRIP PRIZE wedge, but only one trip is allowed per game!")
+                                            money_value = 400
+                                    elif result == "SUPER 5000":
+                                        print("🔥 JACKPOT! Each correct consonant is worth $5000!")
+                                        money_value = 5000
+                                    elif result == "MINI SUPER 2500":
+                                        print("💰 Nice! Each correct consonant is worth $2500!")
+                                        money_value = 2500
+                                    elif result == "MYSTERY":
+                                        print("🌀 You landed on the MYSTERY wedge!")
+                                        money_value = 1000
+                                        time.sleep(1)
+                                        guess = input("Guess a consonant: ").upper()
+                                        if guess in guessed_letters or guess in vowels:
+                                            print("Invalid guess or already guessed!")
+                                            continue
+                                        elif guess in puzzle:
+                                            count = puzzle.count(guess)
+                                            earned = count * money_value
+                                            round_money += earned
+                                            guessed_letters.add(guess)
+                                            print(f"Nice! {count} '{guess}' found. You earned ${earned}.")
+                                            time.sleep(1)
+                                            gamble = input("Do you want to risk it for $10,000? (Y/N): ").upper()
+                                            if gamble == "Y":
+                                                if random.randint(1, 4) == 1:
+                                                    print("🎉 YOU WON THE MYSTERY GAMBLE! +$10,000!")
+                                                    round_money += 10000
+                                                else:
+                                                    print("💥 BANKRUPT! You lost everything!")
+                                                    time.sleep(1)
+                                                    player_money = 0
+                                                    million_wedge_obtained = False
+                                                    trip_won = None
+                                                    round_money = 0
+                                                    return
+                                            else:
+                                                print("Smart choice. You keep your current money.")
+                                            continue
+                                        else:
+                                            print(f"No '{guess}' found.")
+                                            guessed_letters.add(guess)
+                                            continue
+                                    else:
+                                        money_value = result
+
+                                    guess = input("Guess a consonant: ").upper()
+                                    if guess in guessed_letters or guess in vowels:
+                                        print("Invalid guess or already guessed!")
+                                        continue
+                                    elif guess in puzzle:
+                                        count = puzzle.count(guess)
+                                        earned = count * money_value
+                                        round_money += earned
+                                        guessed_letters.add(guess)
+                                        print(f"Correct! {count} '{guess}' found. You earned ${earned}.")
+                                    else:
+                                        print(f"No '{guess}' found.")
+                                        guessed_letters.add(guess)
+
+                                elif action == "B":
+                                    vowel_guess = input("Pick a vowel to buy (costs $500): ").upper()
+                                    if vowel_guess not in vowels:
+                                        print("That's not a vowel!")
+                                    elif round_money < 500:
+                                        print("You need at least $500 in this round to buy a vowel.")
+                                    else:
+                                        round_money -= 500
+                                        if vowel_guess in puzzle:
+                                            guessed_letters.add(vowel_guess)
+                                            print(f"Nice! The vowel '{vowel_guess}' is in the puzzle.")
+                                        else:
+                                            guessed_letters.add(vowel_guess)
+                                            print(f"Sorry, '{vowel_guess}' is not in the puzzle.")
+
+                                elif action == "G":
+                                    solution = input("Enter your solution: ").upper()
+                                    if solution == puzzle:
+                                        print("🎉 Correct! You solved the puzzle!")
+                                        player_money += round_money
+                                        if trip_won:
+                                            destination, trip_value = trip_won
+                                            print(f"✈️ You also won a trip to {destination} worth ${trip_value}!")
+                                            player_money += trip_value
+                                        time.sleep(1.5)
+                                        return
+                                    else:
+                                        print("❌ Wrong solution! You lose this round’s money.")
+                                        return
+
+                                if all(letter in guessed_letters or letter == ' ' for letter in puzzle):
+                                    print("🎉 Puzzle completely solved!")
+                                    player_money += round_money
+                                    if trip_won:
+                                        destination, trip_value = trip_won
+                                        print(f"✈️ You also won a trip to {destination} worth ${trip_value}!")
+                                        player_money += trip_value
+                                    time.sleep(1.5)
+                                    return
+
+                        # -------------------------
+                        # Computer opponent score
+                        # -------------------------
+                        def generate_computer_score():
+                            return random.randint(5000, 15000)
+
+                        # -------------------------
+                        # Bonus round
+                        # -------------------------
+                        def bonus_round():
+                            global player_money, million_wedge_obtained
+                            puzzle = random.choice(puzzles).upper()
+                            guessed = set("RSTLNE")
+                            print("\nBONUS ROUND!")
+                            print(f"Puzzle: {display_puzzle(puzzle, guessed)}")
+                            time.sleep(1)
+
+                            consonant_choices = input("Pick 3 consonants (e.g., 'BCD'): ").upper()
+                            vowel_choice = input("Pick 1 vowel: ").upper()
+                            guessed.update(consonant_choices)
+                            guessed.add(vowel_choice)
+
+                            print(f"Updated Puzzle: {display_puzzle(puzzle, guessed)}")
+                            print("You have 60 seconds to solve the puzzle!")
+
+                            solved = False
+                            import threading
+
+                            def timed_input(prompt, timeout=60):  # set timeout in seconds
+                                answer = [None]
+
+                                def get_input():
+                                    answer[0] = input(prompt)
+
+                                t = threading.Thread(target=get_input)
+                                t.start()
+                                t.join(timeout)
+                                if t.is_alive():
+                                    print("\n⏰ Time's up!")
+                                    return None
+                                return answer[0]
+
+                            # -------------------------
+                            # Inside bonus_round() instead of the previous try/except:
+                            user_answer = timed_input("Enter your solution: ", 60)  # 60-second timer
+                            if user_answer and user_answer.upper() == puzzle:
+                                solved = True
+                            else:
+                                solved = False
+
+                            if solved:
+                                current_bonus_rewards = bonus_rewards.copy()
+                                current_weights = [30, 25, 22, 20, 18, 15, 9]
+                                if million_wedge_obtained:
+                                    current_bonus_rewards.append(1000000)
+                                    current_weights.append(4)
+                                reward = random.choices(current_bonus_rewards, weights=current_weights, k=1)[0]
+                                if reward == 65000:
+                                    print(f"Congrats, you won a valuable car that is worth ${reward}")
+                                else:
+                                    print(f"🎉 Congratulations! You solved the bonus puzzle! You win ${reward}!")
+                                player_money += reward
+                            else:
+                                print(f"Sorry, you didn't solve it. The puzzle was: {puzzle}")
+                                time.sleep(2) 
+                                current_bonus_rewards = bonus_rewards.copy()
+                                current_weights = [30, 25, 22, 20, 18, 15, 9]
+                                if million_wedge_obtained:
+                                    current_bonus_rewards.append(1000000)
+                                    current_weights.append(4)
+                                reward = random.choices(current_bonus_rewards, weights=current_weights, k=1)[0]
+                                if reward == 65000:
+                                    print(f"You would have won a car that was worth ${reward}")
+                                else:
+                                    print(f"You would have won ${reward}!")
+
+                        # -------------------------
+                        # Main Game Loop
+                        # -------------------------
+                        print("WELCOME TO WHEEL OF FORTUNE!\n")
+                        time.sleep(4)
+                        print("WHEEL")
+                        time.sleep(1)
+                        print("OF")
+                        time.sleep(1)
+                        print("FORTUNE!!!!!")
+                        time.sleep(4)
+                        print("\n\n\n\n\n\n")
+
+                        while rounds_played < max_rounds:
+                            puzzle = random.choice(puzzles).upper()
+                            print(f"\nROUND {rounds_played + 1}")
+                            play_round(puzzle, rounds_played + 1)
+                            print(f"The puzzle was: {puzzle}")
+
+                            # Silent million-dollar wedge spin
+                            if not million_wedge_obtained:
+                                million_wedge_obtained = silent_million_spin()
+
+                            rounds_played += 1
+
+                        print(f"\nYour total money after {max_rounds} rounds: ${player_money}")
+                        computer_score = generate_computer_score()
+                        print(f"Computer opponent money: ${computer_score}")
+
+                        if computer_score > player_money:
+                            print("The computer wins! Game Over.")
+                        else:
+                            print("You beat the computer! Get ready for the BONUS ROUND!")
+                            time.sleep(2)
+                            
+                            if million_wedge_obtained:
+                                print("\nCONGRATULATIONS! You obtained the MILLION DOLLAR WEDGE!")
+                                print("This adds $1,000,000 as a possible reward in the bonus round!")
+                                time.sleep(2)
+
+                            print("THE LETTERS 'RSTLNE' are already provided")
+                            time.sleep(1)
+                            bonus_round()
+
+                        print(f"\nYour final total money in this game: ${player_money}")
+                        time.sleep(1)
+                        money = money + player_money
+                        print(f"TOTAL MONEY IN YOUR LIFE: ${money}")
+                        time.sleep(0.5)
+                        print("Thanks for playing!")
+                   
         if welcome_message == 'doctor':
             enter_pin = int(input(f"Enter pin: "))
             if enter_pin == pin:
