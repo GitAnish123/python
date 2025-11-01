@@ -2885,43 +2885,96 @@ try:
                                 pass
                     if clicks <= 1000:
                         click_money = 0
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 10_000:
                         click_money = random.randint(10, 100)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 100_000:
                         click_money = random.randint(20, 500)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 1_000_000:
                         click_money = random.randint(100, 1000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += random.randint(1, 10)
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 10_000_000:
                         click_money = random.randint(100, 1500)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 10
                         game_credits += 0.01
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 50_000_000:
                         click_money = random.randint(500, 25_000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 25
                         game_credits += 0.1
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 100_000_000:
                         click_money = random.randint(1000, 100_000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 50
                         game_credits += 0.25
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 1_000_000_000:
                         click_money = random.randint(10000, 1_000_000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 75
                         game_credits += 0.35
                         if has_job:
                             salary = salary * random.randint(5, 20)
+                            print("Salary increased!")
+                        print(f"You have {game_credits} credits and {health} health")
                     elif clicks <= 1_000_000_000_000:
                         click_money = random.randint(50_000, 5_000_000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 100
                         game_credits += 0.5
                         if has_job:
                             salary = salary * random.randint(10, 100)
+                            print("Salary increased")
+                        print(f"You have {game_credits} credits and {health} health")
                     else:
                         click_money = random.randint(1_000_000, 10_000_000)
+                        money += click_money
+                        print(f"You got ${click_money}")
+                        time.sleep(1)
+                        print(f"You now have ${money}")
                         health += 200
                         game_credits += 1
                         if has_job:
                             salary = salary * random.randint(10, 1000)
+                            print("Salary increased")
+                        print(f"You have {game_credits} credits and {health} health")
                 elif what_game == 'fortnite':
                     fortnite_mode = input("What mode: (battle royale, save the world, creative)   ")
                     if fortnite_mode == 'battle royale':
